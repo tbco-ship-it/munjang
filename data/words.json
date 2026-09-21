@@ -1,0 +1,1113 @@
+{
+ "_note": "Beginner vocabulary for the sentence builder. roles: subj (can be the topic/subject), obj (takes 을/를), dest (goes with 에 + movement verbs), loc (goes with 에서 + action verbs), skill (object of 배우다/공부하다). Meanings hand-written; romanization = Revised Romanization.",
+ "nouns": [
+  {
+   "h": "저",
+   "r": "jeo",
+   "en": "I (polite)",
+   "ja": "私（丁寧）",
+   "roles": [
+    "subj"
+   ],
+   "kind": "person",
+   "level": 1,
+   "ga": "제가"
+  },
+  {
+   "h": "친구",
+   "r": "chingu",
+   "en": "friend",
+   "ja": "友だち",
+   "roles": [
+    "subj",
+    "obj"
+   ],
+   "kind": "person",
+   "level": 1,
+   "en_g": "a friend"
+  },
+  {
+   "h": "엄마",
+   "r": "eomma",
+   "en": "mom",
+   "ja": "お母さん",
+   "roles": [
+    "subj",
+    "obj"
+   ],
+   "kind": "person",
+   "level": 1,
+   "en_g": "my mom"
+  },
+  {
+   "h": "아빠",
+   "r": "appa",
+   "en": "dad",
+   "ja": "お父さん",
+   "roles": [
+    "subj",
+    "obj"
+   ],
+   "kind": "person",
+   "level": 1,
+   "en_g": "my dad"
+  },
+  {
+   "h": "선생님",
+   "r": "seonsaengnim",
+   "en": "teacher",
+   "ja": "先生",
+   "roles": [
+    "subj",
+    "obj"
+   ],
+   "kind": "person",
+   "level": 1,
+   "en_g": "a teacher"
+  },
+  {
+   "h": "동생",
+   "r": "dongsaeng",
+   "en": "younger sibling",
+   "ja": "弟・妹",
+   "roles": [
+    "subj",
+    "obj"
+   ],
+   "kind": "person",
+   "level": 1,
+   "en_g": "a younger sibling"
+  },
+  {
+   "h": "학생",
+   "r": "haksaeng",
+   "en": "student",
+   "ja": "学生",
+   "roles": [
+    "subj",
+    "obj"
+   ],
+   "kind": "person",
+   "level": 1,
+   "en_g": "a student"
+  },
+  {
+   "h": "고양이",
+   "r": "goyangi",
+   "en": "cat",
+   "ja": "猫",
+   "roles": [
+    "subj",
+    "obj"
+   ],
+   "kind": "animal",
+   "level": 1,
+   "en_g": "a cat"
+  },
+  {
+   "h": "강아지",
+   "r": "gangaji",
+   "en": "puppy, dog",
+   "ja": "子犬・犬",
+   "roles": [
+    "subj",
+    "obj"
+   ],
+   "kind": "animal",
+   "level": 1,
+   "en_g": "a puppy"
+  },
+  {
+   "h": "물",
+   "r": "mul",
+   "en": "water",
+   "ja": "水",
+   "roles": [
+    "subj",
+    "obj"
+   ],
+   "kind": "drink",
+   "level": 1
+  },
+  {
+   "h": "커피",
+   "r": "keopi",
+   "en": "coffee",
+   "ja": "コーヒー",
+   "roles": [
+    "subj",
+    "obj"
+   ],
+   "kind": "drink",
+   "level": 1
+  },
+  {
+   "h": "우유",
+   "r": "uyu",
+   "en": "milk",
+   "ja": "牛乳",
+   "roles": [
+    "subj",
+    "obj"
+   ],
+   "kind": "drink",
+   "level": 1
+  },
+  {
+   "h": "차",
+   "r": "cha",
+   "en": "tea",
+   "ja": "お茶",
+   "roles": [
+    "subj",
+    "obj"
+   ],
+   "kind": "drink",
+   "level": 1
+  },
+  {
+   "h": "주스",
+   "r": "juseu",
+   "en": "juice",
+   "ja": "ジュース",
+   "roles": [
+    "subj",
+    "obj"
+   ],
+   "kind": "drink",
+   "level": 1
+  },
+  {
+   "h": "김치",
+   "r": "gimchi",
+   "en": "kimchi",
+   "ja": "キムチ",
+   "roles": [
+    "subj",
+    "obj"
+   ],
+   "kind": "food",
+   "level": 1
+  },
+  {
+   "h": "밥",
+   "r": "bap",
+   "en": "rice, a meal",
+   "ja": "ご飯",
+   "roles": [
+    "subj",
+    "obj"
+   ],
+   "kind": "food",
+   "level": 1
+  },
+  {
+   "h": "빵",
+   "r": "ppang",
+   "en": "bread",
+   "ja": "パン",
+   "roles": [
+    "subj",
+    "obj"
+   ],
+   "kind": "food",
+   "level": 1
+  },
+  {
+   "h": "사과",
+   "r": "sagwa",
+   "en": "apple",
+   "ja": "りんご",
+   "roles": [
+    "subj",
+    "obj"
+   ],
+   "kind": "food",
+   "level": 1,
+   "en_g": "an apple"
+  },
+  {
+   "h": "라면",
+   "r": "ramyeon",
+   "en": "ramyeon (instant noodles)",
+   "ja": "ラーメン（インスタント）",
+   "roles": [
+    "subj",
+    "obj"
+   ],
+   "kind": "food",
+   "level": 1
+  },
+  {
+   "h": "불고기",
+   "r": "bulgogi",
+   "en": "bulgogi",
+   "ja": "プルコギ",
+   "roles": [
+    "subj",
+    "obj"
+   ],
+   "kind": "food",
+   "level": 1
+  },
+  {
+   "h": "책",
+   "r": "chaek",
+   "en": "book",
+   "ja": "本",
+   "roles": [
+    "subj",
+    "obj"
+   ],
+   "kind": "item",
+   "level": 1,
+   "read": true,
+   "en_g": "a book"
+  },
+  {
+   "h": "가방",
+   "r": "gabang",
+   "en": "bag",
+   "ja": "かばん",
+   "roles": [
+    "subj",
+    "obj"
+   ],
+   "kind": "item",
+   "level": 1,
+   "en_g": "a bag"
+  },
+  {
+   "h": "옷",
+   "r": "ot",
+   "en": "clothes",
+   "ja": "服",
+   "roles": [
+    "subj",
+    "obj"
+   ],
+   "kind": "item",
+   "level": 1
+  },
+  {
+   "h": "신발",
+   "r": "sinbal",
+   "en": "shoes",
+   "ja": "靴",
+   "roles": [
+    "subj",
+    "obj"
+   ],
+   "kind": "item",
+   "level": 1
+  },
+  {
+   "h": "핸드폰",
+   "r": "haendeupon",
+   "en": "cell phone",
+   "ja": "携帯電話",
+   "roles": [
+    "subj",
+    "obj"
+   ],
+   "kind": "item",
+   "level": 1,
+   "en_g": "a cell phone"
+  },
+  {
+   "h": "영화",
+   "r": "yeonghwa",
+   "en": "movie",
+   "ja": "映画",
+   "roles": [
+    "subj",
+    "obj"
+   ],
+   "kind": "media",
+   "level": 1,
+   "en_g": "a movie"
+  },
+  {
+   "h": "드라마",
+   "r": "deurama",
+   "en": "drama (TV series)",
+   "ja": "ドラマ",
+   "roles": [
+    "subj",
+    "obj"
+   ],
+   "kind": "media",
+   "level": 1,
+   "en_g": "a drama"
+  },
+  {
+   "h": "노래",
+   "r": "norae",
+   "en": "song",
+   "ja": "歌",
+   "roles": [
+    "subj",
+    "obj"
+   ],
+   "kind": "audio",
+   "level": 1,
+   "en_g": "a song"
+  },
+  {
+   "h": "음악",
+   "r": "eumak",
+   "en": "music",
+   "ja": "音楽",
+   "roles": [
+    "subj",
+    "obj"
+   ],
+   "kind": "audio",
+   "level": 1
+  },
+  {
+   "h": "사진",
+   "r": "sajin",
+   "en": "photo",
+   "ja": "写真",
+   "roles": [
+    "subj",
+    "obj"
+   ],
+   "kind": "media",
+   "level": 1,
+   "en_g": "a photo"
+  },
+  {
+   "h": "편지",
+   "r": "pyeonji",
+   "en": "letter",
+   "ja": "手紙",
+   "roles": [
+    "subj",
+    "obj"
+   ],
+   "kind": "item",
+   "level": 1,
+   "read": true,
+   "write": true,
+   "en_g": "a letter"
+  },
+  {
+   "h": "집",
+   "r": "jip",
+   "en": "home, house",
+   "ja": "家",
+   "roles": [
+    "subj",
+    "dest",
+    "loc"
+   ],
+   "kind": "place",
+   "level": 1,
+   "en_g": "home"
+  },
+  {
+   "h": "학교",
+   "r": "hakgyo",
+   "en": "school",
+   "ja": "学校",
+   "roles": [
+    "subj",
+    "dest",
+    "loc"
+   ],
+   "kind": "place",
+   "level": 1,
+   "en_g": "school"
+  },
+  {
+   "h": "회사",
+   "r": "hoesa",
+   "en": "company, office",
+   "ja": "会社",
+   "roles": [
+    "subj",
+    "dest",
+    "loc"
+   ],
+   "kind": "place",
+   "level": 1,
+   "en_g": "the office"
+  },
+  {
+   "h": "카페",
+   "r": "kape",
+   "en": "café",
+   "ja": "カフェ",
+   "roles": [
+    "subj",
+    "dest",
+    "loc"
+   ],
+   "kind": "place",
+   "level": 1,
+   "en_g": "a café"
+  },
+  {
+   "h": "식당",
+   "r": "sikdang",
+   "en": "restaurant",
+   "ja": "食堂・レストラン",
+   "roles": [
+    "subj",
+    "dest",
+    "loc"
+   ],
+   "kind": "place",
+   "level": 1,
+   "en_g": "a restaurant"
+  },
+  {
+   "h": "공원",
+   "r": "gongwon",
+   "en": "park",
+   "ja": "公園",
+   "roles": [
+    "subj",
+    "dest",
+    "loc"
+   ],
+   "kind": "place",
+   "level": 1,
+   "en_g": "a park"
+  },
+  {
+   "h": "도서관",
+   "r": "doseogwan",
+   "en": "library",
+   "ja": "図書館",
+   "roles": [
+    "subj",
+    "dest",
+    "loc"
+   ],
+   "kind": "place",
+   "level": 1,
+   "en_g": "a library"
+  },
+  {
+   "h": "시장",
+   "r": "sijang",
+   "en": "market",
+   "ja": "市場",
+   "roles": [
+    "subj",
+    "dest",
+    "loc"
+   ],
+   "kind": "place",
+   "level": 1,
+   "en_g": "a market"
+  },
+  {
+   "h": "병원",
+   "r": "byeongwon",
+   "en": "hospital",
+   "ja": "病院",
+   "roles": [
+    "subj",
+    "dest",
+    "loc"
+   ],
+   "kind": "place",
+   "level": 1,
+   "en_g": "a hospital"
+  },
+  {
+   "h": "서울",
+   "r": "seoul",
+   "en": "Seoul",
+   "ja": "ソウル",
+   "roles": [
+    "subj",
+    "dest",
+    "loc"
+   ],
+   "kind": "place",
+   "level": 1
+  },
+  {
+   "h": "한국",
+   "r": "hanguk",
+   "en": "Korea",
+   "ja": "韓国",
+   "roles": [
+    "subj",
+    "dest",
+    "loc"
+   ],
+   "kind": "place",
+   "level": 1
+  },
+  {
+   "h": "일본",
+   "r": "ilbon",
+   "en": "Japan",
+   "ja": "日本",
+   "roles": [
+    "subj",
+    "dest",
+    "loc"
+   ],
+   "kind": "place",
+   "level": 1
+  },
+  {
+   "h": "한국어",
+   "r": "hangugeo",
+   "en": "Korean (language)",
+   "ja": "韓国語",
+   "roles": [
+    "subj",
+    "obj"
+   ],
+   "kind": "skill",
+   "level": 1
+  },
+  {
+   "h": "영어",
+   "r": "yeongeo",
+   "en": "English",
+   "ja": "英語",
+   "roles": [
+    "subj",
+    "obj"
+   ],
+   "kind": "skill",
+   "level": 1
+  },
+  {
+   "h": "일본어",
+   "r": "ilboneo",
+   "en": "Japanese (language)",
+   "ja": "日本語",
+   "roles": [
+    "subj",
+    "obj"
+   ],
+   "kind": "skill",
+   "level": 1
+  },
+  {
+   "h": "한글",
+   "r": "hangeul",
+   "en": "Hangul (the Korean alphabet)",
+   "ja": "ハングル",
+   "roles": [
+    "subj",
+    "obj"
+   ],
+   "kind": "skill",
+   "level": 1
+  },
+  {
+   "h": "토마토",
+   "r": "tomato",
+   "en": "tomato",
+   "ja": "トマト",
+   "roles": [
+    "subj",
+    "obj"
+   ],
+   "kind": "food",
+   "level": 1,
+   "en_g": "a tomato"
+  },
+  {
+   "h": "야채",
+   "r": "yachae",
+   "en": "vegetables",
+   "ja": "野菜",
+   "roles": [
+    "subj",
+    "obj"
+   ],
+   "kind": "food",
+   "level": 1
+  },
+  {
+   "h": "귤",
+   "r": "gyul",
+   "en": "tangerine",
+   "ja": "みかん",
+   "roles": [
+    "subj",
+    "obj"
+   ],
+   "kind": "food",
+   "level": 1,
+   "en_g": "a tangerine"
+  },
+  {
+   "h": "컴퓨터",
+   "r": "keompyuteo",
+   "en": "computer",
+   "ja": "コンピューター",
+   "roles": [
+    "subj",
+    "obj"
+   ],
+   "kind": "item",
+   "level": 1,
+   "en_g": "a computer"
+  },
+  {
+   "h": "텔레비전",
+   "r": "tellebijeon",
+   "en": "television",
+   "ja": "テレビ",
+   "roles": [
+    "subj",
+    "obj"
+   ],
+   "kind": "media",
+   "level": 1,
+   "en_g": "TV"
+  },
+  {
+   "h": "뉴스",
+   "r": "nyuseu",
+   "en": "the news",
+   "ja": "ニュース",
+   "roles": [
+    "subj",
+    "obj"
+   ],
+   "kind": "media",
+   "level": 1,
+   "en_g": "the news"
+  },
+  {
+   "h": "유튜브",
+   "r": "yutyubeu",
+   "en": "YouTube",
+   "ja": "YouTube",
+   "roles": [
+    "subj",
+    "obj"
+   ],
+   "kind": "media",
+   "level": 1
+  },
+  {
+   "h": "야구",
+   "r": "yagu",
+   "en": "baseball",
+   "ja": "野球",
+   "roles": [
+    "subj",
+    "obj"
+   ],
+   "kind": "media",
+   "level": 1,
+   "en_g": "baseball"
+  },
+  {
+   "h": "교회",
+   "r": "gyohoe",
+   "en": "church",
+   "ja": "教会",
+   "roles": [
+    "subj",
+    "dest",
+    "loc"
+   ],
+   "kind": "place",
+   "level": 1,
+   "en_g": "a church"
+  },
+  {
+   "h": "요리",
+   "r": "yori",
+   "en": "cooking",
+   "ja": "料理",
+   "roles": [
+    "subj",
+    "obj"
+   ],
+   "kind": "skill",
+   "level": 1
+  },
+  {
+   "h": "태권도",
+   "r": "taegwondo",
+   "en": "taekwondo",
+   "ja": "テコンドー",
+   "roles": [
+    "subj",
+    "obj"
+   ],
+   "kind": "skill",
+   "level": 1
+  }
+ ],
+ "verbs": [
+  {
+   "h": "먹다",
+   "r": "meokda",
+   "en": "to eat",
+   "ja": "食べる",
+   "pres": "먹어요",
+   "past": "먹었어요",
+   "want": "먹고 싶어요",
+   "takes": [
+    "food"
+   ],
+   "level": 1
+  },
+  {
+   "h": "마시다",
+   "r": "masida",
+   "en": "to drink",
+   "ja": "飲む",
+   "pres": "마셔요",
+   "past": "마셨어요",
+   "want": "마시고 싶어요",
+   "takes": [
+    "drink"
+   ],
+   "level": 1
+  },
+  {
+   "h": "사다",
+   "r": "sada",
+   "en": "to buy",
+   "ja": "買う",
+   "pres": "사요",
+   "past": "샀어요",
+   "want": "사고 싶어요",
+   "takes": [
+    "food",
+    "drink",
+    "item"
+   ],
+   "level": 1
+  },
+  {
+   "h": "보다",
+   "r": "boda",
+   "en": "to see, to watch",
+   "ja": "見る",
+   "pres": "봐요",
+   "past": "봤어요",
+   "want": "보고 싶어요",
+   "takes": [
+    "media",
+    "person",
+    "item"
+   ],
+   "level": 1
+  },
+  {
+   "h": "읽다",
+   "r": "ikda",
+   "en": "to read",
+   "ja": "読む",
+   "pres": "읽어요",
+   "past": "읽었어요",
+   "want": "읽고 싶어요",
+   "takes": [
+    "read"
+   ],
+   "level": 1
+  },
+  {
+   "h": "듣다",
+   "r": "deutda",
+   "en": "to listen",
+   "ja": "聞く",
+   "pres": "들어요",
+   "past": "들었어요",
+   "want": "듣고 싶어요",
+   "takes": [
+    "audio"
+   ],
+   "level": 1
+  },
+  {
+   "h": "쓰다",
+   "r": "sseuda",
+   "en": "to write",
+   "ja": "書く",
+   "pres": "써요",
+   "past": "썼어요",
+   "want": "쓰고 싶어요",
+   "takes": [
+    "write",
+    "skill"
+   ],
+   "level": 1
+  },
+  {
+   "h": "배우다",
+   "r": "baeuda",
+   "en": "to learn",
+   "ja": "習う・学ぶ",
+   "pres": "배워요",
+   "past": "배웠어요",
+   "want": "배우고 싶어요",
+   "takes": [
+    "skill"
+   ],
+   "level": 1
+  },
+  {
+   "h": "공부하다",
+   "r": "gongbuhada",
+   "en": "to study",
+   "ja": "勉強する",
+   "pres": "공부해요",
+   "past": "공부했어요",
+   "want": "공부하고 싶어요",
+   "takes": [
+    "skill"
+   ],
+   "level": 1
+  },
+  {
+   "h": "만나다",
+   "r": "mannada",
+   "en": "to meet",
+   "ja": "会う",
+   "pres": "만나요",
+   "past": "만났어요",
+   "want": "만나고 싶어요",
+   "takes": [
+    "person"
+   ],
+   "level": 1
+  },
+  {
+   "h": "좋아하다",
+   "r": "joahada",
+   "en": "to like",
+   "ja": "好む・好きだ",
+   "pres": "좋아해요",
+   "past": "좋아했어요",
+   "want": null,
+   "takes": [
+    "food",
+    "drink",
+    "item",
+    "media",
+    "audio",
+    "person",
+    "animal",
+    "skill",
+    "place"
+   ],
+   "level": 1
+  },
+  {
+   "h": "가다",
+   "r": "gada",
+   "en": "to go",
+   "ja": "行く",
+   "pres": "가요",
+   "past": "갔어요",
+   "want": "가고 싶어요",
+   "move": true,
+   "level": 1
+  },
+  {
+   "h": "오다",
+   "r": "oda",
+   "en": "to come",
+   "ja": "来る",
+   "pres": "와요",
+   "past": "왔어요",
+   "want": "오고 싶어요",
+   "move": true,
+   "level": 1
+  },
+  {
+   "h": "있다",
+   "r": "itda",
+   "en": "to be (there), to exist",
+   "ja": "いる・ある",
+   "pres": "있어요",
+   "past": "있었어요",
+   "want": null,
+   "exist": true,
+   "level": 1
+  },
+  {
+   "h": "살다",
+   "r": "salda",
+   "en": "to live",
+   "ja": "住む",
+   "pres": "살아요",
+   "past": "살았어요",
+   "want": "살고 싶어요",
+   "at": true,
+   "level": 1
+  },
+  {
+   "h": "일하다",
+   "r": "ilhada",
+   "en": "to work",
+   "ja": "働く",
+   "pres": "일해요",
+   "past": "일했어요",
+   "want": "일하고 싶어요",
+   "at": true,
+   "level": 1
+  }
+ ],
+ "adjectives": [
+  {
+   "h": "크다",
+   "r": "keuda",
+   "en": "to be big",
+   "ja": "大きい",
+   "pres": "커요",
+   "past": "컸어요",
+   "fits": [
+    "item",
+    "animal",
+    "place",
+    "food"
+   ],
+   "level": 1
+  },
+  {
+   "h": "작다",
+   "r": "jakda",
+   "en": "to be small",
+   "ja": "小さい",
+   "pres": "작아요",
+   "past": "작았어요",
+   "fits": [
+    "item",
+    "animal",
+    "place",
+    "food"
+   ],
+   "level": 1
+  },
+  {
+   "h": "맛있다",
+   "r": "masitda",
+   "en": "to be delicious",
+   "ja": "おいしい",
+   "pres": "맛있어요",
+   "past": "맛있었어요",
+   "fits": [
+    "food",
+    "drink"
+   ],
+   "level": 1
+  },
+  {
+   "h": "예쁘다",
+   "r": "yeppeuda",
+   "en": "to be pretty",
+   "ja": "きれいだ・かわいい",
+   "pres": "예뻐요",
+   "past": "예뻤어요",
+   "fits": [
+    "item",
+    "animal",
+    "place",
+    "person",
+    "media"
+   ],
+   "level": 1
+  },
+  {
+   "h": "좋다",
+   "r": "jota",
+   "en": "to be good",
+   "ja": "良い",
+   "pres": "좋아요",
+   "past": "좋았어요",
+   "fits": [
+    "item",
+    "place",
+    "media",
+    "audio",
+    "food",
+    "drink",
+    "person",
+    "skill"
+   ],
+   "level": 1
+  },
+  {
+   "h": "비싸다",
+   "r": "bissada",
+   "en": "to be expensive",
+   "ja": "（値段が）高い",
+   "pres": "비싸요",
+   "past": "비쌌어요",
+   "fits": [
+    "item",
+    "food",
+    "drink"
+   ],
+   "level": 1
+  },
+  {
+   "h": "싸다",
+   "r": "ssada",
+   "en": "to be cheap",
+   "ja": "安い",
+   "pres": "싸요",
+   "past": "쌌어요",
+   "fits": [
+    "item",
+    "food",
+    "drink"
+   ],
+   "level": 1
+  },
+  {
+   "h": "재미있다",
+   "r": "jaemiitda",
+   "en": "to be fun, interesting",
+   "ja": "面白い",
+   "pres": "재미있어요",
+   "past": "재미있었어요",
+   "fits": [
+    "media",
+    "audio",
+    "skill",
+    "place",
+    "person"
+   ],
+   "level": 1
+  },
+  {
+   "h": "어렵다",
+   "r": "eoryeopda",
+   "en": "to be difficult",
+   "ja": "難しい",
+   "pres": "어려워요",
+   "past": "어려웠어요",
+   "fits": [
+    "skill",
+    "media"
+   ],
+   "level": 1
+  },
+  {
+   "h": "쉽다",
+   "r": "swipda",
+   "en": "to be easy",
+   "ja": "易しい・簡単だ",
+   "pres": "쉬워요",
+   "past": "쉬웠어요",
+   "fits": [
+    "skill",
+    "media"
+   ],
+   "level": 1
+  }
+ ]
+}

@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% block title %}{% if lang == 'ja' %}은/는 と 이/가 の使い分け — 例文で判定する助詞ガイド | Munjang{% else %}은/는 vs 이/가 — the Korean particle guide with a built-in quiz | Munjang{% endif %}{% endblock %}
+{% block description %}{% if lang == 'ja' %}「저는」なのに「제가」？ 은/는（主題）と 이/가（主格）の違いを、パッチムの形の規則と、どちらが自然かの規則に分けて解説。을/를・에・에서 も同じ流儀で。ミニクイズ付き。{% else %}Why is it 저는 but 제가? 은/는 (topic) vs 이/가 (subject), split into the form rule (받침) and the naturalness rule, plus 을/를 · 에 · 에서. With a mini quiz that explains every answer.{% endif %}{% endblock %}
+{% block content %}
+<article class="prose">
+{% if lang == 'ja' %}
+<h1>은/는 と 이/가 — 形の規則と、自然さの規則</h1>
+<p class="lead">初級者の質問でいちばん多いのがこれです。実は2つの別々の規則が混ざっています。片方は機械的、もう片方は「文がどう聞こえるか」の話です。</p>
+<h2>1. 形の規則（機械的）</h2>
+<p>直前の単語がパッチム（終声の子音）で終わるなら <b>은 / 이 / 을</b>、母音で終わるなら <b>는 / 가 / 를</b>。</p>
+<table><tr><th>単語</th><th>終わり</th><th>主題</th><th>主格</th><th>目的</th></tr>
+<tr><td>가방</td><td>ㅇ（パッチム）</td><td>가방<b>은</b></td><td>가방<b>이</b></td><td>가방<b>을</b></td></tr>
+<tr><td>커피</td><td>母音</td><td>커피<b>는</b></td><td>커피<b>가</b></td><td>커피<b>를</b></td></tr>
+<tr><td>저</td><td>母音</td><td>저<b>는</b></td><td><b>제가</b>（不規則）</td><td>저<b>를</b></td></tr></table>
+<p>例外は代名詞だけ：저 + 가 → <b>제가</b>、나 + 가 → <b>내가</b>、누구 + 가 → <b>누가</b>。</p>
+<h2>2. 自然さの規則（은/는 か 이/가 か）</h2>
+<ul>
+<li><b>은/는（主題）</b>：「〜については」。自分や既知の人が何をするかを述べるとき。<span lang="ko">저는 커피를 마셔요.</span></li>
+<li><b>이/가（主格）</b>：描写・新情報・存在。<span lang="ko">김치가 맛있어요. 고양이가 집에 있어요.</span></li>
+<li>入れ替えても文法的には正しいことが多いですが、ニュアンスが変わります。<span lang="ko">김치는 맛있어요</span> は「キムチは（他はともかく）おいしい」という対比に聞こえます。</li>
+</ul>
+<h2>3. 을/를・에・에서</h2>
+<ul>
+<li><b>을/를</b>：動作の対象。<span lang="ko">책을 읽어요.</span></li>
+<li><b>에</b>：行き先、または存在する場所。<span lang="ko">학교에 가요. 집에 있어요.</span></li>
+<li><b>에서</b>：動作が行われる場所。<span lang="ko">카페에서 커피를 마셔요. 서울에서 살아요.</span></li>
+</ul>
+<p>覚え方：「行く・いる」なら 에、「そこで何かをする」なら 에서。</p>
+{% else %}
+<h1>은/는 vs 이/가 — the form rule and the naturalness rule</h1>
+<p class="lead">This is the number-one beginner question, and the reason it feels impossible is that two separate rules are tangled together. One is mechanical. The other is about how the sentence sounds.</p>
+<h2>1. The form rule (mechanical)</h2>
+<p>If the word before the particle ends in a consonant (a 받침), use <b>은 / 이 / 을</b>. If it ends in a vowel, use <b>는 / 가 / 를</b>. That is all.</p>
+<table><tr><th>Word</th><th>Ends in</th><th>Topic</th><th>Subject</th><th>Object</th></tr>
+<tr><td>가방 (bag)</td><td>ㅇ (consonant)</td><td>가방<b>은</b></td><td>가방<b>이</b></td><td>가방<b>을</b></td></tr>
+<tr><td>커피 (coffee)</td><td>vowel</td><td>커피<b>는</b></td><td>커피<b>가</b></td><td>커피<b>를</b></td></tr>
+<tr><td>저 (I)</td><td>vowel</td><td>저<b>는</b></td><td><b>제가</b> (irregular)</td><td>저<b>를</b></td></tr></table>
+<p>The only exceptions are pronouns: 저 + 가 → <b>제가</b>, 나 + 가 → <b>내가</b>, 누구 + 가 → <b>누가</b>.</p>
+<h2>2. The naturalness rule (은/는 or 이/가?)</h2>
+<ul>
+<li><b>은/는 (topic)</b> — “as for X”. Use it when you say what you or a known person does. <span lang="ko">저는 커피를 마셔요.</span> (I drink coffee.)</li>
+<li><b>이/가 (subject)</b> — describing, new information, existence. <span lang="ko">김치가 맛있어요.</span> (Kimchi is delicious.) <span lang="ko">고양이가 집에 있어요.</span> (The cat is at home.)</li>
+<li>Swapping them is usually still grammatical, but the meaning shifts. <span lang="ko">김치는 맛있어요</span> sounds like “kimchi, unlike the other dishes, is delicious”. <span lang="ko">제가 커피를 마셔요</span> sounds like “I am the one drinking the coffee”.</li>
+</ul>
+<h2>3. 을/를 · 에 · 에서</h2>
+<ul>
+<li><b>을/를</b> — the thing acted on. <span lang="ko">책을 읽어요.</span> (I read a book.)</li>
+<li><b>에</b> — a destination, or where something IS. <span lang="ko">학교에 가요. 집에 있어요.</span></li>
+<li><b>에서</b> — where an action happens. <span lang="ko">카페에서 커피를 마셔요. 서울에서 살아요.</span></li>
+</ul>
+<p>Rule of thumb: going or being somewhere → 에; doing something there → 에서.</p>
+{% endif %}
+<h2 id="quiz">{% if lang == 'ja' %}ミニクイズ{% else %}Mini quiz{% endif %}</h2>
+<div class="quiz" id="quiz" data-lang="{{ lang }}"></div>
+<p><a class="btn" href="{{ base }}{{ ui.dir }}#j=ㄱ">{% if lang == 'ja' %}組み立てツールで練習する →{% else %}Practice in the builder →{% endif %}</a></p>
+</article>
+{% endblock %}
+{% block scripts %}
+<script>window.MJ_UI={{ ui | tojson }};</script>
+<script src="{{ base }}static/data.js?v={{ v }}"></script>
+<script src="{{ base }}static/munjang.js?v={{ v }}"></script>
+<script src="{{ base }}static/quiz.js?v={{ v }}"></script>
+{% endblock %}

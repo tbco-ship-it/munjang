@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block title %}{% if lang == 'ja' %}韓国語の分かち書き（띄어쓰기）— どこでスペースを入れるか | Munjang{% else %}Korean spacing (띄어쓰기) — where the spaces go | Munjang{% endif %}{% endblock %}
+{% block description %}{% if lang == 'ja' %}日本語にはない分かち書き。「単語＋助詞」のかたまりごとにスペース、助詞は前にくっつける、-고 싶어요 の前は空ける。原稿用紙での書き方も。{% else %}Korean writes spaces between words, but particles stick to the word before them, and -고 싶어요 splits. The four rules beginners need, plus how it looks on 원고지 manuscript paper.{% endif %}{% endblock %}
+{% block content %}
+<article class="prose">
+{% if lang == 'ja' %}
+<h1>分かち書き — 「単語＋助詞」のかたまりで区切る</h1>
+<p class="lead">知恵袋でいちばん多い作文の質問が「どこでスペースを入れるか」です。初級で必要な規則は4つだけです。</p>
+<ol>
+<li><b>助詞は前の単語にくっつける。</b> <span lang="ko">저는 / 커피를 / 학교에</span> — 「저 는」とは書きません。</li>
+<li><b>かたまりとかたまりの間にスペース。</b> <span lang="ko">저는⎵커피를⎵마셔요.</span></li>
+<li><b>-고 싶어요 は 싶어요 の前で空ける。</b> <span lang="ko">배우고⎵싶어요</span>（2語扱い）。</li>
+<li><b>안 は動詞と離す。</b> <span lang="ko">안⎵마셔요</span>。ただし 하다動詞は <span lang="ko">공부⎵안⎵해요</span>。</li>
+</ol>
+<h2>原稿用紙では</h2>
+<p>1マスに1音節、スペースは1マス空ける、句点「.」は1マス。行頭にはスペースのマスを置かず、前の行の最後のマスの外に句読点を書きます。Munjang の<a href="{{ base }}{{ ui.dir }}print/">印刷ページ</a>はこの流儀でマスを割り当てます。</p>
+{% else %}
+<h1>Spacing — one space per “word + particle” chunk</h1>
+<p class="lead">Korean uses spaces, but not where English does. The chunk is the unit: a word together with its particle. Four rules cover every sentence on this site.</p>
+<ol>
+<li><b>Particles attach to the word before them.</b> <span lang="ko">저는 / 커피를 / 학교에</span> — never <span lang="ko">저 는</span>.</li>
+<li><b>One space between chunks.</b> <span lang="ko">저는⎵커피를⎵마셔요.</span></li>
+<li><b>-고 싶어요 splits before 싶어요.</b> <span lang="ko">배우고⎵싶어요</span> — two words.</li>
+<li><b>안 stands apart from the verb.</b> <span lang="ko">안⎵마셔요</span>. With 하다-verbs it goes inside: <span lang="ko">공부⎵안⎵해요</span>.</li>
+</ol>
+<h2>On manuscript paper (원고지)</h2>
+<p>One syllable per square, one empty square per space, and the full stop gets its own square. A space never starts a line — punctuation that would fall at the start goes outside the last square of the previous line. The <a href="{{ base }}{{ ui.dir }}print/">print page</a> lays your sentences out this way automatically.</p>
+{% endif %}
+<p><a class="btn" href="{{ base }}{{ ui.dir }}#j=ㅅ">{% if lang == 'ja' %}組み立てツールで練習する →{% else %}Practice in the builder →{% endif %}</a></p>
+</article>
+{% endblock %}

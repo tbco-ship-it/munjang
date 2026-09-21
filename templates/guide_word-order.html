@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block title %}{% if lang == 'ja' %}韓国語の語順（SOV）— 日本語と同じところ、違うところ | Munjang{% else %}Korean word order (SOV) — why the verb goes last, and what can move | Munjang{% endif %}{% endblock %}
+{% block description %}{% if lang == 'ja' %}韓国語は日本語と同じ SOV。助詞があるから語順は動かせる、でも動詞は最後。初級で使う5つの型を例文で。{% else %}Korean is Subject–Object–Verb. Because particles mark each role, the middle can move, but the verb always ends the sentence. The five beginner frames, with examples.{% endif %}{% endblock %}
+{% block content %}
+<article class="prose">
+{% if lang == 'ja' %}
+<h1>韓国語の語順 — 動詞は最後、あとは助詞が決める</h1>
+<p class="lead">日本語話者にとって語順は最大の味方です。「私は カフェで コーヒーを 飲みます」をそのまま並べれば <span lang="ko">저는 카페에서 커피를 마셔요</span>。</p>
+<h2>基本形</h2>
+<p><b>[誰が] + [どこで] + [何を] + [どうする]</b>。動詞（または形容詞）は必ず文末。丁寧な会話体は 해요体（-아요/어요）。</p>
+<h2>初級の5つの型</h2>
+<table><tr><th>型</th><th>例</th><th>意味</th></tr>
+{% for f in frames %}<tr><td>{{ f.ja }}</td><td lang="ko">{{ f.ex }}.</td><td>{{ f.ex_ja }}</td></tr>
+{% endfor %}</table>
+<h2>動かせるもの、動かせないもの</h2>
+<ul><li>助詞が役割を示すので、<span lang="ko">커피를 저는 마셔요</span> でも通じます（強調のニュアンス）。</li><li>動詞は動きません。<span lang="ko">마셔요 저는 커피를</span> は誤りです。</li><li>主語が分かりきっているときは省略します。<span lang="ko">커피 마셔요?</span>（コーヒー飲む？）</li></ul>
+<h2>否定</h2>
+<p>動詞の直前に <b>안</b>：<span lang="ko">저는 커피를 안 마셔요.</span></p>
+{% else %}
+<h1>Korean word order — the verb goes last, particles do the rest</h1>
+<p class="lead">English is Subject–Verb–Object: <i>I drink coffee</i>. Korean is Subject–Object–Verb: <span lang="ko">저는 커피를 마셔요</span> — literally “I coffee drink”. Once that clicks, most beginner sentences are just slotting words into a frame.</p>
+<h2>The base frame</h2>
+<p><b>[who] + [where] + [what] + [does]</b>. The verb (or adjective) always ends the sentence, and in polite everyday speech it ends with -아요/어요.</p>
+<h2>The five beginner frames</h2>
+<table><tr><th>Frame</th><th>Example</th><th>Meaning</th></tr>
+{% for f in frames %}<tr><td>{{ f.en }}</td><td lang="ko">{{ f.ex }}.</td><td>{{ f.ex_en }}</td></tr>
+{% endfor %}</table>
+<h2>What can move, what cannot</h2>
+<ul><li>Because particles mark each role, <span lang="ko">커피를 저는 마셔요</span> is still understood (it stresses the coffee).</li><li>The verb never moves. <span lang="ko">마셔요 저는 커피를</span> is wrong.</li><li>Korean drops the subject when it is obvious: <span lang="ko">커피 마셔요?</span> — “(Do you) drink coffee?”</li></ul>
+<h2>Negation</h2>
+<p>Put <b>안</b> right before the verb: <span lang="ko">저는 커피를 안 마셔요.</span> (I don’t drink coffee.)</p>
+{% endif %}
+<p><a class="btn" href="{{ base }}{{ ui.dir }}#j=ㅁ">{% if lang == 'ja' %}組み立てツールで練習する →{% else %}Practice in the builder →{% endif %}</a></p>
+</article>
+{% endblock %}

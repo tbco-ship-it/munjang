@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}{{ ui.print_h1 }} | Munjang{% endblock %}
+{% block description %}{{ ui.print_p }}{% endblock %}
+{% block content %}
+<section class="prose print-head">
+  <h1>{{ ui.print_h1 }}</h1>
+  <p class="lead">{{ ui.print_p }}</p>
+  <div class="print-ctl">
+    <div class="seg" role="group" aria-label="Paper"><button type="button" class="on" data-paper="a4">{{ ui.paper_a4 }}</button><button type="button" data-paper="letter">{{ ui.paper_letter }}</button></div>
+    <label class="toggle"><input type="checkbox" id="guide"> <span>{{ ui.guide_toggle }}</span></label>
+    <label class="toggle"><input type="checkbox" id="trace" checked> <span>{{ ui.trace_toggle }}</span></label>
+    <button type="button" class="btn" id="do-print">{{ ui.print_btn }}</button>
+  </div>
+</section>
+<section id="sheet" class="sheet a4" aria-live="polite"><p class="muted">{{ ui.empty_print }}</p></section>
+{% endblock %}
+{% block scripts %}
+<script>window.MJ_UI={{ ui | tojson }};</script>
+<script src="{{ base }}static/munjang.js?v={{ v }}"></script>
+<script src="{{ base }}static/print.js?v={{ v }}"></script>
+{% endblock %}

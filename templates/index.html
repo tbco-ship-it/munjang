@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+{% block head %}
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Munjang","applicationCategory":"EducationalApplication","operatingSystem":"Any","url":"{{ origin }}{{ base }}{{ path }}","inLanguage":"{{ lang }}","description":"{{ ui.meta_desc }}","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+{% endblock %}
+{% block content %}
+<section class="hero">
+  <p class="eyebrow">✦ {{ ui.tagline }}</p>
+  <h1>{{ ui.hero_h1a }}<br><em>{{ ui.hero_h1b }}</em></h1>
+  <p class="lead">{{ ui.hero_p }}</p>
+  <ol class="steps" aria-label="How it works">
+    <li><i>1</i>{{ ui.step1 }}</li><li aria-hidden="true">→</li><li><i>2</i>{{ ui.step2 }}</li><li aria-hidden="true">→</li><li><i>3</i>{{ ui.step3 }}</li>
+  </ol>
+</section>
+<div class="studio">
+  <aside class="panel rail" id="rail">
+    <div class="panel-title"><span class="num">01</span><h2>{{ ui.start_card }}</h2></div>
+    <p class="hint">{{ ui.start_hint }}</p>
+    <div id="jamo" class="jamo-box"></div>
+    <label class="toggle"><input type="checkbox" id="batchim"> <span>{{ ui.batchim_toggle }}</span></label>
+    <div id="words" class="words" aria-live="polite"></div>
+    <p class="rail-foot" id="rail-foot">{{ ui.rail_foot }}</p>
+  </aside>
+  <section class="panel builder" id="builder">
+    <div class="panel-title"><span class="num">02</span><h2>{{ ui.builder_h2 }}</h2><button type="button" class="link" id="frame-btn" aria-haspopup="true">{{ ui.try_another }} ⌄</button></div>
+    <div id="frames" class="frame-menu" hidden></div>
+    <div id="wordhead" class="wordhead"></div>
+    <p class="frame-line" id="frame-line"></p>
+    <div id="tenses" class="chips" hidden></div>
+    <div id="slots" class="slots"></div>
+    <div id="ppanel" class="ppanel" hidden></div>
+    <div id="preview" class="preview"></div>
+    <div id="why" class="whys" hidden></div>
+    <form id="free" class="free">
+      <label for="free-in">{{ ui.i_want_to_say }}</label>
+      <div class="free-row"><input id="free-in" type="text" placeholder="{{ ui.free_ph }}" autocomplete="off"><button type="submit" class="btn" aria-label="{{ ui.pick }}">→</button></div>
+      <small id="free-hint">{{ ui.swap_hint }}</small>
+    </form>
+    <label class="toggle roman"><input type="checkbox" id="roman"> <span>{{ ui.romanization }}</span></label>
+    <div class="ad ad-wide" aria-hidden="true"><span>{{ ui.ad_label }}</span></div>
+  </section>
+  <aside class="side">
+    <div class="panel tray" id="tray">
+      <div class="panel-title"><h2>{{ ui.tray_h2 }}</h2><span id="tray-count" class="count">0 / 5</span></div>
+      <p class="hint">{{ ui.tray_hint }}</p>
+      <div id="tray-list" class="tray-list"></div>
+      <div class="tray-acts">
+        <a class="btn needs wide" id="print" href="{{ base }}{{ ui.dir }}print/">🖨 {{ ui.print }}</a>
+        <div class="row"><button type="button" class="btn ghost needs" id="copy">{{ ui['copy'] }}</button><button type="button" class="btn ghost needs" id="clear">{{ ui['clear'] }}</button></div>
+      </div>
+    </div>
+    <div class="panel offer">
+      <span class="ico">👤</span>
+      <h3>{{ ui.upsell_tutor_h }}</h3>
+      <p>{{ ui.upsell_tutor_p }}</p>
+      <a class="link strong" href="https://www.italki.com/teachers/korean" rel="sponsored noopener" target="_blank">{{ ui.upsell_tutor_cta }} ↗</a>
+      <small>{{ ui.upsell_tutor_small }}</small>
+    </div>
+    <div class="panel offer soft">
+      <span class="tag">{{ ui.soon }}</span>
+      <h3>{{ ui.upsell_pack_h }}</h3>
+      <p>{{ ui.upsell_pack_p }}</p>
+    </div>
+    <div class="ad" aria-hidden="true"><span>{{ ui.ad_label }}</span></div>
+  </aside>
+</div>
+<p class="trust">🔒 {{ ui.trust }}</p>
+<section class="intro prose">
+  {% if lang == 'ja' %}
+  <h2>なぜ「ランダムな文」ではないのか</h2>
+  <p>ハングルは1週間で読めるようになります。つまずくのはその先——「単語は分かるのに、은/는 と 이/가 のどちらを付けるのか」「학교에 なのか 학교에서 なのか」「どこでスペースを入れるのか」です。Munjang は検証済みの初級文型 {{ counts.frames }} 種と単語 {{ counts.nouns }} 語だけを組み合わせるので、出てくる文はすべて実際に使える文です。助詞を選ぶたびに、正しいか・自然か・なぜかをその場で説明します。</p>
+  <h2>原稿用紙に印刷して、手で書く</h2>
+  <p>完成した文は5つまでためて、韓国の原稿用紙（원고지）形式で印刷できます。1マス1音節、スペースは空きマス——TOPIK の作文と同じ書き方です。</p>
+  {% else %}
+  <h2>Why this is not a random sentence generator</h2>
+  <p>You can read Hangul after a week. The wall comes right after: you know the words, but is it 은/는 or 이/가? 학교에 or 학교에서? Where do the spaces go? Munjang only combines {{ counts.frames }} reviewed beginner frames with {{ counts.nouns }} words, so every sentence it shows is one a Korean speaker would actually say. Each time you choose a particle it tells you whether it is right, whether it sounds natural, and why.</p>
+  <h2>Print it on manuscript paper and write it by hand</h2>
+  <p>Keep up to five finished sentences and print them on a Korean 원고지 grid — one syllable per square, one empty square per space, the same way the TOPIK writing section is laid out.</p>
+  {% endif %}
+</section>
+{% endblock %}
+{% block scripts %}
+<script>window.MJ_UI={{ ui | tojson }};</script>
+<script src="{{ base }}static/data.js?v={{ v }}"></script>
+<script src="{{ base }}static/munjang.js?v={{ v }}"></script>
+<script src="{{ base }}static/app.js?v={{ v }}"></script>
+{% endblock %}

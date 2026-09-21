@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}{% if lang == 'ja' %}プライバシーポリシー{% else %}Privacy policy{% endif %} | Munjang{% endblock %}
+{% block content %}
+<article class="prose">
+{% if lang == 'ja' %}
+<h1>プライバシーポリシー</h1>
+<p>Munjang はアカウントを作らず、入力内容をサーバーに送信しません。作成した文はお使いのブラウザの localStorage にのみ保存され、「消す」で削除できます。</p>
+<p>本サイトは Google AdSense による広告と Cloudflare Web Analytics（Cookie 不使用）を利用します。Google は Cookie を使って広告を配信することがあります。詳細は <a href="https://policies.google.com/technologies/ads" rel="noopener">Google の広告ポリシー</a>をご覧ください。</p>
+<p>先生紹介リンクは外部サイトへ移動します。移動先の取り扱いは各サイトのポリシーに従います。</p>
+{% else %}
+<h1>Privacy policy</h1>
+<p>Munjang has no accounts and sends nothing you type to a server. The sentences you build are stored only in your browser’s localStorage and can be removed with “Clear”.</p>
+<p>The site uses Google AdSense for ads and Cloudflare Web Analytics (cookie-free). Google may use cookies to serve ads; see <a href="https://policies.google.com/technologies/ads" rel="noopener">Google’s advertising policies</a>.</p>
+<p>Tutor referral links lead to third-party sites governed by their own policies.</p>
+{% endif %}
+</article>
+{% endblock %}
