@@ -64,7 +64,7 @@ def main():
             alt = {l: a.origin + base + ui[l]["dir"] + path for l in LOCALES}
             html = env.get_template(tpl_name).render(
                 lang=lang, ui=u, base=base, origin=a.origin, path=full, v=v, today=today, counts=counts,
-                words=words, frames=templates["templates"], alt=alt, adsense_pub=a.adsense, slug=slug,
+                words=words, frames=templates["templates"], topik=topik, alt=alt, adsense_pub=a.adsense, slug=slug,
                 consonants=list("ㄱㄴㄷㄹㅁㅂㅅㅇㅈㅊㅋㅌㅍㅎ"), vowels=list("ㅏㅑㅓㅕㅗㅛㅜㅠㅡㅣ"),
             )
             out = DIST / full / "index.html"

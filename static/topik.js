@@ -10,14 +10,14 @@
   function renderItem() {
     const it = D.items[idx]; const box = $('#tk-item');
     const text = esc(it.text).replace(/\n/g, '<br>').replace(/\(\s*(㉠|㉡)\s*\)/g, (m, k) => `<mark class="tk-blank">${k}</mark>`);
-    box.innerHTML = `<p class="tk-title"><span class="tag">${it.q}</span> ${esc(it.title[LANG] || it.title.en)}</p><div class="tk-text" lang="ko">${text}</div>` +
+    box.innerHTML = `<p class="tk-title"><span class="tag">${it.q}</span> ${esc(it.title[LANG] || it.title.en)}<small class="tk-src">${it.src ? esc(it.src[LANG] || it.src.en) : ''}</small></p><div class="tk-text" lang="ko">${text}</div>` +
       it.blanks.map((b, i) => `<form class="tk-form" data-i="${i}"><label>${t('topik_blank', { k: b.k })}<div class="free-row"><input type="text" lang="ko" autocomplete="off"><button type="submit" class="btn sm">${t('topik_check')}</button></div></label><div class="why" hidden></div></form>`).join('');
     box.querySelectorAll('.tk-form').forEach(f => f.onsubmit = e => {
       e.preventDefault();
       const b = it.blanks[+f.dataset.i], v = f.querySelector('input').value.trim().replace(/\s+/g, ' ');
       const ok = b.accept.includes(v) || new RegExp(b.pattern).test(v);
       const w = f.querySelector('.why'); w.hidden = false; w.className = 'why ' + (ok ? 'ok' : 'no');
-      w.innerHTML = `<span class="tag">${ok ? t('correct_pattern') : t('wrong')}</span><p>${esc(ok ? t('topik_ok') : t('topik_no', { m: b.model }))}</p><p><b>${t('topik_model')}:</b> <span lang="ko">${esc(b.model)}</span> · <b>${t('topik_grammar')}:</b> ${esc(LANG === 'ja' ? b.grammar_ja : b.grammar)}</p>`;
+      w.innerHTML = `<span class="tag">${ok ? t('correct_pattern') : t('wrong')}</span><p>${esc(ok ? t('topik_ok') : t('topik_no', { m: b.model }))}</p><p><b>${t('topik_model')}:</b> <span lang="ko">${esc(b.model)}</span> · <b>${t('topik_grammar')}:</b> ${esc(LANG === 'ja' ? b.grammar_ja : LANG === 'vi' && b.grammar_vi ? b.grammar_vi : b.grammar)}</p>`;
     });
   }
   $('#tk-next').onclick = () => { idx = (idx + 1) % D.items.length; renderItem(); };

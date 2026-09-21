@@ -1,5 +1,5 @@
 {
- "_note": "TOPIK II writing practice. 51/52 items are original practice items in the exam's shape (short text with blanks ㉠ ㉡), not past papers. 'accept' = regex patterns an answer must match (grammar the item tests); 'model' = a model answer. 53/54 targets are the official length ranges.",
+ "_note": "TOPIK II writing practice. 51/52 items are original practice items in the exam's shape (short text with blanks ㉠ ㉡), not past papers. 'accept' = regex patterns an answer must match (grammar the item tests); 'model' = a model answer. 53/54 targets are the official length ranges. Items 51-13…52-17 reuse the grammar functions of the answer keys of public papers 102/96/91/83/64 with new, original passages (survey: RESEARCH/HANGULSTEPS_CONTENT_HEDGIE_20260922.md). 'facts' = frequency of those functions in the 20 blanks, NIIED scoring rubric, official manuscript-paper rules.",
  "targets": {
   "53": [
    200,
@@ -77,7 +77,7 @@
       "못 갈 것 같습니다",
       "갈 수 없을 것 같습니다"
      ],
-     "pattern": "(못 가|갈 수 없|참석(할 수 없|하지 못))",
+     "pattern": "(못 가|못 갑|못 갈|갈 수 없|참석(할 수 없|하지 못))",
      "model": "갈 수 없습니다",
      "grammar": "-(으)ㄹ 수 없다 / 못 + verb (cannot)",
      "grammar_ja": "-(으)ㄹ 수 없다 / 못（〜できない）"
@@ -502,6 +502,245 @@
    ]
   },
   {
+   "id": "51-13",
+   "q": "51",
+   "kind": "notice",
+   "title": {
+    "en": "Club room move",
+    "ja": "サークル室の引っ越し",
+    "vi": "Chuyển phòng câu lạc bộ"
+   },
+   "src": {
+    "en": "Pattern seen in TOPIK II paper #102, Q51 (-아/어야 하다 · -기 전에)",
+    "ja": "TOPIK II 第102回 51番の文型（-아/어야 하다 · -기 전에）",
+    "vi": "Mẫu từ đề TOPIK II kỳ 102, câu 51 (-아/어야 하다 · -기 전에)"
+   },
+   "text": "동아리 방 이사 안내\n\n우리 동아리는 다음 주에 새 방으로 옮깁니다. 개인 물건은 이번 주 금요일까지 각자 (  ㉠  ). 이사가 (  ㉡  ) 방을 깨끗하게 청소할 예정입니다.",
+   "blanks": [
+    {
+     "k": "㉠",
+     "accept": [
+      "정리해야 합니다",
+      "가져가야 합니다",
+      "치워야 합니다",
+      "정리해 주시기 바랍니다",
+      "가져가시기 바랍니다"
+     ],
+     "pattern": "(야 합니다|야 됩니다|시기 바랍니다)$",
+     "model": "정리해야 합니다",
+     "grammar": "-아/어야 하다 (must, have to)",
+     "grammar_ja": "-아/어야 하다（〜しなければならない）",
+     "grammar_vi": "-아/어야 하다 (phải)"
+    },
+    {
+     "k": "㉡",
+     "accept": [
+      "시작되기 전에",
+      "시작하기 전에",
+      "끝난 후에",
+      "끝나면",
+      "끝난 뒤에",
+      "시작한 다음에"
+     ],
+     "pattern": "(기 전에|후에|뒤에|다음에|면)$",
+     "model": "시작되기 전에",
+     "grammar": "-기 전에 (before) · -(으)ㄴ 후에 (after)",
+     "grammar_ja": "-기 전에（〜する前に）・-(으)ㄴ 후에（〜した後で）",
+     "grammar_vi": "-기 전에 (trước khi) · -(으)ㄴ 후에 (sau khi)"
+    }
+   ]
+  },
+  {
+   "id": "51-14",
+   "q": "51",
+   "kind": "ask",
+   "title": {
+    "en": "Asking for a neighbourhood",
+    "ja": "住む町のおすすめ",
+    "vi": "Hỏi khu phố để ở"
+   },
+   "src": {
+    "en": "Pattern seen in TOPIK II paper #96, Q51 (-(으)려고 하다 · -(으)ㄴ지/-(으)ㄹ지)",
+    "ja": "TOPIK II 第96回 51番の文型（-(으)려고 하다 · -(으)ㄴ지/-(으)ㄹ지）",
+    "vi": "Mẫu từ đề TOPIK II kỳ 96, câu 51 (-(으)려고 하다 · -(으)ㄴ지/-(으)ㄹ지)"
+   },
+   "text": "저는 이번 방학에 학교 근처로 (  ㉠  ). 그런데 어느 동네가 살기 (  ㉡  ) 잘 모르겠습니다. 조용하고 교통이 편한 곳을 아시면 알려 주세요.",
+   "blanks": [
+    {
+     "k": "㉠",
+     "accept": [
+      "이사하려고 합니다",
+      "이사를 하려고 합니다",
+      "이사하고 싶습니다",
+      "이사를 가려고 합니다",
+      "이사할 계획입니다"
+     ],
+     "pattern": "(려고 합니다|고 싶습니다|계획입니다)$",
+     "model": "이사하려고 합니다",
+     "grammar": "-(으)려고 하다 (intend to) · -고 싶다",
+     "grammar_ja": "-(으)려고 하다（〜しようと思う）・-고 싶다",
+     "grammar_vi": "-(으)려고 하다 (định) · -고 싶다 (muốn)"
+    },
+    {
+     "k": "㉡",
+     "accept": [
+      "좋은지",
+      "좋을지",
+      "편한지",
+      "편할지",
+      "괜찮은지"
+     ],
+     "pattern": "지$",
+     "model": "좋은지",
+     "grammar": "-(으)ㄴ지 / -(으)ㄹ지 (indirect question: whether / which)",
+     "grammar_ja": "-(으)ㄴ지／-(으)ㄹ지（間接疑問）",
+     "grammar_vi": "-(으)ㄴ지 / -(으)ㄹ지 (câu hỏi gián tiếp)"
+    }
+   ]
+  },
+  {
+   "id": "51-15",
+   "q": "51",
+   "kind": "ask",
+   "title": {
+    "en": "Changing an appointment",
+    "ja": "予約の変更",
+    "vi": "Đổi lịch hẹn"
+   },
+   "src": {
+    "en": "Pattern seen in TOPIK II paper #91, Q51 (-고 싶다 · -(으)면)",
+    "ja": "TOPIK II 第91回 51番の文型（-고 싶다 · -(으)면）",
+    "vi": "Mẫu từ đề TOPIK II kỳ 91, câu 51 (-고 싶다 · -(으)면)"
+   },
+   "text": "안녕하세요. 저는 15일 오후 3시에 진료를 예약한 사람입니다. 갑자기 일이 생겨서 예약을 16일로 (  ㉠  ). 만약 16일이 (  ㉡  ) 17일도 괜찮습니다. 연락 기다리겠습니다.",
+   "blanks": [
+    {
+     "k": "㉠",
+     "accept": [
+      "변경하고 싶습니다",
+      "바꾸고 싶습니다",
+      "변경하고 싶은데요",
+      "바꾸고 싶은데요",
+      "옮기고 싶습니다"
+     ],
+     "pattern": "고 싶(습니다|은데요)$",
+     "model": "변경하고 싶습니다",
+     "grammar": "-고 싶다 (want to) — a polite wish in a request",
+     "grammar_ja": "-고 싶다（〜したい：依頼の希望）",
+     "grammar_vi": "-고 싶다 (muốn) — nguyện vọng lịch sự"
+    },
+    {
+     "k": "㉡",
+     "accept": [
+      "불가능하면",
+      "어려우면",
+      "안 되면",
+      "힘들면",
+      "안 될 것 같으면"
+     ],
+     "pattern": "(불가능하면|어려우면|안 되면|힘들면|안 될 것 같으면)$",
+     "model": "불가능하면",
+     "grammar": "-(으)면 (if) after 만약",
+     "grammar_ja": "만약 … -(으)면（もし〜なら）",
+     "grammar_vi": "만약 … -(으)면 (nếu)"
+    }
+   ]
+  },
+  {
+   "id": "51-16",
+   "q": "51",
+   "kind": "story",
+   "title": {
+    "en": "After the festival",
+    "ja": "お祭りの感想",
+    "vi": "Sau lễ hội"
+   },
+   "src": {
+    "en": "Pattern seen in TOPIK II paper #83, Q51 (-(으)ㄴ 적이 없다 · -고 싶다)",
+    "ja": "TOPIK II 第83回 51番の文型（-(으)ㄴ 적이 없다 · -고 싶다）",
+    "vi": "Mẫu từ đề TOPIK II kỳ 83, câu 51 (-(으)ㄴ 적이 없다 · -고 싶다)"
+   },
+   "text": "지난주에 처음으로 한국의 벚꽃 축제에 갔습니다. 저는 그렇게 아름다운 꽃을 (  ㉠  ) 없습니다. 내년 봄에도 꼭 다시 (  ㉡  ).",
+   "blanks": [
+    {
+     "k": "㉠",
+     "accept": [
+      "본 적이",
+      "구경한 적이",
+      "본 일이"
+     ],
+     "pattern": "(적이|일이)$",
+     "model": "본 적이",
+     "grammar": "-(으)ㄴ 적이 없다 (have never …)",
+     "grammar_ja": "-(으)ㄴ 적이 없다（〜したことがない）",
+     "grammar_vi": "-(으)ㄴ 적이 없다 (chưa từng)"
+    },
+    {
+     "k": "㉡",
+     "accept": [
+      "가고 싶습니다",
+      "가 보고 싶습니다",
+      "구경하고 싶습니다",
+      "가려고 합니다",
+      "갈 것입니다"
+     ],
+     "pattern": "(고 싶습니다|려고 합니다|것입니다)$",
+     "model": "가고 싶습니다",
+     "grammar": "-고 싶다 (want to) with 꼭 다시",
+     "grammar_ja": "꼭 다시 -고 싶다（ぜひまた〜したい）",
+     "grammar_vi": "꼭 다시 -고 싶다 (nhất định muốn … lại)"
+    }
+   ]
+  },
+  {
+   "id": "51-17",
+   "q": "51",
+   "kind": "letter",
+   "title": {
+    "en": "A farewell gift",
+    "ja": "お別れの贈り物",
+    "vi": "Quà chia tay"
+   },
+   "src": {
+    "en": "Pattern seen in TOPIK II paper #64, Q51 (-(으)러 가다 · -았/었으면 좋겠다)",
+    "ja": "TOPIK II 第64回 51番の文型（-(으)러 가다 · -았/었으면 좋겠다）",
+    "vi": "Mẫu từ đề TOPIK II kỳ 64, câu 51 (-(으)러 가다 · -았/었으면 좋겠다)"
+   },
+   "text": "다음 달에 저는 홍콩으로 (  ㉠  ). 그동안 도와주신 선생님께 작은 선물을 준비했습니다. 선물이 마음에 (  ㉡  ).",
+   "blanks": [
+    {
+     "k": "㉠",
+     "accept": [
+      "일하러 갑니다",
+      "일을 하러 갑니다",
+      "유학을 갑니다",
+      "일하러 가게 되었습니다",
+      "공부하러 갑니다"
+     ],
+     "pattern": "(러 갑니다|러 가게 되었습니다|을 갑니다)$",
+     "model": "일하러 갑니다",
+     "grammar": "-(으)러 가다 (go in order to)",
+     "grammar_ja": "-(으)러 가다（〜しに行く）",
+     "grammar_vi": "-(으)러 가다 (đi để)"
+    },
+    {
+     "k": "㉡",
+     "accept": [
+      "들었으면 좋겠습니다",
+      "들면 좋겠습니다",
+      "드셨으면 좋겠습니다",
+      "들기를 바랍니다",
+      "들었으면 합니다"
+     ],
+     "pattern": "(었으면 좋겠습니다|면 좋겠습니다|기를 바랍니다|셨으면 좋겠습니다|었으면 합니다)$",
+     "model": "들었으면 좋겠습니다",
+     "grammar": "-았/었으면 좋겠다 (I hope …)",
+     "grammar_ja": "-았/었으면 좋겠다（〜だといいと思う）",
+     "grammar_vi": "-았/었으면 좋겠다 (mong là …)"
+    }
+   ]
+  },
+  {
    "id": "52-1",
    "q": "52",
    "kind": "explain",
@@ -521,7 +760,7 @@
       "복습하는 것이 좋다",
       "복습할 필요가 있다"
      ],
-     "pattern": "(해야 한다|봐야 한다|는 것이 좋다|필요가 있다)$",
+     "pattern": "(야 한다|는 것이 좋다|필요가 있다)$",
      "model": "복습해야 한다",
      "grammar": "-아/어야 하다 (must) in plain style -ㄴ다",
      "grammar_ja": "-아/어야 하다（〜しなければならない）＋ 한다体"
@@ -642,7 +881,7 @@
       "잠을 자는 것이",
       "자고 시험을 보는 것이"
      ],
-     "pattern": "자는 (것이|게|편이)",
+     "pattern": "(것이|게|편이)$",
      "model": "자는 것이",
      "grammar": "A보다 B-는 것이 (B rather than A)",
      "grammar_ja": "A보다 B-는 것이（AよりBの方が）"
@@ -696,7 +935,7 @@
       "심으려고 노력한다",
       "심고 있는 것이다"
      ],
-     "pattern": "(심고 있다|심는다|심기 시작했다|노력한다)$",
+     "pattern": "(심고 있다|심고 있는 것이다|심는다|심기 시작했다|노력한다)$",
      "model": "심고 있다",
      "grammar": "-고 있다 (progressive) in plain style",
      "grammar_ja": "-고 있다（進行）＋ 한다体"
@@ -897,7 +1136,7 @@
       "종이책을 보는 것이",
       "종이책을 읽으면"
      ],
-     "pattern": "종이책을 (읽|이용|보)(는 것이|는 게|으면)$",
+     "pattern": "종이책을 (읽|이용하|보)(는 것이|는 게|으면|면)$",
      "model": "종이책을 읽는 것이",
      "grammar": "parallel structure A는 B를, C는 D를 … -는 것이 좋다",
      "grammar_ja": "対比構造 A는 B를, C는 D를 … -는 것이 좋다"
@@ -983,6 +1222,240 @@
      "grammar_ja": "N부터 -아/어서（Nから始めて）"
     }
    ]
+  },
+  {
+   "id": "52-13",
+   "q": "52",
+   "kind": "explain",
+   "title": {
+    "en": "Thin air on high mountains",
+    "ja": "高い山の空気",
+    "vi": "Không khí loãng trên núi cao"
+   },
+   "src": {
+    "en": "Pattern seen in TOPIK II paper #102, Q52 (-지 않아서 · -기 위해서는)",
+    "ja": "TOPIK II 第102回 52番の文型（-지 않아서 · -기 위해서는）",
+    "vi": "Mẫu từ đề TOPIK II kỳ 102, câu 52 (-지 않아서 · -기 위해서는)"
+   },
+   "text": "높은 산에서는 공기가 얇아서 숨을 쉬기가 어렵다. 그래서 산에 오르는 사람들은 천천히 걸으며 몸이 높은 곳에 익숙해지도록 한다. 몸이 아직 (  ㉠  ) 갑자기 높이 올라가면 머리가 아프고 어지러울 수 있다. 따라서 높은 산을 안전하게 (  ㉡  ) 충분한 시간이 필요하다.",
+   "blanks": [
+    {
+     "k": "㉠",
+     "accept": [
+      "익숙해지지 않아서",
+      "익숙하지 않아서",
+      "적응하지 않아서",
+      "적응하지 못해서",
+      "익숙해지지 않았는데"
+     ],
+     "pattern": "(지 않아서|지 못해서|지 않았는데)$",
+     "model": "익숙해지지 않아서",
+     "grammar": "-지 않아서 (because … not)",
+     "grammar_ja": "-지 않아서（〜しないので）",
+     "grammar_vi": "-지 않아서 (vì không …)"
+    },
+    {
+     "k": "㉡",
+     "accept": [
+      "오르기 위해서는",
+      "올라가기 위해서는",
+      "오르려면",
+      "올라가려면"
+     ],
+     "pattern": "(기 위해서는|려면)$",
+     "model": "오르기 위해서는",
+     "grammar": "-기 위해서는 (in order to …, one needs)",
+     "grammar_ja": "-기 위해서는（〜するためには）",
+     "grammar_vi": "-기 위해서는 (để … thì cần)"
+    }
+   ]
+  },
+  {
+   "id": "52-14",
+   "q": "52",
+   "kind": "explain",
+   "title": {
+    "en": "A camel’s hump",
+    "ja": "ラクダのこぶ",
+    "vi": "Bướu lạc đà"
+   },
+   "src": {
+    "en": "Pattern seen in TOPIK II paper #96, Q52 (-는 것은 아니다 · -기 때문이다)",
+    "ja": "TOPIK II 第96回 52番の文型（-는 것은 아니다 · -기 때문이다）",
+    "vi": "Mẫu từ đề TOPIK II kỳ 96, câu 52 (-는 것은 아니다 · -기 때문이다)"
+   },
+   "text": "낙타는 사막에서 오랫동안 물을 마시지 않고 걸을 수 있다. 그런데 낙타가 등에 물을 (  ㉠  ). 등의 혹에는 물이 아니라 지방이 들어 있다. 낙타가 물 없이 견딜 수 있는 것은 몸속의 물을 거의 (  ㉡  ). 그래서 낙타는 더운 사막에서도 오래 걸을 수 있다.",
+   "blanks": [
+    {
+     "k": "㉠",
+     "accept": [
+      "저장하는 것은 아니다",
+      "넣어 두는 것은 아니다",
+      "모아 두는 것은 아니다",
+      "담아 두는 것은 아니다"
+     ],
+     "pattern": "는 것은 아니다$",
+     "model": "저장하는 것은 아니다",
+     "grammar": "-는 것은 아니다 (it is not that …)",
+     "grammar_ja": "-는 것은 아니다（〜わけではない）",
+     "grammar_vi": "-는 것은 아니다 (không phải là …)"
+    },
+    {
+     "k": "㉡",
+     "accept": [
+      "잃지 않기 때문이다",
+      "사용하지 않기 때문이다",
+      "낭비하지 않기 때문이다",
+      "내보내지 않기 때문이다"
+     ],
+     "pattern": "기 때문이다$",
+     "model": "잃지 않기 때문이다",
+     "grammar": "-기 때문이다 (it is because …)",
+     "grammar_ja": "-기 때문이다（〜からである）",
+     "grammar_vi": "-기 때문이다 (là vì …)"
+    }
+   ]
+  },
+  {
+   "id": "52-15",
+   "q": "52",
+   "kind": "explain",
+   "title": {
+    "en": "Salt and blood pressure",
+    "ja": "塩分と血圧",
+    "vi": "Muối và huyết áp"
+   },
+   "src": {
+    "en": "Pattern seen in TOPIK II paper #91, Q52 (-ㄴ/는다고 하다 · -지 않도록)",
+    "ja": "TOPIK II 第91回 52番の文型（-ㄴ/는다고 하다 · -지 않도록）",
+    "vi": "Mẫu từ đề TOPIK II kỳ 91, câu 52 (-ㄴ/는다고 하다 · -지 않도록)"
+   },
+   "text": "짠 음식을 자주 먹으면 몸에 좋지 않다. 전문가들은 소금을 많이 먹으면 혈압이 (  ㉠  ). 그래서 음식을 만들 때는 소금을 조금만 넣고, 국물은 다 (  ㉡  ) 주의하는 것이 좋다.",
+   "blanks": [
+    {
+     "k": "㉠",
+     "accept": [
+      "높아진다고 한다",
+      "올라간다고 한다",
+      "높아질 수 있다고 한다",
+      "높아진다고 말한다",
+      "올라갈 수 있다고 한다"
+     ],
+     "pattern": "(ㄴ다고|는다고|다고) (한다|말한다)$",
+     "model": "높아진다고 한다",
+     "grammar": "-ㄴ/는다고 하다 (reported speech: they say that …)",
+     "grammar_ja": "-ㄴ/는다고 하다（〜という／〜と言う）",
+     "grammar_vi": "-ㄴ/는다고 하다 (nói rằng …)"
+    },
+    {
+     "k": "㉡",
+     "accept": [
+      "마시지 않도록",
+      "먹지 않도록",
+      "마시지 말고",
+      "먹지 말고"
+     ],
+     "pattern": "(지 않도록|지 말고)$",
+     "model": "마시지 않도록",
+     "grammar": "-지 않도록 (so as not to)",
+     "grammar_ja": "-지 않도록（〜しないように）",
+     "grammar_vi": "-지 않도록 (để không …)"
+    }
+   ]
+  },
+  {
+   "id": "52-16",
+   "q": "52",
+   "kind": "explain",
+   "title": {
+    "en": "How plants call for help",
+    "ja": "植物の助けの呼び方",
+    "vi": "Cách cây cối kêu cứu"
+   },
+   "src": {
+    "en": "Pattern seen in TOPIK II paper #83, Q52 (-게 하다 · -(이)라고 하다)",
+    "ja": "TOPIK II 第83回 52番の文型（-게 하다 · -(이)라고 하다）",
+    "vi": "Mẫu từ đề TOPIK II kỳ 83, câu 52 (-게 하다 · -(이)라고 하다)"
+   },
+   "text": "어떤 식물은 곤충이 잎을 갉아 먹으면 특별한 냄새를 낸다. 이 냄새는 그 곤충을 잡아먹는 다른 벌레를 (  ㉠  ). 그래서 잎을 먹던 곤충은 도망가게 된다. 과학자들은 이것을 식물이 스스로를 지키는 (  ㉡  ).",
+   "blanks": [
+    {
+     "k": "㉠",
+     "accept": [
+      "오게 한다",
+      "불러오게 한다",
+      "모이게 한다",
+      "부른다",
+      "불러온다"
+     ],
+     "pattern": "(게 한다|부른다|불러온다)$",
+     "model": "오게 한다",
+     "grammar": "-게 하다 (causative: make / let)",
+     "grammar_ja": "-게 하다（〜させる）",
+     "grammar_vi": "-게 하다 (khiến / làm cho)"
+    },
+    {
+     "k": "㉡",
+     "accept": [
+      "방법이라고 한다",
+      "방법이라고 말한다",
+      "방법이라고 설명한다",
+      "방법이라고 본다"
+     ],
+     "pattern": "(이)?라고 (한다|말한다|설명한다|본다)$",
+     "model": "방법이라고 한다",
+     "grammar": "-(이)라고 하다 (call it … / say it is …)",
+     "grammar_ja": "-(이)라고 하다（〜と言う・〜と呼ぶ）",
+     "grammar_vi": "-(이)라고 하다 (gọi là / nói là)"
+    }
+   ]
+  },
+  {
+   "id": "52-17",
+   "q": "52",
+   "kind": "explain",
+   "title": {
+    "en": "Lightning and thunder",
+    "ja": "稲妻と雷",
+    "vi": "Sét và sấm"
+   },
+   "src": {
+    "en": "Pattern seen in TOPIK II paper #64, Q52 (-는 것이다 · -아/어야 알 수 있다)",
+    "ja": "TOPIK II 第64回 52番の文型（-는 것이다 · -아/어야 알 수 있다）",
+    "vi": "Mẫu từ đề TOPIK II kỳ 64, câu 52 (-는 것이다 · -아/어야 알 수 있다)"
+   },
+   "text": "번개가 치면 빛이 먼저 보이고 소리는 조금 뒤에 들린다. 빛은 아주 빠르지만 소리는 그보다 훨씬 느리기 때문이다. 그러니까 우리가 듣는 천둥소리는 조금 전에 친 번개의 (  ㉠  ). 번개가 얼마나 멀리서 쳤는지는 빛을 본 뒤 소리가 들릴 때까지의 시간을 (  ㉡  ).",
+   "blanks": [
+    {
+     "k": "㉠",
+     "accept": [
+      "소리인 것이다",
+      "소리를 듣는 것이다",
+      "소리라고 할 수 있다",
+      "소리인 셈이다"
+     ],
+     "pattern": "(인 것이다|는 것이다|라고 할 수 있다|인 셈이다)$",
+     "model": "소리인 것이다",
+     "grammar": "-(이)ㄴ 것이다 / -는 것이다 (explanatory ending)",
+     "grammar_ja": "-(이)ㄴ 것이다／-는 것이다（〜のである）",
+     "grammar_vi": "-(이)ㄴ 것이다 / -는 것이다 (đuôi giải thích)"
+    },
+    {
+     "k": "㉡",
+     "accept": [
+      "재어야 알 수 있다",
+      "세어야 알 수 있다",
+      "잰 후에야 알 수 있다",
+      "계산해야 알 수 있다",
+      "재 봐야 알 수 있다"
+     ],
+     "pattern": "(어야|아야|해야|후에야|봐야) 알 수 있다$",
+     "model": "재어야 알 수 있다",
+     "grammar": "-아/어야 알 수 있다 (only after … can one know)",
+     "grammar_ja": "-아/어야 알 수 있다（〜してはじめて分かる）",
+     "grammar_vi": "-아/어야 알 수 있다 (phải … mới biết được)"
+    }
+   ]
   }
  ],
  "prompts": {
@@ -1021,6 +1494,192 @@
     "en": "“Is it better to travel alone or with others?” Compare both, choose, and explain what travel is for. 600–700 characters.",
     "ja": "「一人旅と誰かとの旅、どちらがよいか」。比較・選択し、旅の目的を説明。600〜700字。"
    }
+  ]
+ },
+ "facts": {
+  "papers": "102 · 96 · 91 · 83 · 64",
+  "freq": [
+   [
+    "-고 싶다 / -(으)려고 하다",
+    3,
+    {
+     "en": "intention · wish",
+     "ja": "意図・希望",
+     "vi": "ý định · mong muốn"
+    }
+   ],
+   [
+    "-기 위해서는 / -지 않도록 / -(으)러 가다",
+    3,
+    {
+     "en": "purpose · prevention",
+     "ja": "目的・防止",
+     "vi": "mục đích · phòng tránh"
+    }
+   ],
+   [
+    "-(으)면 / -는지·-(으)ㄹ지",
+    2,
+    {
+     "en": "condition · indirect question",
+     "ja": "条件・間接疑問",
+     "vi": "điều kiện · câu hỏi gián tiếp"
+    }
+   ],
+   [
+    "-지 않다 / -는 것은 아니다",
+    2,
+    {
+     "en": "negation",
+     "ja": "否定",
+     "vi": "phủ định"
+    }
+   ],
+   [
+    "-아/어서 / -기 때문이다",
+    2,
+    {
+     "en": "cause",
+     "ja": "原因",
+     "vi": "nguyên nhân"
+    }
+   ],
+   [
+    "-기 전에 / -(으)ㄴ 후에야",
+    2,
+    {
+     "en": "time order",
+     "ja": "時間の前後",
+     "vi": "trình tự thời gian"
+    }
+   ],
+   [
+    "-아/어야 하다 / -아/어야",
+    2,
+    {
+     "en": "obligation · necessary condition",
+     "ja": "義務・必須条件",
+     "vi": "nghĩa vụ · điều kiện cần"
+    }
+   ],
+   [
+    "-ㄴ/는다고 하다 / -(이)라고 하다",
+    2,
+    {
+     "en": "reported speech · definition",
+     "ja": "間接伝達・定義",
+     "vi": "tường thuật · định nghĩa"
+    }
+   ],
+   [
+    "-(으)ㄴ 적이 있다",
+    1,
+    {
+     "en": "experience",
+     "ja": "経験",
+     "vi": "kinh nghiệm"
+    }
+   ],
+   [
+    "-게 하다",
+    1,
+    {
+     "en": "causative",
+     "ja": "使役",
+     "vi": "sai khiến"
+    }
+   ],
+   [
+    "-는 것이다",
+    1,
+    {
+     "en": "explanation",
+     "ja": "説明",
+     "vi": "giải thích"
+    }
+   ],
+   [
+    "-았/었으면 좋겠다",
+    1,
+    {
+     "en": "hope",
+     "ja": "希望",
+     "vi": "hy vọng"
+    }
+   ]
+  ],
+  "rubric": {
+   "53": [
+    7,
+    7,
+    16,
+    30
+   ],
+   "54": [
+    12,
+    12,
+    26,
+    50
+   ],
+   "rows": {
+    "en": [
+     "Content & task",
+     "Structure",
+     "Language use",
+     "Total"
+    ],
+    "ja": [
+     "内容・課題遂行",
+     "展開構造",
+     "言語使用",
+     "合計"
+    ],
+    "vi": [
+     "Nội dung & nhiệm vụ",
+     "Cấu trúc",
+     "Sử dụng ngôn ngữ",
+     "Tổng"
+    ]
+   }
+  },
+  "wongoji": {
+   "en": [
+    "One character per square.",
+    "Leave the first square empty when the text starts or a new paragraph begins.",
+    "Inside a paragraph never leave the first square empty; if a line ends with no room for the space, start the next line in the first square.",
+    "Arabic numerals: two digits per square.",
+    "One punctuation mark per square; a dash (―) or ellipsis (……) takes two squares.",
+    "Leave one square empty after ? and !; not required after . , :",
+    "If the last square of a line holds the last letter, put the punctuation mark in the same square."
+   ],
+   "ja": [
+    "1マスに1字。",
+    "書き始めと段落の始まりは1マス目を空ける。",
+    "段落の途中では1マス目を空けない。行末に空けるマスがなければ次の行の1マス目から書く。",
+    "アラビア数字は1マスに2字。",
+    "句読点は原則1マスに1つ。ダッシュ（―）と三点リーダー（……）は2マス。",
+    "？と！の後は1マス空ける。。、：の後は空けなくてよい。",
+    "行末のマスが文字で埋まったら、句読点は同じマスに入れる。"
+   ],
+   "vi": [
+    "Mỗi ô một chữ.",
+    "Bỏ trống ô đầu khi bắt đầu bài hoặc sang đoạn mới.",
+    "Trong đoạn không bỏ trống ô đầu; nếu cuối dòng hết chỗ cho dấu cách, viết tiếp từ ô đầu dòng sau.",
+    "Chữ số Ả Rập: hai chữ số một ô.",
+    "Mỗi dấu câu một ô; gạch ngang (―) và dấu ba chấm (……) chiếm hai ô.",
+    "Sau ? và ! bỏ trống một ô; sau . , : không cần.",
+    "Nếu ô cuối dòng đã có chữ, đặt dấu câu vào cùng ô đó."
+   ]
+  },
+  "sources": [
+   [
+    "NIIED — TOPIK Ⅱ 쓰기 답안 작성 방법 (PDF)",
+    "https://www.topik.go.kr"
+   ],
+   [
+    "NIIED — 원고지 사용법 (PDF)",
+    "https://exam.topik.go.kr/nasdata/webnas/raonkeditordata/uploadId/2024/02/20240227_175447974_51977.pdf"
+   ]
   ]
  }
 }

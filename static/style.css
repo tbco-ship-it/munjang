@@ -341,3 +341,12 @@ html.roman .w-r{display:block}
 .r-opt.ok{border-color:var(--ok);background:var(--ok-soft);color:var(--ok)}
 .r-opt.no{border-color:var(--no);background:var(--no-soft);color:var(--no)}
 .reorder .why{margin-top:10px}
+/* TOPIK exam-facts tables */
+.tk-src{display:block;font-size:.75rem;font-weight:500;color:var(--text-2);margin-top:2px}
+.tk-table{width:100%;border-collapse:collapse;font-size:.88rem;margin:8px 0 14px}
+.tk-table th,.tk-table td{padding:8px 10px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+.tk-table th{font-size:.75rem;text-transform:uppercase;letter-spacing:.04em;color:var(--text-2)}
+.tk-table td.n{text-align:right;font-variant-numeric:tabular-nums}
+#facts h3{font-size:.95rem;margin:18px 0 6px}
+#facts p{font-size:.9rem;color:var(--text-2);line-height:1.55}
+.tk-table{table-layout:fixed}.tk-table td,.tk-table th{overflow-wrap:anywhere}.tk-table td.n,.tk-table th.n{width:3.6em;text-align:right}

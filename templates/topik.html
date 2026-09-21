@@ -29,6 +29,21 @@
     <ul class="tk-rules"><li>{{ ui.topik_r_para }}</li><li>{{ ui.topik_r_space }}</li><li>{{ ui.topik_r_punct }}</li><li>{{ ui.topik_r_qmark }}</li><li>{{ ui.topik_r_ascii }}</li><li>{{ ui.topik_r_style }}</li></ul>
     <p class="hint">{{ ui.topik_fictional }}</p>
   </section>
+  <section class="panel" id="facts">
+    <div class="panel-title"><span class="num">✎</span><h2>{{ ui.topik_facts_h }}</h2></div>
+    <p>{{ ui.topik_facts_p.replace('{n}', topik.facts.papers) }}</p>
+    <table class="tk-table"><thead><tr><th>{{ ui.topik_facts_col_g }}</th><th>{{ ui.topik_facts_col_f }}</th><th class="n">{{ ui.topik_facts_col_n }}</th></tr></thead><tbody>
+    {% for g, n, f in topik.facts.freq %}<tr><td lang="ko">{{ g }}</td><td>{{ f[lang] or f.en }}</td><td class="n">{{ n }}</td></tr>{% endfor %}
+    </tbody></table>
+    <h3>{{ ui.topik_rubric_h }}</h3>
+    <table class="tk-table"><thead><tr><th></th><th class="n">53</th><th class="n">54</th></tr></thead><tbody>
+    {% for row in topik.facts.rubric.rows[lang] %}<tr><td>{{ row }}</td><td class="n">{{ topik.facts.rubric['53'][loop.index0] }}</td><td class="n">{{ topik.facts.rubric['54'][loop.index0] }}</td></tr>{% endfor %}
+    </tbody></table>
+    <p class="hint">{{ ui.topik_rubric_p }}</p>
+    <h3>{{ ui.topik_wongoji_h }}</h3>
+    <ol class="tk-rules">{% for r in topik.facts.wongoji[lang] %}<li>{{ r }}</li>{% endfor %}</ol>
+    <p class="hint">{{ ui.topik_sources }}: {% for name, url in topik.facts.sources %}<a href="{{ url }}" rel="noopener" target="_blank">{{ name }}</a>{% if not loop.last %} · {% endif %}{% endfor %}</p>
+  </section>
 </div>
 {% endblock %}
 {% block scripts %}
