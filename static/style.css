@@ -326,3 +326,18 @@ html.roman .w-r{display:block}
 @media print{.answers{break-before:avoid}}
 .sheet.ws .cell.t{color:#202738}
 .fm-h{font-size:.72rem;font-weight:700;color:var(--muted);letter-spacing:.04em;text-transform:uppercase;padding:6px 10px 2px}
+/* connective quiz options: ending label + the verb in that form */
+.p-opts.conn .p-opt{height:auto;min-height:52px;padding:8px 14px;display:flex;flex-direction:column;align-items:center;gap:3px;font-size:1.05rem}
+.p-opts.conn .p-opt small{font:500 .78rem/1.2 var(--hangul);color:var(--text-2)}
+.p-opt.on small{color:inherit;opacity:.85}
+/* fixed slots (question word, 같이, 가요 auxiliary): shown, not pickable */
+.slot-v.fixed{cursor:default;border-style:dotted;background:var(--surface-soft)}
+.slot-p.empty .slot-v.fixed{border-color:var(--line-strong)}
+/* reorder quiz */
+.reorder{margin-top:12px}
+.r-opts{display:grid;gap:8px}
+.r-opt{padding:12px 14px;border:1px solid var(--line-strong);border-radius:11px;background:var(--surface);text-align:left;font:600 1.05rem/1.4 var(--hangul);color:var(--text);cursor:pointer;transition:border-color var(--motion),background var(--motion)}
+@media(hover:hover){.r-opt:hover{border-color:var(--accent)}}
+.r-opt.ok{border-color:var(--ok);background:var(--ok-soft);color:var(--ok)}
+.r-opt.no{border-color:var(--no);background:var(--no-soft);color:var(--no)}
+.reorder .why{margin-top:10px}

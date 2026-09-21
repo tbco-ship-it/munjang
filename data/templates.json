@@ -371,6 +371,712 @@
    "level": 3,
    "vi": "Đưa / gửi cho ai",
    "ex_vi": "Tôi tặng quà cho bạn."
+  },
+  {
+   "id": "q_where",
+   "level": 1,
+   "slots": [
+    "S",
+    "SP",
+    "QD",
+    "QP",
+    "V"
+   ],
+   "sp": "topic",
+   "verbs": "any_place",
+   "q": true,
+   "p": {
+    "QP": {
+     "expect": "qplace",
+     "options": [
+      "에",
+      "에서"
+     ]
+    }
+   },
+   "en": "Asking where",
+   "ja": "どこ？と聞く",
+   "vi": "Hỏi ở đâu",
+   "ex": "어디에 가요?",
+   "ex_en": "Where are you going?",
+   "ex_ja": "どこに行きますか。",
+   "ex_vi": "Bạn đi đâu?",
+   "tenses": [
+    "pres",
+    "past"
+   ],
+   "no_first": true
+  },
+  {
+   "id": "q_what",
+   "level": 1,
+   "slots": [
+    "S",
+    "SP",
+    "QO",
+    "QP",
+    "V"
+   ],
+   "sp": "topic",
+   "verbs": "transitive",
+   "q": true,
+   "p": {
+    "QP": {
+     "expect": "qobj",
+     "options": [
+      "∅",
+      "를"
+     ]
+    }
+   },
+   "en": "Asking what",
+   "ja": "何？と聞く",
+   "vi": "Hỏi cái gì",
+   "ex": "뭐 먹어요?",
+   "ex_en": "What are you eating?",
+   "ex_ja": "何を食べますか。",
+   "ex_vi": "Bạn ăn gì?",
+   "tenses": [
+    "pres",
+    "past"
+   ],
+   "no_first": true
+  },
+  {
+   "id": "location",
+   "level": 2,
+   "slots": [
+    "S",
+    "SP",
+    "REF",
+    "POS",
+    "OP",
+    "V"
+   ],
+   "sp": "subject",
+   "op": "dest",
+   "verbs": "exist",
+   "en": "Where something is (on / under / next to)",
+   "ja": "物の位置（上・下・横）",
+   "vi": "Đồ vật ở đâu (trên / dưới / cạnh)",
+   "ex": "가방이 의자 위에 있어요",
+   "ex_en": "The bag is on the chair.",
+   "ex_ja": "かばんはいすの上にあります。",
+   "ex_vi": "Cái túi ở trên ghế.",
+   "tenses": [
+    "pres",
+    "past"
+   ]
+  },
+  {
+   "id": "and",
+   "level": 2,
+   "slots": [
+    "S",
+    "SP",
+    "O",
+    "OP",
+    "V1",
+    "CP",
+    "O2",
+    "OP2",
+    "V2"
+   ],
+   "sp": "topic",
+   "op": "obj",
+   "op2": "obj",
+   "verbs": "transitive",
+   "conn": "go",
+   "conns": [
+    "go",
+    "eoseo",
+    "jiman"
+   ],
+   "en": "Two actions in a row (-고)",
+   "ja": "動作を並べる（-고）",
+   "vi": "Hai hành động liên tiếp (-고)",
+   "ex": "저는 밥을 먹고 커피를 마셔요",
+   "ex_en": "I eat and then drink coffee.",
+   "ex_ja": "私はご飯を食べてコーヒーを飲みます。",
+   "ex_vi": "Tôi ăn cơm rồi uống cà phê.",
+   "tenses": [
+    "pres",
+    "past"
+   ]
+  },
+  {
+   "id": "purpose",
+   "level": 3,
+   "slots": [
+    "S",
+    "SP",
+    "D",
+    "OP",
+    "O",
+    "OP2",
+    "VF:reo",
+    "AUX:가다"
+   ],
+   "sp": "topic",
+   "op": "dest",
+   "op2": "obj",
+   "verbs": "transitive",
+   "en": "Going somewhere to do something (-(으)러)",
+   "ja": "〜しに行く（-(으)러）",
+   "vi": "Đi đâu để làm gì (-(으)러)",
+   "ex": "저는 도서관에 책을 읽으러 가요",
+   "ex_en": "I go to the library to read a book.",
+   "ex_ja": "私は図書館に本を読みに行きます。",
+   "ex_vi": "Tôi đến thư viện để đọc sách.",
+   "tenses": [
+    "pres",
+    "past"
+   ]
+  },
+  {
+   "id": "reqneg",
+   "level": 3,
+   "slots": [
+    "O",
+    "OP",
+    "VF:jimaseyo"
+   ],
+   "op": "obj",
+   "verbs": "transitive",
+   "en": "Please don’t … (-지 마세요)",
+   "ja": "〜しないでください（-지 마세요）",
+   "vi": "Xin đừng… (-지 마세요)",
+   "ex": "커피를 마시지 마세요",
+   "ex_en": "Please don’t drink coffee.",
+   "ex_ja": "コーヒーを飲まないでください。",
+   "ex_vi": "Xin đừng uống cà phê.",
+   "tenses": [
+    "pres"
+   ]
+  },
+  {
+   "id": "suggest",
+   "level": 3,
+   "slots": [
+    "FIX:같이",
+    "O",
+    "OP",
+    "VF:kkayo"
+   ],
+   "op": "obj",
+   "verbs": "transitive",
+   "q": true,
+   "en": "Shall we …? (-(으)ㄹ까요?)",
+   "ja": "〜しましょうか（-(으)ㄹ까요?）",
+   "vi": "Chúng ta … nhé? (-(으)ㄹ까요?)",
+   "ex": "같이 영화를 볼까요?",
+   "ex_en": "Shall we watch a movie together?",
+   "ex_ja": "一緒に映画を見ましょうか。",
+   "ex_vi": "Chúng ta cùng xem phim nhé?",
+   "tenses": [
+    "pres"
+   ]
+  },
+  {
+   "id": "tried",
+   "level": 3,
+   "slots": [
+    "S",
+    "SP",
+    "O",
+    "OP",
+    "VF:bwasseoyo"
+   ],
+   "sp": "topic",
+   "op": "obj",
+   "verbs": "transitive",
+   "en": "Have tried … (-아/어 봤어요)",
+   "ja": "〜してみました（-아/어 봤어요）",
+   "vi": "Đã thử… (-아/어 봤어요)",
+   "ex": "저는 김치를 먹어 봤어요",
+   "ex_en": "I have tried kimchi.",
+   "ex_ja": "私はキムチを食べてみました。",
+   "ex_vi": "Tôi đã thử ăn kim chi.",
+   "tenses": [
+    "pres"
+   ]
+  },
+  {
+   "id": "because",
+   "level": 3,
+   "slots": [
+    "S",
+    "SP",
+    "A1",
+    "CP",
+    "O",
+    "OP",
+    "V2"
+   ],
+   "sp": "topic",
+   "op": "obj",
+   "verbs": "transitive",
+   "conn": "eoseo",
+   "conns": [
+    "eoseo",
+    "go",
+    "jiman"
+   ],
+   "en": "Because I’m … , I … (-아/어서)",
+   "ja": "〜ので…する（-아/어서）",
+   "vi": "Vì … nên … (-아/어서)",
+   "ex": "저는 배고파서 밥을 먹어요",
+   "ex_en": "I’m hungry, so I eat.",
+   "ex_ja": "私はお腹が空いているのでご飯を食べます。",
+   "ex_vi": "Tôi đói nên ăn cơm.",
+   "tenses": [
+    "pres",
+    "past"
+   ]
+  },
+  {
+   "id": "if",
+   "level": 3,
+   "slots": [
+    "S",
+    "SP",
+    "H",
+    "HP",
+    "V1",
+    "CP",
+    "O",
+    "OP",
+    "V2"
+   ],
+   "sp": "topic",
+   "op": "obj",
+   "verbs": "transitive",
+   "verbs1": "have",
+   "conn": "myeon",
+   "conns": [
+    "myeon",
+    "go",
+    "eoseo"
+   ],
+   "p": {
+    "HP": {
+     "expect": "have",
+     "options": [
+      "이",
+      "가",
+      "을",
+      "를"
+     ]
+    }
+   },
+   "en": "If I have … , I … (-(으)면)",
+   "ja": "〜があれば…する（-(으)면）",
+   "vi": "Nếu có … thì … (-(으)면)",
+   "ex": "저는 시간이 있으면 영화를 봐요",
+   "ex_en": "If I have time, I watch a movie.",
+   "ex_ja": "私は時間があれば映画を見ます。",
+   "ex_vi": "Nếu có thời gian, tôi xem phim.",
+   "tenses": [
+    "pres",
+    "past"
+   ]
+  },
+  {
+   "id": "but",
+   "level": 4,
+   "slots": [
+    "S",
+    "SP",
+    "A1",
+    "CP",
+    "O",
+    "OP",
+    "V2"
+   ],
+   "sp": "topic",
+   "op": "obj",
+   "verbs": "transitive",
+   "conn": "jiman",
+   "conns": [
+    "jiman",
+    "eoseo",
+    "go"
+   ],
+   "en": "Although I’m … , I … (-지만)",
+   "ja": "〜けれど…する（-지만）",
+   "vi": "Dù … nhưng … (-지만)",
+   "ex": "저는 바쁘지만 운동을 해요",
+   "ex_en": "I’m busy, but I exercise.",
+   "ex_ja": "私は忙しいですが運動します。",
+   "ex_vi": "Tôi bận nhưng vẫn tập thể dục.",
+   "tenses": [
+    "pres",
+    "past"
+   ]
+  },
+  {
+   "id": "when",
+   "level": 4,
+   "slots": [
+    "S",
+    "SP",
+    "O",
+    "OP",
+    "V1",
+    "CP",
+    "O2",
+    "OP2",
+    "V2"
+   ],
+   "sp": "topic",
+   "op": "obj",
+   "op2": "obj",
+   "verbs": "transitive",
+   "conn": "lttae",
+   "conns": [
+    "lttae",
+    "go",
+    "myeonseo"
+   ],
+   "en": "When I … , I … (-(으)ㄹ 때)",
+   "ja": "〜するとき…する（-(으)ㄹ 때）",
+   "vi": "Khi … thì … (-(으)ㄹ 때)",
+   "ex": "저는 밥을 먹을 때 텔레비전을 봐요",
+   "ex_en": "When I eat, I watch TV.",
+   "ex_ja": "私はご飯を食べるときテレビを見ます。",
+   "ex_vi": "Khi ăn cơm, tôi xem tivi.",
+   "tenses": [
+    "pres",
+    "past"
+   ]
+  },
+  {
+   "id": "before",
+   "level": 4,
+   "slots": [
+    "S",
+    "SP",
+    "D",
+    "OP",
+    "V1",
+    "CP",
+    "O2",
+    "OP2",
+    "V2"
+   ],
+   "sp": "topic",
+   "op": "dest",
+   "op2": "obj",
+   "verbs": "transitive",
+   "verbs1": "move",
+   "conn": "gi_jeone",
+   "conns": [
+    "gi_jeone",
+    "n_hue",
+    "lttae"
+   ],
+   "en": "Before / after going somewhere (-기 전에 · -(으)ㄴ 후에)",
+   "ja": "〜する前に・〜した後で",
+   "vi": "Trước / sau khi đi đâu (-기 전에 · -(으)ㄴ 후에)",
+   "ex": "저는 학교에 가기 전에 커피를 마셔요",
+   "ex_en": "Before I go to school, I drink coffee.",
+   "ex_ja": "私は学校に行く前にコーヒーを飲みます。",
+   "ex_vi": "Trước khi đi học, tôi uống cà phê.",
+   "tenses": [
+    "pres",
+    "past"
+   ]
+  },
+  {
+   "id": "hongive",
+   "level": 4,
+   "slots": [
+    "S",
+    "SP",
+    "R",
+    "RP",
+    "O",
+    "OP",
+    "V"
+   ],
+   "sp": "topic",
+   "op": "obj",
+   "verbs": "hongive",
+   "p": {
+    "RP": {
+     "expect": "to_hon",
+     "options": [
+      "께",
+      "에게",
+      "한테"
+     ]
+    }
+   },
+   "en": "Giving to an elder (께 드려요)",
+   "ja": "目上の人にさしあげる（께 드려요）",
+   "vi": "Biếu người lớn tuổi (께 드려요)",
+   "ex": "저는 할머니께 선물을 드려요",
+   "ex_en": "I give a present to my grandmother.",
+   "ex_ja": "私は祖母にプレゼントを差し上げます。",
+   "ex_vi": "Tôi biếu bà một món quà.",
+   "tenses": [
+    "pres",
+    "past",
+    "fut"
+   ]
+  },
+  {
+   "id": "experience",
+   "level": 4,
+   "slots": [
+    "S",
+    "SP",
+    "D",
+    "OP",
+    "VF:jeok"
+   ],
+   "sp": "topic",
+   "op": "dest",
+   "verbs": "move",
+   "en": "Have been to … (-(으)ㄴ 적이 있어요)",
+   "ja": "〜したことがあります（-(으)ㄴ 적이 있어요）",
+   "vi": "Đã từng đến … (-(으)ㄴ 적이 있어요)",
+   "ex": "저는 제주도에 간 적이 있어요",
+   "ex_en": "I have been to Jeju Island.",
+   "ex_ja": "私は済州島に行ったことがあります。",
+   "ex_vi": "Tôi đã từng đến đảo Jeju.",
+   "tenses": [
+    "pres"
+   ]
+  },
+  {
+   "id": "seem",
+   "level": 4,
+   "slots": [
+    "S",
+    "SP",
+    "O",
+    "OP",
+    "VF:geotgatayo"
+   ],
+   "sp": "topic",
+   "op": "obj",
+   "verbs": "transitive",
+   "en": "It seems … (-는 것 같아요)",
+   "ja": "〜ようです（-는 것 같아요）",
+   "vi": "Hình như … (-는 것 같아요)",
+   "ex": "친구는 커피를 좋아하는 것 같아요",
+   "ex_en": "My friend seems to like coffee.",
+   "ex_ja": "友だちはコーヒーが好きなようです。",
+   "ex_vi": "Hình như bạn tôi thích cà phê.",
+   "tenses": [
+    "pres"
+   ],
+   "no_first": true
+  },
+  {
+   "id": "while",
+   "level": 4,
+   "slots": [
+    "S",
+    "SP",
+    "O",
+    "OP",
+    "V1",
+    "CP",
+    "O2",
+    "OP2",
+    "V2"
+   ],
+   "sp": "topic",
+   "op": "obj",
+   "op2": "obj",
+   "verbs": "transitive",
+   "conn": "myeonseo",
+   "conns": [
+    "myeonseo",
+    "go",
+    "lttae"
+   ],
+   "en": "While doing … , I … (-(으)면서)",
+   "ja": "〜しながら…する（-(으)면서）",
+   "vi": "Vừa … vừa … (-(으)면서)",
+   "ex": "저는 음악을 들으면서 숙제를 해요",
+   "ex_en": "I do homework while listening to music.",
+   "ex_ja": "私は音楽を聞きながら宿題をします。",
+   "ex_vi": "Tôi vừa nghe nhạc vừa làm bài tập.",
+   "tenses": [
+    "pres",
+    "past"
+   ]
+  },
+  {
+   "id": "because_f",
+   "level": 5,
+   "slots": [
+    "S",
+    "SP",
+    "H",
+    "HP",
+    "V1",
+    "CP",
+    "O",
+    "OP",
+    "NV2"
+   ],
+   "sp": "topic",
+   "op": "obj",
+   "verbs": "transitive",
+   "verbs1": "have",
+   "conn": "ttaemun",
+   "conns": [
+    "ttaemun",
+    "eoseo",
+    "myeon"
+   ],
+   "p": {
+    "HP": {
+     "expect": "have",
+     "options": [
+      "이",
+      "가",
+      "을",
+      "를"
+     ]
+    }
+   },
+   "en": "Because I have (no) … , I … (-기 때문에)",
+   "ja": "〜がないので…（-기 때문에）",
+   "vi": "Vì (không) có … nên … (-기 때문에)",
+   "ex": "저는 시간이 없기 때문에 운동을 안 해요",
+   "ex_en": "Because I have no time, I don’t exercise.",
+   "ex_ja": "私は時間がないので運動をしません。",
+   "ex_vi": "Vì không có thời gian nên tôi không tập thể dục.",
+   "tenses": [
+    "pres",
+    "past"
+   ]
+  },
+  {
+   "id": "plain",
+   "level": 5,
+   "slots": [
+    "S",
+    "SP",
+    "O",
+    "OP",
+    "VF:plain"
+   ],
+   "sp": "topic",
+   "op": "obj",
+   "verbs": "transitive",
+   "plain": true,
+   "en": "Written style (-ㄴ/는다) — for TOPIK writing",
+   "ja": "文語体（-ㄴ/는다）— TOPIK作文用",
+   "vi": "Văn viết (-ㄴ/는다) — cho bài viết TOPIK",
+   "ex": "나는 커피를 마신다",
+   "ex_en": "I drink coffee. (written style)",
+   "ex_ja": "私はコーヒーを飲む。（文語体）",
+   "ex_vi": "Tôi uống cà phê. (văn viết)",
+   "tenses": [
+    "pres"
+   ]
+  },
+  {
+   "id": "intend",
+   "level": 5,
+   "slots": [
+    "S",
+    "SP",
+    "O",
+    "OP",
+    "VF:ryeogo"
+   ],
+   "sp": "topic",
+   "op": "obj",
+   "verbs": "transitive",
+   "en": "I intend to … (-(으)려고 해요)",
+   "ja": "〜しようと思います（-(으)려고 해요）",
+   "vi": "Tôi định … (-(으)려고 해요)",
+   "ex": "저는 한국어를 배우려고 해요",
+   "ex_en": "I intend to learn Korean.",
+   "ex_ja": "私は韓国語を習おうと思います。",
+   "ex_vi": "Tôi định học tiếng Hàn.",
+   "tenses": [
+    "pres"
+   ]
+  },
+  {
+   "id": "decided",
+   "level": 5,
+   "slots": [
+    "S",
+    "SP",
+    "O",
+    "OP",
+    "VF:giro"
+   ],
+   "sp": "topic",
+   "op": "obj",
+   "verbs": "transitive",
+   "en": "I decided to … (-기로 했어요)",
+   "ja": "〜することにしました（-기로 했어요）",
+   "vi": "Tôi đã quyết định … (-기로 했어요)",
+   "ex": "저는 운동을 하기로 했어요",
+   "ex_en": "I decided to exercise.",
+   "ex_ja": "私は運動することにしました。",
+   "ex_vi": "Tôi đã quyết định tập thể dục.",
+   "tenses": [
+    "pres"
+   ]
+  },
+  {
+   "id": "resolve",
+   "level": 5,
+   "slots": [
+    "S",
+    "SP",
+    "O",
+    "OP",
+    "VF:yagesseoyo"
+   ],
+   "sp": "topic",
+   "op": "obj",
+   "verbs": "transitive",
+   "en": "I’d better … (-아/어야겠어요)",
+   "ja": "〜しなくちゃ（-아/어야겠어요）",
+   "vi": "Tôi phải … thôi (-아/어야겠어요)",
+   "ex": "저는 숙제를 해야겠어요",
+   "ex_en": "I’d better do my homework.",
+   "ex_ja": "私は宿題をしなくちゃ。",
+   "ex_vi": "Tôi phải làm bài tập thôi.",
+   "tenses": [
+    "pres"
+   ]
+  },
+  {
+   "id": "became",
+   "level": 5,
+   "slots": [
+    "S",
+    "SP",
+    "L",
+    "OP",
+    "VF:gedoeda"
+   ],
+   "sp": "topic",
+   "op": "loc",
+   "verbs": "at",
+   "en": "It turned out that I … (-게 됐어요)",
+   "ja": "〜することになりました（-게 됐어요）",
+   "vi": "Tôi đã (được/phải) … (-게 됐어요)",
+   "ex": "저는 서울에서 살게 됐어요",
+   "ex_en": "I ended up living in Seoul.",
+   "ex_ja": "私はソウルに住むことになりました。",
+   "ex_vi": "Tôi đã chuyển đến sống ở Seoul.",
+   "tenses": [
+    "pres"
+   ]
   }
  ],
  "why": {
@@ -427,7 +1133,18 @@
    "chk_time_none": "“{w}” stands alone — no 에 after 오늘·내일·어제·매일·지금.",
    "chk_to_person": "“{w}” is a person receiving something → 에게 / 한테, not 에.",
    "chk_dup_obj": "Two 을/를 phrases in one sentence — usually only one object.",
-   "chk_ro": "로/으로: after a vowel or ㄹ → 로, after other consonants → 으로: “{w}{p}”."
+   "chk_ro": "로/으로: after a vowel or ㄹ → 로, after other consonants → 으로: “{w}{p}”.",
+   "conn_ok": "{lab} — {m}",
+   "conn_wrong": "{lab} means {m}. This frame practises {elab} ({em}).",
+   "qplace_ok": "어디 + 에 with 가다/오다 (where to), 어디 + 에서 with an action verb (where it happens)",
+   "qplace_wrong_e": "With an action verb, ask where it happens: 어디에서 …?",
+   "qplace_wrong_eseo": "With 가다/오다, ask the destination: 어디에 가요?",
+   "qobj_none": "In speech 뭐 usually stands alone: 뭐 먹어요?",
+   "qobj_reul": "뭐 + 를 → 뭘 (“뭘 먹어요?”) — also natural.",
+   "to_hon_ok": "께 is the honorific form of 에게 — for grandparents, teachers, bosses.",
+   "to_hon_soft": "Grammatical, but for an elder the honorific 께 (with 드려요) is expected.",
+   "pos_ok": "“{w}” marks the position; 에 follows it: 의자 위에.",
+   "location_ok": "With 있어요, the thing that is somewhere takes 이/가; the place + position + 에."
   },
   "ja": {
    "batchim_yes": "「{w}」はパッチム（{f}）で終わる → {p}",
@@ -482,7 +1199,18 @@
    "chk_time_none": "「{w}」は単独で使います。오늘・내일・어제・매일・지금 の後に 에 は付けません。",
    "chk_to_person": "「{w}」は受け手の人 → 에 ではなく 에게／한테。",
    "chk_dup_obj": "1つの文に 을/를 が2つあります。ふつう目的語は1つです。",
-   "chk_ro": "로/으로：母音または ㄹ の後は 로、他の子音の後は 으로：「{w}{p}」。"
+   "chk_ro": "로/으로：母音または ㄹ の後は 로、他の子音の後は 으로：「{w}{p}」。",
+   "conn_ok": "{lab} — {m}",
+   "conn_wrong": "{lab} は {m}。この型では {elab}（{em}）を練習します。",
+   "qplace_ok": "어디 + 에 は 가다／오다（行き先）、어디 + 에서 は動作動詞（動作の場所）",
+   "qplace_wrong_e": "動作動詞には「どこで」= 어디에서 …?",
+   "qplace_wrong_eseo": "가다／오다 には行き先の 어디에 가요?",
+   "qobj_none": "会話では 뭐 を単独で使うのがふつう：뭐 먹어요?",
+   "qobj_reul": "뭐 + 를 → 뭘（뭘 먹어요?）も自然です。",
+   "to_hon_ok": "께 は 에게 の尊敬形 — 祖父母・先生・上司に。",
+   "to_hon_soft": "文法的には正しいですが、目上の人には尊敬の 께（＋드려요）が期待されます。",
+   "pos_ok": "「{w}」が位置を表し、그の後に 에：의자 위에。",
+   "location_ok": "있어요 では、ある物に 이/가、場所＋位置語＋에。"
   },
   "vi": {
    "batchim_yes": "“{w}” kết thúc bằng phụ âm (받침 {f}) → {p}",
@@ -537,7 +1265,18 @@
    "chk_time_none": "“{w}” đứng một mình — không có 에 sau 오늘·내일·어제·매일·지금.",
    "chk_to_person": "“{w}” là người nhận → 에게 / 한테, không phải 에.",
    "chk_dup_obj": "Hai cụm 을/를 trong một câu — thường chỉ có một tân ngữ.",
-   "chk_ro": "로/으로: sau nguyên âm hoặc ㄹ → 로, sau phụ âm khác → 으로: “{w}{p}”."
+   "chk_ro": "로/으로: sau nguyên âm hoặc ㄹ → 로, sau phụ âm khác → 으로: “{w}{p}”.",
+   "conn_ok": "{lab} — {m}",
+   "conn_wrong": "{lab} nghĩa là {m}. Mẫu này luyện {elab} ({em}).",
+   "qplace_ok": "어디 + 에 với 가다/오다 (đi đâu), 어디 + 에서 với động từ hành động (ở đâu)",
+   "qplace_wrong_e": "Với động từ hành động, hỏi nơi diễn ra: 어디에서 …?",
+   "qplace_wrong_eseo": "Với 가다/오다, hỏi đích đến: 어디에 가요?",
+   "qobj_none": "Trong khẩu ngữ 뭐 thường đứng một mình: 뭐 먹어요?",
+   "qobj_reul": "뭐 + 를 → 뭘 (“뭘 먹어요?”) — cũng tự nhiên.",
+   "to_hon_ok": "께 là dạng kính ngữ của 에게 — dùng với ông bà, thầy cô, cấp trên.",
+   "to_hon_soft": "Đúng ngữ pháp, nhưng với người lớn tuổi nên dùng 께 (kèm 드려요).",
+   "pos_ok": "“{w}” chỉ vị trí; 에 theo sau: 의자 위에.",
+   "location_ok": "Với 있어요, vật ở đó lấy 이/가; địa điểm + từ chỉ vị trí + 에."
   }
  },
  "levels": {
@@ -555,6 +1294,16 @@
    "en": "Lv3 · With, to, can, must, please",
    "ja": "Lv3 · 〜と・〜に・できる・〜べき・〜てください",
    "vi": "Cấp 3 · Với, cho, có thể, phải, hãy"
+  },
+  "4": {
+   "en": "Lv4 · Two clauses, honorifics",
+   "ja": "Lv4 · 二つの節・敬語",
+   "vi": "Cấp 4 · Hai mệnh đề, kính ngữ"
+  },
+  "5": {
+   "en": "Lv5 · Written style & TOPIK",
+   "ja": "Lv5 · 文語体・TOPIK",
+   "vi": "Cấp 5 · Văn viết & TOPIK"
   }
  },
  "tense_levels": {
@@ -565,5 +1314,61 @@
   "can": 3,
   "must": 3,
   "please": 3
+ },
+ "conn": {
+  "go": {
+   "en": "and: lists actions",
+   "ja": "〜して：動作を並べる",
+   "vi": "rồi: liệt kê hành động",
+   "lab": "-고"
+  },
+  "eoseo": {
+   "en": "so / because: cause → result",
+   "ja": "〜ので：原因→結果",
+   "vi": "nên: nguyên nhân → kết quả",
+   "lab": "-아/어서"
+  },
+  "jiman": {
+   "en": "but",
+   "ja": "〜が・でも",
+   "vi": "nhưng",
+   "lab": "-지만"
+  },
+  "myeon": {
+   "en": "if / when",
+   "ja": "〜たら・〜すれば",
+   "vi": "nếu / khi",
+   "lab": "-(으)면"
+  },
+  "lttae": {
+   "en": "when, at the time of",
+   "ja": "〜するとき",
+   "vi": "khi, lúc",
+   "lab": "-(으)ㄹ 때"
+  },
+  "gi_jeone": {
+   "en": "before",
+   "ja": "〜する前に",
+   "vi": "trước khi",
+   "lab": "-기 전에"
+  },
+  "n_hue": {
+   "en": "after",
+   "ja": "〜した後で",
+   "vi": "sau khi",
+   "lab": "-(으)ㄴ 후에"
+  },
+  "myeonseo": {
+   "en": "while, at the same time",
+   "ja": "〜しながら",
+   "vi": "vừa … vừa",
+   "lab": "-(으)면서"
+  },
+  "ttaemun": {
+   "en": "because — formal",
+   "ja": "〜ので：文語的",
+   "vi": "vì — trang trọng",
+   "lab": "-기 때문에"
+  }
  }
 }

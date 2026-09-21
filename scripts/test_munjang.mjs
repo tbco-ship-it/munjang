@@ -201,5 +201,84 @@ eq(M.candidates(tpl('with'), 'W', W, null, { S: noun('친구') }).some(n => n.h 
 eq(M.candidates(tpl('give'), 'O', W, verb('보내다')).map(n => n.h).includes('한글'), false, 'r2 #6 한글을 보내요 excluded');
 eq(M.candidates(tpl('give'), 'O', W, verb('보내다')).map(n => n.h).includes('편지'), true, 'r2 #6 편지를 보내요');
 
+// ---- Lv1–5 expansion (2026-09-22): connectives, moods, questions, location, honorific recipient ----
+const WHYC = { ...WHY, _conn: T.conn };
+const asm = (id, picks) => M.assemble(tpl(id), picks).text;
+eq(asm('and', { S: noun('저'), O: noun('밥'), V1: verb('먹다'), CP: 'go', O2: noun('커피'), V2: verb('마시다'), tense: 'pres' }), '저는 밥을 먹고 커피를 마셔요.', 'and -고');
+eq(asm('and', { S: noun('저'), O: noun('밥'), V1: verb('먹다'), CP: 'go', O2: noun('커피'), V2: verb('마시다'), tense: 'past' }), '저는 밥을 먹고 커피를 마셨어요.', 'and past on V2 only');
+eq(M.assemble(tpl('and'), { S: noun('저'), O: noun('밥'), V1: verb('먹다'), O2: noun('커피'), V2: verb('마시다'), tense: 'pres' }).incomplete, true, 'no CP → incomplete');
+eq(M.assemble(tpl('and'), { S: noun('저'), O: noun('밥'), V1: verb('먹다'), O2: noun('커피'), V2: verb('마시다'), tense: 'pres' }).chunks.find(c => c.kind === 'V1').text, '먹-', 'V1 blank shows the stem');
+eq(asm('because', { S: noun('저'), A1: adj('배고프다'), CP: 'eoseo', O: noun('밥'), V2: verb('먹다'), tense: 'pres' }), '저는 배고파서 밥을 먹어요.', 'because -아/어서 adjective');
+eq(asm('if', { S: noun('저'), H: noun('시간'), V1: verb('있다'), CP: 'myeon', O: noun('영화'), V2: verb('보다'), tense: 'pres' }), '저는 시간이 있으면 영화를 봐요.', 'if -(으)면');
+eq(asm('when', { S: noun('저'), O: noun('밥'), V1: verb('먹다'), CP: 'lttae', O2: noun('텔레비전'), V2: verb('보다'), tense: 'pres' }), '저는 밥을 먹을 때 텔레비전을 봐요.', 'when -(으)ㄹ 때');
+eq(asm('while', { S: noun('저'), O: noun('음악'), V1: verb('듣다'), CP: 'myeonseo', O2: noun('숙제'), V2: verb('하다'), tense: 'pres' }), '저는 음악을 들으면서 숙제를 해요.', 'ㄷ irregular 들으면서');
+eq(asm('before', { S: noun('저'), D: noun('학교'), V1: verb('가다'), CP: 'gi_jeone', O2: noun('커피'), V2: verb('마시다'), tense: 'pres' }), '저는 학교에 가기 전에 커피를 마셔요.', 'before -기 전에');
+eq(asm('before', { S: noun('저'), D: noun('학교'), V1: verb('가다'), CP: 'n_hue', O2: noun('커피'), V2: verb('마시다'), tense: 'pres' }), '저는 학교에 간 후에 커피를 마셔요.', 'after -(으)ㄴ 후에');
+eq(asm('because_f', { S: noun('저'), H: noun('시간'), V1: verb('없다'), CP: 'ttaemun', O: noun('운동'), V2: verb('하다'), tense: 'pres' }), '저는 시간이 없기 때문에 운동을 안 해요.', 'because_f + 안 V2');
+eq(M.judgeP(tpl('and'), 'CP', verb('먹다'), null, 'go', WHYC).grade, 'ok', 'conn ok');
+const cw = M.judgeP(tpl('and'), 'CP', verb('먹다'), null, 'jiman', WHYC);
+eq(cw.grade, 'no', 'conn wrong grade'); eq(cw.why.includes('-지만') && cw.why.includes('-고'), true, 'conn wrong names both endings');
+eq(M.verbsFor(tpl('if'), W, 'pres', 'V1').map(v => v.h), ['있다', '없다'], 'if V1 = have verbs');
+eq(M.verbsFor(tpl('and'), W, 'pres', 'V1').every(v => v.go && v.eoseo && v.jiman), true, 'V1 verbs carry every quiz ending');
+eq(M.candidates(tpl('because'), 'A1', W, null, { S: noun('저') }).map(a => a.h).includes('배고프다'), true, 'A1 fits a person');
+eq(M.candidates(tpl('because'), 'A1', W, null, { S: noun('저') }).map(a => a.h).includes('맛있다'), false, 'A1 excludes taste adjectives for a person');
+// moods
+eq(asm('purpose', { S: noun('저'), D: noun('도서관'), O: noun('책'), V: verb('읽다'), AUX: verb('가다'), tense: 'pres' }), '저는 도서관에 책을 읽으러 가요.', '-(으)러 가요');
+eq(asm('purpose', { S: noun('저'), D: noun('도서관'), O: noun('책'), V: verb('읽다'), AUX: verb('가다'), tense: 'past' }), '저는 도서관에 책을 읽으러 갔어요.', '-(으)러 갔어요');
+eq(asm('reqneg', { O: noun('커피'), V: verb('마시다'), tense: 'pres' }), '커피를 마시지 마세요.', '-지 마세요 (no subject slot)');
+eq(asm('suggest', { O: noun('영화'), V: verb('보다'), tense: 'pres' }), '같이 영화를 볼까요?', '-(으)ㄹ까요? single ?');
+eq(asm('tried', { S: noun('저'), O: noun('김치'), V: verb('먹다'), tense: 'pres' }), '저는 김치를 먹어 봤어요.', '-아/어 봤어요');
+eq(asm('experience', { S: noun('저'), D: noun('제주도') || noun('서울'), V: verb('가다'), tense: 'pres' }).endsWith('에 간 적이 있어요.'), true, '-(으)ㄴ 적이 있어요');
+eq(asm('seem', { S: noun('친구'), O: noun('커피'), V: verb('좋아하다'), tense: 'pres' }), '친구는 커피를 좋아하는 것 같아요.', '-는 것 같아요');
+eq(asm('plain', { S: noun('나'), O: noun('커피'), V: verb('마시다'), tense: 'pres' }), '나는 커피를 마신다.', 'plain -ㄴ다');
+eq(asm('plain', { S: noun('나'), O: noun('밥'), V: verb('먹다'), tense: 'pres' }), '나는 밥을 먹는다.', 'plain -는다');
+eq(M.candidates(tpl('plain'), 'S', W).map(n => n.h), ['나'], 'plain style subject = 나 only');
+eq(asm('intend', { S: noun('저'), O: noun('한국어'), V: verb('배우다'), tense: 'pres' }), '저는 한국어를 배우려고 해요.', '-(으)려고 해요');
+eq(asm('decided', { S: noun('저'), O: noun('운동'), V: verb('하다'), tense: 'pres' }), '저는 운동을 하기로 했어요.', '-기로 했어요');
+eq(asm('resolve', { S: noun('저'), O: noun('숙제'), V: verb('하다'), tense: 'pres' }), '저는 숙제를 해야겠어요.', '-아/어야겠어요');
+eq(asm('became', { S: noun('저'), L: noun('서울'), V: verb('살다'), tense: 'pres' }), '저는 서울에서 살게 됐어요.', '-게 됐어요');
+eq(M.verbsFor(tpl('reqneg'), W).some(v => v.h === '좋아하다' || v.h === '있다'), false, 'VF frames drop verbs without that form');
+eq(M.verbsFor(tpl('experience'), W).map(v => v.h), ['가다', '오다'], 'experience = move verbs');
+// questions
+eq(asm('q_where', { S: noun('친구'), QD: noun('어디'), QP: '에', V: verb('가다'), tense: 'pres' }), '친구는 어디에 가요?', '어디에 가요?');
+eq(M.judgeP(tpl('q_where'), 'QP', noun('어디'), verb('가다'), '에', WHY).grade, 'ok', '어디에 + 가다 ok');
+eq(M.judgeP(tpl('q_where'), 'QP', noun('어디'), verb('가다'), '에서', WHY).grade, 'no', '어디에서 + 가다 no');
+eq(M.judgeP(tpl('q_where'), 'QP', noun('어디'), verb('먹다'), '에서', WHY).grade, 'ok', '어디에서 + 먹다 ok');
+eq(M.judgeP(tpl('q_where'), 'QP', noun('어디'), verb('먹다'), '에', WHY).grade, 'no', '어디에 + 먹다 no');
+eq(M.judgeP(tpl('q_where'), 'QP', noun('어디'), verb('살다'), '에', WHY).grade, 'ok', '어디에 살아요 ok (locBoth)');
+eq(asm('q_what', { S: noun('친구'), QO: noun('뭐'), QP: '∅', V: verb('먹다'), tense: 'pres' }), '친구는 뭐 먹어요?', '뭐 먹어요?');
+eq(asm('q_what', { S: noun('친구'), QO: noun('뭐'), QP: '를', V: verb('먹다'), tense: 'pres' }), '친구는 뭘 먹어요?', '뭐+를 → 뭘');
+eq(M.judgeP(tpl('q_what'), 'QP', noun('뭐'), verb('먹다'), '를', WHY).grade, 'ok', '뭘 ok');
+eq(M.candidates(tpl('q_where'), 'S', W).some(n => n.ga), false, 'question subjects exclude 저/나');
+eq(M.verbsFor(tpl('q_where'), W).some(v => v.to), false, 'any_place drops 주다-type verbs');
+// location
+eq(asm('location', { S: noun('가방'), REF: noun('의자'), POS: noun('위'), OP: '에', V: verb('있다'), tense: 'pres' }), '가방이 의자 위에 있어요.', '가방이 의자 위에 있어요');
+eq(M.judgeP(tpl('location'), 'OP', noun('위'), verb('있다'), '에서', WHY).grade, 'no', '위에서 있어요 rejected');
+eq(M.judgeP(tpl('location'), 'OP', noun('위'), verb('있다'), '에', WHY).why, WHY.location_ok.replace('{w}', '위'), 'location why line');
+eq(M.candidates(tpl('location'), 'S', W).some(n => n.h === '저' || n.kind === 'place'), false, 'location subject: things/animals/people, not 저 or places');
+eq(M.candidates(tpl('location'), 'REF', W, null, { S: noun('가방') }).some(n => n.h === '가방'), false, 'REF excludes the subject');
+// honorific recipient
+eq(asm('hongive', { S: noun('저'), R: noun('할머니'), RP: '께', O: noun('선물'), V: verb('드리다'), tense: 'pres' }), '저는 할머니께 선물을 드려요.', '께 드려요');
+eq(M.judgeP(tpl('hongive'), 'RP', noun('할머니'), verb('드리다'), '께', WHY).grade, 'ok', '께 ok');
+eq(M.judgeP(tpl('hongive'), 'RP', noun('할머니'), verb('드리다'), '에게', WHY).grade, 'soft', '에게 soft for an elder');
+eq(M.judgeP(tpl('hongive'), 'RP', noun('할머니'), verb('드리다'), '에', WHY).grade, 'no', '에 no');
+eq(M.candidates(tpl('hongive'), 'R', W).every(n => n.elder), true, 'hongive recipients are elders');
+eq(M.verbsFor(tpl('hongive'), W).map(v => v.h), ['드리다'], 'hongive verb');
+// verbKeyFor pairing
+eq(M.verbKeyFor(tpl('and'), 'O'), 'V1', 'O → V1 in and'); eq(M.verbKeyFor(tpl('and'), 'O2'), 'V2', 'O2 → V2');
+eq(M.verbKeyFor(tpl('because'), 'O'), 'V2', 'O → V2 in because'); eq(M.verbKeyFor(tpl('purpose'), 'D'), 'AUX:가다', 'D → 가다 in purpose'); eq(M.verbKeyFor(tpl('purpose'), 'O'), 'VF:reo', 'O → VF verb');
+// checker recognises the new forms
+eq(chk('저는 도서관에 책을 읽으러 가요').verdict, 'ok', 'checker: -(으)러 가요 ok');
+eq(chk('저는 김치를 먹어 봤어요').verdict, 'ok', 'checker: 먹어 봤어요 ok');
+eq(chk('저는 밥을 먹고 커피를 마셔요').verdict, 'ok', 'checker: two clauses ok');
+eq(chk('저는 밥을 먹고 커피를 마셔요').chunks.find(c => c.text === '먹고').kind, 'conn', 'checker: 먹고 = connective');
+eq(chk('나는 커피를 마신다').verdict, 'ok', 'checker: plain style ok');
+eq(chk('커피를 마시지 마세요').verdict, 'ok', 'checker: -지 마세요 ok');
+// every verb has every connective form or an explicit null, and every template slot kind is known
+for (const v of W.verbs) for (const k of ['go', 'eoseo', 'jiman', 'myeon', 'lttae', 'ttaemun', 'gi_jeone', 'myeonseo']) eq(k in v, true, `${v.h} has ${k}`);
+for (const tp of T.templates) for (const k of tp.slots) eq(/^(S|SP|O|OP|OP2|D|L|T|TP|H|HP|W|WP|R|RP|V|VW|NV|HV|A|V1|A1|CP|V2|NV2|O2|REF|POS|QD|QO|QP|VF:\w+|AUX:\S+|FIX:\S+)$/.test(k), true, `${tp.id} slot ${k}`);
+for (const tp of T.templates) if (tp.conn) eq((tp.conns || []).includes(tp.conn) && Object.keys(T.conn).includes(tp.conn), true, `${tp.id} conn listed`);
+for (const tp of T.templates) for (const k of tp.slots) if (k.startsWith('VF:')) eq(M.verbsFor(tp, W).length > 0, true, `${tp.id} has verbs with ${k}`);
+
 console.log(fails ? `${fails} FAILED` : 'all passed');
 process.exit(fails ? 1 : 0);
