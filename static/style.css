@@ -296,3 +296,8 @@ html.roman .w-r{display:block}
 .topik-sheet{--cell:min(4.2vw,26px);margin:10px 0 12px;max-width:none}.topik-sheet .cell{color:#202738;font-size:calc(var(--cell) * .62);letter-spacing:-.04em}
 .tk-rules-h{font-size:.9rem;margin-top:18px}.tk-rules{padding-left:1.2em;font-size:.85rem;color:var(--text-2)}
 @media print{.topik{display:block}#q5152,.tk-ctl,#tk-text,.tk-meta,#tk-notes,.acts,.tk-rules-h,.tk-rules,.tk-prompt-text{display:none!important}.topik-sheet{--cell:8.6mm}}
+
+/* drill */
+.drill-btn{display:block;margin-top:6px}
+.drill .drill-s{font:600 1.4rem/1.4 var(--hangul);margin:0 0 10px}.drill .drill-s u{text-decoration:none;color:var(--accent-text);border-bottom:2px solid var(--accent);display:inline-block;min-width:1.1em}
+.drill .why{margin-top:10px}.drill .why .link{display:block;margin-top:6px}.drill-done{font-weight:700;margin:0 0 10px}

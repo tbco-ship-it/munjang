@@ -145,7 +145,13 @@
   "topik_print": "Print this 원고지",
   "topik_ph": "Write your answer here (Korean).",
   "topik_tutor": "Send this answer to a tutor for content scoring",
-  "topik_r_ascii": "Lowercase letters and digits go two per square; uppercase one per square"
+  "topik_r_ascii": "Lowercase letters and digits go two per square; uppercase one per square",
+  "drill_btn": "Drill this rule ×3",
+  "drill_h": "Quick drill — same rule, new words",
+  "drill_q": "{i} of 3",
+  "drill_done": "Drill done: {n} / 3",
+  "drill_again": "Three more",
+  "drill_close": "Back to my sentence"
  },
  "ja": {
   "lang": "ja",
@@ -293,6 +299,12 @@
   "topik_print": "この原稿用紙を印刷",
   "topik_ph": "ここに解答を書いてください（韓国語）。",
   "topik_tutor": "内容の採点は先生に",
-  "topik_r_ascii": "英小文字と数字は1マスに2文字、大文字は1マスに1文字"
+  "topik_r_ascii": "英小文字と数字は1マスに2文字、大文字は1マスに1文字",
+  "drill_btn": "この規則を3問練習",
+  "drill_h": "ミニ練習 — 同じ規則、別の単語",
+  "drill_q": "{i} / 3",
+  "drill_done": "練習完了：{n} / 3",
+  "drill_again": "もう3問",
+  "drill_close": "自分の文に戻る"
  }
 }

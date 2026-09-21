@@ -167,7 +167,10 @@
     renderPanel(act);
     // why lines
     const why = $('#why'); why.innerHTML = '';
-    particleSlots().forEach(pk => { const j = st.judges[pk]; if (!j) return; why.appendChild(el('div', 'why ' + j.grade, `<b>${esc(j.choice)}</b><span class="tag">${t(j.grade === 'ok' ? 'correct' : j.grade === 'soft' ? 'soft' : 'wrong')}</span><p>${esc(j.why)}</p>`)); });
+    particleSlots().forEach(pk => { const j = st.judges[pk]; if (!j) return;
+      const d = el('div', 'why ' + j.grade, `<b>${esc(j.choice)}</b><span class="tag">${t(j.grade === 'ok' ? 'correct' : j.grade === 'soft' ? 'soft' : 'wrong')}</span><p>${esc(j.why)}</p>`);
+      if (j.grade === 'no') { const b = el('button', 'link drill-btn', t('drill_btn') + ' →'); b.type = 'button'; b.onclick = () => startDrill(pk, j); d.appendChild(b); }
+      why.appendChild(d); });
     if (complete()) why.appendChild(el('div', 'why info', `<b>${t('spaces')}</b><p>${esc(WHY.space)}</p>`));
     why.hidden = !why.children.length;
     renderPreview();
@@ -257,6 +260,52 @@
       if (!st.word) { st.word = n; if (document.documentElement.classList.contains('landing')) leaveLanding(); }
       setPick(k, n); hint.textContent = t('free_hint_ok', { w: n.h, slot: t('slot_' + k) }); inp.value = '';
     };
+  }
+
+
+  // ---------- mistake drill: three fresh items on the rule the learner just got wrong ----------
+  const drill = { items: [], i: 0, score: 0, kind: null };
+  const pickN = (arr, n) => { const a = arr.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a.slice(0, n); };
+  function makeDrill(pk, j) {
+    const items = [];
+    if (pk === 'SP') {
+      // form drill on the natural family of the current frame; mix 받침 yes/no nouns
+      const fam = st.tpl.sp, opts = fam === 'topic' ? ['은', '는'] : ['이', '가'];
+      const used = new Set(Object.values(st.picks).filter(x => x && x.h).map(x => x.h));
+      const pool = M.candidates(st.tpl, 'S', D.words).filter(n => n.h !== '저' && !used.has(n.h) && (fam !== 'topic' || n.kind === 'person' || n.kind === 'animal'));
+      const yes = pool.filter(n => M.hasBatchim(n.h)), no = pool.filter(n => !M.hasBatchim(n.h));
+      const nouns = pickN([...pickN(yes, 2), ...pickN(no, 2)], 3);
+      nouns.forEach(n => { const picks = Object.assign({}, st.picks, { S: n, SP: M.form(n, fam) }); const a = M.assemble(st.tpl, Object.assign(picks, { tense: st.tense })); items.push({ noun: n, before: '', after: a.chunks.slice(1).map(c => c.text).join(' ') + '.', opts, judge: c => M.judgeSP(st.tpl, n, c, WHY) }); });
+    } else {
+      // family drill: 에 vs 에서 vs 을/를 across move / action / exist frames
+      const frames = [['go', 'dest'], ['at', 'loc'], ['exist', 'dest'], ['act', 'obj'], ['live', 'loc']];
+      pickN(frames, 3).forEach(([id, expect]) => {
+        const tp = tplById(id), key = expect === 'obj' ? 'O' : expect === 'dest' && id !== 'exist' ? 'D' : 'L';
+        const v = pickN(M.verbsFor(tp, D.words), 1)[0]; const n = pickN(M.candidates(tp, key, D.words, v), 1)[0]; if (!n || !v) return;
+        const S = id === 'exist' ? pickN(D.words.nouns.filter(x => x.kind === 'animal' || x.kind === 'person').filter(x => x.h !== '저'), 1)[0] : nounByH('저');
+        const picks = { S, [key]: n, V: v, O: id === 'at' ? pickN(M.candidates(tp, 'O', D.words, v), 1)[0] : (key === 'O' ? n : undefined) };
+        const a = M.assemble(tp, Object.assign({}, picks, { tense: 'pres' }));
+        const idx = a.chunks.findIndex(c => c.kind === key);
+        items.push({ noun: n, before: a.chunks.slice(0, idx).map(c => c.text).join(' '), after: a.chunks.slice(idx + 1).map(c => c.text).join(' ') + '.', opts: [M.form(n, 'obj'), '에', '에서'], judge: c => M.judgeOP(tp, expect, n, v, c, WHY) });
+      });
+    }
+    return items;
+  }
+  function startDrill(pk, j) { drill.pk = pk; drill.j = j; drill.items = makeDrill(pk, j); drill.i = 0; drill.score = 0; renderDrill(); $('#drill').scrollIntoView({ behavior: 'smooth', block: 'nearest' }); }
+  function renderDrill() {
+    const box = $('#drill'); if (!drill.items.length) { box.hidden = true; return; }
+    box.hidden = false;
+    if (drill.i >= drill.items.length) { box.innerHTML = `<div class="ph"><span>${t('drill_h')}</span></div><p class="drill-done">${t('drill_done', { n: drill.score })}</p><div class="acts"><button type="button" class="btn ghost" id="drill-again">${t('drill_again')}</button><button type="button" class="btn" id="drill-close">${t('drill_close')}</button></div>`;
+      $('#drill-again').onclick = () => startDrill(drill.pk, drill.j); $('#drill-close').onclick = () => { drill.items = []; renderDrill(); }; return; }
+    const it = drill.items[drill.i];
+    box.innerHTML = `<div class="ph"><span>${t('drill_h')}</span><small>${t('drill_q', { i: drill.i + 1 })}</small></div><p class="drill-s" lang="ko">${esc(it.before)} <b>${esc(it.noun.h)}<u>&nbsp;&nbsp;</u></b> ${esc(it.after)}</p><div class="p-opts"></div><div class="why" hidden></div>`;
+    const opts = $('.p-opts', box);
+    it.opts.forEach(o => { const b = el('button', 'p-opt', o); b.type = 'button'; b.onclick = () => {
+      const r = it.judge(o); $$('.p-opt', box).forEach(x => x.className = 'p-opt'); b.classList.add('on', r.grade);
+      const w = $('.why', box); w.hidden = false; w.className = 'why ' + r.grade; w.innerHTML = `<span class="tag">${t(r.grade === 'ok' ? 'correct' : r.grade === 'soft' ? 'soft' : 'wrong')}</span><p>${esc(r.why)}</p><button type="button" class="link" id="drill-next">${drill.i + 1 < drill.items.length ? t('drill_q', { i: drill.i + 2 }) + ' →' : t('drill_done', { n: drill.score + (r.grade === 'ok' ? 1 : 0) })}</button>`;
+      if (r.grade === 'ok') drill.score++; $$('.p-opt', box).forEach(x => x.disabled = true);
+      $('#drill-next').onclick = () => { drill.i++; renderDrill(); };
+    }; opts.appendChild(b); });
   }
 
   // ---------- tray ----------
