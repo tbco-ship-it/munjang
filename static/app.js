@@ -13,7 +13,7 @@
   try { st.level = +localStorage.getItem('munjang.level') || 1; } catch (e) {}
   function load() {
     try { const v = JSON.parse(localStorage.getItem(KEY) || '[]'); if (!Array.isArray(v)) return [];
-      return v.filter(x => x && typeof x.text === 'string' && x.text.length <= 120).slice(0, 5).map(x => ({ text: x.text, gloss: typeof x.gloss === 'string' ? x.gloss.slice(0, 160) : '', unreviewed: !!x.unreviewed, at: +x.at || 0 })); } catch (e) { return []; }
+      return v.filter(x => x && typeof x.text === 'string' && x.text.length <= 120).slice(0, 5).map(x => ({ text: x.text, gloss: typeof x.gloss === 'string' ? x.gloss.slice(0, 160) : '', parts: Array.isArray(x.parts) ? x.parts.filter(q => q && typeof q.t === 'string').slice(0, 12).map(q => ({ t: q.t.slice(0, 20), p: typeof q.p === 'string' ? q.p.slice(0, 3) : '' })) : null, unreviewed: !!x.unreviewed, at: +x.at || 0 })); } catch (e) { return []; }
   }
   function save() { try { localStorage.setItem(KEY, JSON.stringify(st.tray)); } catch (e) {} }
   const nounByH = h => D.words.nouns.find(n => n.h === h);
@@ -433,7 +433,8 @@
   // ---------- tray ----------
   function addToTray(a) {
     if (st.tray.length >= 5 || st.tray.some(x => x.text === a.text)) return;
-    st.tray.push({ text: a.text, gloss: gloss(a), unreviewed: Object.values(st.picks).some(x => x && x.free), at: Date.now() }); save(); renderTray();
+    const parts = a.chunks.map(c => ({ t: c.text, p: c.particle && !c.tail ? c.particle : '' })); // p = the quizzed particle (blank in the worksheet)
+    st.tray.push({ text: a.text, gloss: gloss(a), parts, unreviewed: Object.values(st.picks).some(x => x && x.free), at: Date.now() }); save(); renderTray();
     const b = $('#add'); if (b) { b.textContent = t('added'); b.disabled = true; }
   }
   function renderTray() {

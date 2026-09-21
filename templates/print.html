@@ -6,9 +6,11 @@
   <h1>{{ ui.print_h1 }}</h1>
   <p class="lead">{{ ui.print_p }}</p>
   <div class="print-ctl">
+    <div class="seg" role="group" aria-label="Mode"><button type="button" class="on" data-mode="copy">{{ ui.mode_copy }}</button><button type="button" data-mode="ws">{{ ui.mode_ws }}</button></div>
     <div class="seg" role="group" aria-label="Paper"><button type="button" class="on" data-paper="a4">{{ ui.paper_a4 }}</button><button type="button" data-paper="letter">{{ ui.paper_letter }}</button></div>
     <label class="toggle"><input type="checkbox" id="guide"> <span>{{ ui.guide_toggle }}</span></label>
     <label class="toggle"><input type="checkbox" id="trace" checked> <span>{{ ui.trace_toggle }}</span></label>
+    <label class="toggle" id="answers-wrap" hidden><input type="checkbox" id="answers" checked> <span>{{ ui.answers_toggle }}</span></label>
     <button type="button" class="btn" id="do-print">{{ ui.print_btn }}</button>
   </div>
 </section>

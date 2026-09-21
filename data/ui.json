@@ -173,7 +173,12 @@
   "flash_badge": "just added",
   "incompat_h": "These two don’t go together",
   "incompat_p": "“{o}” with “{v}” isn’t a sentence we teach. Pick one of these verbs for “{o}”:",
-  "incompat_p2": "…or change “{o}” to something you can {v}."
+  "incompat_p2": "…or change “{o}” to something you can {v}.",
+  "mode_copy": "Copy sheet",
+  "mode_ws": "Particle worksheet",
+  "answers_toggle": "Show answer key",
+  "answers_h": "Answer key",
+  "ws_hint": "Fill the dashed squares with the right particle. Answers are at the bottom — fold it under."
  },
  "ja": {
   "lang": "ja",
@@ -349,7 +354,12 @@
   "flash_badge": "入れました",
   "incompat_h": "この組み合わせは使いません",
   "incompat_p": "「{o}」と「{v}」の組み合わせは扱っていません。「{o}」に合う動詞：",
-  "incompat_p2": "…または「{o}」を「{v}」に合う語に変える。"
+  "incompat_p2": "…または「{o}」を「{v}」に合う語に変える。",
+  "mode_copy": "書き取りシート",
+  "mode_ws": "助詞ワークシート",
+  "answers_toggle": "解答を表示",
+  "answers_h": "解答",
+  "ws_hint": "点線のマスに正しい助詞を書き入れます。解答は下にあるので、折って隠せます。"
  },
  "vi": {
   "lang": "vi",
@@ -524,6 +534,11 @@
   "topik_style_warn": "{n} câu kết thúc bằng -요 — đề thi yêu cầu dạng -ㄴ/는다 / -(이)다.",
   "topik_print": "In 원고지 này",
   "topik_ph": "Viết bài của bạn ở đây (tiếng Hàn).",
-  "topik_tutor": "Gửi bài cho gia sư chấm nội dung"
+  "topik_tutor": "Gửi bài cho gia sư chấm nội dung",
+  "mode_copy": "Phiếu chép câu",
+  "mode_ws": "Phiếu điền tiểu từ",
+  "answers_toggle": "Hiện đáp án",
+  "answers_h": "Đáp án",
+  "ws_hint": "Điền tiểu từ đúng vào các ô nét đứt. Đáp án ở cuối trang — gập lại để che."
  }
 }
