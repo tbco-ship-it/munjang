@@ -10,7 +10,7 @@
   const mean = w => w[LANG] || w.en || '';
   const KEY = 'munjang.tray';
   const st = { jamo: null, batchim: false, word: null, tpl: D.templates.templates[0], tense: 'pres', picks: {}, judges: {}, active: null, level: 1, tray: load(), incompat: false };
-  try { st.level = +localStorage.getItem('munjang.level') || 1; } catch (e) {}
+  try { st.level = Math.min(3, Math.max(1, +localStorage.getItem('munjang.level') || 1)); } catch (e) {}
   function load() {
     try { const v = JSON.parse(localStorage.getItem(KEY) || '[]'); if (!Array.isArray(v)) return [];
       return v.filter(x => x && typeof x.text === 'string' && x.text.length <= 120).slice(0, 5).map(x => ({ text: x.text, gloss: typeof x.gloss === 'string' ? x.gloss.slice(0, 160) : '', parts: Array.isArray(x.parts) ? x.parts.filter(q => q && typeof q.t === 'string').slice(0, 12).map(q => ({ t: q.t.slice(0, 20), p: typeof q.p === 'string' ? q.p.slice(0, 3) : '' })) : null, unreviewed: !!x.unreviewed, at: +x.at || 0 })); } catch (e) { return []; }
@@ -75,17 +75,28 @@
   function pickWord(n) {
     st.word = n;
     const k = n.kind, me = nounByH('저');
+    const actor = k === 'person' || k === 'animal';
     if (k === 'time') { st.tpl = tplById('time'); st.picks = { T: n, S: me, D: nounByH('학교'), V: verbByH('가다') }; }
-    else if (k === 'abstract') { st.tpl = tplById('have'); st.picks = { S: me, H: n, V: verbByH('있다') }; }
     else if (k === 'place') { st.tpl = tplById('go'); st.picks = { S: me, D: n, V: verbByH('가다') }; }
+    else if (n.roles.includes('have') && k === 'abstract') { st.tpl = tplById('have'); st.picks = { S: me, H: n, V: verbByH('있다') }; }
+    else if (k === 'abstract') { st.tpl = tplById('is'); st.picks = { S: n, A: M.adjectivesFor(n, D.words)[0] }; }
     else if (k === 'food') { st.tpl = tplById('act'); st.picks = { S: me, O: n, V: verbByH('먹다') }; }
     else if (k === 'drink') { st.tpl = tplById('act'); st.picks = { S: me, O: n, V: verbByH('마시다') }; }
+    else if (n.do) { st.tpl = tplById('act'); st.picks = { S: me, O: n, V: verbByH('하다') }; }
     else if (k === 'skill') { st.tpl = tplById('want'); st.picks = { S: me, O: n, V: verbByH('배우다') }; }
+    else if (n.write && !n.read) { st.tpl = tplById('act'); st.picks = { S: me, O: n, V: verbByH('쓰다') }; }
+    else if (n.read) { st.tpl = tplById('act'); st.picks = { S: me, O: n, V: verbByH('읽다') }; }
+    else if (n.ride) { st.tpl = tplById('act'); st.picks = { S: me, O: n, V: verbByH('타다') }; }
+    else if (n.photo) { st.tpl = tplById('act'); st.picks = { S: me, O: n, V: verbByH('찍다') }; }
+    else if (n.play) { st.tpl = tplById('act'); st.picks = { S: me, O: n, V: verbByH('치다') }; }
     else if (k === 'media') { st.tpl = tplById('act'); st.picks = { S: me, O: n, V: verbByH('보다') }; }
     else if (k === 'audio') { st.tpl = tplById('act'); st.picks = { S: me, O: n, V: verbByH('듣다') }; }
-    else if (k === 'item') { st.tpl = tplById('act'); st.picks = { S: me, O: n, V: n.read ? verbByH('읽다') : n.ride ? verbByH('타다') : n.photo ? verbByH('찍다') : verbByH('사다') }; }
+    else if (k === 'item') { st.tpl = tplById('act'); st.picks = { S: me, O: n, V: verbByH('사다') }; }
     else if (k === 'animal') { st.tpl = tplById('exist'); st.picks = { S: n, L: nounByH('집'), V: verbByH('있다') }; }
-    else { st.tpl = tplById('act'); st.picks = { S: n, O: nounByH('커피'), V: verbByH('마시다') }; }
+    else if (k === 'person') { st.tpl = tplById('act'); st.picks = { S: n, O: nounByH('커피'), V: verbByH('마시다') }; }
+    else { st.tpl = tplById('is'); st.picks = { S: n, A: M.adjectivesFor(n, D.words)[0] || D.words.adjectives[0] }; } // never a non-actor as the subject of an action
+    // safety: the picked pair must be one the engine allows
+    if (st.picks.O && st.picks.V && !M.compatible(st.picks.V, st.picks.O)) { const v = M.verbsFor(st.tpl, D.words).find(x => M.compatible(x, st.picks.O)); if (v) st.picks.V = v; else { st.tpl = tplById('is'); st.picks = { S: n, A: M.adjectivesFor(n, D.words)[0] || D.words.adjectives[0] }; } }
     st.tense = st.tpl.tenses[0]; st.judges = {}; st.active = null; st.incompat = false;
     if ((st.tpl.level || 1) > st.level) { st.level = st.tpl.level; try { localStorage.setItem('munjang.level', String(st.level)); } catch (e) {} }
     renderWords(); renderBuilder();
@@ -101,21 +112,21 @@
     if (slots.includes('A')) { let as = M.adjectivesFor(p.S, D.words); if (!as.length) { p.S = nounByH('김치'); as = M.adjectivesFor(p.S, D.words); } p.A = as[0]; }
     if (slots.includes('T')) { p.T = old.T || nounByH('주말'); if (!p.D) p.D = old.D || nounByH('공원'); p.V = old.V && old.V.move ? old.V : verbByH('가다'); }
     if (slots.includes('H')) { p.H = old.H || (old.O && old.O.roles.includes('have') ? old.O : nounByH('시간')); p.V = old.V && old.V.have ? old.V : verbByH('있다'); if (p.S.kind !== 'person') p.S = nounByH('저'); }
-    if (slots.includes('W')) { p.W = old.W || nounByH('친구'); }
+    if (slots.includes('W')) { const ws = M.candidates(tpl, 'W', D.words, p.V, p); p.W = old.W && ws.includes(old.W) ? old.W : (ws[0] || nounByH('친구')); }
     if (slots.includes('R')) { p.R = old.R || nounByH('친구'); const vs = M.verbsFor(tpl, D.words); p.V = vs.includes(old.V) ? old.V : vs[0]; const cs = M.candidates(tpl, 'O', D.words, p.V); p.O = cs.includes(old.O) ? old.O : cs[0]; }
     if (tpl.id === 'neg' && (!p.V || !p.V.takes)) { p.V = verbByH('마시다'); p.O = nounByH('커피'); }
     if (tpl.id === 'exist' && p.S.h === '저') p.S = nounByH('고양이');
     if (tpl.id === 'want' && !p.S.ga) p.S = nounByH('저');
-    const sc = M.candidates(tpl, 'S', D.words); if (!sc.includes(p.S) && !p.S.free) p.S = sc[0] || p.S;
+    const sc = M.candidates(tpl, 'S', D.words, p.V); if (!sc.includes(p.S) && !p.S.free) p.S = sc[0] || p.S;
     st.picks = p; if (!tpl.tenses.includes(st.tense)) st.tense = tpl.tenses[0];
     $('#frames').hidden = true; renderBuilder();
   }
   function optionsFor(k) {
-    if (k === 'S') return M.candidates(st.tpl, 'S', D.words);
+    if (k === 'S') return M.candidates(st.tpl, 'S', D.words, st.picks.V);
     if (k === 'O') return M.candidates(st.tpl, 'O', D.words, st.picks.V);
     if (k === 'D') return M.candidates(st.tpl, 'D', D.words);
     if (k === 'L') return M.candidates(st.tpl, 'L', D.words);
-    if (['T', 'H', 'W', 'R'].includes(k)) return M.candidates(st.tpl, k, D.words);
+    if (['T', 'H', 'W', 'R'].includes(k)) return M.candidates(st.tpl, k, D.words, st.picks.V, st.picks);
     if (k === 'V' || k === 'VW' || k === 'NV' || k === 'HV') return M.verbsFor(st.tpl, D.words, k === 'VW' ? 'want' : st.tense);
     if (k === 'A') return M.adjectivesFor(st.picks.S, D.words);
     return [];
@@ -270,14 +281,11 @@
   function predJa(kind, w, short) {
     if (kind === 'A') return st.tense === 'past' ? w.ja_past : w.ja_pres;
     const neg = st.tpl.id === 'neg';
-    let f = st.tense === 'want' ? w.ja_want : st.tense === 'past' ? w.ja_past : w.ja_pres;
-    if (!f) return null;
-    if (st.tense === 'fut') f = w.ja_pres.replace(/ます$/, 'ます（予定）');
-    if (st.tense === 'can') f = w.ja_pres.replace(/ます$/, '') + 'ことができます'; if (st.tense === 'must') f = w.ja_pres.replace(/ます$/, '') + 'なければなりません'; if (st.tense === 'please') f = w.ja_pres.replace(/ます$/, '') + 'てください';
-    if (neg) f = f.replace(/ます$/, 'ません').replace(/ました$/, 'ませんでした');
-    if (st.tpl.id === 'have') f = w.h === '없다' ? (st.tense === 'past' ? 'ありませんでした' : 'ありません') : (st.tense === 'past' ? 'ありました' : 'あります');
-    if (st.tpl.id === 'exist' && w.h === '있다') { const S = st.picks.S; f = S && (S.kind === 'person' || S.kind === 'animal') ? (st.tense === 'past' ? 'いました' : 'います') : (st.tense === 'past' ? 'ありました' : 'あります'); }
-    return f;
+    if (neg) return st.tense === 'past' ? (w.ja_neg_past || null) : (w.ja_neg || null);
+    if (st.tpl.id === 'have') return w.h === '없다' ? (st.tense === 'past' ? 'ありませんでした' : 'ありません') : (st.tense === 'past' ? 'ありました' : 'あります');
+    if (st.tpl.id === 'exist' && w.h === '있다') { const S = st.picks.S; return S && (S.kind === 'person' || S.kind === 'animal') ? (st.tense === 'past' ? 'いました' : 'います') : (st.tense === 'past' ? 'ありました' : 'あります'); }
+    const map = { pres: w.ja_pres, past: w.ja_past, want: w.ja_want, fut: w.ja_fut, can: w.ja_can, must: w.ja_must, please: w.ja_please };
+    return map[st.tense] || null;
   }
   // Vietnamese predicate: no conjugation; tense/mood particles before the verb.
   function predVi(kind, w) {
@@ -293,23 +301,26 @@
   function predEn(kind, w, S, short) {
     const first = S === 'I', plural = /^(clothes|shoes|glasses|flowers|vegetables|eggs|strawberries|the news)$/.test(S);
     if (kind === 'A') { const be = st.tense === 'past' ? (first || !plural ? 'was' : 'were') : (first ? 'am' : plural ? 'are' : 'is'); return short ? (w.en_adj || mean(w).replace(/^to be /, '')) : `${be} ${w.en_adj || mean(w).replace(/^to be /, '')}`; }
-    const base = w.en_base || mean(w).replace(/^to /, ''), s3 = w.en_3s || base, past = w.en_past || base;
+    // 하다 + activity noun: use the noun's own predicate gloss (운동을 해요 → exercise)
+    const O = st.picks.O; const doForms = w.h === '하다' && O && O.en_do ? O.en_do : null;
+    const base = doForms ? doForms[0] : (w.en_base || mean(w).replace(/^to /, '')), s3 = doForms ? doForms[1] : (w.en_3s || base), past = doForms ? doForms[2] : (w.en_past || base);
     if (st.tpl.id === 'have' && w.en_have) return st.tense === 'past' ? w.en_have[2] : (first || plural ? w.en_have[0] : w.en_have[1]);
     if (st.tpl.id === 'neg') return st.tense === 'past' ? "didn't " + base : (first || plural ? "don't " : "doesn't ") + base;
     if (st.tense === 'want') return (first || plural ? 'want to ' : 'wants to ') + base;
     if (st.tense === 'fut') return 'will ' + base;
     if (st.tense === 'can') return 'can ' + base; if (st.tense === 'must') return (first || plural ? 'have to ' : 'has to ') + base; if (st.tense === 'please') return 'Please ' + base;
+    if (w.h === '있다' || w.h === '없다') { const be = st.tense === 'past' ? (plural ? 'were' : 'was') : (first ? 'am' : plural ? 'are' : 'is'); return short ? (w.h === '없다' ? be + ' not at' : be + ' at') : (w.h === '없다' ? be + ' not' : be); }
     if (st.tense === 'past') return past;
-    if (w.h === '있다' || w.h === '없다') { const be = first ? 'am' : plural ? 'are' : 'is'; return short ? (w.h === '없다' ? be + ' not at' : be + ' at') : (w.h === '없다' ? be + ' not' : be); }
     return first || plural ? base : s3;
   }
   function gloss(a) {
     const p = st.picks, m = x => x ? ((LANG === 'en' && x.en_g) || mean(x)).replace(/^to /, '').replace(/ ?[（(].*?[)）]$/, '') : '';
     if (LANG === 'ja') {
-      const V = p.A ? predJa('A', p.A) : (p.V ? predJa('V', p.V) : '');
+      let V = p.A ? predJa('A', p.A) : (p.V ? predJa('V', p.V) : '');
       if (V === null) return '';
+      const jaDo = p.V && p.V.h === '하다' && p.O && p.O.ja_do && st.tense === 'pres' && st.tpl.id !== 'neg';
       const op = p.V && p.V.ja_p ? p.V.ja_p : 'を';
-      return [p.T && m(p.T) + (p.T.tp === 'none' ? '' : 'に'), p.S && st.tense !== 'please' && m(p.S) + (st.judges.SP && st.judges.SP.choice && /^(이|가)$/.test(st.judges.SP.choice) ? 'が' : 'は'), p.W && m(p.W) + 'と', p.R && m(p.R) + 'に', p.H && m(p.H) + 'が', p.L && m(p.L) + (p.V && p.V.locBoth ? 'に' : st.tpl.op === 'loc' || st.tpl.op2 ? 'で' : 'に'), p.D && m(p.D) + 'に', p.O && m(p.O) + op, V].filter(Boolean).join('') + '。';
+      return [p.T && m(p.T) + (p.T.tp === 'none' ? '' : 'に'), p.S && st.tense !== 'please' && m(p.S) + (st.judges.SP && st.judges.SP.choice && /^(이|가)$/.test(st.judges.SP.choice) ? 'が' : 'は'), p.W && m(p.W) + 'と', p.R && m(p.R) + 'に', p.H && m(p.H) + 'が', p.L && m(p.L) + (p.V && p.V.locBoth ? 'に' : st.tpl.op === 'loc' || st.tpl.op2 ? 'で' : 'に'), p.D && m(p.D) + 'に', jaDo ? '' : (p.O && m(p.O) + op), jaDo ? p.O.ja_do : V].filter(Boolean).join('') + '。';
     }
     if (LANG === 'vi') {
       const mv = x => x ? (x.vi || mean(x)).replace(/ \(.*\)$/, '') : '';
@@ -322,7 +333,7 @@
     const S = p.S && st.tense !== 'please' ? m(p.S) : '';
     const V = p.A ? predEn('A', p.A, S) : (p.V ? predEn('V', p.V, S || 'you') : '');
     const T = p.T ? (p.T.tp === 'none' ? m(p.T) : ({ '아침': 'in the morning', '저녁': 'in the evening', '밤': 'at night', '점심': 'at lunch' }[p.T.h] || 'on ' + m(p.T))) : '';
-    const O = p.O ? m(p.O) : '';
+    const O = p.O && !(p.V && p.V.h === '하다' && p.O.en_do) ? m(p.O) : '';
     const out = [S, V, p.H && m(p.H), O, p.R && 'to ' + m(p.R), p.W && 'with ' + m(p.W), p.D && (p.D.h === '집' ? 'home' : 'to ' + m(p.D)), p.L && (st.tpl.id === 'live' ? 'in ' : 'at ') + m(p.L), T].filter(Boolean).join(' ');
     return out.charAt(0).toUpperCase() + out.slice(1) + '.';
   }
@@ -331,8 +342,8 @@
     closePicker();
     const opts = optionsFor(k); if (!opts.length) return;
     const sh = el('div', 'picker'); sh.id = 'picker';
-    const isV = k === 'V' || k === 'VW' || k === 'A';
-    opts.forEach(o => { const b = el('button', 'pk', `<b lang="ko">${esc(isV ? M.verbForm(o, k === 'VW' ? 'want' : st.tense) : o.h)}</b><small>${esc(mean(o))}</small>`); b.type = 'button'; b.onclick = () => { setPick(k, o); closePicker(); }; sh.appendChild(b); });
+    const isV = ['V', 'VW', 'A', 'HV', 'NV'].includes(k);
+    opts.forEach(o => { const b = el('button', 'pk', `<b lang="ko">${esc(isV ? (k === 'NV' ? '안 ' : '') + (M.verbForm(o, k === 'VW' ? 'want' : st.tense) || o.pres) : o.h)}</b><small>${esc(mean(o))}</small>`); b.type = 'button'; b.onclick = () => { setPick(k, o); closePicker(); }; sh.appendChild(b); });
     anchor.appendChild(sh);
     setTimeout(() => document.addEventListener('click', outside, { once: true }), 0);
     function outside(e) { if (!sh.contains(e.target)) closePicker(); else document.addEventListener('click', outside, { once: true }); }
@@ -369,7 +380,8 @@
       if (!st.picks.S) { pickWord(n.free ? nounByH('커피') : n); if (!n.free) { hint.textContent = ''; inp.value = ''; return; } }
       // The word goes into the first slot whose role it actually has (object → have-word → destination → location → subject); a person is never a 에-destination.
       const slotFor = { O: 'obj', H: 'have', D: 'dest', L: 'loc', R: 'to', W: 'with', T: 'time', S: 'subj' };
-      const k = ['O', 'H', 'D', 'L', 'R', 'T', 'S'].find(x => st.tpl.slots.includes(x) && n.roles.includes(slotFor[x]));
+      const order = st.tpl.id === 'with' && (n.kind === 'person') ? ['W', 'O', 'H', 'D', 'L', 'R', 'T', 'S'] : ['O', 'H', 'D', 'L', 'R', 'W', 'T', 'S'];
+      const k = order.find(x => st.tpl.slots.includes(x) && (x === 'W' ? n.kind === 'person' && !n.ga : n.roles.includes(slotFor[x])));
       if (!k) { hint.textContent = t('free_hint_unknown', { w: n.h }); return; }
       if (k === 'O' && st.picks.V && !M.compatible(st.picks.V, n) && !n.free) { const v = M.verbsFor(st.tpl, D.words, st.tense).find(v => M.compatible(v, n)); if (v) st.picks.V = v; else { hint.textContent = t('free_hint_unknown', { w: n.h }); return; } }
       if (k === 'S' && !M.candidates(st.tpl, 'S', D.words).includes(n) && !n.free) { hint.textContent = t('free_hint_unknown', { w: n.h }); return; }
@@ -419,14 +431,14 @@
   function renderDrill() {
     const box = $('#drill'); if (!drill.items.length) { box.hidden = true; return; }
     box.hidden = false;
-    if (drill.i >= drill.items.length) { box.innerHTML = `<div class="ph"><span>${t('drill_h')}</span></div><p class="drill-done">${t('drill_done', { n: drill.score })}</p><div class="acts"><button type="button" class="btn ghost" id="drill-again">${t('drill_again')}</button><button type="button" class="btn" id="drill-close">${t('drill_close')}</button></div>`;
+    if (drill.i >= drill.items.length) { box.innerHTML = `<div class="ph"><span>${t('drill_h')}</span></div><p class="drill-done">${t('drill_done', { n: drill.score }).replace(/3/, drill.items.length)}</p><div class="acts"><button type="button" class="btn ghost" id="drill-again">${t('drill_again')}</button><button type="button" class="btn" id="drill-close">${t('drill_close')}</button></div>`;
       $('#drill-again').onclick = () => startDrill(drill.pk, drill.j); $('#drill-close').onclick = () => { drill.items = []; renderDrill(); }; return; }
     const it = drill.items[drill.i];
-    box.innerHTML = `<div class="ph"><span>${t('drill_h')}</span><small>${t('drill_q', { i: drill.i + 1 })}</small></div><p class="drill-s" lang="ko">${esc(it.before)} <b>${esc(it.noun.h)}<u>&nbsp;&nbsp;</u></b> ${esc(it.after)}</p><div class="p-opts"></div><div class="why" hidden></div>`;
+    box.innerHTML = `<div class="ph"><span>${t('drill_h')}</span><small>${t('drill_q', { i: drill.i + 1 }).replace(/3/, drill.items.length)}</small></div><p class="drill-s" lang="ko">${esc(it.before)} <b>${esc(it.noun.h)}<u>&nbsp;&nbsp;</u></b> ${esc(it.after)}</p><div class="p-opts"></div><div class="why" hidden></div>`;
     const opts = $('.p-opts', box);
     it.opts.forEach(o => { const b = el('button', 'p-opt' + (o === '∅' ? ' none' : ''), o === '∅' ? t('none_label') : o); b.type = 'button'; b.onclick = () => {
       const r = it.judge(o); $$('.p-opt', box).forEach(x => x.className = 'p-opt'); b.classList.add('on', r.grade);
-      const w = $('.why', box); w.hidden = false; w.className = 'why ' + r.grade; w.innerHTML = `<span class="tag">${t(r.grade === 'ok' ? 'correct' : r.grade === 'soft' ? 'soft' : 'wrong')}</span><p>${esc(r.why)}</p><button type="button" class="link" id="drill-next">${drill.i + 1 < drill.items.length ? t('drill_q', { i: drill.i + 2 }) + ' →' : t('drill_done', { n: drill.score + (r.grade === 'ok' ? 1 : 0) })}</button>`;
+      const w = $('.why', box); w.hidden = false; w.className = 'why ' + r.grade; w.innerHTML = `<span class="tag">${t(r.grade === 'ok' ? 'correct' : r.grade === 'soft' ? 'soft' : 'wrong')}</span><p>${esc(r.why)}</p><button type="button" class="link" id="drill-next">${drill.i + 1 < drill.items.length ? t('drill_q', { i: drill.i + 2 }).replace(/3/, drill.items.length) + ' →' : t('drill_done', { n: drill.score + (r.grade === 'ok' ? 1 : 0) }).replace(/3/, drill.items.length)}</button>`;
       if (r.grade === 'ok') drill.score++; $$('.p-opt', box).forEach(x => x.disabled = true);
       $('#drill-next').onclick = () => { drill.i++; renderDrill(); };
     }; opts.appendChild(b); });

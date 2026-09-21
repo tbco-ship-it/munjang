@@ -522,7 +522,8 @@
     "appearance",
     "content"
    ],
-   "vi": "sách"
+   "vi": "sách",
+   "send": true
   },
   {
    "h": "가방",
@@ -742,7 +743,8 @@
    "feat": [
     "content"
    ],
-   "vi": "ảnh"
+   "vi": "ảnh",
+   "send": true
   },
   {
    "h": "편지",
@@ -762,7 +764,8 @@
     "content",
     "phys"
    ],
-   "vi": "lá thư"
+   "vi": "lá thư",
+   "send": true
   },
   {
    "h": "집",
@@ -1297,7 +1300,13 @@
    "feat": [
     "activity"
    ],
-   "vi": "bóng chày"
+   "vi": "bóng chày",
+   "en_do": [
+    "play baseball",
+    "plays baseball",
+    "played baseball"
+   ],
+   "ja_do": "野球をします"
   },
   {
    "h": "교회",
@@ -1333,7 +1342,14 @@
    "feat": [
     "activity"
    ],
-   "vi": "nấu ăn"
+   "vi": "nấu ăn",
+   "learn": true,
+   "en_do": [
+    "cook",
+    "cooks",
+    "cooked"
+   ],
+   "ja_do": "料理します"
   },
   {
    "h": "태권도",
@@ -1350,7 +1366,14 @@
    "feat": [
     "activity"
    ],
-   "vi": "taekwondo"
+   "vi": "taekwondo",
+   "learn": true,
+   "en_do": [
+    "practice taekwondo",
+    "practices taekwondo",
+    "practiced taekwondo"
+   ],
+   "ja_do": "テコンドーをします"
   },
   {
    "h": "아침",
@@ -1644,7 +1667,8 @@
     "abstract",
     "count"
    ],
-   "vi": "tiền"
+   "vi": "tiền",
+   "send": true
   },
   {
    "h": "선물",
@@ -1672,7 +1696,8 @@
     "buy",
     "appearance"
    ],
-   "vi": "quà"
+   "vi": "quà",
+   "send": true
   },
   {
    "h": "꽃",
@@ -1698,7 +1723,8 @@
     "buy",
     "appearance"
    ],
-   "vi": "hoa"
+   "vi": "hoa",
+   "send": true
   },
   {
    "h": "우산",
@@ -1736,7 +1762,13 @@
    "feat": [
     "skill"
    ],
-   "vi": "bài tập về nhà"
+   "vi": "bài tập về nhà",
+   "en_do": [
+    "do homework",
+    "does homework",
+    "did homework"
+   ],
+   "ja_do": "宿題をします"
   },
   {
    "h": "약속",
@@ -2485,7 +2517,8 @@
     "content",
     "phys"
    ],
-   "vi": "email"
+   "vi": "email",
+   "send": true
   },
   {
    "h": "문자",
@@ -2505,7 +2538,8 @@
     "content",
     "phys"
    ],
-   "vi": "tin nhắn"
+   "vi": "tin nhắn",
+   "send": true
   },
   {
    "h": "일기",
@@ -2543,7 +2577,13 @@
     "activity",
     "content"
    ],
-   "vi": "trò chơi"
+   "vi": "trò chơi",
+   "en_do": [
+    "play games",
+    "plays games",
+    "played games"
+   ],
+   "ja_do": "ゲームをします"
   },
   {
    "h": "만화",
@@ -2594,7 +2634,14 @@
    "feat": [
     "activity"
    ],
-   "vi": "thể thao"
+   "vi": "thể thao",
+   "learn": true,
+   "en_do": [
+    "exercise",
+    "exercises",
+    "exercised"
+   ],
+   "ja_do": "運動します"
   },
   {
    "h": "수영",
@@ -2611,7 +2658,14 @@
    "feat": [
     "activity"
    ],
-   "vi": "bơi lội"
+   "vi": "bơi lội",
+   "learn": true,
+   "en_do": [
+    "swim",
+    "swims",
+    "swam"
+   ],
+   "ja_do": "泳ぎます"
   },
   {
    "h": "축구",
@@ -2628,7 +2682,13 @@
    "feat": [
     "activity"
    ],
-   "vi": "bóng đá"
+   "vi": "bóng đá",
+   "en_do": [
+    "play soccer",
+    "plays soccer",
+    "played soccer"
+   ],
+   "ja_do": "サッカーをします"
   },
   {
    "h": "피아노",
@@ -2645,7 +2705,8 @@
    "feat": [
     "skill"
    ],
-   "vi": "piano"
+   "vi": "piano",
+   "learn": true
   },
   {
    "h": "기타",
@@ -2662,7 +2723,8 @@
    "feat": [
     "skill"
    ],
-   "vi": "ghi-ta"
+   "vi": "ghi-ta",
+   "learn": true
   },
   {
    "h": "춤",
@@ -2679,7 +2741,14 @@
    "feat": [
     "activity"
    ],
-   "vi": "nhảy múa"
+   "vi": "nhảy múa",
+   "learn": true,
+   "en_do": [
+    "dance",
+    "dances",
+    "danced"
+   ],
+   "ja_do": "踊ります"
   },
   {
    "h": "중국어",
@@ -3192,7 +3261,13 @@
    "feat": [
     "activity"
    ],
-   "vi": "du lịch"
+   "vi": "du lịch",
+   "en_do": [
+    "travel",
+    "travels",
+    "traveled"
+   ],
+   "ja_do": "旅行します"
   },
   {
    "h": "사람",
@@ -3362,7 +3437,14 @@
    "can": "먹을 수 있어요",
    "must": "먹어야 해요",
    "please": "드세요",
-   "vi": "ăn"
+   "vi": "ăn",
+   "animal": true,
+   "ja_fut": "食べます（予定）",
+   "ja_can": "食べることができます",
+   "ja_must": "食べなければなりません",
+   "ja_please": "食べてください",
+   "ja_neg": "食べません",
+   "ja_neg_past": "食べませんでした"
   },
   {
    "h": "마시다",
@@ -3387,7 +3469,14 @@
    "can": "마실 수 있어요",
    "must": "마셔야 해요",
    "please": "드세요",
-   "vi": "uống"
+   "vi": "uống",
+   "animal": true,
+   "ja_fut": "飲みます（予定）",
+   "ja_can": "飲むことができます",
+   "ja_must": "飲まなければなりません",
+   "ja_please": "飲んでください",
+   "ja_neg": "飲みません",
+   "ja_neg_past": "飲みませんでした"
   },
   {
    "h": "사다",
@@ -3414,7 +3503,13 @@
    "can": "살 수 있어요",
    "must": "사야 해요",
    "please": "사세요",
-   "vi": "mua"
+   "vi": "mua",
+   "ja_fut": "買います（予定）",
+   "ja_can": "買うことができます",
+   "ja_must": "買わなければなりません",
+   "ja_please": "買ってください",
+   "ja_neg": "買いません",
+   "ja_neg_past": "買いませんでした"
   },
   {
    "h": "보다",
@@ -3441,7 +3536,14 @@
    "can": "볼 수 있어요",
    "must": "봐야 해요",
    "please": "보세요",
-   "vi": "xem"
+   "vi": "xem",
+   "animal": true,
+   "ja_fut": "見ます（予定）",
+   "ja_can": "見ることができます",
+   "ja_must": "見なければなりません",
+   "ja_please": "見てください",
+   "ja_neg": "見ません",
+   "ja_neg_past": "見ませんでした"
   },
   {
    "h": "읽다",
@@ -3466,7 +3568,13 @@
    "can": "읽을 수 있어요",
    "must": "읽어야 해요",
    "please": "읽으세요",
-   "vi": "đọc"
+   "vi": "đọc",
+   "ja_fut": "読みます（予定）",
+   "ja_can": "読むことができます",
+   "ja_must": "読まなければなりません",
+   "ja_please": "読んでください",
+   "ja_neg": "読みません",
+   "ja_neg_past": "読みませんでした"
   },
   {
    "h": "듣다",
@@ -3491,7 +3599,13 @@
    "can": "들을 수 있어요",
    "must": "들어야 해요",
    "please": "들으세요",
-   "vi": "nghe"
+   "vi": "nghe",
+   "ja_fut": "聞きます（予定）",
+   "ja_can": "聞くことができます",
+   "ja_must": "聞かなければなりません",
+   "ja_please": "聞いてください",
+   "ja_neg": "聞きません",
+   "ja_neg_past": "聞きませんでした"
   },
   {
    "h": "쓰다",
@@ -3516,7 +3630,13 @@
    "can": "쓸 수 있어요",
    "must": "써야 해요",
    "please": "쓰세요",
-   "vi": "viết"
+   "vi": "viết",
+   "ja_fut": "書きます（予定）",
+   "ja_can": "書くことができます",
+   "ja_must": "書かなければなりません",
+   "ja_please": "書いてください",
+   "ja_neg": "書きません",
+   "ja_neg_past": "書きませんでした"
   },
   {
    "h": "배우다",
@@ -3528,7 +3648,7 @@
    "want": "배우고 싶어요",
    "takes": [
     "skill",
-    "activity"
+    "learn"
    ],
    "level": 1,
    "fut": "배울 거예요",
@@ -3542,7 +3662,13 @@
    "can": "배울 수 있어요",
    "must": "배워야 해요",
    "please": "배우세요",
-   "vi": "học"
+   "vi": "học",
+   "ja_fut": "習います（予定）",
+   "ja_can": "習うことができます",
+   "ja_must": "習わなければなりません",
+   "ja_please": "習ってください",
+   "ja_neg": "習いません",
+   "ja_neg_past": "習いませんでした"
   },
   {
    "h": "공부하다",
@@ -3567,7 +3693,13 @@
    "can": "공부할 수 있어요",
    "must": "공부해야 해요",
    "please": "공부하세요",
-   "vi": "học (bài)"
+   "vi": "học (bài)",
+   "ja_fut": "勉強します（予定）",
+   "ja_can": "勉強することができます",
+   "ja_must": "勉強しなければなりません",
+   "ja_please": "勉強してください",
+   "ja_neg": "勉強しません",
+   "ja_neg_past": "勉強しませんでした"
   },
   {
    "h": "만나다",
@@ -3592,7 +3724,13 @@
    "can": "만날 수 있어요",
    "must": "만나야 해요",
    "please": "만나세요",
-   "vi": "gặp"
+   "vi": "gặp",
+   "ja_fut": "会います（予定）",
+   "ja_can": "会うことができます",
+   "ja_must": "会わなければなりません",
+   "ja_please": "会ってください",
+   "ja_neg": "会いません",
+   "ja_neg_past": "会いませんでした"
   },
   {
    "h": "좋아하다",
@@ -3625,7 +3763,14 @@
    "can": null,
    "must": null,
    "please": null,
-   "vi": "thích"
+   "vi": "thích",
+   "animal": true,
+   "ja_fut": "好きです",
+   "ja_can": null,
+   "ja_must": null,
+   "ja_please": null,
+   "ja_neg": "好きではありません",
+   "ja_neg_past": "好きではありませんでした"
   },
   {
    "h": "가다",
@@ -3648,7 +3793,14 @@
    "can": "갈 수 있어요",
    "must": "가야 해요",
    "please": "가세요",
-   "vi": "đi"
+   "vi": "đi",
+   "animal": true,
+   "ja_fut": "行きます（予定）",
+   "ja_can": "行くことができます",
+   "ja_must": "行かなければなりません",
+   "ja_please": "行ってください",
+   "ja_neg": "行きません",
+   "ja_neg_past": "行きませんでした"
   },
   {
    "h": "오다",
@@ -3671,7 +3823,14 @@
    "can": "올 수 있어요",
    "must": "와야 해요",
    "please": "오세요",
-   "vi": "đến"
+   "vi": "đến",
+   "animal": true,
+   "ja_fut": "来ます（予定）",
+   "ja_can": "来ることができます",
+   "ja_must": "来なければなりません",
+   "ja_please": "来てください",
+   "ja_neg": "来ません",
+   "ja_neg_past": "来ませんでした"
   },
   {
    "h": "있다",
@@ -3689,9 +3848,9 @@
    "ja_past": "ありました／いました",
    "ja_want": null,
    "ja_p": "が",
-   "en_base": "am at",
-   "en_3s": "is at",
-   "en_past": "was at",
+   "en_base": "am",
+   "en_3s": "is",
+   "en_past": "was",
    "en_have": [
     "have",
     "has",
@@ -3700,7 +3859,14 @@
    "can": "있을 수 있어요",
    "must": "있어야 해요",
    "please": "계세요",
-   "vi": "có / ở"
+   "vi": "có / ở",
+   "animal": true,
+   "ja_fut": "あります／います（予定）",
+   "ja_can": "いることができます",
+   "ja_must": "いなければなりません",
+   "ja_please": "いてください",
+   "ja_neg": "ありません／いません",
+   "ja_neg_past": "ありませんでした／いませんでした"
   },
   {
    "h": "살다",
@@ -3724,7 +3890,14 @@
    "can": "살 수 있어요",
    "must": "살아야 해요",
    "please": "사세요",
-   "vi": "sống"
+   "vi": "sống",
+   "animal": true,
+   "ja_fut": "住みます（予定）",
+   "ja_can": "住むことができます",
+   "ja_must": "住まなければなりません",
+   "ja_please": "住んでください",
+   "ja_neg": "住みません",
+   "ja_neg_past": "住みませんでした"
   },
   {
    "h": "일하다",
@@ -3747,7 +3920,13 @@
    "can": "일할 수 있어요",
    "must": "일해야 해요",
    "please": "일하세요",
-   "vi": "làm việc"
+   "vi": "làm việc",
+   "ja_fut": "働きます（予定）",
+   "ja_can": "働くことができます",
+   "ja_must": "働かなければなりません",
+   "ja_please": "働いてください",
+   "ja_neg": "働きません",
+   "ja_neg_past": "働きませんでした"
   },
   {
    "h": "없다",
@@ -3765,9 +3944,9 @@
    "ja_past": "ありませんでした／いませんでした",
    "ja_want": null,
    "ja_p": "が",
-   "en_base": "am not at",
-   "en_3s": "is not at",
-   "en_past": "was not at",
+   "en_base": "am not",
+   "en_3s": "is not",
+   "en_past": "was not",
    "en_have": [
     "don't have",
     "doesn't have",
@@ -3776,7 +3955,14 @@
    "can": null,
    "must": null,
    "please": null,
-   "vi": "không có"
+   "vi": "không có",
+   "animal": true,
+   "ja_fut": "ありません／いません",
+   "ja_can": null,
+   "ja_must": null,
+   "ja_please": null,
+   "ja_neg": "あります／います",
+   "ja_neg_past": "ありました／いました"
   },
   {
    "h": "주다",
@@ -3804,7 +3990,13 @@
    "can": "줄 수 있어요",
    "must": "줘야 해요",
    "please": "주세요",
-   "vi": "đưa / tặng"
+   "vi": "đưa / tặng",
+   "ja_fut": "あげます（予定）",
+   "ja_can": "あげることができます",
+   "ja_must": "あげなければなりません",
+   "ja_please": "ください",
+   "ja_neg": "あげません",
+   "ja_neg_past": "あげませんでした"
   },
   {
    "h": "보내다",
@@ -3816,8 +4008,7 @@
    "want": "보내고 싶어요",
    "fut": "보낼 거예요",
    "takes": [
-    "write",
-    "item"
+    "send"
    ],
    "to": true,
    "level": 1,
@@ -3831,7 +4022,13 @@
    "can": "보낼 수 있어요",
    "must": "보내야 해요",
    "please": "보내세요",
-   "vi": "gửi"
+   "vi": "gửi",
+   "ja_fut": "送ります（予定）",
+   "ja_can": "送ることができます",
+   "ja_must": "送らなければなりません",
+   "ja_please": "送ってください",
+   "ja_neg": "送りません",
+   "ja_neg_past": "送りませんでした"
   },
   {
    "h": "전화하다",
@@ -3855,7 +4052,13 @@
    "can": "전화할 수 있어요",
    "must": "전화해야 해요",
    "please": "전화하세요",
-   "vi": "gọi điện"
+   "vi": "gọi điện",
+   "ja_fut": "電話します（予定）",
+   "ja_can": "電話することができます",
+   "ja_must": "電話しなければなりません",
+   "ja_please": "電話してください",
+   "ja_neg": "電話しません",
+   "ja_neg_past": "電話しませんでした"
   },
   {
    "h": "타다",
@@ -3880,7 +4083,13 @@
    "can": "탈 수 있어요",
    "must": "타야 해요",
    "please": "타세요",
-   "vi": "đi (xe)"
+   "vi": "đi (xe)",
+   "ja_fut": "乗ります（予定）",
+   "ja_can": "乗ることができます",
+   "ja_must": "乗らなければなりません",
+   "ja_please": "乗ってください",
+   "ja_neg": "乗りません",
+   "ja_neg_past": "乗りませんでした"
   },
   {
    "h": "하다",
@@ -3892,7 +4101,7 @@
    "want": "하고 싶어요",
    "fut": "할 거예요",
    "takes": [
-    "activity"
+    "do"
    ],
    "level": 1,
    "ja_pres": "します",
@@ -3905,7 +4114,13 @@
    "can": "할 수 있어요",
    "must": "해야 해요",
    "please": "하세요",
-   "vi": "làm"
+   "vi": "làm",
+   "ja_fut": "します（予定）",
+   "ja_can": "することができます",
+   "ja_must": "しなければなりません",
+   "ja_please": "してください",
+   "ja_neg": "しません",
+   "ja_neg_past": "しませんでした"
   },
   {
    "h": "치다",
@@ -3930,7 +4145,13 @@
    "can": "칠 수 있어요",
    "must": "쳐야 해요",
    "please": "치세요",
-   "vi": "chơi (đàn)"
+   "vi": "chơi (đàn)",
+   "ja_fut": "弾きます（予定）",
+   "ja_can": "弾くことができます",
+   "ja_must": "弾かなければなりません",
+   "ja_please": "弾いてください",
+   "ja_neg": "弾きません",
+   "ja_neg_past": "弾きませんでした"
   },
   {
    "h": "찍다",
@@ -3955,7 +4176,13 @@
    "can": "찍을 수 있어요",
    "must": "찍어야 해요",
    "please": "찍으세요",
-   "vi": "chụp"
+   "vi": "chụp",
+   "ja_fut": "撮ります（予定）",
+   "ja_can": "撮ることができます",
+   "ja_must": "撮らなければなりません",
+   "ja_please": "撮ってください",
+   "ja_neg": "撮りません",
+   "ja_neg_past": "撮りませんでした"
   }
  ],
  "adjectives": [

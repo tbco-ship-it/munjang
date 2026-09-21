@@ -271,19 +271,20 @@
     "en": "A text message to a friend",
     "ja": "友達へのメッセージ"
    },
-   "text": "민수야, 나 지금 회사 일이 늦게 끝나서 약속 시간에 (  ㉠  ). 30분 정도 늦을 것 같아. 미안하지만 조금만 (  ㉡  )? 끝나면 바로 갈게.",
+   "text": "민수야, 나 지금 회사 일이 늦게 끝나서 (  ㉠  ). 30분 정도 늦을 것 같아. 미안하지만 조금만 (  ㉡  )? 끝나면 바로 갈게.",
    "blanks": [
     {
      "k": "㉠",
      "accept": [
-      "못 갈 것 같아",
-      "못 갈 것 같아요",
-      "갈 수 없을 것 같아",
+      "약속 시간에 맞춰 못 갈 것 같아",
+      "맞춰 못 갈 것 같아",
+      "맞춰 갈 수 없을 것 같아",
       "늦을 것 같아",
-      "맞춰 갈 수 없을 것 같아"
+      "제시간에 못 갈 것 같아",
+      "늦게 도착할 것 같아"
      ],
-     "pattern": "(못 갈 것 같|갈 수 없을 것 같|늦을 것 같)",
-     "model": "못 갈 것 같아",
+     "pattern": "(맞춰 (못 갈|갈 수 없을) 것 같|늦을 것 같|제시간에 못 갈 것 같|늦게 도착할 것 같)",
+     "model": "약속 시간에 맞춰 못 갈 것 같아",
      "grammar": "-(으)ㄹ 것 같다 (I think / probably)",
      "grammar_ja": "-(으)ㄹ 것 같다（〜しそうだ・〜と思う）"
     },
@@ -429,7 +430,7 @@
     "en": "A graduation ceremony",
     "ja": "卒業式の案内"
    },
-   "text": "졸업식 안내\n\n한국어 교육원 2026년 가을 학기 졸업식을 다음과 같이 (  ㉠  ). 날짜: 12월 12일 금요일 오후 2시. 장소: 본관 3층 강당. 졸업생 가족도 함께 (  ㉡  ). 많은 참석 부탁드립니다.",
+   "text": "졸업식 안내\n\n한국어 교육원 2026년 가을 학기 졸업식을 다음과 같이 (  ㉠  ). 날짜: 12월 11일 금요일 오후 2시. 장소: 본관 3층 강당. 졸업생 가족도 함께 (  ㉡  ). 많은 참석 부탁드립니다.",
    "blanks": [
     {
      "k": "㉠",
@@ -477,7 +478,6 @@
       "보시면",
       "쓰시면",
       "읽으시면",
-      "보고 계시면 말고요",
       "사용하시면"
      ],
      "pattern": "(보시면|쓰시면|읽으시면|사용하시면)$",
@@ -589,7 +589,7 @@
     "en": "Reading aloud",
     "ja": "音読"
    },
-   "text": "외국어를 배울 때 소리 내어 읽는 것은 큰 도움이 된다. 눈으로만 읽으면 발음을 확인할 수 (  ㉠  ) 소리 내어 읽으면 자신의 발음을 직접 들을 수 있기 때문이다. 따라서 발음을 (  ㉡  ) 매일 조금씩이라도 소리 내어 읽는 것이 좋다.",
+   "text": "외국어를 배울 때 소리 내어 읽는 것은 큰 도움이 된다. 눈으로만 읽으면 발음을 확인할 수 (  ㉠  ) 소리 내어 읽으면 자신의 발음을 직접 들을 수 있기 때문이다. 따라서 (  ㉡  ) 매일 조금씩이라도 소리 내어 읽는 것이 좋다.",
    "blanks": [
     {
      "k": "㉠",
@@ -606,15 +606,18 @@
     {
      "k": "㉡",
      "accept": [
+      "발음을 개선하려면",
+      "발음을 더 정확하게 하려면",
       "좋게 하려면",
       "잘하려면",
       "연습하려면",
       "고치려면",
       "좋게 하고 싶으면",
-      "잘하고 싶으면"
+      "잘하고 싶으면",
+      "개선하려면"
      ],
      "pattern": "(려면|고 싶으면)$",
-     "model": "좋게 하려면",
+     "model": "발음을 개선하려면",
      "grammar": "-(으)려면 (if you intend to …)",
      "grammar_ja": "-(으)려면（〜しようとするなら）"
     }
@@ -909,7 +912,7 @@
     "en": "Greeting neighbors",
     "ja": "隣人へのあいさつ"
    },
-   "text": "아파트에 사는 사람들은 이웃과 이야기를 나눌 기회가 적다. 그러나 이웃과 인사만 잘해도 생활이 훨씬 (  ㉠  ). 예를 들어 여행을 갈 때 이웃에게 집을 부탁할 수도 있고, 어려운 일이 생겼을 때 도움을 (  ㉡  ). 그러므로 이웃을 만나면 먼저 인사를 해 보자.",
+   "text": "아파트에 사는 사람들은 이웃과 이야기를 나눌 기회가 적다. 그러나 이웃과 인사만 잘해도 생활이 훨씬 (  ㉠  ). 예를 들어 여행을 갈 때 이웃에게 집을 봐 달라고 부탁할 수도 있고, 어려운 일이 생겼을 때 도움을 (  ㉡  ). 그러므로 이웃을 만나면 먼저 인사를 해 보자.",
    "blanks": [
     {
      "k": "㉠",
@@ -985,20 +988,20 @@
  "prompts": {
   "53": [
    {
-    "en": "Describe the chart: “Reasons for learning Korean among foreign students (2025)” — K-pop/drama 42%, work 28%, study abroad 20%, other 10%. State the survey, the biggest reason, compare it with the second, and add one sentence on what this suggests. 200–300 characters.",
-    "ja": "グラフ「外国人留学生が韓国語を学ぶ理由（2025）」— K-pop・ドラマ 42%、仕事 28%、留学 20%、その他 10%。調査の紹介、最大の理由、2位との比較、示唆を1文。200〜300字。"
+    "en": "(Fictional practice data) Describe the chart: “Reasons for learning Korean among foreign students (2025)” — K-pop/drama 42%, work 28%, study abroad 20%, other 10%. State the survey, the biggest reason, compare it with the second, and add one sentence on what this suggests. 200–300 characters.",
+    "ja": "（練習用の架空データ）グラフ「外国人留学生が韓国語を学ぶ理由（2025）」— K-pop・ドラマ 42%、仕事 28%、留学 20%、その他 10%。調査の紹介、最大の理由、2位との比較、示唆を1文。200〜300字。"
    },
    {
-    "en": "Describe the change: “Number of TOPIK examinees” 2015: 200,000 → 2025: 400,000. Explain the trend and give two likely reasons (Korean companies hiring abroad; K-content). 200–300 characters.",
-    "ja": "変化を説明：「TOPIK受験者数」2015年 20万人 → 2025年 40万人。傾向と考えられる理由を2つ（韓国企業の海外採用、Kコンテンツ）。200〜300字。"
+    "en": "(Fictional practice data) Describe the change: “Number of TOPIK examinees” 2015: 200,000 → 2025: 400,000. Explain the trend and give two likely reasons (Korean companies hiring abroad; K-content). 200–300 characters.",
+    "ja": "（練習用の架空データ）変化を説明：「TOPIK受験者数」2015年 20万人 → 2025年 40万人。傾向と考えられる理由を2つ（韓国企業の海外採用、Kコンテンツ）。200〜300字。"
    },
    {
-    "en": "Describe the chart: “How foreign residents in Korea learn Korean (2025 survey, 1,000 people)” — language school 35%, online videos 30%, apps 25%, private tutor 10%. Introduce the survey, name the top method, compare with the second, and give one reason for the result. 200–300 characters.",
-    "ja": "グラフ「在韓外国人の韓国語学習方法（2025年、1,000人）」— 語学学校35%、オンライン動画30%、アプリ25%、個人教師10%。調査の紹介、1位、2位との比較、理由を1文。200〜300字。"
+    "en": "(Fictional practice data) Describe the chart: “How foreign residents in Korea learn Korean (survey of 1,000 people)” — language school 35%, online videos 30%, apps 25%, private tutor 10%. Introduce the survey, name the top method, compare with the second, and state the overall tendency the numbers show. 200–300 characters.",
+    "ja": "（練習用の架空データ）グラフ「在韓外国人の韓国語学習方法（1,000人調査）」— 語学学校35%、オンライン動画30%、アプリ25%、個人教師10%。調査の紹介、1位、2位との比較、数値から読める傾向を1文。200〜300字。"
    },
    {
-    "en": "Describe the change: “Number of Korean cafés” 2010: 12,000 → 2025: 100,000. State the change, the size of the increase, and two reasons (coffee culture, working/studying in cafés). 200–300 characters.",
-    "ja": "変化：「韓国のカフェ数」2010年 1万2千 → 2025年 10万。変化の内容と幅、理由2つ（コーヒー文化、カフェで仕事・勉強）。200〜300字。"
+    "en": "(Fictional practice data) Describe the change: “Number of Korean cafés” 2010: 12,000 → 2025: 100,000. State the change, the size of the increase, and two reasons (coffee culture, working/studying in cafés). 200–300 characters.",
+    "ja": "（練習用の架空データ）変化：「韓国のカフェ数」2010年 1万2千 → 2025年 10万。変化の内容と幅、理由2つ（コーヒー文化、カフェで仕事・勉強）。200〜300字。"
    }
   ],
   "54": [

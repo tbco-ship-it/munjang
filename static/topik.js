@@ -17,7 +17,7 @@
       const b = it.blanks[+f.dataset.i], v = f.querySelector('input').value.trim().replace(/\s+/g, ' ');
       const ok = b.accept.includes(v) || new RegExp(b.pattern).test(v);
       const w = f.querySelector('.why'); w.hidden = false; w.className = 'why ' + (ok ? 'ok' : 'no');
-      w.innerHTML = `<span class="tag">${ok ? t('correct') : t('wrong')}</span><p>${esc(ok ? t('topik_ok') : t('topik_no', { m: b.model }))}</p><p><b>${t('topik_model')}:</b> <span lang="ko">${esc(b.model)}</span> · <b>${t('topik_grammar')}:</b> ${esc(LANG === 'ja' ? b.grammar_ja : b.grammar)}</p>`;
+      w.innerHTML = `<span class="tag">${ok ? t('correct_pattern') : t('wrong')}</span><p>${esc(ok ? t('topik_ok') : t('topik_no', { m: b.model }))}</p><p><b>${t('topik_model')}:</b> <span lang="ko">${esc(b.model)}</span> · <b>${t('topik_grammar')}:</b> ${esc(LANG === 'ja' ? b.grammar_ja : b.grammar)}</p>`;
     });
   }
   $('#tk-next').onclick = () => { idx = (idx + 1) % D.items.length; renderItem(); };
@@ -27,7 +27,7 @@
   const ta = $('#tk-text'), sel = $('#tk-prompt');
   function fillPrompts() { sel.innerHTML = D.prompts[q].map((p, i) => `<option value="${i}">${q}-${i + 1}</option>`).join(''); showPrompt(); }
   function showPrompt() { const p = D.prompts[q][+sel.value || 0]; $('#tk-prompt-text').textContent = p[LANG] || p.en; }
-  document.querySelectorAll('[data-q]').forEach(b => b.onclick = () => { document.querySelectorAll('[data-q]').forEach(x => x.classList.toggle('on', x === b)); q = b.dataset.q; fillPrompts(); update(); });
+  document.querySelectorAll('[data-q]').forEach(b => b.onclick = () => { document.querySelectorAll('[data-q]').forEach(x => x.classList.toggle('on', x === b)); q = b.dataset.q; try { ta.value = localStorage.getItem('munjang.topik.' + q) || ''; } catch (e) { ta.value = ''; } fillPrompts(); update(); });
   sel.onchange = showPrompt;
   const COLS = 20;
   // 원고지 layout: paragraphs indent one square; a space never starts a line; punctuation that would start a line rides in the previous square.
@@ -46,7 +46,7 @@
         if (/[a-z0-9]/.test(ch)) { asciiBuf += ch; if (asciiBuf.length === 2) flush(); continue; }
         flush();
         if (ch === ' ') { if (row.length === 0) continue; push({ ch: '', kind: 'space' }); }
-        else if (/[.,!?。、！？]/.test(ch)) { if (row.length === 0 && rows.length) rows[rows.length - 1][COLS - 1].tail = ch; else push({ ch, kind: 'punct' }); }
+        else if (/[.,!?。、！？]/.test(ch)) { if (row.length === 0 && rows.length) rows[rows.length - 1][COLS - 1].tail = (rows[rows.length - 1][COLS - 1].tail || '') + ch; else push({ ch, kind: 'punct' }); if (/[!?！？]/.test(ch) && row.length) push({ ch: '', kind: 'space' }); }
         else push({ ch, kind: 'syl' });
       }
       flush();
@@ -54,7 +54,7 @@
     if (row.length) { while (row.length < COLS) row.push({ ch: '', kind: 'empty' }); rows.push(row); }
     return rows;
   }
-  function count(rows) { let n = 0; rows.forEach(r => r.forEach(c => { if (c.kind === 'syl' || c.kind === 'space' || c.kind === 'punct' || c.kind === 'indent') n++; if (c.tail) n++; })); return n; }
+  function count(rows) { let n = 0; rows.forEach(r => r.forEach(c => { if (c.kind === 'syl' || c.kind === 'space' || c.kind === 'punct' || c.kind === 'indent') n++; })); return n; } // 원고지 cells used; a tail shares its cell
   function update() {
     const rows = layout(ta.value), n = count(rows), [a, b] = D.targets[q];
     $('#tk-count').textContent = t('topik_count', { n }); $('#tk-range').textContent = t('topik_range', { a, b });
@@ -71,8 +71,8 @@
   fillPrompts(); update();
   $('#tk-print').onclick = () => window.print();
   // timer
-  let t0 = null, tick = null;
+  let acc = 0, t0 = null, tick = null; // acc = seconds accumulated while running; Stop pauses
   const fmt = s => String(Math.floor(s / 60)).padStart(2, '0') + ':' + String(s % 60).padStart(2, '0');
-  $('#tk-start').onclick = () => { if (tick) { clearInterval(tick); tick = null; $('#tk-start').textContent = t('topik_start'); return; } t0 = t0 || Date.now(); tick = setInterval(() => $('#tk-time').textContent = fmt(Math.floor((Date.now() - t0) / 1000)), 500); $('#tk-start').textContent = t('topik_stop'); };
-  $('#tk-reset').onclick = () => { clearInterval(tick); tick = null; t0 = null; $('#tk-time').textContent = '00:00'; $('#tk-start').textContent = t('topik_start'); };
+  $('#tk-start').onclick = () => { if (tick) { clearInterval(tick); tick = null; acc += Math.floor((Date.now() - t0) / 1000); $('#tk-start').textContent = t('topik_start'); return; } t0 = Date.now(); tick = setInterval(() => $('#tk-time').textContent = fmt(acc + Math.floor((Date.now() - t0) / 1000)), 500); $('#tk-start').textContent = t('topik_stop'); };
+  $('#tk-reset').onclick = () => { clearInterval(tick); tick = null; t0 = null; acc = 0; $('#tk-time').textContent = '00:00'; $('#tk-start').textContent = t('topik_start'); };
 })();

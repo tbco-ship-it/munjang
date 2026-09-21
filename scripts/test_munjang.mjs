@@ -100,7 +100,7 @@ for (const j of [...M.BASIC_CONSONANTS, ...M.BASIC_VOWELS]) {
 // sentence checker
 const chk = (s) => M.checkSentence(s, W, WHY);
 eq(chk('저는 커피를 마셔요.').verdict, 'ok', 'chk ok');
-eq(chk('저는 학교에서 가요.').notes.map(n => n.key), ['dest_wrong_loc'], 'chk 학교에서 가요');
+eq(chk('저는 학교에서 가요.').notes.map(n => n.key), ['chk_source'], 'chk 학교에서 가요 = possible source, not an error');
 eq(chk('저는 카페에 커피를 마셔요.').notes.map(n => n.key), ['loc_wrong_dest'], 'chk 카페에 마셔요');
 eq(chk('가방 을 사요.').notes.map(n => n.key), ['chk_space_particle'], 'chk bare particle');
 eq(chk('저는 한국어를 배우고싶어요.').notes.map(n => n.key), ['chk_want_space'], 'chk 고싶어요');
@@ -173,6 +173,33 @@ eq(/이\/가/.test(M.judgeOP(tpl('exist'), 'dest', noun('집'), verb('있다'), 
 eq(M.assemble(tpl('act'), {}).incomplete, true, 'assemble incomplete without S');
 eq(M.assemble(tpl('want'), { S: noun('저'), O: noun('커피'), V: verb('좋아하다') }).incomplete, true, 'assemble fails closed on missing want form');
 eq(M.judgeSP(tpl('act'), undefined, '는', WHY).grade, 'no', 'judgeSP survives undefined noun');
+
+// r2 review regressions
+eq(chk('저는 학교에서 왔어요.').notes.some(n => n.grade === 'no'), false, 'r2 #7 source 에서 not rejected');
+eq(chk('저는 학교에서 집에 가요.').notes.some(n => n.grade === 'no'), false, 'r2 #7 source + destination ok');
+eq(chk('저는 집에 살아요.').verdict, 'ok', 'r2 #8 살다 + 에');
+eq(chk('저는 서울로 가요.').verdict, 'ok', 'r2 #9 ㄹ + 로');
+eq(chk('저는 부산으로 가요.').verdict, 'ok', 'r2 #9 부산으로 ok');
+eq(chk('저는 서울으로 가요.').notes[0].fix, '서울로', 'r2 #9 서울으로 → 서울로');
+eq(chk('저는 학교에 가야 해요.').verdict, 'ok', 'r2 #10 compound must parsed');
+eq(chk('저는 집에 있어야 해요.').verdict, 'ok', 'r2 #10 있어야 해요');
+eq(chk('저는 학교에 갈 수 있어요.').verdict, 'ok', 'r2 #10 can parsed');
+eq(chk('학교에 가세요.').verdict, 'ok', 'r2 #10 please parsed');
+eq(chk('저는 친구에 선물을 줘요.').notes[0].fix, '친구에게', 'r2 #11 recipient fix');
+eq(chk('저는 커피가 좋아해요.').notes.map(n => n.key), ['chk_like_obj'], 'r2 #12 좋아하다 object');
+eq(chk('저는 친구에게 만나요.').notes.map(n => n.key), ['chk_meet_obj'], 'r2 #12 만나다');
+eq(chk('오늘에 저는 학교에 가요.').notes.map(n => n.key), ['chk_time_none'], 'r2 #12 오늘에');
+eq(chk('저는 시간을 있어요.').notes.map(n => n.key), ['have_wrong_obj'], 'r2 #12 시간을 있어요');
+eq(chk('저는 친구를 영화를 봐요.').notes.map(n => n.key), ['chk_dup_obj'], 'r2 #12 duplicate objects');
+eq(chk('저는 남자 친구가 있어요.').verdict, 'ok', 'r2 #13 multiword noun');
+eq(M.verbsFor(tpl('have'), W).map(v => v.h), ['있다', '없다'], 'r2 #2 have verbs');
+eq(M.candidates(tpl('act'), 'O', W, verb('하다')).map(n => n.h).includes('숙제'), true, 'r2 #3 숙제를 해요');
+eq(M.candidates(tpl('act'), 'O', W, verb('배우다')).map(n => n.h).includes('여행'), false, 'r2 #3 여행을 배워요 excluded');
+eq(M.candidates(tpl('act'), 'S', W, verb('읽다')).some(n => n.kind === 'animal'), false, 'r2 #4 animals cannot read');
+eq(M.candidates(tpl('act'), 'S', W, verb('먹다')).some(n => n.kind === 'animal'), true, 'r2 #4 animals can eat');
+eq(M.candidates(tpl('with'), 'W', W, null, { S: noun('친구') }).some(n => n.h === '친구' || n.h === '나' || n.kind === 'animal'), false, 'r2 #5 companions exclude subject/speaker/animals');
+eq(M.candidates(tpl('give'), 'O', W, verb('보내다')).map(n => n.h).includes('한글'), false, 'r2 #6 한글을 보내요 excluded');
+eq(M.candidates(tpl('give'), 'O', W, verb('보내다')).map(n => n.h).includes('편지'), true, 'r2 #6 편지를 보내요');
 
 console.log(fails ? `${fails} FAILED` : 'all passed');
 process.exit(fails ? 1 : 0);
