@@ -21,8 +21,12 @@
    "tenses": [
     "pres",
     "past",
-    "fut"
-   ]
+    "fut",
+    "can",
+    "must",
+    "please"
+   ],
+   "level": 1
   },
   {
    "id": "want",
@@ -43,7 +47,8 @@
    "ex_ja": "私は韓国語を習いたいです。",
    "tenses": [
     "want"
-   ]
+   ],
+   "level": 2
   },
   {
    "id": "go",
@@ -66,8 +71,12 @@
     "pres",
     "past",
     "want",
-    "fut"
-   ]
+    "fut",
+    "can",
+    "must",
+    "please"
+   ],
+   "level": 1
   },
   {
    "id": "at",
@@ -92,8 +101,12 @@
    "tenses": [
     "pres",
     "past",
-    "fut"
-   ]
+    "fut",
+    "can",
+    "must",
+    "please"
+   ],
+   "level": 2
   },
   {
    "id": "live",
@@ -115,8 +128,12 @@
    "tenses": [
     "pres",
     "past",
-    "fut"
-   ]
+    "fut",
+    "can",
+    "must",
+    "please"
+   ],
+   "level": 2
   },
   {
    "id": "is",
@@ -134,7 +151,8 @@
    "tenses": [
     "pres",
     "past"
-   ]
+   ],
+   "level": 1
   },
   {
    "id": "exist",
@@ -156,7 +174,8 @@
    "tenses": [
     "pres",
     "past"
-   ]
+   ],
+   "level": 1
   },
   {
    "id": "neg",
@@ -178,7 +197,8 @@
    "tenses": [
     "pres",
     "past"
-   ]
+   ],
+   "level": 2
   },
   {
    "id": "time",
@@ -212,7 +232,8 @@
       "∅"
      ]
     }
-   }
+   },
+   "level": 2
   },
   {
    "id": "have",
@@ -243,7 +264,8 @@
       "를"
      ]
     }
-   }
+   },
+   "level": 2
   },
   {
    "id": "with",
@@ -267,7 +289,10 @@
    "tenses": [
     "pres",
     "past",
-    "fut"
+    "fut",
+    "can",
+    "must",
+    "please"
    ],
    "p": {
     "WP": {
@@ -278,7 +303,8 @@
       "하고"
      ]
     }
-   }
+   },
+   "level": 3
   },
   {
    "id": "give",
@@ -302,7 +328,10 @@
    "tenses": [
     "pres",
     "past",
-    "fut"
+    "fut",
+    "can",
+    "must",
+    "please"
    ],
    "p": {
     "RP": {
@@ -315,7 +344,8 @@
       "를"
      ]
     }
-   }
+   },
+   "level": 3
   }
  ],
  "why": {
@@ -415,5 +445,28 @@
    "exist_place_ok": "에 は、人や物がいる・ある場所を示します：집에 있어요。",
    "live_both": "「{v}」は 에 と 에서 の両方が使えます：서울에 살아요／서울에서 살아요。"
   }
+ },
+ "levels": {
+  "1": {
+   "en": "Lv1 · First sentences",
+   "ja": "Lv1 · はじめの文"
+  },
+  "2": {
+   "en": "Lv2 · Wants, places, time",
+   "ja": "Lv2 · 〜したい・場所・時間"
+  },
+  "3": {
+   "en": "Lv3 · With, to, can, must, please",
+   "ja": "Lv3 · 〜と・〜に・できる・〜べき・〜てください"
+  }
+ },
+ "tense_levels": {
+  "pres": 1,
+  "past": 1,
+  "want": 2,
+  "fut": 2,
+  "can": 3,
+  "must": 3,
+  "please": 3
  }
 }

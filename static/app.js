@@ -9,7 +9,8 @@
   const t = (k, v) => (UI[k] || k).replace(/\{(\w+)\}/g, (_, x) => v && v[x] != null ? v[x] : '');
   const mean = w => w[LANG] || w.en || '';
   const KEY = 'munjang.tray';
-  const st = { jamo: null, batchim: false, word: null, tpl: D.templates.templates[0], tense: 'pres', picks: {}, judges: {}, active: null, tray: load() };
+  const st = { jamo: null, batchim: false, word: null, tpl: D.templates.templates[0], tense: 'pres', picks: {}, judges: {}, active: null, level: 1, tray: load(), incompat: false };
+  try { st.level = +localStorage.getItem('munjang.level') || 1; } catch (e) {}
   function load() {
     try { const v = JSON.parse(localStorage.getItem(KEY) || '[]'); if (!Array.isArray(v)) return [];
       return v.filter(x => x && typeof x.text === 'string' && x.text.length <= 120).slice(0, 5).map(x => ({ text: x.text, gloss: typeof x.gloss === 'string' ? x.gloss.slice(0, 160) : '', unreviewed: !!x.unreviewed, at: +x.at || 0 })); } catch (e) { return []; }
@@ -85,7 +86,8 @@
     else if (k === 'item') { st.tpl = tplById('act'); st.picks = { S: me, O: n, V: n.read ? verbByH('읽다') : n.ride ? verbByH('타다') : n.photo ? verbByH('찍다') : verbByH('사다') }; }
     else if (k === 'animal') { st.tpl = tplById('exist'); st.picks = { S: n, L: nounByH('집'), V: verbByH('있다') }; }
     else { st.tpl = tplById('act'); st.picks = { S: n, O: nounByH('커피'), V: verbByH('마시다') }; }
-    st.tense = st.tpl.tenses[0]; st.judges = {}; st.active = null;
+    st.tense = st.tpl.tenses[0]; st.judges = {}; st.active = null; st.incompat = false;
+    if ((st.tpl.level || 1) > st.level) { st.level = st.tpl.level; try { localStorage.setItem('munjang.level', String(st.level)); } catch (e) {} }
     renderWords(); renderBuilder();
     if (innerWidth < 760) setTimeout(() => $('#builder').scrollIntoView({ behavior: 'smooth', block: 'start' }), 60);
   }
@@ -121,11 +123,10 @@
   function setPick(k, item) {
     const key = (k === 'VW' || k === 'NV' || k === 'HV') ? 'V' : k;
     st.picks[key] = item;
-    if (key === 'V' && st.picks.O && !M.compatible(item, st.picks.O)) { st.picks.O = M.candidates(st.tpl, 'O', D.words, item)[0]; clearP('OP'); clearP('OP2'); }
     if (key === 'O') { clearP('OP'); clearP('OP2'); }
     if (key === 'S') { clearP('SP'); if (st.tpl.slots.includes('A')) { const as = M.adjectivesFor(item, D.words); if (!as.includes(st.picks.A)) st.picks.A = as[0] || st.picks.A; } }
     if (['D', 'L', 'T', 'H', 'W', 'R'].includes(key)) clearP(st.tpl.slots[st.tpl.slots.indexOf(key) + 1]);
-    if (key === 'V' && st.picks.O && !M.compatible(item, st.picks.O)) { const cs = M.candidates(st.tpl, 'O', D.words, item); st.picks.O = cs[0]; }
+    st.incompat = !!(st.picks.V && st.picks.O && !M.compatible(st.picks.V, st.picks.O)); // the learner's word stays; the pair is explained, not silently replaced
     rejudge(); st.active = null; renderBuilder();
   }
   function clearP(pk) { delete st.judges[pk]; delete st.picks[pk]; }
@@ -147,18 +148,20 @@
     st.active = j.grade === 'no' ? pk : (particleSlots().find(x => !st.picks[x]) || null);
     renderBuilder();
   }
-  const particleSlots = () => st.tpl.slots.filter(isP);
-  const complete = () => particleSlots().every(pk => st.picks[pk]);
+  const particleSlots = () => st.tpl.slots.filter(pk => isP(pk) && !(pk === 'SP' && st.tense === 'please'));
+  const complete = () => !st.incompat && particleSlots().every(pk => st.picks[pk]);
   function activeP() { return st.active || particleSlots().find(pk => !st.picks[pk]) || null; }
 
   function renderBuilder() {
     // frame menu + line
+    const lv = $('#levels'); lv.innerHTML = '';
+    Object.entries(D.templates.levels).forEach(([n, lab]) => { const b = el('button', 'chip' + (+n === st.level ? ' on' : ''), esc(lab[LANG] || lab.en)); b.type = 'button'; b.onclick = () => { st.level = +n; try { localStorage.setItem('munjang.level', n); } catch (e) {} if ((st.tpl.level || 1) > st.level) setTemplate(D.templates.templates.find(x => (x.level || 1) <= st.level)); if ((D.templates.tense_levels[st.tense] || 1) > st.level) st.tense = 'pres'; renderBuilder(); }; lv.appendChild(b); });
     const fm = $('#frames'); fm.innerHTML = '';
-    D.templates.templates.forEach(tp => { const b = el('button', tp === st.tpl ? 'on' : '', `${esc(tp[LANG] || tp.en)}<small>${esc(tp.ex)}</small>`); b.type = 'button'; b.onclick = () => setTemplate(tp); fm.appendChild(b); });
+    D.templates.templates.filter(tp => (tp.level || 1) <= st.level).forEach(tp => { const b = el('button', tp === st.tpl ? 'on' : '', `<span class="lvtag">Lv${tp.level || 1}</span>${esc(tp[LANG] || tp.en)}<small>${esc(tp.ex)}</small>`); b.type = 'button'; b.onclick = () => setTemplate(tp); fm.appendChild(b); });
     $('#frame-line').innerHTML = `<span class="num" aria-hidden="true">✎</span><span>${t('frame_of')}: <b>${esc(st.tpl[LANG] || st.tpl.en)}</b></span>`;
     const tenses = $('#tenses'); tenses.innerHTML = '';
-    st.tpl.tenses.forEach(x => { const b = el('button', 'chip' + (x === st.tense ? ' on' : ''), t('tense_' + x)); b.type = 'button'; b.onclick = () => { st.tense = x; if (st.picks.V && !M.verbForm(st.picks.V, x)) { const vs = M.verbsFor(st.tpl, D.words, x); st.picks.V = vs[0]; if (st.picks.O && !M.compatible(st.picks.V, st.picks.O)) st.picks.O = M.candidates(st.tpl, 'O', D.words, st.picks.V)[0]; rejudge(); } renderBuilder(); }; tenses.appendChild(b); });
-    tenses.hidden = st.tpl.tenses.length < 2;
+    st.tpl.tenses.filter(x => (D.templates.tense_levels[x] || 1) <= st.level).forEach(x => { const b = el('button', 'chip' + (x === st.tense ? ' on' : ''), t('tense_' + x)); b.type = 'button'; b.onclick = () => { st.tense = x; if (st.picks.V && !M.verbForm(st.picks.V, x)) { const vs = M.verbsFor(st.tpl, D.words, x); st.picks.V = vs[0]; if (st.picks.O && !M.compatible(st.picks.V, st.picks.O)) st.picks.O = M.candidates(st.tpl, 'O', D.words, st.picks.V)[0]; rejudge(); } renderBuilder(); }; tenses.appendChild(b); });
+    tenses.hidden = tenses.children.length < 2;
     // word head
     const wh = $('#wordhead'), w = st.word;
     if (w) {
@@ -170,6 +173,7 @@
     const row = $('#slots'); row.innerHTML = '';
     let pair = null; const act = activeP();
     st.tpl.slots.forEach((k, idx) => {
+      if ((k === 'S' || k === 'SP') && st.tense === 'please') return; // request form has no subject
       const s = el('div', 'slot ' + (isP(k) ? 'slot-p' : 'slot-w'));
       if (isP(k)) {
         const j = st.judges[k];
@@ -181,7 +185,8 @@
       } else {
         const key = (k === 'VW' || k === 'NV' || k === 'HV') ? 'V' : k, item = st.picks[key], isV = ['V', 'VW', 'NV', 'HV', 'A'].includes(k);
         s.appendChild(el('span', 'slot-l', t('slot_' + (k === 'VW' ? 'V' : k))));
-        const vf = item && isV ? (k === 'NV' ? '안 ' : '') + M.verbForm(item, k === 'VW' ? 'want' : st.tense) : '';
+        const vf = item && isV ? (k === 'NV' ? '안 ' : '') + (M.verbForm(item, k === 'VW' ? 'want' : st.tense) || '—') : '';
+        if (st.incompat && (key === 'V' || key === 'O')) s.classList.add('bad');
         const b = el('button', 'slot-v', item ? `<b lang="ko">${esc(isV ? vf : item.h)}</b><small>${esc(mean(item).replace(/^to /, ''))}</small>` : t('pick'));
         b.type = 'button'; b.onclick = () => openPicker(k, s);
         s.appendChild(b);
@@ -192,6 +197,7 @@
       else row.appendChild(s);
     });
     renderPanel(act);
+    renderIncompat();
     // why lines
     const why = $('#why'); why.innerHTML = '';
     particleSlots().forEach(pk => { const j = st.judges[pk]; if (!j) return;
@@ -202,6 +208,19 @@
     why.hidden = !why.children.length;
     renderPreview();
     renderTray();
+  }
+  // Incompatible verb + object: keep both, explain, and offer verbs that do take the object.
+  function renderIncompat() {
+    let box = $('#incompat');
+    if (!box) { box = el('div', 'ppanel incompat'); box.id = 'incompat'; $('#ppanel').insertAdjacentElement('beforebegin', box); }
+    if (!st.incompat || !st.picks.O || !st.picks.V) { box.hidden = true; box.innerHTML = ''; return; }
+    const o = st.picks.O, v = st.picks.V;
+    const verbs = M.verbsFor(st.tpl, D.words, st.tense).filter(x => M.compatible(x, o)).slice(0, 5);
+    box.innerHTML = `<div class="ph"><span>✗ ${t('incompat_h')}</span></div><p class="pn">${esc(t('incompat_p', { o: o.h, v: v.h }))}</p><div class="p-opts"></div><p class="pn">${esc(t('incompat_p2', { o: o.h, v: mean(v).replace(/^to /, '') }))}</p>`;
+    const opts = $('.p-opts', box);
+    verbs.forEach(x => { const b = el('button', 'p-opt', `${esc(M.verbForm(x, st.tense) || x.pres)}`); b.type = 'button'; b.onclick = () => setPick('V', x); opts.appendChild(b); });
+    if (!verbs.length) opts.remove();
+    box.hidden = false;
   }
   // The particle panel asks for one slot at a time.
   function renderPanel(pk) {
@@ -251,6 +270,7 @@
     let f = st.tense === 'want' ? w.ja_want : st.tense === 'past' ? w.ja_past : w.ja_pres;
     if (!f) return null;
     if (st.tense === 'fut') f = w.ja_pres.replace(/ます$/, 'ます（予定）');
+    if (st.tense === 'can') f = w.ja_pres.replace(/ます$/, '') + 'ことができます'; if (st.tense === 'must') f = w.ja_pres.replace(/ます$/, '') + 'なければなりません'; if (st.tense === 'please') f = w.ja_pres.replace(/ます$/, '') + 'てください';
     if (neg) f = f.replace(/ます$/, 'ません').replace(/ました$/, 'ませんでした');
     if (st.tpl.id === 'have') f = w.h === '없다' ? (st.tense === 'past' ? 'ありませんでした' : 'ありません') : (st.tense === 'past' ? 'ありました' : 'あります');
     if (st.tpl.id === 'exist' && w.h === '있다') { const S = st.picks.S; f = S && (S.kind === 'person' || S.kind === 'animal') ? (st.tense === 'past' ? 'いました' : 'います') : (st.tense === 'past' ? 'ありました' : 'あります'); }
@@ -265,6 +285,7 @@
     if (st.tpl.id === 'neg') return st.tense === 'past' ? "didn't " + base : (first || plural ? "don't " : "doesn't ") + base;
     if (st.tense === 'want') return (first || plural ? 'want to ' : 'wants to ') + base;
     if (st.tense === 'fut') return 'will ' + base;
+    if (st.tense === 'can') return 'can ' + base; if (st.tense === 'must') return (first || plural ? 'have to ' : 'has to ') + base; if (st.tense === 'please') return 'Please ' + base;
     if (st.tense === 'past') return past;
     if (w.h === '있다' || w.h === '없다') { const be = first ? 'am' : plural ? 'are' : 'is'; return short ? (w.h === '없다' ? be + ' not at' : be + ' at') : (w.h === '없다' ? be + ' not' : be); }
     return first || plural ? base : s3;
@@ -275,10 +296,10 @@
       const V = p.A ? predJa('A', p.A) : (p.V ? predJa('V', p.V) : '');
       if (V === null) return '';
       const op = p.V && p.V.ja_p ? p.V.ja_p : 'を';
-      return [p.T && m(p.T) + (p.T.tp === 'none' ? '' : 'に'), p.S && m(p.S) + (st.judges.SP && st.judges.SP.choice && /^(이|가)$/.test(st.judges.SP.choice) ? 'が' : 'は'), p.W && m(p.W) + 'と', p.R && m(p.R) + 'に', p.H && m(p.H) + 'が', p.L && m(p.L) + (p.V && p.V.locBoth ? 'に' : st.tpl.op === 'loc' || st.tpl.op2 ? 'で' : 'に'), p.D && m(p.D) + 'に', p.O && m(p.O) + op, V].filter(Boolean).join('') + '。';
+      return [p.T && m(p.T) + (p.T.tp === 'none' ? '' : 'に'), p.S && st.tense !== 'please' && m(p.S) + (st.judges.SP && st.judges.SP.choice && /^(이|가)$/.test(st.judges.SP.choice) ? 'が' : 'は'), p.W && m(p.W) + 'と', p.R && m(p.R) + 'に', p.H && m(p.H) + 'が', p.L && m(p.L) + (p.V && p.V.locBoth ? 'に' : st.tpl.op === 'loc' || st.tpl.op2 ? 'で' : 'に'), p.D && m(p.D) + 'に', p.O && m(p.O) + op, V].filter(Boolean).join('') + '。';
     }
-    const S = p.S ? m(p.S) : '';
-    const V = p.A ? predEn('A', p.A, S) : (p.V ? predEn('V', p.V, S) : '');
+    const S = p.S && st.tense !== 'please' ? m(p.S) : '';
+    const V = p.A ? predEn('A', p.A, S) : (p.V ? predEn('V', p.V, S || 'you') : '');
     const T = p.T ? (p.T.tp === 'none' ? m(p.T) : ({ '아침': 'in the morning', '저녁': 'in the evening', '밤': 'at night', '점심': 'at lunch' }[p.T.h] || 'on ' + m(p.T))) : '';
     const O = p.O ? m(p.O) : '';
     const out = [S, V, p.H && m(p.H), O, p.R && 'to ' + m(p.R), p.W && 'with ' + m(p.W), p.D && (p.D.h === '집' ? 'home' : 'to ' + m(p.D)), p.L && (st.tpl.id === 'live' ? 'in ' : 'at ') + m(p.L), T].filter(Boolean).join(' ');
@@ -310,6 +331,14 @@
     if (M.syllables(q.replace(/ /g, '')).length === [...q.replace(/ /g, '')].length) return { h: q, r: '', en: '', ja: '', roles: ['subj', 'obj', 'have'], kind: 'unknown', feat: [], free: true };
     return null;
   }
+  // Ring-pulse the slot a typed word landed in, with a small badge, and bring it into view.
+  function flashSlot(k) {
+    const idx = st.tpl.slots.indexOf(k); const slot = $$('#slots .slot-w')[st.tpl.slots.filter((x, i) => !isP(x) && i < idx).length];
+    if (!slot) return;
+    slot.classList.add('flash'); const badge = el('span', 'flash-badge', '← ' + t('flash_badge')); slot.appendChild(badge);
+    slot.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    setTimeout(() => { slot.classList.remove('flash'); badge.remove(); }, 2400);
+  }
   function initFree() {
     const f = $('#free'), inp = $('#free-in'), hint = $('#free-hint');
     f.onsubmit = e => {
@@ -324,6 +353,7 @@
       if (k === 'O' && st.picks.V && !M.compatible(st.picks.V, n) && !n.free) { const v = M.verbsFor(st.tpl, D.words, st.tense).find(v => M.compatible(v, n)); if (v) st.picks.V = v; else { hint.textContent = t('free_hint_unknown', { w: n.h }); return; } }
       if (k === 'S' && !M.candidates(st.tpl, 'S', D.words).includes(n) && !n.free) { hint.textContent = t('free_hint_unknown', { w: n.h }); return; }
       setPick(k, n); hint.textContent = (n.free ? t('unreviewed') + ' ' : '') + t('free_hint_ok', { w: n.h, slot: t('slot_' + k) }); inp.value = '';
+      flashSlot(k);
     };
   }
 

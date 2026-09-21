@@ -191,7 +191,7 @@
     return nouns;
   }
   function verbsFor(tpl, words, tense) {
-    const has = v => !tense || tense === 'pres' || tense === 'past' || v[tense];
+    const has = v => !tense || tense === 'pres' || tense === 'past' || !!v[tense];
     if (tpl.id === 'want') return words.verbs.filter(v => v.takes && v.want);
     if (tpl.verbs === 'transitive') return words.verbs.filter(v => v.takes && has(v));
     if (tpl.verbs === 'move') return words.verbs.filter(v => v.move && has(v));
@@ -210,7 +210,7 @@
   }
   function verbForm(verb, tense) {
     if (!verb) return '';
-    if (tense === 'want' || tense === 'fut') return verb[tense] || null; // fail closed: never substitute the present tense for a missing form
+    if (['want', 'fut', 'can', 'must', 'please'].includes(tense)) return verb[tense] || null; // fail closed: never substitute the present tense for a missing form
     return verb[tense] || verb.pres;
   }
 
@@ -221,7 +221,7 @@
     if (!picks || !picks.S) return { chunks, text: '', incomplete: true };
     for (let i = 0; i < slots.length; i++) {
       const k = slots[i];
-      if (k === 'S') { const p = picks.SP || form(picks.S, tpl.sp); chunks.push({ kind: 'S', text: chunk(picks.S, p), word: picks.S, particle: p }); }
+      if (k === 'S') { if (picks.tense === 'please') continue; const p = picks.SP || form(picks.S, tpl.sp); chunks.push({ kind: 'S', text: chunk(picks.S, p), word: picks.S, particle: p }); } // -(으)세요 is a request to the listener: no subject
       else if (['O', 'D', 'L', 'T', 'H', 'W', 'R'].includes(k)) {
         if (!picks[k]) return { chunks, text: '', incomplete: true };
         const pk = slots[i + 1], spec = pspec(tpl, pk);

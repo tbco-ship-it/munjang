@@ -3199,7 +3199,10 @@
    "ja_p": "を",
    "en_base": "eat",
    "en_3s": "eats",
-   "en_past": "ate"
+   "en_past": "ate",
+   "can": "먹을 수 있어요",
+   "must": "먹어야 해요",
+   "please": "드세요"
   },
   {
    "h": "마시다",
@@ -3220,7 +3223,10 @@
    "ja_p": "を",
    "en_base": "drink",
    "en_3s": "drinks",
-   "en_past": "drank"
+   "en_past": "drank",
+   "can": "마실 수 있어요",
+   "must": "마셔야 해요",
+   "please": "드세요"
   },
   {
    "h": "사다",
@@ -3243,7 +3249,10 @@
    "ja_p": "を",
    "en_base": "buy",
    "en_3s": "buys",
-   "en_past": "bought"
+   "en_past": "bought",
+   "can": "살 수 있어요",
+   "must": "사야 해요",
+   "please": "사세요"
   },
   {
    "h": "보다",
@@ -3266,7 +3275,10 @@
    "ja_p": "を",
    "en_base": "watch",
    "en_3s": "watches",
-   "en_past": "watched"
+   "en_past": "watched",
+   "can": "볼 수 있어요",
+   "must": "봐야 해요",
+   "please": "보세요"
   },
   {
    "h": "읽다",
@@ -3287,7 +3299,10 @@
    "ja_p": "を",
    "en_base": "read",
    "en_3s": "reads",
-   "en_past": "read"
+   "en_past": "read",
+   "can": "읽을 수 있어요",
+   "must": "읽어야 해요",
+   "please": "읽으세요"
   },
   {
    "h": "듣다",
@@ -3308,7 +3323,10 @@
    "ja_p": "を",
    "en_base": "listen to",
    "en_3s": "listens to",
-   "en_past": "listened to"
+   "en_past": "listened to",
+   "can": "들을 수 있어요",
+   "must": "들어야 해요",
+   "please": "들으세요"
   },
   {
    "h": "쓰다",
@@ -3329,7 +3347,10 @@
    "ja_p": "を",
    "en_base": "write",
    "en_3s": "writes",
-   "en_past": "wrote"
+   "en_past": "wrote",
+   "can": "쓸 수 있어요",
+   "must": "써야 해요",
+   "please": "쓰세요"
   },
   {
    "h": "배우다",
@@ -3351,7 +3372,10 @@
    "ja_p": "を",
    "en_base": "learn",
    "en_3s": "learns",
-   "en_past": "learned"
+   "en_past": "learned",
+   "can": "배울 수 있어요",
+   "must": "배워야 해요",
+   "please": "배우세요"
   },
   {
    "h": "공부하다",
@@ -3372,7 +3396,10 @@
    "ja_p": "を",
    "en_base": "study",
    "en_3s": "studies",
-   "en_past": "studied"
+   "en_past": "studied",
+   "can": "공부할 수 있어요",
+   "must": "공부해야 해요",
+   "please": "공부하세요"
   },
   {
    "h": "만나다",
@@ -3393,7 +3420,10 @@
    "ja_p": "に",
    "en_base": "meet",
    "en_3s": "meets",
-   "en_past": "met"
+   "en_past": "met",
+   "can": "만날 수 있어요",
+   "must": "만나야 해요",
+   "please": "만나세요"
   },
   {
    "h": "좋아하다",
@@ -3422,7 +3452,10 @@
    "ja_p": "が",
    "en_base": "like",
    "en_3s": "likes",
-   "en_past": "liked"
+   "en_past": "liked",
+   "can": null,
+   "must": null,
+   "please": null
   },
   {
    "h": "가다",
@@ -3441,7 +3474,10 @@
    "ja_p": "に",
    "en_base": "go",
    "en_3s": "goes",
-   "en_past": "went"
+   "en_past": "went",
+   "can": "갈 수 있어요",
+   "must": "가야 해요",
+   "please": "가세요"
   },
   {
    "h": "오다",
@@ -3460,7 +3496,10 @@
    "ja_p": "に",
    "en_base": "come",
    "en_3s": "comes",
-   "en_past": "came"
+   "en_past": "came",
+   "can": "올 수 있어요",
+   "must": "와야 해요",
+   "please": "오세요"
   },
   {
    "h": "있다",
@@ -3485,7 +3524,10 @@
     "have",
     "has",
     "had"
-   ]
+   ],
+   "can": "있을 수 있어요",
+   "must": "있어야 해요",
+   "please": "계세요"
   },
   {
    "h": "살다",
@@ -3505,7 +3547,10 @@
    "ja_p": "に",
    "en_base": "live",
    "en_3s": "lives",
-   "en_past": "lived"
+   "en_past": "lived",
+   "can": "살 수 있어요",
+   "must": "살아야 해요",
+   "please": "사세요"
   },
   {
    "h": "일하다",
@@ -3524,7 +3569,10 @@
    "ja_p": "で",
    "en_base": "work",
    "en_3s": "works",
-   "en_past": "worked"
+   "en_past": "worked",
+   "can": "일할 수 있어요",
+   "must": "일해야 해요",
+   "please": "일하세요"
   },
   {
    "h": "없다",
@@ -3549,7 +3597,10 @@
     "don't have",
     "doesn't have",
     "didn't have"
-   ]
+   ],
+   "can": null,
+   "must": null,
+   "please": null
   },
   {
    "h": "주다",
@@ -3573,7 +3624,10 @@
    "ja_p": "を",
    "en_base": "give",
    "en_3s": "gives",
-   "en_past": "gave"
+   "en_past": "gave",
+   "can": "줄 수 있어요",
+   "must": "줘야 해요",
+   "please": "주세요"
   },
   {
    "h": "보내다",
@@ -3596,7 +3650,10 @@
    "ja_p": "を",
    "en_base": "send",
    "en_3s": "sends",
-   "en_past": "sent"
+   "en_past": "sent",
+   "can": "보낼 수 있어요",
+   "must": "보내야 해요",
+   "please": "보내세요"
   },
   {
    "h": "전화하다",
@@ -3616,7 +3673,10 @@
    "ja_p": "に",
    "en_base": "call",
    "en_3s": "calls",
-   "en_past": "called"
+   "en_past": "called",
+   "can": "전화할 수 있어요",
+   "must": "전화해야 해요",
+   "please": "전화하세요"
   },
   {
    "h": "타다",
@@ -3637,7 +3697,10 @@
    "ja_p": "に",
    "en_base": "take",
    "en_3s": "takes",
-   "en_past": "took"
+   "en_past": "took",
+   "can": "탈 수 있어요",
+   "must": "타야 해요",
+   "please": "타세요"
   },
   {
    "h": "하다",
@@ -3658,7 +3721,10 @@
    "ja_p": "を",
    "en_base": "do",
    "en_3s": "does",
-   "en_past": "did"
+   "en_past": "did",
+   "can": "할 수 있어요",
+   "must": "해야 해요",
+   "please": "하세요"
   },
   {
    "h": "치다",
@@ -3679,7 +3745,10 @@
    "ja_p": "を",
    "en_base": "play",
    "en_3s": "plays",
-   "en_past": "played"
+   "en_past": "played",
+   "can": "칠 수 있어요",
+   "must": "쳐야 해요",
+   "please": "치세요"
   },
   {
    "h": "찍다",
@@ -3700,7 +3769,10 @@
    "ja_p": "を",
    "en_base": "take",
    "en_3s": "takes",
-   "en_past": "took"
+   "en_past": "took",
+   "can": "찍을 수 있어요",
+   "must": "찍어야 해요",
+   "please": "찍으세요"
   }
  ],
  "adjectives": [

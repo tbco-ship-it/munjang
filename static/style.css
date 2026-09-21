@@ -304,3 +304,13 @@ html.roman .w-r{display:block}
 .drill .why{margin-top:10px}.drill .why .link{display:block;margin-top:6px}.drill-done{font-weight:700;margin:0 0 10px}
 .p-opt.none{font:600 .85rem var(--font);min-width:80px}
 .words .more{display:block;margin-top:8px}
+
+/* levels, incompatible pair, flash */
+.levels{margin:0 0 10px}
+.frame-menu .lvtag{font-size:.65rem;font-weight:700;color:var(--accent-text);background:var(--accent-soft);border-radius:6px;padding:1px 6px;margin-bottom:2px}
+.slot.bad .slot-v{border-color:var(--no);background:var(--no-soft)}
+.incompat{border-color:var(--no);background:var(--no-soft)}.incompat .ph{color:var(--no)}
+.slot.flash .slot-v{animation:ring 1.2s ease-out 2}
+@keyframes ring{0%{box-shadow:0 0 0 0 var(--accent)}70%{box-shadow:0 0 0 10px transparent}100%{box-shadow:0 0 0 0 transparent}}
+.flash-badge{position:absolute;top:-10px;right:-4px;font-size:.68rem;font-weight:700;color:var(--on-accent);background:var(--accent);padding:2px 8px;border-radius:999px;white-space:nowrap;animation:pop .3s cubic-bezier(.16,1,.3,1)}
+@media (prefers-reduced-motion:reduce){.slot.flash .slot-v{animation:none;box-shadow:0 0 0 3px var(--accent)}}

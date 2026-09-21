@@ -165,7 +165,15 @@
   "particle_to_h": "Which particle marks “{w}” as the receiver?",
   "none_label": "(nothing)",
   "unreviewed": "Particle form checked — this sentence itself is not reviewed.",
-  "show_all": "Show all {n} words"
+  "show_all": "Show all {n} words",
+  "tense_can": "Can (-(으)ㄹ 수 있어요)",
+  "tense_must": "Must (-아/어야 해요)",
+  "tense_please": "Please (-(으)세요)",
+  "level": "Level",
+  "flash_badge": "just added",
+  "incompat_h": "These two don’t go together",
+  "incompat_p": "“{o}” with “{v}” isn’t a sentence we teach. Pick one of these verbs for “{o}”:",
+  "incompat_p2": "…or change “{o}” to something you can {v}."
  },
  "ja": {
   "lang": "ja",
@@ -333,6 +341,14 @@
   "particle_to_h": "「{w}」を相手として示す助詞は？",
   "none_label": "（なし）",
   "unreviewed": "助詞の形だけ判定済み — この文自体は未検証です。",
-  "show_all": "{n} 語をすべて表示"
+  "show_all": "{n} 語をすべて表示",
+  "tense_can": "できる（-(으)ㄹ 수 있어요）",
+  "tense_must": "〜なければ（-아/어야 해요）",
+  "tense_please": "〜てください（-(으)세요）",
+  "level": "レベル",
+  "flash_badge": "入れました",
+  "incompat_h": "この組み合わせは使いません",
+  "incompat_p": "「{o}」と「{v}」の組み合わせは扱っていません。「{o}」に合う動詞：",
+  "incompat_p2": "…または「{o}」を「{v}」に合う語に変える。"
  }
 }
