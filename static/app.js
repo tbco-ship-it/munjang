@@ -24,7 +24,7 @@
   const isP = k => M.isPKey(k);
   const NOUN_KEYS = M.NOUN_SLOTS;
   // slot name → pick key (VF:reo / VW / NV / HV all hold the verb in picks.V; NV2 holds picks.V2; AUX:/FIX: are fixed)
-  const pickKey = k => k.startsWith('VF:') || k === 'VW' || k === 'NV' || k === 'HV' || k === 'MV' ? 'V' : k === 'NV2' ? 'V2' : k.startsWith('AUX:') ? 'AUX' : k.startsWith('FIX:') ? null : k;
+  const pickKey = k => k.startsWith('VF:') || k === 'VW' || k === 'NV' || k === 'HV' || k === 'MV' ? 'V' : k.startsWith('AF:') ? 'A' : k === 'NV2' ? 'V2' : k.startsWith('AUX:') ? 'AUX' : k.startsWith('FIX:') ? null : k;
   const isVerbSlot = k => /^(V|VW|NV|HV|MV|V1|V2|NV2|VF:|AUX:)/.test(k);
   // the verb that governs a noun slot (O → its clause's verb; D in a purpose frame → 가다)
   function verbFor(nounKey) { const vk = M.verbKeyFor(st.tpl, nounKey); return st.picks[pickKey(vk)]; }
@@ -139,7 +139,8 @@
     if (slots.includes('QO')) { p.QO = nounByH('뭐'); const vs = M.verbsFor(tpl, D.words, st.tense); p.V = old.V && vs.includes(old.V) ? old.V : verbByH('먹다'); }
     if (slots.includes('D') && !two && !vf) { p.D = old.D || old.L || nounByH('학교'); p.V = M.verbsFor(tpl, D.words)[0]; }
     if (slots.includes('L') && !vf) { p.L = old.L || old.D || (tpl.id === 'exist' ? nounByH('집') : nounByH('카페')); if (!slots.includes('O')) p.V = M.verbsFor(tpl, D.words)[0]; }
-    if (slots.includes('A')) { let as = M.adjectivesFor(p.S, D.words, tpl); if (!as.length) { p.S = nounByH('김치'); as = M.adjectivesFor(p.S, D.words, tpl); } p.A = as[0]; }
+    if (tpl.id === 'notice') { const sc = M.candidates(tpl, 'S', D.words); p.S = old.O && sc.includes(old.O) ? old.O : old.S && sc.includes(old.S) ? old.S : nounByH('커피'); }
+    if (slots.includes('A') || slots.some(k => k.startsWith('AF:'))) { let as = M.adjectivesFor(p.S, D.words, tpl); if (!as.length) { p.S = nounByH(tpl.id === 'notice' ? '커피' : '김치'); as = M.adjectivesFor(p.S, D.words, tpl); } p.A = old.A && as.includes(old.A) ? old.A : as[0]; }
     if (tpl.id === 'pref') { const hs = M.candidates(tpl, 'H', D.words); p.H = old.O && hs.includes(old.O) ? old.O : old.H && hs.includes(old.H) ? old.H : nounByH('커피'); if (!p.S || p.S.kind !== 'person') p.S = nounByH('저'); }
     if (tpl.id === 'like') { p.V = verbByH('좋아하다'); const cs = M.candidates(tpl, 'O', D.words, p.V); p.O = old.O && cs.includes(old.O) ? old.O : old.H && cs.includes(old.H) ? old.H : nounByH('커피'); }
     if (tpl.id === 'cant' && (!p.V || !p.V.takes)) { p.V = verbByH('마시다'); p.O = nounByH('술') || nounByH('커피'); }
@@ -166,7 +167,7 @@
     if (k === 'V' || k === 'VW' || k === 'NV' || k === 'HV' || k.startsWith('VF:')) return M.verbsFor(st.tpl, D.words, k === 'VW' ? 'want' : st.tense);
     if (k === 'V1') return M.verbsFor(st.tpl, D.words, st.tense, 'V1').filter(v => !v.to);
     if (k === 'V2' || k === 'NV2') return M.verbsFor(st.tpl, D.words, st.tense).filter(v => !v.to);
-    if (k === 'A') return M.adjectivesFor(st.picks.S, D.words, st.tpl);
+    if (k === 'A' || k.startsWith('AF:')) return M.adjectivesFor(st.picks.S, D.words, st.tpl);
     return [];
   }
   // every (object, verb) pair in the frame must be one the engine allows
@@ -177,7 +178,7 @@
     st.picks[key] = item;
     if (key === 'O') { clearP('OP'); if (!st.tpl.slots.includes('O2')) clearP('OP2'); }
     if (key === 'O2') clearP('OP2');
-    if (key === 'S') { clearP('SP'); if (st.tpl.slots.includes('A')) { const as = M.adjectivesFor(item, D.words, st.tpl); if (!as.includes(st.picks.A)) st.picks.A = as[0] || st.picks.A; } if (st.tpl.slots.includes('A1')) { const as = M.candidates(st.tpl, 'A1', D.words, null, st.picks); if (!as.includes(st.picks.A1)) st.picks.A1 = as[0] || st.picks.A1; } }
+    if (key === 'S') { clearP('SP'); if (st.tpl.slots.includes('A') || st.tpl.slots.some(k => k.startsWith('AF:'))) { const as = M.adjectivesFor(item, D.words, st.tpl); if (!as.includes(st.picks.A)) st.picks.A = as[0] || st.picks.A; } if (st.tpl.slots.includes('A1')) { const as = M.candidates(st.tpl, 'A1', D.words, null, st.picks); if (!as.includes(st.picks.A1)) st.picks.A1 = as[0] || st.picks.A1; } }
     if (['D', 'L', 'T', 'H', 'W', 'R', 'POS', 'QD', 'QO'].includes(key)) clearP(st.tpl.slots[st.tpl.slots.indexOf(key) + 1]);
     st.incompat = !!badPair(); // the learner's word stays; the pair is explained, not silently replaced
     rejudge(); st.active = null; renderBuilder();
@@ -240,13 +241,13 @@
         const b = el('button', 'slot-v', `<b>${st.picks[k] ? esc(shown) : '?'}</b>`); b.type = 'button'; b.setAttribute('aria-label', lab); b.onclick = () => { st.active = k; renderBuilder(); };
         s.appendChild(b);
       } else {
-        const key = pickKey(k), item = key ? st.picks[key] : null, isV = isVerbSlot(k) || k === 'A' || k === 'A1';
-        const labKey = k === 'A1' ? 'A' : k === 'O2' ? 'O' : k === 'QD' || k === 'QO' ? 'Q' : isVerbSlot(k) ? 'V' : k;
+        const key = pickKey(k), item = key ? st.picks[key] : null, isV = isVerbSlot(k) || k === 'A' || k === 'A1' || k.startsWith('AF:');
+        const labKey = k === 'A1' || k.startsWith('AF:') ? 'A' : k === 'O2' ? 'O' : k === 'QD' || k === 'QO' ? 'Q' : isVerbSlot(k) ? 'V' : k;
         s.appendChild(el('span', 'slot-l', k.startsWith('FIX:') ? '' : t('slot_' + labKey)));
         let vf = '';
         if (item && isV) {
           if (k === 'V1' || k === 'A1') vf = st.picks.CP ? (item[st.picks.CP] || '—') : M.stemOf(item) + '-';
-          else if (k.startsWith('VF:')) vf = M.verbForm(item, k.slice(3)) || '—';
+          else if (k.startsWith('VF:') || k.startsWith('AF:')) vf = M.verbForm(item, k.slice(3)) || '—';
           else vf = (k === 'NV' || k === 'NV2' ? '안 ' : k === 'MV' ? '못 ' : '') + (M.verbForm(item, k === 'VW' ? 'want' : st.tense) || '—');
         }
         if (bad && (pickKey(bad.v) === key || bad.o === key)) s.classList.add('bad');
@@ -335,6 +336,7 @@
       if (c.kind === 'V' && w === st.picks.AUX) return LANG === 'ja' ? '行きます' : LANG === 'vi' ? 'đi' : 'go';
       const vf = st.tpl.slots.find(k => k.startsWith('VF:'));
       if (vf && w === st.picks.V) return moodShort(vf.slice(3), w);
+      if (c.kind === 'A' && st.tpl.slots.some(k => k.startsWith('AF:'))) { const adj = w.en_adj || M_EN(w); return LANG === 'ja' ? (w.ja_pres || '').split('／')[0] + 'ね' : LANG === 'vi' ? M_VI(w) + ' nhỉ' : 'is ' + adj + '!'; }
       return LANG === 'ja' ? (predJa(c.kind, w, true, ctx) || '') : LANG === 'vi' ? predVi(c.kind, w, ctx) : predEn(c.kind, w, st.picks.S && st.tense !== 'please' ? M_EN(st.picks.S) : 'you', true, ctx);
     }
     if (c.kind === 'V1' || c.kind === 'A1') return connShort(c.kind === 'A1' ? 'A' : 'V', w);
@@ -343,6 +345,8 @@
     if (c.kind === 'POS') return LANG === 'ja' ? 'の' + w.ja + 'に' : LANG === 'vi' ? w.vi : w.en_g;
     if (c.kind === 'QD') return LANG === 'ja' ? 'どこ' + (c.particle === '에서' ? 'で' : 'に') : LANG === 'vi' ? (c.particle === '에서' ? 'ở đâu' : 'đâu') : 'where';
     if (c.kind === 'QO') return LANG === 'ja' ? '何を' : LANG === 'vi' ? 'gì' : 'what';
+    if (c.particle === '도') return LANG === 'ja' ? base + 'も' : LANG === 'vi' ? (c.kind === 'S' ? base + ' cũng' : 'cả ' + base) : base + ' too';
+    if (c.particle === '만') return LANG === 'ja' ? base + 'だけ' : LANG === 'vi' ? 'chỉ ' + base : 'only ' + base;
     if (LANG === 'vi') { const vp = { '에': c.kind === 'T' ? 'vào ' : c.kind === 'D' ? 'đến ' : 'ở ', '에서': 'ở ', '와': 'với ', '과': 'với ', '하고': 'với ', '에게': 'cho ', '한테': 'cho ', '께': 'cho ' }[c.particle] || ''; return (c.kind === 'T' && !c.particle ? '' : vp) + base; }
     if (LANG === 'ja') { const jp = { '은': 'は', '는': 'は', '이': 'が', '가': 'が', '을': 'を', '를': 'を', '에': 'に', '에서': 'で', '와': 'と', '과': 'と', '하고': 'と', '에게': 'に', '한테': 'に', '께': 'に' }[c.particle] || ''; const v = verbFor(c.kind); return base + ((c.kind === 'O' || c.kind === 'O2') && v && v.ja_p ? v.ja_p : jp); }
     if (c.kind === 'T') return c.particle ? ({ '아침': 'in the morning', '저녁': 'in the evening', '밤': 'at night', '점심': 'at lunch' }[w.h] || 'on ' + base) : base;
@@ -453,6 +457,13 @@
   // "I drink coffee" / "私はコーヒーを飲みます" / "tôi uống cà phê" — one clause, optional subject, no final punctuation
   function clauseGloss(lang, n, withS) {
     const p = clausePicks(n), ctx = clauseCtx(n), S = st.picks.S && st.tense !== 'please' ? st.picks.S : null;
+    const sp = st.picks.SP, op = st.picks.OP, aux = x => x === '도' || x === '만';
+    if (aux(sp) || aux(op)) { // 도/만 frame: mark also/only on the subject or the object
+      if (lang === 'ja') { const Sj = withS && S ? M_JA(S) + (sp === '도' ? 'も' : sp === '만' ? 'だけ' : 'は') : ''; const Oj = p.O ? M_JA(p.O) + (op === '도' ? 'も' : op === '만' ? 'だけ' : (p.V && p.V.ja_p ? p.V.ja_p : 'を')) : ''; return Sj + Oj + (predJa('V', p.V, false, ctx) || ''); }
+      if (lang === 'vi') return [withS && S ? M_VI(S) : '', sp === '도' ? 'cũng' : sp === '만' || op === '만' ? 'chỉ' : '', predVi('V', p.V, ctx), op === '도' ? 'cả' : '', p.O ? M_VI(p.O) : ''].filter(Boolean).join(' ');
+      const Se = S ? M_EN(S) : ''; const V = predEn('V', p.V, Se || 'you', false, ctx);
+      return [withS ? Se : '', sp === '도' ? 'too' : '', sp === '만' ? 'alone' : '', V, op === '만' ? 'only' : '', p.O ? M_EN(p.O) : '', op === '도' ? 'too' : ''].filter(Boolean).join(' ').replace(/^(\S+) too /, '$1, too, ');
+    }
     if (lang === 'ja') {
       const V = p.A ? predJa('A', p.A, false, ctx) : (p.V ? predJa('V', p.V, false, ctx) : '');
       if (V === null) return null;
@@ -516,6 +527,12 @@
       const g1 = c1.replace(/^(\S+)/, v => ing(v)); // "eating rice"
       const out = { go: c1s + ' and ' + c2, eoseo: c1s + ', so ' + c2s, jiman: c1s + ', but ' + c2s, myeon: 'if ' + c1s + ', ' + c2s, lttae: 'when ' + c1s + ', ' + c2s, gi_jeone: 'before ' + g1 + ', ' + c2s, n_hue: 'after ' + g1 + ', ' + c2s, myeonseo: c2s + ' while ' + g1, ttaemun: 'because ' + c1s + ', ' + c2s }[c];
       return cap(out) + '.';
+    }
+    const af = tpl.slots.find(k => k.startsWith('AF:'));
+    if (af && p.A) { // -네요: noticing — S가 A네요
+      if (LANG === 'ja') return M_JA(S) + 'が' + (p.A.ja_pres || '').split('／')[0] + 'ね。';
+      if (LANG === 'vi') return cap(M_VI(S) + ' ' + M_VI(p.A) + ' nhỉ!');
+      const be = PLURAL.test(Sen) ? 'are' : 'is'; return 'Oh, ' + (/^(a|an|the|my) /.test(Sen) ? Sen.replace(/^(a|an) /, 'the ') : 'the ' + Sen) + ' ' + be + ' ' + (p.A.en_adj || M_EN(p.A)) + '!';
     }
     const vf = tpl.slots.find(k => k.startsWith('VF:'));
     if (vf || tpl.q || tpl.id === 'location') {
@@ -598,8 +615,8 @@
     closePicker();
     const opts = optionsFor(k); if (!opts.length) return;
     const sh = el('div', 'picker'); sh.id = 'picker';
-    const isV = isVerbSlot(k) || k === 'A' || k === 'A1';
-    const shown = o => !isV ? o.h : (k === 'V1' || k === 'A1') ? (st.picks.CP ? (o[st.picks.CP] || o.pres) : o.pres) : k.startsWith('VF:') ? (M.verbForm(o, k.slice(3)) || o.pres) : (k === 'NV' || k === 'NV2' ? '안 ' : k === 'MV' ? '못 ' : '') + (M.verbForm(o, k === 'VW' ? 'want' : st.tense) || o.pres);
+    const isV = isVerbSlot(k) || k === 'A' || k === 'A1' || k.startsWith('AF:');
+    const shown = o => !isV ? o.h : (k === 'V1' || k === 'A1') ? (st.picks.CP ? (o[st.picks.CP] || o.pres) : o.pres) : k.startsWith('VF:') || k.startsWith('AF:') ? (M.verbForm(o, k.slice(3)) || o.pres) : (k === 'NV' || k === 'NV2' ? '안 ' : k === 'MV' ? '못 ' : '') + (M.verbForm(o, k === 'VW' ? 'want' : st.tense) || o.pres);
     opts.forEach(o => { const b = el('button', 'pk', `<b lang="ko">${esc(shown(o))}</b><small>${esc(mean(o))}</small>`); b.type = 'button'; b.onclick = () => { setPick(k, o); closePicker(); }; sh.appendChild(b); });
     anchor.appendChild(sh);
     setTimeout(() => document.addEventListener('click', outside, { once: true }), 0);

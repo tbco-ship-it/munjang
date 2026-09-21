@@ -202,6 +202,10 @@
   }
   function judgeP(tpl, pk, word, verb, choice, why) {
     const spec = pspec(tpl, pk);
+    if (choice === '도' || choice === '만') { // auxiliary particles replace the case particle (only offered where the frame lists them)
+      if (!word) return { grade: 'no', why: '', correct: choice };
+      return { grade: 'ok', why: fill(choice === '도' ? why.aux_do : why.aux_man, { w: word.h }), correct: choice };
+    }
     if (pk === 'SP') return judgeSP(tpl, word, choice, why);
     if (pk === 'CP') return judgeCP(tpl, word, choice, why);
     if (['obj', 'dest', 'loc'].includes(spec.expect)) return judgeOP(tpl, spec.expect, word, verb, choice, why);
@@ -218,7 +222,7 @@
     const nouns = words.nouns;
     if (slotKey === 'S') {
       const subj = nouns.filter(n => n.roles.includes('subj'));
-      if (tpl.id === 'is') return subj.filter(n => words.adjectives.some(a => a.fits.some(f => (n.feat || []).includes(f))));
+      if (tpl.id === 'is' || tpl.id === 'notice') return subj.filter(n => words.adjectives.some(a => a.fits.some(f => (n.feat || []).includes(f)) && (!tpl.slots.some(k => k.startsWith('AF:')) || !!a[tpl.slots.find(k => k.startsWith('AF:')).slice(3)])));
       if (tpl.id === 'exist') return subj.filter(n => ['person', 'animal', 'item', 'text'].includes(n.kind));
       if (tpl.id === 'want') return subj.filter(n => !!n.ga); // -고 싶어요 declaratives: first person only
       if (tpl.id === 'have' || tpl.id === 'pref') return subj.filter(n => n.kind === 'person');
@@ -276,7 +280,8 @@
   }
   function adjectivesFor(subject, words, tpl) {
     if (tpl && tpl.adjs) return words.adjectives.filter(a => tpl.adjs.includes(a.h));
-    return words.adjectives.filter(a => !subject || a.fits.some(f => (subject.feat || []).includes(f)));
+    const af = tpl && tpl.slots.find(k => k.startsWith('AF:'));
+    return words.adjectives.filter(a => (!subject || a.fits.some(f => (subject.feat || []).includes(f))) && (!af || !!a[af.slice(3)]));
   }
   function compatible(verb, noun) {
     if (!verb || !noun || !verb.takes) return true;
@@ -334,9 +339,10 @@
       else if (k.startsWith('AUX:')) { const f = verbForm(picks.AUX, picks.tense || 'pres'); if (!f) return { chunks, text: '', incomplete: true }; pushV('V', f, picks.AUX); }
       else if (k.startsWith('FIX:')) chunks.push({ kind: 'X', text: k.slice(4), word: null });
       else if (k === 'A') { if (!picks.A) return { chunks, text: '', incomplete: true }; chunks.push({ kind: 'A', text: verbForm(picks.A, picks.tense || 'pres'), word: picks.A }); }
+      else if (k.startsWith('AF:')) { const f = verbForm(picks.A, k.slice(3)); if (!f) return { chunks, text: '', incomplete: true }; pushV('A', f, picks.A); }
     }
     const lastText = chunks.length ? chunks[chunks.length - 1].text : '';
-    const end = /[?]$/.test(lastText) ? '' : (tpl.q ? '?' : '.');
+    const end = /[?]$/.test(lastText) ? '' : (tpl.q ? '?' : tpl.excl ? '!' : '.');
     if (incomplete) return { chunks, text: '', incomplete: true, end };
     return { chunks, text: chunks.map(c => c.text).join(' ') + end, end };
   }

@@ -519,6 +519,51 @@
    ]
   },
   {
+   "id": "also",
+   "level": 2,
+   "slots": [
+    "S",
+    "SP",
+    "O",
+    "OP",
+    "V"
+   ],
+   "sp": "topic",
+   "op": "obj",
+   "verbs": "transitive",
+   "p": {
+    "SP": {
+     "expect": "topic",
+     "options": [
+      "은",
+      "는",
+      "도",
+      "만"
+     ]
+    },
+    "OP": {
+     "expect": "obj",
+     "options": [
+      "을",
+      "를",
+      "도",
+      "만"
+     ]
+    }
+   },
+   "en": "Also / only (도 · 만 replace the particle)",
+   "ja": "〜も・〜だけ（도・만 は助詞と入れ替わる）",
+   "vi": "Cũng / chỉ (도 · 만 thay thế tiểu từ)",
+   "ex": "저도 커피를 마셔요",
+   "ex_en": "I drink coffee too.",
+   "ex_ja": "私もコーヒーを飲みます。",
+   "ex_vi": "Tôi cũng uống cà phê.",
+   "tenses": [
+    "pres",
+    "past"
+   ]
+  },
+  {
    "id": "with",
    "slots": [
     "S",
@@ -778,6 +823,28 @@
     "pres",
     "past"
    ]
+  },
+  {
+   "id": "notice",
+   "level": 3,
+   "slots": [
+    "S",
+    "SP",
+    "AF:neyo"
+   ],
+   "sp": "subject",
+   "en": "Noticing something (-네요)",
+   "ja": "気づいて言う（-네요）",
+   "vi": "Nhận ra điều gì (-네요)",
+   "ex": "커피가 맛있네요",
+   "ex_en": "Oh, the coffee is delicious!",
+   "ex_ja": "コーヒーがおいしいですね。",
+   "ex_vi": "Cà phê ngon nhỉ!",
+   "tenses": [
+    "pres"
+   ],
+   "excl": true,
+   "no_first": true
   },
   {
    "id": "but",
@@ -1247,7 +1314,9 @@
    "like_wrong_ga": "“{w}{s} 좋아요” is also correct — but that is the adjective 좋다. With 좋아해요 (a verb) the liked thing is the object: {w}{p} 좋아해요.",
    "pref_ok": "좋다 is an adjective (“is good / is likeable”), so “{w}” takes 이/가 and there is no object: {w}{p} 좋아요.",
    "pref_wrong_obj": "좋아요 is an adjective — it cannot take an object. Say {w}{p} 좋아요, or switch to the verb: {w}{q} 좋아해요.",
-   "mot": "못 = cannot (ability or circumstances). 안 = do not (choice). 못 goes right before the verb, like 안."
+   "mot": "못 = cannot (ability or circumstances). 안 = do not (choice). 못 goes right before the verb, like 안.",
+   "aux_do": "도 = also / too. It REPLACES 은/는·이/가·을/를 — never stack them: 저도 (not 저는도), 커피도 (not 커피를도).",
+   "aux_man": "만 = only. It replaces 을/를 (커피만 마셔요). After a subject you may also see 만 + 이: 저만 / 저만이 — both fine."
   },
   "ja": {
    "batchim_yes": "「{w}」はパッチム（{f}）で終わる → {p}",
@@ -1318,7 +1387,9 @@
    "like_wrong_ga": "「{w}{s} 좋아요」も正しい文ですが、それは形容詞 좋다 の文です。動詞 좋아해요 では好きなものが目的語：{w}{p} 좋아해요。",
    "pref_ok": "좋다 は形容詞（「良い・好ましい」）なので「{w}」に 이/가、目的語はありません：{w}{p} 좋아요。",
    "pref_wrong_obj": "좋아요 は形容詞なので目的語を取れません。{w}{p} 좋아요 か、動詞に変えて {w}{q} 좋아해요。",
-   "mot": "못 = できない（能力・状況）。안 = しない（選択）。못 も 안 と同じく動詞の直前に置きます。"
+   "mot": "못 = できない（能力・状況）。안 = しない（選択）。못 も 안 と同じく動詞の直前に置きます。",
+   "aux_do": "도 =「〜も」。은/는・이/가・을/를 と入れ替わります。重ねません：저도（× 저는도）、커피도（× 커피를도）。",
+   "aux_man": "만 =「〜だけ」。을/를 と入れ替わります（커피만 마셔요）。主語では 저만／저만이 のどちらも使えます。"
   },
   "vi": {
    "batchim_yes": "“{w}” kết thúc bằng phụ âm (받침 {f}) → {p}",
@@ -1389,7 +1460,9 @@
    "like_wrong_ga": "“{w}{s} 좋아요” cũng đúng — nhưng đó là tính từ 좋다. Với 좋아해요 (động từ), thứ được thích là tân ngữ: {w}{p} 좋아해요.",
    "pref_ok": "좋다 là tính từ (“tốt / đáng thích”), nên “{w}” lấy 이/가 và không có tân ngữ: {w}{p} 좋아요.",
    "pref_wrong_obj": "좋아요 là tính từ — không có tân ngữ. Nói {w}{p} 좋아요, hoặc đổi sang động từ: {w}{q} 좋아해요.",
-   "mot": "못 = không thể (khả năng, hoàn cảnh). 안 = không (lựa chọn). 못 đứng ngay trước động từ, như 안."
+   "mot": "못 = không thể (khả năng, hoàn cảnh). 안 = không (lựa chọn). 못 đứng ngay trước động từ, như 안.",
+   "aux_do": "도 = cũng. Nó THAY THẾ 은/는·이/가·을/를 — không xếp chồng: 저도 (không phải 저는도), 커피도 (không phải 커피를도).",
+   "aux_man": "만 = chỉ. Thay thế 을/를 (커피만 마셔요). Sau chủ ngữ có thể thấy 저만 / 저만이 — đều được."
   }
  },
  "levels": {

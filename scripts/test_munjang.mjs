@@ -276,7 +276,7 @@ eq(chk('나는 커피를 마신다').verdict, 'ok', 'checker: plain style ok');
 eq(chk('커피를 마시지 마세요').verdict, 'ok', 'checker: -지 마세요 ok');
 // every verb has every connective form or an explicit null, and every template slot kind is known
 for (const v of W.verbs) for (const k of ['go', 'eoseo', 'jiman', 'myeon', 'lttae', 'ttaemun', 'gi_jeone', 'myeonseo']) eq(k in v, true, `${v.h} has ${k}`);
-for (const tp of T.templates) for (const k of tp.slots) eq(/^(S|SP|O|OP|OP2|D|L|T|TP|H|HP|W|WP|R|RP|V|VW|NV|HV|A|MV|V1|A1|CP|V2|NV2|O2|REF|POS|QD|QO|QP|VF:\w+|AUX:\S+|FIX:\S+)$/.test(k), true, `${tp.id} slot ${k}`);
+for (const tp of T.templates) for (const k of tp.slots) eq(/^(S|SP|O|OP|OP2|D|L|T|TP|H|HP|W|WP|R|RP|V|VW|NV|HV|A|MV|V1|A1|CP|V2|NV2|O2|REF|POS|QD|QO|QP|VF:\w+|AF:\w+|AUX:\S+|FIX:\S+)$/.test(k), true, `${tp.id} slot ${k}`);
 for (const tp of T.templates) if (tp.conn) eq((tp.conns || []).includes(tp.conn) && Object.keys(T.conn).includes(tp.conn), true, `${tp.id} conn listed`);
 for (const tp of T.templates) for (const k of tp.slots) if (k.startsWith('VF:')) eq(M.verbsFor(tp, W).length > 0, true, `${tp.id} has verbs with ${k}`);
 
@@ -294,6 +294,15 @@ eq(M.candidates(tpl('pref'), 'H', W).some(n => n.h === '시간'), false, 'pref H
 eq(asm('cant', { S: noun('저'), O: noun('술'), V: verb('마시다'), tense: 'pres' }), '저는 술을 못 마셔요.', 'cant frame');
 eq(chk('저는 술을 못 마셔요').verdict, 'ok', 'checker: 못 ok');
 eq(chk('저는 술을 못마셔요').notes.some(n => n.key === 'chk_an_space'), true, 'checker: 못마셔요 spacing');
+
+// 도/만 and -네요 (Popo top-100: 조사 도/만, 어미 -네요)
+eq(asm('also', { S: noun('저'), SP: '도', O: noun('커피'), OP: '를', V: verb('마시다'), tense: 'pres' }), '저도 커피를 마셔요.', '저도');
+eq(asm('also', { S: noun('저'), SP: '는', O: noun('커피'), OP: '만', V: verb('마시다'), tense: 'pres' }), '저는 커피만 마셔요.', '커피만');
+eq(M.judgeP(tpl('also'), 'SP', noun('저'), null, '도', WHY).grade, 'ok', '도 ok'); eq(M.judgeP(tpl('also'), 'OP', noun('커피'), verb('마시다'), '만', WHY).grade, 'ok', '만 ok');
+eq(M.judgeP(tpl('also'), 'SP', noun('저'), null, '이', WHY).grade, 'no', '저이 still rejected in also frame');
+eq(asm('notice', { S: noun('커피'), SP: '가', A: adj('맛있다'), tense: 'pres' }), '커피가 맛있네요!', '-네요 exclamation');
+eq(M.adjectivesFor(noun('커피'), W, tpl('notice')).every(a => !!a.neyo), true, 'notice adjectives have neyo form');
+eq(M.candidates(tpl('notice'), 'S', W).length > 10, true, 'notice subjects');
 
 console.log(fails ? `${fails} FAILED` : 'all passed');
 process.exit(fails ? 1 : 0);
