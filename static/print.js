@@ -27,8 +27,8 @@
       const block = document.createElement('div'); block.className = 'sent';
       const cap = document.createElement('p'); cap.className = 'cap'; cap.innerHTML = `<b>${i + 1}.</b> <span lang="ko">${s.text}</span> <small>${s.gloss || ''}</small>`;
       block.appendChild(cap);
-      // Line 1: the sentence (light, for tracing when enabled). Line 2: the same cells empty, for free writing.
-      [true, false].forEach(trace => {
+      // Line 1: the sentence (light, for tracing when enabled). Lines 2–3: the same cells empty, for free writing.
+      [true, false, false].forEach(trace => {
         layout(s.text).forEach(r => {
           const line = document.createElement('div'); line.className = 'line';
           r.forEach(c => {

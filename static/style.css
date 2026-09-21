@@ -221,7 +221,7 @@ html.roman .w-r{display:block}
 .prose h2{font-size:1.25rem;font-weight:700;margin:36px 0 10px}
 .prose p,.prose li{color:var(--text-2)}.prose strong,.prose b{color:var(--text)}.prose .lead{font-size:1.08rem}
 .prose table{border-collapse:collapse;width:100%;margin:12px 0;font-size:.92rem}.prose th,.prose td{text-align:left;padding:10px 8px;border-bottom:1px solid var(--line);vertical-align:top}.prose th{color:var(--muted);font-weight:600;font-size:.8rem}
-.prose td b{color:var(--accent-text)}.prose [lang="ko"]{font-weight:600;color:var(--text)}
+.prose td b{color:var(--accent-text)}.prose td[lang=ko],.prose td b{white-space:nowrap}.prose [lang="ko"]{font-weight:600;color:var(--text)}
 .prose ol,.prose ul{padding-left:1.2em}.prose li{margin:.4em 0}
 .prose a:not(.btn){text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px;text-decoration-color:color-mix(in srgb,currentColor 40%,transparent)}
 .quiz{display:flex;flex-direction:column;gap:12px;margin:12px 0 24px}
