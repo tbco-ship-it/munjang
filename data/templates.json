@@ -31,30 +31,6 @@
    "ex_vi": "Tôi uống cà phê."
   },
   {
-   "id": "want",
-   "slots": [
-    "S",
-    "SP",
-    "O",
-    "OP",
-    "VW"
-   ],
-   "sp": "topic",
-   "op": "obj",
-   "verbs": "transitive",
-   "en": "I want to …",
-   "ja": "〜したい",
-   "ex": "저는 한국어를 배우고 싶어요",
-   "ex_en": "I want to learn Korean.",
-   "ex_ja": "私は韓国語を習いたいです。",
-   "tenses": [
-    "want"
-   ],
-   "level": 2,
-   "vi": "Tôi muốn…",
-   "ex_vi": "Tôi muốn học tiếng Hàn."
-  },
-  {
    "id": "go",
    "slots": [
     "S",
@@ -83,6 +59,146 @@
    "level": 1,
    "vi": "Đi đâu đó",
    "ex_vi": "Tôi đi đến trường."
+  },
+  {
+   "id": "is",
+   "slots": [
+    "S",
+    "SP",
+    "A"
+   ],
+   "sp": "subject",
+   "en": "Describing something",
+   "ja": "何かを描写する",
+   "ex": "김치가 맛있어요",
+   "ex_en": "Kimchi is delicious.",
+   "ex_ja": "キムチはおいしいです。",
+   "tenses": [
+    "pres",
+    "past"
+   ],
+   "level": 1,
+   "vi": "Miêu tả cái gì đó",
+   "ex_vi": "Kimchi ngon."
+  },
+  {
+   "id": "exist",
+   "slots": [
+    "S",
+    "SP",
+    "L",
+    "OP",
+    "V"
+   ],
+   "sp": "subject",
+   "op": "dest",
+   "verbs": "exist",
+   "en": "Something is at a place",
+   "ja": "人や物がどこにいる・あるか",
+   "ex": "고양이가 집에 있어요",
+   "ex_en": "The cat is at home.",
+   "ex_ja": "猫が家にいます。",
+   "tenses": [
+    "pres",
+    "past"
+   ],
+   "level": 1,
+   "vi": "Cái gì đó ở đâu",
+   "ex_vi": "Con mèo ở nhà."
+  },
+  {
+   "id": "q_where",
+   "level": 1,
+   "slots": [
+    "S",
+    "SP",
+    "QD",
+    "QP",
+    "V"
+   ],
+   "sp": "topic",
+   "verbs": "any_place",
+   "q": true,
+   "p": {
+    "QP": {
+     "expect": "qplace",
+     "options": [
+      "에",
+      "에서"
+     ]
+    }
+   },
+   "en": "Asking where",
+   "ja": "どこ？と聞く",
+   "vi": "Hỏi ở đâu",
+   "ex": "어디에 가요?",
+   "ex_en": "Where are you going?",
+   "ex_ja": "どこに行きますか。",
+   "ex_vi": "Bạn đi đâu?",
+   "tenses": [
+    "pres",
+    "past"
+   ],
+   "no_first": true
+  },
+  {
+   "id": "q_what",
+   "level": 1,
+   "slots": [
+    "S",
+    "SP",
+    "QO",
+    "QP",
+    "V"
+   ],
+   "sp": "topic",
+   "verbs": "transitive",
+   "q": true,
+   "p": {
+    "QP": {
+     "expect": "qobj",
+     "options": [
+      "∅",
+      "를"
+     ]
+    }
+   },
+   "en": "Asking what",
+   "ja": "何？と聞く",
+   "vi": "Hỏi cái gì",
+   "ex": "뭐 먹어요?",
+   "ex_en": "What are you eating?",
+   "ex_ja": "何を食べますか。",
+   "ex_vi": "Bạn ăn gì?",
+   "tenses": [
+    "pres",
+    "past"
+   ],
+   "no_first": true
+  },
+  {
+   "id": "want",
+   "slots": [
+    "S",
+    "SP",
+    "O",
+    "OP",
+    "VW"
+   ],
+   "sp": "topic",
+   "op": "obj",
+   "verbs": "transitive",
+   "en": "I want to …",
+   "ja": "〜したい",
+   "ex": "저는 한국어를 배우고 싶어요",
+   "ex_en": "I want to learn Korean.",
+   "ex_ja": "私は韓国語を習いたいです。",
+   "tenses": [
+    "want"
+   ],
+   "level": 2,
+   "vi": "Tôi muốn…",
+   "ex_vi": "Tôi muốn học tiếng Hàn."
   },
   {
    "id": "at",
@@ -144,52 +260,6 @@
    "level": 2,
    "vi": "Sống / làm việc ở đâu",
    "ex_vi": "Tôi sống ở Seoul."
-  },
-  {
-   "id": "is",
-   "slots": [
-    "S",
-    "SP",
-    "A"
-   ],
-   "sp": "subject",
-   "en": "Describing something",
-   "ja": "何かを描写する",
-   "ex": "김치가 맛있어요",
-   "ex_en": "Kimchi is delicious.",
-   "ex_ja": "キムチはおいしいです。",
-   "tenses": [
-    "pres",
-    "past"
-   ],
-   "level": 1,
-   "vi": "Miêu tả cái gì đó",
-   "ex_vi": "Kimchi ngon."
-  },
-  {
-   "id": "exist",
-   "slots": [
-    "S",
-    "SP",
-    "L",
-    "OP",
-    "V"
-   ],
-   "sp": "subject",
-   "op": "dest",
-   "verbs": "exist",
-   "en": "Something is at a place",
-   "ja": "人や物がどこにいる・あるか",
-   "ex": "고양이가 집에 있어요",
-   "ex_en": "The cat is at home.",
-   "ex_ja": "猫が家にいます。",
-   "tenses": [
-    "pres",
-    "past"
-   ],
-   "level": 1,
-   "vi": "Cái gì đó ở đâu",
-   "ex_vi": "Con mèo ở nhà."
   },
   {
    "id": "neg",
@@ -289,6 +359,166 @@
    "verbs": "have"
   },
   {
+   "id": "location",
+   "level": 2,
+   "slots": [
+    "S",
+    "SP",
+    "REF",
+    "POS",
+    "OP",
+    "V"
+   ],
+   "sp": "subject",
+   "op": "dest",
+   "verbs": "exist",
+   "en": "Where something is (on / under / next to)",
+   "ja": "物の位置（上・下・横）",
+   "vi": "Đồ vật ở đâu (trên / dưới / cạnh)",
+   "ex": "가방이 의자 위에 있어요",
+   "ex_en": "The bag is on the chair.",
+   "ex_ja": "かばんはいすの上にあります。",
+   "ex_vi": "Cái túi ở trên ghế.",
+   "tenses": [
+    "pres",
+    "past"
+   ]
+  },
+  {
+   "id": "and",
+   "level": 2,
+   "slots": [
+    "S",
+    "SP",
+    "O",
+    "OP",
+    "V1",
+    "CP",
+    "O2",
+    "OP2",
+    "V2"
+   ],
+   "sp": "topic",
+   "op": "obj",
+   "op2": "obj",
+   "verbs": "transitive",
+   "conn": "go",
+   "conns": [
+    "go",
+    "eoseo",
+    "jiman"
+   ],
+   "en": "Two actions in a row (-고)",
+   "ja": "動作を並べる（-고）",
+   "vi": "Hai hành động liên tiếp (-고)",
+   "ex": "저는 밥을 먹고 커피를 마셔요",
+   "ex_en": "I eat and then drink coffee.",
+   "ex_ja": "私はご飯を食べてコーヒーを飲みます。",
+   "ex_vi": "Tôi ăn cơm rồi uống cà phê.",
+   "tenses": [
+    "pres",
+    "past"
+   ]
+  },
+  {
+   "id": "like",
+   "level": 2,
+   "slots": [
+    "S",
+    "SP",
+    "O",
+    "OP",
+    "V"
+   ],
+   "sp": "topic",
+   "op": "obj",
+   "verbs": "like",
+   "p": {
+    "OP": {
+     "expect": "like",
+     "options": [
+      "을",
+      "를",
+      "이",
+      "가"
+     ]
+    }
+   },
+   "en": "Liking something (좋아해요 takes 을/를)",
+   "ja": "好きなもの（좋아해요 は 을/를）",
+   "vi": "Thích cái gì (좋아해요 đi với 을/를)",
+   "ex": "저는 커피를 좋아해요",
+   "ex_en": "I like coffee.",
+   "ex_ja": "私はコーヒーが好きです。",
+   "ex_vi": "Tôi thích cà phê.",
+   "tenses": [
+    "pres",
+    "past"
+   ]
+  },
+  {
+   "id": "pref",
+   "level": 2,
+   "slots": [
+    "S",
+    "SP",
+    "H",
+    "HP",
+    "A"
+   ],
+   "sp": "topic",
+   "adjs": [
+    "좋다"
+   ],
+   "p": {
+    "HP": {
+     "expect": "pref",
+     "options": [
+      "이",
+      "가",
+      "을",
+      "를"
+     ]
+    }
+   },
+   "en": "“… is good to me” (좋아요 takes 이/가)",
+   "ja": "〜が好きです（좋아요 は 이/가）",
+   "vi": "“… thì thích” (좋아요 đi với 이/가)",
+   "ex": "저는 커피가 좋아요",
+   "ex_en": "I like coffee. (lit. coffee is good to me)",
+   "ex_ja": "私はコーヒーが好きです。",
+   "ex_vi": "Tôi thích cà phê.",
+   "tenses": [
+    "pres",
+    "past"
+   ]
+  },
+  {
+   "id": "cant",
+   "level": 2,
+   "slots": [
+    "S",
+    "SP",
+    "O",
+    "OP",
+    "MV"
+   ],
+   "sp": "topic",
+   "op": "obj",
+   "verbs": "transitive",
+   "en": "Can’t (못) — not the same as don’t (안)",
+   "ja": "できない（못）— しない（안）との違い",
+   "vi": "Không thể (못) — khác với không (안)",
+   "ex": "저는 술을 못 마셔요",
+   "ex_en": "I can’t drink alcohol.",
+   "ex_ja": "私はお酒が飲めません。",
+   "ex_vi": "Tôi không uống được rượu.",
+   "tenses": [
+    "pres",
+    "past"
+   ]
+  },
+  {
    "id": "with",
    "slots": [
     "S",
@@ -371,138 +601,6 @@
    "level": 3,
    "vi": "Đưa / gửi cho ai",
    "ex_vi": "Tôi tặng quà cho bạn."
-  },
-  {
-   "id": "q_where",
-   "level": 1,
-   "slots": [
-    "S",
-    "SP",
-    "QD",
-    "QP",
-    "V"
-   ],
-   "sp": "topic",
-   "verbs": "any_place",
-   "q": true,
-   "p": {
-    "QP": {
-     "expect": "qplace",
-     "options": [
-      "에",
-      "에서"
-     ]
-    }
-   },
-   "en": "Asking where",
-   "ja": "どこ？と聞く",
-   "vi": "Hỏi ở đâu",
-   "ex": "어디에 가요?",
-   "ex_en": "Where are you going?",
-   "ex_ja": "どこに行きますか。",
-   "ex_vi": "Bạn đi đâu?",
-   "tenses": [
-    "pres",
-    "past"
-   ],
-   "no_first": true
-  },
-  {
-   "id": "q_what",
-   "level": 1,
-   "slots": [
-    "S",
-    "SP",
-    "QO",
-    "QP",
-    "V"
-   ],
-   "sp": "topic",
-   "verbs": "transitive",
-   "q": true,
-   "p": {
-    "QP": {
-     "expect": "qobj",
-     "options": [
-      "∅",
-      "를"
-     ]
-    }
-   },
-   "en": "Asking what",
-   "ja": "何？と聞く",
-   "vi": "Hỏi cái gì",
-   "ex": "뭐 먹어요?",
-   "ex_en": "What are you eating?",
-   "ex_ja": "何を食べますか。",
-   "ex_vi": "Bạn ăn gì?",
-   "tenses": [
-    "pres",
-    "past"
-   ],
-   "no_first": true
-  },
-  {
-   "id": "location",
-   "level": 2,
-   "slots": [
-    "S",
-    "SP",
-    "REF",
-    "POS",
-    "OP",
-    "V"
-   ],
-   "sp": "subject",
-   "op": "dest",
-   "verbs": "exist",
-   "en": "Where something is (on / under / next to)",
-   "ja": "物の位置（上・下・横）",
-   "vi": "Đồ vật ở đâu (trên / dưới / cạnh)",
-   "ex": "가방이 의자 위에 있어요",
-   "ex_en": "The bag is on the chair.",
-   "ex_ja": "かばんはいすの上にあります。",
-   "ex_vi": "Cái túi ở trên ghế.",
-   "tenses": [
-    "pres",
-    "past"
-   ]
-  },
-  {
-   "id": "and",
-   "level": 2,
-   "slots": [
-    "S",
-    "SP",
-    "O",
-    "OP",
-    "V1",
-    "CP",
-    "O2",
-    "OP2",
-    "V2"
-   ],
-   "sp": "topic",
-   "op": "obj",
-   "op2": "obj",
-   "verbs": "transitive",
-   "conn": "go",
-   "conns": [
-    "go",
-    "eoseo",
-    "jiman"
-   ],
-   "en": "Two actions in a row (-고)",
-   "ja": "動作を並べる（-고）",
-   "vi": "Hai hành động liên tiếp (-고)",
-   "ex": "저는 밥을 먹고 커피를 마셔요",
-   "ex_en": "I eat and then drink coffee.",
-   "ex_ja": "私はご飯を食べてコーヒーを飲みます。",
-   "ex_vi": "Tôi ăn cơm rồi uống cà phê.",
-   "tenses": [
-    "pres",
-    "past"
-   ]
   },
   {
    "id": "purpose",
@@ -1144,7 +1242,12 @@
    "to_hon_ok": "께 is the honorific form of 에게 — for grandparents, teachers, bosses.",
    "to_hon_soft": "Grammatical, but for an elder the honorific 께 (with 드려요) is expected.",
    "pos_ok": "“{w}” marks the position; 에 follows it: 의자 위에.",
-   "location_ok": "With 있어요, the thing that is somewhere takes 이/가; the place + position + 에."
+   "location_ok": "With 있어요, the thing that is somewhere takes 이/가; the place + position + 에.",
+   "like_ok": "좋아하다 is a verb, so the thing you like is its object → {w}{p} 좋아해요.",
+   "like_wrong_ga": "“{w}{s} 좋아요” is also correct — but that is the adjective 좋다. With 좋아해요 (a verb) the liked thing is the object: {w}{p} 좋아해요.",
+   "pref_ok": "좋다 is an adjective (“is good / is likeable”), so “{w}” takes 이/가 and there is no object: {w}{p} 좋아요.",
+   "pref_wrong_obj": "좋아요 is an adjective — it cannot take an object. Say {w}{p} 좋아요, or switch to the verb: {w}{q} 좋아해요.",
+   "mot": "못 = cannot (ability or circumstances). 안 = do not (choice). 못 goes right before the verb, like 안."
   },
   "ja": {
    "batchim_yes": "「{w}」はパッチム（{f}）で終わる → {p}",
@@ -1210,7 +1313,12 @@
    "to_hon_ok": "께 は 에게 の尊敬形 — 祖父母・先生・上司に。",
    "to_hon_soft": "文法的には正しいですが、目上の人には尊敬の 께（＋드려요）が期待されます。",
    "pos_ok": "「{w}」が位置を表し、그の後に 에：의자 위에。",
-   "location_ok": "있어요 では、ある物に 이/가、場所＋位置語＋에。"
+   "location_ok": "있어요 では、ある物に 이/가、場所＋位置語＋에。",
+   "like_ok": "좋아하다 は動詞なので、好きなものは目的語 → {w}{p} 좋아해요。",
+   "like_wrong_ga": "「{w}{s} 좋아요」も正しい文ですが、それは形容詞 좋다 の文です。動詞 좋아해요 では好きなものが目的語：{w}{p} 좋아해요。",
+   "pref_ok": "좋다 は形容詞（「良い・好ましい」）なので「{w}」に 이/가、目的語はありません：{w}{p} 좋아요。",
+   "pref_wrong_obj": "좋아요 は形容詞なので目的語を取れません。{w}{p} 좋아요 か、動詞に変えて {w}{q} 좋아해요。",
+   "mot": "못 = できない（能力・状況）。안 = しない（選択）。못 も 안 と同じく動詞の直前に置きます。"
   },
   "vi": {
    "batchim_yes": "“{w}” kết thúc bằng phụ âm (받침 {f}) → {p}",
@@ -1276,7 +1384,12 @@
    "to_hon_ok": "께 là dạng kính ngữ của 에게 — dùng với ông bà, thầy cô, cấp trên.",
    "to_hon_soft": "Đúng ngữ pháp, nhưng với người lớn tuổi nên dùng 께 (kèm 드려요).",
    "pos_ok": "“{w}” chỉ vị trí; 에 theo sau: 의자 위에.",
-   "location_ok": "Với 있어요, vật ở đó lấy 이/가; địa điểm + từ chỉ vị trí + 에."
+   "location_ok": "Với 있어요, vật ở đó lấy 이/가; địa điểm + từ chỉ vị trí + 에.",
+   "like_ok": "좋아하다 là động từ nên thứ bạn thích là tân ngữ → {w}{p} 좋아해요.",
+   "like_wrong_ga": "“{w}{s} 좋아요” cũng đúng — nhưng đó là tính từ 좋다. Với 좋아해요 (động từ), thứ được thích là tân ngữ: {w}{p} 좋아해요.",
+   "pref_ok": "좋다 là tính từ (“tốt / đáng thích”), nên “{w}” lấy 이/가 và không có tân ngữ: {w}{p} 좋아요.",
+   "pref_wrong_obj": "좋아요 là tính từ — không có tân ngữ. Nói {w}{p} 좋아요, hoặc đổi sang động từ: {w}{q} 좋아해요.",
+   "mot": "못 = không thể (khả năng, hoàn cảnh). 안 = không (lựa chọn). 못 đứng ngay trước động từ, như 안."
   }
  },
  "levels": {

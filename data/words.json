@@ -3663,6 +3663,35 @@
    ],
    "level": 2,
    "en_g": "the door"
+  },
+  {
+   "h": "술",
+   "r": "sul",
+   "en": "alcohol",
+   "ja": "お酒",
+   "vi": "rượu",
+   "roles": [
+    "subj",
+    "obj",
+    "have"
+   ],
+   "kind": "drink",
+   "feat": [
+    "taste",
+    "buy"
+   ],
+   "level": 2,
+   "en_g": "alcohol",
+   "alias_en": [
+    "alcohol",
+    "drink",
+    "liquor",
+    "soju"
+   ],
+   "alias_ja": [
+    "酒",
+    "お酒"
+   ]
   }
  ],
  "verbs": [

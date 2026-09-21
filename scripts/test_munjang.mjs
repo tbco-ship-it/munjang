@@ -276,9 +276,24 @@ eq(chk('나는 커피를 마신다').verdict, 'ok', 'checker: plain style ok');
 eq(chk('커피를 마시지 마세요').verdict, 'ok', 'checker: -지 마세요 ok');
 // every verb has every connective form or an explicit null, and every template slot kind is known
 for (const v of W.verbs) for (const k of ['go', 'eoseo', 'jiman', 'myeon', 'lttae', 'ttaemun', 'gi_jeone', 'myeonseo']) eq(k in v, true, `${v.h} has ${k}`);
-for (const tp of T.templates) for (const k of tp.slots) eq(/^(S|SP|O|OP|OP2|D|L|T|TP|H|HP|W|WP|R|RP|V|VW|NV|HV|A|V1|A1|CP|V2|NV2|O2|REF|POS|QD|QO|QP|VF:\w+|AUX:\S+|FIX:\S+)$/.test(k), true, `${tp.id} slot ${k}`);
+for (const tp of T.templates) for (const k of tp.slots) eq(/^(S|SP|O|OP|OP2|D|L|T|TP|H|HP|W|WP|R|RP|V|VW|NV|HV|A|MV|V1|A1|CP|V2|NV2|O2|REF|POS|QD|QO|QP|VF:\w+|AUX:\S+|FIX:\S+)$/.test(k), true, `${tp.id} slot ${k}`);
 for (const tp of T.templates) if (tp.conn) eq((tp.conns || []).includes(tp.conn) && Object.keys(T.conn).includes(tp.conn), true, `${tp.id} conn listed`);
 for (const tp of T.templates) for (const k of tp.slots) if (k.startsWith('VF:')) eq(M.verbsFor(tp, W).length > 0, true, `${tp.id} has verbs with ${k}`);
+
+// like / pref / cant (JA learners' #1 pain: 좋아해요 vs 좋아요 — Goo-binski 知恵袋 survey rows 9–11)
+eq(asm('like', { S: noun('저'), O: noun('커피'), V: verb('좋아하다'), tense: 'pres' }), '저는 커피를 좋아해요.', 'like frame');
+eq(M.judgeP(tpl('like'), 'OP', noun('커피'), verb('좋아하다'), '가', WHY).grade, 'no', '커피가 좋아해요 rejected');
+eq(M.judgeP(tpl('like'), 'OP', noun('커피'), verb('좋아하다'), '가', WHY).why.includes('좋아요'), true, 'like why names 좋아요');
+eq(M.judgeP(tpl('like'), 'OP', noun('커피'), verb('좋아하다'), '를', WHY).grade, 'ok', '커피를 좋아해요 ok');
+eq(asm('pref', { S: noun('저'), H: noun('커피'), HP: '가', A: adj('좋다'), tense: 'pres' }), '저는 커피가 좋아요.', 'pref frame');
+eq(M.judgeP(tpl('pref'), 'HP', noun('커피'), null, '를', WHY).grade, 'no', '커피를 좋아요 rejected');
+eq(M.judgeP(tpl('pref'), 'HP', noun('물'), null, '가', WHY).grade, 'no', '물가 (form) rejected');
+eq(M.judgeP(tpl('pref'), 'HP', noun('물'), null, '이', WHY).grade, 'ok', '물이 좋아요 ok');
+eq(M.adjectivesFor(noun('저'), W, tpl('pref')).map(a => a.h), ['좋다'], 'pref adjective = 좋다 only');
+eq(M.candidates(tpl('pref'), 'H', W).some(n => n.h === '시간'), false, 'pref H = likeable things');
+eq(asm('cant', { S: noun('저'), O: noun('술'), V: verb('마시다'), tense: 'pres' }), '저는 술을 못 마셔요.', 'cant frame');
+eq(chk('저는 술을 못 마셔요').verdict, 'ok', 'checker: 못 ok');
+eq(chk('저는 술을 못마셔요').notes.some(n => n.key === 'chk_an_space'), true, 'checker: 못마셔요 spacing');
 
 console.log(fails ? `${fails} FAILED` : 'all passed');
 process.exit(fails ? 1 : 0);
