@@ -1,11 +1,11 @@
 // 원고지 sheet: the tray sentences from localStorage laid out one syllable per cell, one blank cell per space.
-// A space never starts a line; a full stop that would start a line rides in the margin of the previous cell (원고지 convention).
+// A space never starts a line; a full stop that would start a line shares the previous cell (원고지 convention). This is a sentence-copying grid; paragraph indentation is a TOPIK-page concern (topik.js).
 (function () {
   const M = window.Munjang, UI = window.MJ_UI;
   const COLS = 20, ROWS = 10;
   const sheet = document.getElementById('sheet');
   let tray = [];
-  try { tray = JSON.parse(localStorage.getItem('munjang.tray') || '[]'); } catch (e) {}
+  try { const v = JSON.parse(localStorage.getItem('munjang.tray') || '[]'); if (Array.isArray(v)) tray = v.filter(x => x && typeof x.text === 'string' && x.text.length <= 120).slice(0, 5); } catch (e) {}
   function layout(text) {
     // returns rows of cells: {ch, kind: 'syl'|'space'|'punct'|'empty', tail?: '.'}
     const rows = []; let row = [];
@@ -25,7 +25,7 @@
     sheet.appendChild(title);
     tray.forEach((s, i) => {
       const block = document.createElement('div'); block.className = 'sent';
-      const cap = document.createElement('p'); cap.className = 'cap'; cap.innerHTML = `<b>${i + 1}.</b> <span lang="ko">${s.text}</span> <small>${s.gloss || ''}</small>`;
+      const cap = document.createElement('p'); cap.className = 'cap'; const b = document.createElement('b'); b.textContent = (i + 1) + '.'; const ko = document.createElement('span'); ko.lang = 'ko'; ko.textContent = s.text; const sm = document.createElement('small'); sm.textContent = (s.gloss || '') + (s.unreviewed ? ' · ' + (UI.unreviewed || '') : ''); cap.append(b, ' ', ko, ' ', sm);
       block.appendChild(cap);
       // Line 1: the sentence (light, for tracing when enabled). Lines 2–3: the same cells empty, for free writing.
       [true, false, false].forEach(trace => {
@@ -34,7 +34,7 @@
           r.forEach(c => {
             const cell = document.createElement('span'); cell.className = 'cell ' + c.kind + (trace ? ' t' : ' w');
             if (trace && c.ch) cell.textContent = c.ch;
-            if (c.tail) { const t = document.createElement('i'); t.textContent = c.tail; cell.appendChild(t); }
+            if (c.tail && trace) { const t = document.createElement('i'); t.textContent = c.tail; cell.appendChild(t); }
             line.appendChild(cell);
           });
           block.appendChild(line);
@@ -43,7 +43,8 @@
       sheet.appendChild(block);
     });
   }
-  document.querySelectorAll('[data-paper]').forEach(b => b.onclick = () => { document.querySelectorAll('[data-paper]').forEach(x => x.classList.toggle('on', x === b)); sheet.classList.toggle('a4', b.dataset.paper === 'a4'); sheet.classList.toggle('letter', b.dataset.paper === 'letter'); });
+  const pageStyle = document.createElement('style'); document.head.appendChild(pageStyle);
+  document.querySelectorAll('[data-paper]').forEach(b => b.onclick = () => { document.querySelectorAll('[data-paper]').forEach(x => x.classList.toggle('on', x === b)); sheet.classList.toggle('a4', b.dataset.paper === 'a4'); sheet.classList.toggle('letter', b.dataset.paper === 'letter'); pageStyle.textContent = `@page{size:${b.dataset.paper === 'letter' ? 'Letter' : 'A4'};margin:14mm}`; });
   const g = document.getElementById('guide'); g.onchange = () => sheet.classList.toggle('guide', g.checked);
   const tr = document.getElementById('trace'); tr.onchange = () => sheet.classList.toggle('notrace', !tr.checked);
   document.getElementById('do-print').onclick = () => window.print();

@@ -248,7 +248,8 @@ html.roman .w-r{display:block}
 .cell{position:relative;height:var(--cell);border:1px solid #c9cfd6;margin:0 -1px -1px 0;display:flex;align-items:center;justify-content:center;font:500 calc(var(--cell) * .68) var(--hangul);color:#b8c0c9}
 .cell.w{color:transparent}.cell.ascii,.topik-sheet .cell:has(> :not(i)){}.cell.punct{font-size:calc(var(--cell) * .5)}
 .sheet.notrace .cell.t{color:transparent}
-.cell i{position:absolute;right:-.15em;bottom:0;font-style:normal;font-size:calc(var(--cell) * .45);color:#b8c0c9}
+.cell i{position:absolute;right:.05em;bottom:0;font-style:normal;font-size:calc(var(--cell) * .45);color:#b8c0c9}
+.sheet.notrace .cell i{color:transparent}
 .sheet.guide .cell::before,.sheet.guide .cell::after{content:"";position:absolute;pointer-events:none}
 .sheet.guide .cell::before{left:50%;top:0;bottom:0;border-left:1px dashed #e5e8eb}
 .sheet.guide .cell::after{top:50%;left:0;right:0;border-top:1px dashed #e5e8eb}
@@ -302,3 +303,4 @@ html.roman .w-r{display:block}
 .drill .drill-s{font:600 1.4rem/1.4 var(--hangul);margin:0 0 10px}.drill .drill-s u{text-decoration:none;color:var(--accent-text);border-bottom:2px solid var(--accent);display:inline-block;min-width:1.1em}
 .drill .why{margin-top:10px}.drill .why .link{display:block;margin-top:6px}.drill-done{font-weight:700;margin:0 0 10px}
 .p-opt.none{font:600 .85rem var(--font);min-width:80px}
+.words .more{display:block;margin-top:8px}

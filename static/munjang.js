@@ -69,12 +69,13 @@
   const OP_OPTIONS = ['을', '를', '에', '에서'];
   function familyOf(p) { if (p === '에') return 'dest'; if (p === '하고') return 'with'; if (p === '한테') return 'to'; for (const f of ['topic', 'subject', 'obj', 'loc', 'with', 'to']) if (FAMILY[f].yes === p || FAMILY[f].no === p) return f; return null; }
   function form(word, family) {
+    if (!word) return '';
     if (family === 'time') return word.tp === 'none' ? '' : '에';
     return FAMILY[family][hasBatchim(word.h || word) ? 'yes' : 'no'];
   }
   // The written chunk: word + particle, with 저+가 → 제가.
   function chunk(word, particle) {
-    if (word.ga && (particle === '가' || particle === '이')) return word.ga;
+    if (word.ga && particle === '가') return word.ga;
     if (particle === '∅') particle = '';
     return (word.h || word) + particle;
   }
@@ -86,19 +87,20 @@
     const fam = familyOf(choice);
     const natural = tpl.sp; // 'topic' | 'subject'
     const correctForm = form(word, natural);
-    const bat = batchim(word.h);
-    const w = word.h;
-    if (word.ga && (choice === '가' || choice === '이')) {
-      // 저 + 이/가: only 제가 exists. Family judgement still applies.
+    const bat = word ? batchim(word.h) : '';
+    const w = word ? word.h : '';
+    if (!word || !choice) return { grade: 'no', why: '', correct: correctForm };
+    const formOk = FAMILY[fam][bat ? 'yes' : 'no'] === choice;
+    if (word.ga && formOk && choice === '가') {
+      // 저 + 가 → 제가 (나 + 가 → 내가). 저 + 이 is a form error and falls through to the ordinary check.
       if (natural === 'subject') return { grade: 'ok', why: fill(why.jeo_ga, { w }), correct: correctForm, chunk: word.ga };
       return { grade: 'soft', why: fill(why.topic_contrast, { w }) + ' ' + fill(why.jeo_ga, { w }), correct: correctForm, chunk: word.ga };
     }
-    const formOk = FAMILY[fam][bat ? 'yes' : 'no'] === choice;
     if (!formOk) {
       return { grade: 'no', why: fill(bat ? why.batchim_yes : why.batchim_no, { w, f: bat, p: FAMILY[fam][bat ? 'yes' : 'no'] }), correct: correctForm };
     }
     if (fam === natural) {
-      const key = natural === 'topic' ? 'topic_ok' : (tpl.id === 'exist' ? 'exist_ok' : 'subject_ok');
+      const key = natural === 'topic' ? 'topic_ok' : (tpl.id === 'exist' ? 'exist_subject_ok' : 'subject_ok');
       return { grade: 'ok', why: fill(why[key], { w }), correct: correctForm };
     }
     return { grade: 'soft', why: fill(natural === 'topic' ? why.topic_contrast : why.subject_contrast, { w }), correct: correctForm };
@@ -106,6 +108,7 @@
 
   // Judge the object/place particle for slot expecting family `expect` ('obj'|'dest'|'loc').
   function judgeOP(tpl, expect, word, verb, choice, why) {
+    if (!word || !choice) return { grade: 'no', why: '', correct: '' };
     const fam = familyOf(choice);
     const w = word.h, v = verb ? verb.pres : '';
     const bat = batchim(w);
@@ -114,9 +117,10 @@
       if (expect === 'obj' && FAMILY.obj[bat ? 'yes' : 'no'] !== choice) {
         return { grade: 'no', why: fill(bat ? why.batchim_yes : why.batchim_no, { w, f: bat, p: correctForm }), correct: correctForm };
       }
-      const key = expect === 'obj' ? 'obj_ok' : expect === 'dest' ? (tpl.id === 'exist' ? 'exist_ok' : 'dest_ok') : 'loc_ok';
-      return { grade: 'ok', why: fill(why[key], { w, v: verbLabel(verb, why) }), correct: correctForm };
+      const key = expect === 'obj' ? 'obj_ok' : expect === 'dest' ? (tpl.id === 'exist' ? 'exist_place_ok' : 'dest_ok') : 'loc_ok';
+      return { grade: 'ok', why: fill(why[key], { w, v: verb ? verb.h : '' }), correct: correctForm };
     }
+    if (expect === 'loc' && fam === 'dest' && verb && verb.locBoth) return { grade: 'ok', why: fill(why.live_both, { w, v: verb.h }), correct: '에서' };
     const key = expect === 'obj' ? (fam === 'dest' ? 'obj_wrong_dest' : 'obj_wrong_loc')
       : expect === 'dest' ? (fam === 'loc' ? (tpl.id === 'exist' ? 'exist_wrong_loc' : 'dest_wrong_loc') : 'dest_wrong_obj')
       : (fam === 'dest' ? 'loc_wrong_dest' : 'loc_wrong_obj');
@@ -124,6 +128,7 @@
   }
   // Judge the newer particle families (time 에/∅, have 이/가, with 와/과/하고, to 에게/한테).
   function judgeX(tpl, expect, word, verb, choice, why) {
+    if (!word || !choice) return { grade: 'no', why: '', correct: '' };
     const w = word.h, bat = batchim(w);
     if (expect === 'time') {
       const none = word.tp === 'none';
@@ -165,7 +170,13 @@
   // Which nouns fit a slot of the template given the chosen verb (for suggestion lists).
   function candidates(tpl, slotKey, words, verb) {
     const nouns = words.nouns;
-    if (slotKey === 'S') return nouns.filter(n => n.roles.includes('subj') && (tpl.sp !== 'subject' || tpl.id === 'exist' ? true : n.kind !== 'person' || true));
+    if (slotKey === 'S') {
+      const subj = nouns.filter(n => n.roles.includes('subj'));
+      if (tpl.id === 'is') return subj.filter(n => words.adjectives.some(a => a.fits.some(f => (n.feat || []).includes(f))));
+      if (tpl.id === 'exist') return subj.filter(n => ['person', 'animal', 'item', 'text'].includes(n.kind));
+      if (tpl.id === 'want' || tpl.id === 'have') return subj.filter(n => tpl.id === 'want' ? !!n.ga : n.kind === 'person' || n.kind === 'animal'); // -고 싶어요 declaratives: first person only
+      return subj.filter(n => n.kind === 'person' || n.kind === 'animal'); // actors
+    }
     if (slotKey === 'O') {
       let list = nouns.filter(n => n.roles.includes('obj'));
       if (verb && verb.takes) list = list.filter(n => compatible(verb, n));
@@ -179,17 +190,19 @@
     if (slotKey === 'R') return nouns.filter(n => n.roles.includes('to'));
     return nouns;
   }
-  function verbsFor(tpl, words) {
-    if (tpl.verbs === 'transitive') return words.verbs.filter(v => v.takes);
-    if (tpl.verbs === 'move') return words.verbs.filter(v => v.move);
+  function verbsFor(tpl, words, tense) {
+    const has = v => !tense || tense === 'pres' || tense === 'past' || v[tense];
+    if (tpl.id === 'want') return words.verbs.filter(v => v.takes && v.want);
+    if (tpl.verbs === 'transitive') return words.verbs.filter(v => v.takes && has(v));
+    if (tpl.verbs === 'move') return words.verbs.filter(v => v.move && has(v));
     if (tpl.verbs === 'exist') return words.verbs.filter(v => v.exist);
-    if (tpl.verbs === 'at') return words.verbs.filter(v => v.at);
-    if (tpl.verbs === 'give') return words.verbs.filter(v => v.to && v.takes);
+    if (tpl.verbs === 'at') return words.verbs.filter(v => v.at && has(v));
+    if (tpl.verbs === 'give') return words.verbs.filter(v => v.to && v.takes && has(v));
     if (tpl.verbs === 'have') return words.verbs.filter(v => v.have);
     return [];
   }
   function adjectivesFor(subject, words) {
-    return words.adjectives.filter(a => !subject || a.fits.includes(subject.kind));
+    return words.adjectives.filter(a => !subject || a.fits.some(f => (subject.feat || []).includes(f)));
   }
   function compatible(verb, noun) {
     if (!verb || !noun || !verb.takes) return true;
@@ -197,8 +210,7 @@
   }
   function verbForm(verb, tense) {
     if (!verb) return '';
-    if (tense === 'want') return verb.want || verb.pres;
-    if (tense === 'fut') return verb.fut || verb.pres;
+    if (tense === 'want' || tense === 'fut') return verb[tense] || null; // fail closed: never substitute the present tense for a missing form
     return verb[tense] || verb.pres;
   }
 
@@ -206,16 +218,19 @@
   function assemble(tpl, picks) {
     const chunks = [];
     const slots = tpl.slots;
+    if (!picks || !picks.S) return { chunks, text: '', incomplete: true };
     for (let i = 0; i < slots.length; i++) {
       const k = slots[i];
       if (k === 'S') { const p = picks.SP || form(picks.S, tpl.sp); chunks.push({ kind: 'S', text: chunk(picks.S, p), word: picks.S, particle: p }); }
       else if (['O', 'D', 'L', 'T', 'H', 'W', 'R'].includes(k)) {
+        if (!picks[k]) return { chunks, text: '', incomplete: true };
         const pk = slots[i + 1], spec = pspec(tpl, pk);
         const p = picks[pk] != null ? picks[pk] : form(picks[k], spec.expect);
         chunks.push({ kind: k, text: chunk(picks[k], p), word: picks[k], particle: p === '∅' ? '' : p });
       }
       else if (k === 'V' || k === 'VW' || k === 'HV') {
         const f = verbForm(picks.V, k === 'VW' ? 'want' : (picks.tense || 'pres'));
+        if (!f) return { chunks, text: '', incomplete: true };
         f.split(' ').forEach((part, j) => chunks.push({ kind: 'V', text: part, word: picks.V, tail: j > 0 }));
       }
       else if (k === 'NV') {
@@ -223,7 +238,7 @@
         const f = verbForm(picks.V, picks.tense || 'pres');
         f.split(' ').forEach((part, j) => chunks.push({ kind: 'V', text: part, word: picks.V, tail: j > 0 }));
       }
-      else if (k === 'A') { chunks.push({ kind: 'A', text: verbForm(picks.A, picks.tense || 'pres'), word: picks.A }); }
+      else if (k === 'A') { if (!picks.A) return { chunks, text: '', incomplete: true }; chunks.push({ kind: 'A', text: verbForm(picks.A, picks.tense || 'pres'), word: picks.A }); }
     }
     return { chunks, text: chunks.map(c => c.text).join(' ') + '.' };
   }

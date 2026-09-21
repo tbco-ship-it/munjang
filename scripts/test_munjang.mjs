@@ -146,5 +146,33 @@ console.log('  why(시간,을):', M.judgeP(tpl('have'), 'HP', noun('시간'), ve
 console.log('  why(오늘,에):', M.judgeP(tpl('time'), 'TP', noun('오늘'), null, '에', WHY).why);
 for (const v of W.verbs) if (v.fut === undefined && v.h !== '좋아하다') { fails++; console.log('FAIL missing fut', v.h); }
 
+// review regressions (GPT-6 Pro 2026-09-22)
+eq(M.judgeSP(tpl('is'), noun('저'), '이', WHY).grade, 'no', 'P0 저+이 rejected');
+eq(M.judgeSP(tpl('is'), noun('저'), '가', WHY).grade, 'ok', '저+가 → 제가 ok in subject frame');
+eq(M.chunk(noun('저'), '이'), '저이', 'chunk does not contract 저+이');
+eq(M.chunk(noun('나'), '가'), '내가', '나+가 → 내가');
+eq(M.candidates(tpl('act'), 'S', W).some(n => n.h === '커피'), false, 'coffee cannot be an actor');
+eq(M.candidates(tpl('exist'), 'S', W).some(n => n.h === '서울'), false, 'Seoul cannot exist at home');
+eq(M.candidates(tpl('want'), 'S', W).map(n => n.h), ['저', '나'], 'want frame: first person only');
+eq(M.verbsFor(tpl('want'), W).some(v => v.h === '좋아하다'), false, '좋아하다 excluded from want');
+eq(M.verbForm(verb('좋아하다'), 'want'), null, 'missing want form fails closed');
+eq(M.verbsFor(tpl('act'), W, 'fut').some(v => v.h === '좋아하다'), false, 'no fut form → excluded');
+eq(M.candidates(tpl('act'), 'O', W, verb('쓰다')).map(n => n.h).includes('요리'), false, '요리를 써요 excluded');
+eq(M.candidates(tpl('act'), 'O', W, verb('쓰다')).map(n => n.h).includes('편지'), true, '편지를 써요');
+eq(M.candidates(tpl('act'), 'O', W, verb('사다')).map(n => n.h).includes('편지'), false, '편지를 사요 excluded');
+eq(M.candidates(tpl('act'), 'O', W, verb('공부하다')).map(n => n.h).includes('태권도'), false, '태권도를 공부해요 excluded');
+eq(M.candidates(tpl('act'), 'O', W, verb('배우다')).map(n => n.h).includes('태권도'), true, '태권도를 배워요');
+eq(M.adjectivesFor(noun('사과'), W).map(a => a.h).includes('예쁘다'), true, '사과가 예뻐요 allowed');
+eq(M.adjectivesFor(noun('김치'), W).map(a => a.h).includes('크다'), false, '김치가 커요 excluded');
+eq(M.adjectivesFor(noun('뉴스'), W).map(a => a.h).includes('예쁘다'), false, '뉴스가 예뻐요 excluded');
+eq(M.adjectivesFor(noun('책'), W).map(a => a.h).includes('재미있다'), true, '책이 재미있어요 allowed');
+eq(M.adjectivesFor(noun('텔레비전'), W).map(a => a.h).includes('크다'), true, '텔레비전이 커요 allowed');
+eq(M.judgeOP(tpl('live'), 'loc', noun('서울'), verb('살다'), '에', WHY).grade, 'ok', '서울에 살아요 accepted');
+eq(M.judgeOP(tpl('live'), 'loc', noun('회사'), verb('일하다'), '에', WHY).grade, 'no', '회사에 일해요 rejected');
+eq(/이\/가/.test(M.judgeOP(tpl('exist'), 'dest', noun('집'), verb('있다'), '에', WHY).why), false, 'exist place why is about 에, not 이/가');
+eq(M.assemble(tpl('act'), {}).incomplete, true, 'assemble incomplete without S');
+eq(M.assemble(tpl('want'), { S: noun('저'), O: noun('커피'), V: verb('좋아하다') }).incomplete, true, 'assemble fails closed on missing want form');
+eq(M.judgeSP(tpl('act'), undefined, '는', WHY).grade, 'no', 'judgeSP survives undefined noun');
+
 console.log(fails ? `${fails} FAILED` : 'all passed');
 process.exit(fails ? 1 : 0);

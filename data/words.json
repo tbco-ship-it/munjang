@@ -4,14 +4,28 @@
   {
    "h": "저",
    "r": "jeo",
-   "en": "I (polite)",
-   "ja": "私（丁寧）",
+   "en": "I (humble/polite)",
+   "ja": "私（へりくだった言い方）",
    "roles": [
     "subj"
    ],
    "kind": "person",
    "level": 1,
-   "ga": "제가"
+   "ga": "제가",
+   "alias_en": [
+    "i",
+    "me",
+    "I"
+   ],
+   "alias_ja": [
+    "私",
+    "わたし",
+    "わたくし"
+   ],
+   "feat": [
+    "person",
+    "appearance"
+   ]
   },
   {
    "h": "친구",
@@ -26,7 +40,20 @@
    ],
    "kind": "person",
    "level": 1,
-   "en_g": "a friend"
+   "en_g": "a friend",
+   "alias_en": [
+    "friend"
+   ],
+   "alias_ja": [
+    "ともだち",
+    "友だち",
+    "友達"
+   ],
+   "feat": [
+    "person",
+    "appearance",
+    "count"
+   ]
   },
   {
    "h": "엄마",
@@ -40,7 +67,21 @@
    ],
    "kind": "person",
    "level": 1,
-   "en_g": "my mom"
+   "en_g": "my mom",
+   "alias_en": [
+    "mom",
+    "mother",
+    "mum"
+   ],
+   "alias_ja": [
+    "お母さん",
+    "ママ",
+    "母"
+   ],
+   "feat": [
+    "person",
+    "appearance"
+   ]
   },
   {
    "h": "아빠",
@@ -54,7 +95,20 @@
    ],
    "kind": "person",
    "level": 1,
-   "en_g": "my dad"
+   "en_g": "my dad",
+   "alias_en": [
+    "dad",
+    "father"
+   ],
+   "alias_ja": [
+    "お父さん",
+    "パパ",
+    "父"
+   ],
+   "feat": [
+    "person",
+    "appearance"
+   ]
   },
   {
    "h": "선생님",
@@ -68,7 +122,17 @@
    ],
    "kind": "person",
    "level": 1,
-   "en_g": "a teacher"
+   "en_g": "a teacher",
+   "alias_en": [
+    "teacher"
+   ],
+   "alias_ja": [
+    "先生"
+   ],
+   "feat": [
+    "person",
+    "appearance"
+   ]
   },
   {
    "h": "동생",
@@ -82,7 +146,21 @@
    ],
    "kind": "person",
    "level": 1,
-   "en_g": "a younger sibling"
+   "en_g": "a younger sibling",
+   "alias_en": [
+    "brother",
+    "sibling",
+    "sister",
+    "younger sibling"
+   ],
+   "alias_ja": [
+    "妹",
+    "弟"
+   ],
+   "feat": [
+    "person",
+    "appearance"
+   ]
   },
   {
    "h": "학생",
@@ -96,7 +174,19 @@
    ],
    "kind": "person",
    "level": 1,
-   "en_g": "a student"
+   "en_g": "a student",
+   "alias_en": [
+    "student"
+   ],
+   "alias_ja": [
+    "学生",
+    "生徒"
+   ],
+   "feat": [
+    "person",
+    "appearance",
+    "count"
+   ]
   },
   {
    "h": "고양이",
@@ -110,7 +200,19 @@
    ],
    "kind": "animal",
    "level": 1,
-   "en_g": "a cat"
+   "en_g": "a cat",
+   "alias_en": [
+    "cat"
+   ],
+   "alias_ja": [
+    "ねこ",
+    "猫"
+   ],
+   "feat": [
+    "animal",
+    "appearance",
+    "phys"
+   ]
   },
   {
    "h": "강아지",
@@ -124,7 +226,21 @@
    ],
    "kind": "animal",
    "level": 1,
-   "en_g": "a puppy"
+   "en_g": "a puppy",
+   "alias_en": [
+    "dog",
+    "puppy"
+   ],
+   "alias_ja": [
+    "いぬ",
+    "子犬",
+    "犬"
+   ],
+   "feat": [
+    "animal",
+    "appearance",
+    "phys"
+   ]
   },
   {
    "h": "물",
@@ -136,7 +252,17 @@
     "obj"
    ],
    "kind": "drink",
-   "level": 1
+   "level": 1,
+   "alias_en": [
+    "water"
+   ],
+   "alias_ja": [
+    "水"
+   ],
+   "feat": [
+    "taste",
+    "buy"
+   ]
   },
   {
    "h": "커피",
@@ -148,7 +274,17 @@
     "obj"
    ],
    "kind": "drink",
-   "level": 1
+   "level": 1,
+   "alias_en": [
+    "coffee"
+   ],
+   "alias_ja": [
+    "コーヒー"
+   ],
+   "feat": [
+    "taste",
+    "buy"
+   ]
   },
   {
    "h": "우유",
@@ -160,7 +296,18 @@
     "obj"
    ],
    "kind": "drink",
-   "level": 1
+   "level": 1,
+   "alias_en": [
+    "milk"
+   ],
+   "alias_ja": [
+    "ミルク",
+    "牛乳"
+   ],
+   "feat": [
+    "taste",
+    "buy"
+   ]
   },
   {
    "h": "차",
@@ -172,7 +319,18 @@
     "obj"
    ],
    "kind": "drink",
-   "level": 1
+   "level": 1,
+   "alias_en": [
+    "tea"
+   ],
+   "alias_ja": [
+    "お茶",
+    "茶"
+   ],
+   "feat": [
+    "taste",
+    "buy"
+   ]
   },
   {
    "h": "주스",
@@ -184,7 +342,17 @@
     "obj"
    ],
    "kind": "drink",
-   "level": 1
+   "level": 1,
+   "alias_en": [
+    "juice"
+   ],
+   "alias_ja": [
+    "ジュース"
+   ],
+   "feat": [
+    "taste",
+    "buy"
+   ]
   },
   {
    "h": "김치",
@@ -196,7 +364,11 @@
     "obj"
    ],
    "kind": "food",
-   "level": 1
+   "level": 1,
+   "feat": [
+    "taste",
+    "buy"
+   ]
   },
   {
    "h": "밥",
@@ -208,7 +380,21 @@
     "obj"
    ],
    "kind": "food",
-   "level": 1
+   "level": 1,
+   "alias_en": [
+    "food",
+    "meal",
+    "rice"
+   ],
+   "alias_ja": [
+    "ごはん",
+    "ご飯",
+    "飯"
+   ],
+   "feat": [
+    "taste",
+    "buy"
+   ]
   },
   {
    "h": "빵",
@@ -220,7 +406,17 @@
     "obj"
    ],
    "kind": "food",
-   "level": 1
+   "level": 1,
+   "alias_en": [
+    "bread"
+   ],
+   "alias_ja": [
+    "パン"
+   ],
+   "feat": [
+    "taste",
+    "buy"
+   ]
   },
   {
    "h": "사과",
@@ -233,7 +429,20 @@
    ],
    "kind": "food",
    "level": 1,
-   "en_g": "an apple"
+   "en_g": "an apple",
+   "alias_en": [
+    "apple"
+   ],
+   "alias_ja": [
+    "りんご",
+    "リンゴ"
+   ],
+   "feat": [
+    "taste",
+    "buy",
+    "appearance",
+    "phys"
+   ]
   },
   {
    "h": "라면",
@@ -245,7 +454,11 @@
     "obj"
    ],
    "kind": "food",
-   "level": 1
+   "level": 1,
+   "feat": [
+    "taste",
+    "buy"
+   ]
   },
   {
    "h": "불고기",
@@ -257,7 +470,11 @@
     "obj"
    ],
    "kind": "food",
-   "level": 1
+   "level": 1,
+   "feat": [
+    "taste",
+    "buy"
+   ]
   },
   {
    "h": "책",
@@ -272,7 +489,19 @@
    "kind": "item",
    "level": 1,
    "read": true,
-   "en_g": "a book"
+   "en_g": "a book",
+   "alias_en": [
+    "book"
+   ],
+   "alias_ja": [
+    "本"
+   ],
+   "feat": [
+    "phys",
+    "buy",
+    "appearance",
+    "content"
+   ]
   },
   {
    "h": "가방",
@@ -286,7 +515,20 @@
    ],
    "kind": "item",
    "level": 1,
-   "en_g": "a bag"
+   "en_g": "a bag",
+   "alias_en": [
+    "bag"
+   ],
+   "alias_ja": [
+    "かばん",
+    "バッグ",
+    "鞄"
+   ],
+   "feat": [
+    "phys",
+    "buy",
+    "appearance"
+   ]
   },
   {
    "h": "옷",
@@ -298,7 +540,19 @@
     "obj"
    ],
    "kind": "item",
-   "level": 1
+   "level": 1,
+   "alias_en": [
+    "clothes",
+    "clothing"
+   ],
+   "alias_ja": [
+    "服"
+   ],
+   "feat": [
+    "phys",
+    "buy",
+    "appearance"
+   ]
   },
   {
    "h": "신발",
@@ -310,7 +564,18 @@
     "obj"
    ],
    "kind": "item",
-   "level": 1
+   "level": 1,
+   "alias_en": [
+    "shoes"
+   ],
+   "alias_ja": [
+    "靴"
+   ],
+   "feat": [
+    "phys",
+    "buy",
+    "appearance"
+   ]
   },
   {
    "h": "핸드폰",
@@ -324,7 +589,24 @@
    ],
    "kind": "item",
    "level": 1,
-   "en_g": "a cell phone"
+   "en_g": "a cell phone",
+   "alias_en": [
+    "cell phone",
+    "cellphone",
+    "mobile",
+    "phone"
+   ],
+   "alias_ja": [
+    "スマホ",
+    "携帯",
+    "電話"
+   ],
+   "feat": [
+    "phys",
+    "buy",
+    "appearance",
+    "content"
+   ]
   },
   {
    "h": "영화",
@@ -337,7 +619,17 @@
    ],
    "kind": "media",
    "level": 1,
-   "en_g": "a movie"
+   "en_g": "a movie",
+   "alias_en": [
+    "film",
+    "movie"
+   ],
+   "alias_ja": [
+    "映画"
+   ],
+   "feat": [
+    "content"
+   ]
   },
   {
    "h": "드라마",
@@ -350,7 +642,10 @@
    ],
    "kind": "media",
    "level": 1,
-   "en_g": "a drama"
+   "en_g": "a drama",
+   "feat": [
+    "content"
+   ]
   },
   {
    "h": "노래",
@@ -363,7 +658,16 @@
    ],
    "kind": "audio",
    "level": 1,
-   "en_g": "a song"
+   "en_g": "a song",
+   "alias_en": [
+    "song"
+   ],
+   "alias_ja": [
+    "歌"
+   ],
+   "feat": [
+    "content"
+   ]
   },
   {
    "h": "음악",
@@ -375,7 +679,16 @@
     "obj"
    ],
    "kind": "audio",
-   "level": 1
+   "level": 1,
+   "alias_en": [
+    "music"
+   ],
+   "alias_ja": [
+    "音楽"
+   ],
+   "feat": [
+    "content"
+   ]
   },
   {
    "h": "사진",
@@ -389,7 +702,17 @@
    "kind": "media",
    "level": 1,
    "en_g": "a photo",
-   "photo": true
+   "photo": true,
+   "alias_en": [
+    "photo",
+    "picture"
+   ],
+   "alias_ja": [
+    "写真"
+   ],
+   "feat": [
+    "content"
+   ]
   },
   {
    "h": "편지",
@@ -400,11 +723,15 @@
     "subj",
     "obj"
    ],
-   "kind": "item",
+   "kind": "text",
    "level": 1,
    "read": true,
    "write": true,
-   "en_g": "a letter"
+   "en_g": "a letter",
+   "feat": [
+    "content",
+    "phys"
+   ]
   },
   {
    "h": "집",
@@ -418,7 +745,20 @@
    ],
    "kind": "place",
    "level": 1,
-   "en_g": "home"
+   "en_g": "home",
+   "alias_en": [
+    "home",
+    "house"
+   ],
+   "alias_ja": [
+    "いえ",
+    "うち",
+    "家"
+   ],
+   "feat": [
+    "place",
+    "appearance"
+   ]
   },
   {
    "h": "학교",
@@ -432,7 +772,17 @@
    ],
    "kind": "place",
    "level": 1,
-   "en_g": "school"
+   "en_g": "school",
+   "alias_en": [
+    "school"
+   ],
+   "alias_ja": [
+    "学校"
+   ],
+   "feat": [
+    "place",
+    "appearance"
+   ]
   },
   {
    "h": "회사",
@@ -446,7 +796,19 @@
    ],
    "kind": "place",
    "level": 1,
-   "en_g": "the office"
+   "en_g": "the office",
+   "alias_en": [
+    "company",
+    "office",
+    "work"
+   ],
+   "alias_ja": [
+    "会社"
+   ],
+   "feat": [
+    "place",
+    "appearance"
+   ]
   },
   {
    "h": "카페",
@@ -460,7 +822,20 @@
    ],
    "kind": "place",
    "level": 1,
-   "en_g": "a café"
+   "en_g": "a café",
+   "alias_en": [
+    "cafe",
+    "café",
+    "coffee shop"
+   ],
+   "alias_ja": [
+    "カフェ",
+    "喫茶店"
+   ],
+   "feat": [
+    "place",
+    "appearance"
+   ]
   },
   {
    "h": "식당",
@@ -474,7 +849,18 @@
    ],
    "kind": "place",
    "level": 1,
-   "en_g": "a restaurant"
+   "en_g": "a restaurant",
+   "alias_en": [
+    "restaurant"
+   ],
+   "alias_ja": [
+    "レストラン",
+    "食堂"
+   ],
+   "feat": [
+    "place",
+    "appearance"
+   ]
   },
   {
    "h": "공원",
@@ -488,7 +874,17 @@
    ],
    "kind": "place",
    "level": 1,
-   "en_g": "a park"
+   "en_g": "a park",
+   "alias_en": [
+    "park"
+   ],
+   "alias_ja": [
+    "公園"
+   ],
+   "feat": [
+    "place",
+    "appearance"
+   ]
   },
   {
    "h": "도서관",
@@ -502,7 +898,17 @@
    ],
    "kind": "place",
    "level": 1,
-   "en_g": "a library"
+   "en_g": "a library",
+   "alias_en": [
+    "library"
+   ],
+   "alias_ja": [
+    "図書館"
+   ],
+   "feat": [
+    "place",
+    "appearance"
+   ]
   },
   {
    "h": "시장",
@@ -516,7 +922,17 @@
    ],
    "kind": "place",
    "level": 1,
-   "en_g": "a market"
+   "en_g": "a market",
+   "alias_en": [
+    "market"
+   ],
+   "alias_ja": [
+    "市場"
+   ],
+   "feat": [
+    "place",
+    "appearance"
+   ]
   },
   {
    "h": "병원",
@@ -530,11 +946,21 @@
    ],
    "kind": "place",
    "level": 1,
-   "en_g": "a hospital"
+   "en_g": "a hospital",
+   "alias_en": [
+    "hospital"
+   ],
+   "alias_ja": [
+    "病院"
+   ],
+   "feat": [
+    "place",
+    "appearance"
+   ]
   },
   {
    "h": "서울",
-   "r": "seoul",
+   "r": "Seoul",
    "en": "Seoul",
    "ja": "ソウル",
    "roles": [
@@ -543,11 +969,15 @@
     "loc"
    ],
    "kind": "place",
-   "level": 1
+   "level": 1,
+   "feat": [
+    "place",
+    "appearance"
+   ]
   },
   {
    "h": "한국",
-   "r": "hanguk",
+   "r": "Hanguk",
    "en": "Korea",
    "ja": "韓国",
    "roles": [
@@ -556,11 +986,15 @@
     "loc"
    ],
    "kind": "place",
-   "level": 1
+   "level": 1,
+   "feat": [
+    "place",
+    "appearance"
+   ]
   },
   {
    "h": "일본",
-   "r": "ilbon",
+   "r": "Ilbon",
    "en": "Japan",
    "ja": "日本",
    "roles": [
@@ -569,7 +1003,11 @@
     "loc"
    ],
    "kind": "place",
-   "level": 1
+   "level": 1,
+   "feat": [
+    "place",
+    "appearance"
+   ]
   },
   {
    "h": "한국어",
@@ -581,7 +1019,17 @@
     "obj"
    ],
    "kind": "skill",
-   "level": 1
+   "level": 1,
+   "alias_en": [
+    "korean",
+    "korean language"
+   ],
+   "alias_ja": [
+    "韓国語"
+   ],
+   "feat": [
+    "skill"
+   ]
   },
   {
    "h": "영어",
@@ -593,7 +1041,16 @@
     "obj"
    ],
    "kind": "skill",
-   "level": 1
+   "level": 1,
+   "alias_en": [
+    "english"
+   ],
+   "alias_ja": [
+    "英語"
+   ],
+   "feat": [
+    "skill"
+   ]
   },
   {
    "h": "일본어",
@@ -605,7 +1062,16 @@
     "obj"
    ],
    "kind": "skill",
-   "level": 1
+   "level": 1,
+   "alias_en": [
+    "japanese"
+   ],
+   "alias_ja": [
+    "日本語"
+   ],
+   "feat": [
+    "skill"
+   ]
   },
   {
    "h": "한글",
@@ -617,7 +1083,11 @@
     "obj"
    ],
    "kind": "skill",
-   "level": 1
+   "level": 1,
+   "write": true,
+   "feat": [
+    "skill"
+   ]
   },
   {
    "h": "토마토",
@@ -630,7 +1100,13 @@
    ],
    "kind": "food",
    "level": 1,
-   "en_g": "a tomato"
+   "en_g": "a tomato",
+   "feat": [
+    "taste",
+    "buy",
+    "appearance",
+    "phys"
+   ]
   },
   {
    "h": "야채",
@@ -642,7 +1118,11 @@
     "obj"
    ],
    "kind": "food",
-   "level": 1
+   "level": 1,
+   "feat": [
+    "taste",
+    "buy"
+   ]
   },
   {
    "h": "귤",
@@ -655,7 +1135,13 @@
    ],
    "kind": "food",
    "level": 1,
-   "en_g": "a tangerine"
+   "en_g": "a tangerine",
+   "feat": [
+    "taste",
+    "buy",
+    "appearance",
+    "phys"
+   ]
   },
   {
    "h": "컴퓨터",
@@ -669,7 +1155,21 @@
    ],
    "kind": "item",
    "level": 1,
-   "en_g": "a computer"
+   "en_g": "a computer",
+   "alias_en": [
+    "computer",
+    "pc"
+   ],
+   "alias_ja": [
+    "コンピューター",
+    "パソコン"
+   ],
+   "feat": [
+    "phys",
+    "buy",
+    "appearance",
+    "content"
+   ]
   },
   {
    "h": "텔레비전",
@@ -682,7 +1182,19 @@
    ],
    "kind": "media",
    "level": 1,
-   "en_g": "TV"
+   "en_g": "TV",
+   "alias_en": [
+    "television",
+    "tv"
+   ],
+   "alias_ja": [
+    "テレビ"
+   ],
+   "feat": [
+    "content",
+    "phys",
+    "buy"
+   ]
   },
   {
    "h": "뉴스",
@@ -695,11 +1207,14 @@
    ],
    "kind": "media",
    "level": 1,
-   "en_g": "the news"
+   "en_g": "the news",
+   "feat": [
+    "content"
+   ]
   },
   {
    "h": "유튜브",
-   "r": "yutyubeu",
+   "r": "YouTube",
    "en": "YouTube",
    "ja": "YouTube",
    "roles": [
@@ -707,7 +1222,10 @@
     "obj"
    ],
    "kind": "media",
-   "level": 1
+   "level": 1,
+   "feat": [
+    "content"
+   ]
   },
   {
    "h": "야구",
@@ -718,9 +1236,13 @@
     "subj",
     "obj"
    ],
-   "kind": "media",
+   "kind": "activity",
    "level": 1,
-   "en_g": "baseball"
+   "en_g": "baseball",
+   "do": true,
+   "feat": [
+    "activity"
+   ]
   },
   {
    "h": "교회",
@@ -734,7 +1256,11 @@
    ],
    "kind": "place",
    "level": 1,
-   "en_g": "a church"
+   "en_g": "a church",
+   "feat": [
+    "place",
+    "appearance"
+   ]
   },
   {
    "h": "요리",
@@ -745,9 +1271,12 @@
     "subj",
     "obj"
    ],
-   "kind": "skill",
+   "kind": "activity",
    "level": 1,
-   "do": true
+   "do": true,
+   "feat": [
+    "activity"
+   ]
   },
   {
    "h": "태권도",
@@ -758,8 +1287,12 @@
     "subj",
     "obj"
    ],
-   "kind": "skill",
-   "level": 1
+   "kind": "activity",
+   "level": 1,
+   "do": true,
+   "feat": [
+    "activity"
+   ]
   },
   {
    "h": "아침",
@@ -771,7 +1304,16 @@
     "time"
    ],
    "kind": "time",
-   "level": 1
+   "level": 1,
+   "alias_en": [
+    "morning"
+   ],
+   "alias_ja": [
+    "朝"
+   ],
+   "feat": [
+    "time"
+   ]
   },
   {
    "h": "점심",
@@ -784,7 +1326,10 @@
     "obj"
    ],
    "kind": "time",
-   "level": 1
+   "level": 1,
+   "feat": [
+    "time"
+   ]
   },
   {
    "h": "저녁",
@@ -797,7 +1342,19 @@
     "obj"
    ],
    "kind": "time",
-   "level": 1
+   "level": 1,
+   "alias_en": [
+    "dinner",
+    "evening"
+   ],
+   "alias_ja": [
+    "夕方",
+    "夕食",
+    "夜"
+   ],
+   "feat": [
+    "time"
+   ]
   },
   {
    "h": "주말",
@@ -809,7 +1366,16 @@
     "time"
    ],
    "kind": "time",
-   "level": 1
+   "level": 1,
+   "alias_en": [
+    "weekend"
+   ],
+   "alias_ja": [
+    "週末"
+   ],
+   "feat": [
+    "time"
+   ]
   },
   {
    "h": "월요일",
@@ -821,7 +1387,10 @@
     "time"
    ],
    "kind": "time",
-   "level": 1
+   "level": 1,
+   "feat": [
+    "time"
+   ]
   },
   {
    "h": "금요일",
@@ -833,7 +1402,10 @@
     "time"
    ],
    "kind": "time",
-   "level": 1
+   "level": 1,
+   "feat": [
+    "time"
+   ]
   },
   {
    "h": "밤",
@@ -845,7 +1417,10 @@
     "time"
    ],
    "kind": "time",
-   "level": 1
+   "level": 1,
+   "feat": [
+    "time"
+   ]
   },
   {
    "h": "오늘",
@@ -857,7 +1432,16 @@
    ],
    "kind": "time",
    "tp": "none",
-   "level": 1
+   "level": 1,
+   "alias_en": [
+    "today"
+   ],
+   "alias_ja": [
+    "今日"
+   ],
+   "feat": [
+    "time"
+   ]
   },
   {
    "h": "내일",
@@ -869,7 +1453,16 @@
    ],
    "kind": "time",
    "tp": "none",
-   "level": 1
+   "level": 1,
+   "alias_en": [
+    "tomorrow"
+   ],
+   "alias_ja": [
+    "明日"
+   ],
+   "feat": [
+    "time"
+   ]
   },
   {
    "h": "어제",
@@ -881,7 +1474,16 @@
    ],
    "kind": "time",
    "tp": "none",
-   "level": 1
+   "level": 1,
+   "alias_en": [
+    "yesterday"
+   ],
+   "alias_ja": [
+    "昨日"
+   ],
+   "feat": [
+    "time"
+   ]
   },
   {
    "h": "매일",
@@ -893,7 +1495,17 @@
    ],
    "kind": "time",
    "tp": "none",
-   "level": 1
+   "level": 1,
+   "alias_en": [
+    "every day",
+    "everyday"
+   ],
+   "alias_ja": [
+    "毎日"
+   ],
+   "feat": [
+    "time"
+   ]
   },
   {
    "h": "지금",
@@ -905,7 +1517,16 @@
    ],
    "kind": "time",
    "tp": "none",
-   "level": 1
+   "level": 1,
+   "alias_en": [
+    "now"
+   ],
+   "alias_ja": [
+    "今"
+   ],
+   "feat": [
+    "time"
+   ]
   },
   {
    "h": "시간",
@@ -917,7 +1538,17 @@
     "have"
    ],
    "kind": "abstract",
-   "level": 1
+   "level": 1,
+   "alias_en": [
+    "time"
+   ],
+   "alias_ja": [
+    "時間"
+   ],
+   "feat": [
+    "abstract",
+    "count"
+   ]
   },
   {
    "h": "돈",
@@ -930,7 +1561,18 @@
     "obj"
    ],
    "kind": "abstract",
-   "level": 1
+   "level": 1,
+   "alias_en": [
+    "money"
+   ],
+   "alias_ja": [
+    "お金",
+    "金"
+   ],
+   "feat": [
+    "abstract",
+    "count"
+   ]
   },
   {
    "h": "선물",
@@ -944,7 +1586,20 @@
    ],
    "kind": "item",
    "level": 1,
-   "en_g": "a present"
+   "en_g": "a present",
+   "alias_en": [
+    "gift",
+    "present"
+   ],
+   "alias_ja": [
+    "プレゼント",
+    "贈り物"
+   ],
+   "feat": [
+    "phys",
+    "buy",
+    "appearance"
+   ]
   },
   {
    "h": "꽃",
@@ -957,7 +1612,19 @@
     "have"
    ],
    "kind": "item",
-   "level": 1
+   "level": 1,
+   "alias_en": [
+    "flower",
+    "flowers"
+   ],
+   "alias_ja": [
+    "花"
+   ],
+   "feat": [
+    "phys",
+    "buy",
+    "appearance"
+   ]
   },
   {
    "h": "우산",
@@ -971,7 +1638,12 @@
    ],
    "kind": "item",
    "level": 1,
-   "en_g": "an umbrella"
+   "en_g": "an umbrella",
+   "feat": [
+    "phys",
+    "buy",
+    "appearance"
+   ]
   },
   {
    "h": "숙제",
@@ -985,7 +1657,10 @@
    ],
    "kind": "skill",
    "level": 1,
-   "do": true
+   "do": true,
+   "feat": [
+    "skill"
+   ]
   },
   {
    "h": "약속",
@@ -998,7 +1673,10 @@
    ],
    "kind": "abstract",
    "level": 1,
-   "en_g": "plans"
+   "en_g": "plans",
+   "feat": [
+    "abstract"
+   ]
   },
   {
    "h": "남자 친구",
@@ -1013,7 +1691,11 @@
    ],
    "kind": "person",
    "level": 1,
-   "en_g": "a boyfriend"
+   "en_g": "a boyfriend",
+   "feat": [
+    "person",
+    "appearance"
+   ]
   },
   {
    "h": "여자 친구",
@@ -1028,7 +1710,11 @@
    ],
    "kind": "person",
    "level": 1,
-   "en_g": "a girlfriend"
+   "en_g": "a girlfriend",
+   "feat": [
+    "person",
+    "appearance"
+   ]
   },
   {
    "h": "할머니",
@@ -1042,7 +1728,11 @@
    ],
    "kind": "person",
    "level": 1,
-   "en_g": "my grandmother"
+   "en_g": "my grandmother",
+   "feat": [
+    "person",
+    "appearance"
+   ]
   },
   {
    "h": "할아버지",
@@ -1056,7 +1746,11 @@
    ],
    "kind": "person",
    "level": 1,
-   "en_g": "my grandfather"
+   "en_g": "my grandfather",
+   "feat": [
+    "person",
+    "appearance"
+   ]
   },
   {
    "h": "언니",
@@ -1070,7 +1764,11 @@
    ],
    "kind": "person",
    "level": 1,
-   "en_g": "my older sister"
+   "en_g": "my older sister",
+   "feat": [
+    "person",
+    "appearance"
+   ]
   },
   {
    "h": "형",
@@ -1084,7 +1782,11 @@
    ],
    "kind": "person",
    "level": 1,
-   "en_g": "my older brother"
+   "en_g": "my older brother",
+   "feat": [
+    "person",
+    "appearance"
+   ]
   },
   {
    "h": "의사",
@@ -1098,7 +1800,11 @@
    ],
    "kind": "person",
    "level": 1,
-   "en_g": "a doctor"
+   "en_g": "a doctor",
+   "feat": [
+    "person",
+    "appearance"
+   ]
   },
   {
    "h": "회사원",
@@ -1112,7 +1818,11 @@
    ],
    "kind": "person",
    "level": 1,
-   "en_g": "an office worker"
+   "en_g": "an office worker",
+   "feat": [
+    "person",
+    "appearance"
+   ]
   },
   {
    "h": "요리사",
@@ -1126,7 +1836,11 @@
    ],
    "kind": "person",
    "level": 1,
-   "en_g": "a chef"
+   "en_g": "a chef",
+   "feat": [
+    "person",
+    "appearance"
+   ]
   },
   {
    "h": "가수",
@@ -1140,7 +1854,11 @@
    ],
    "kind": "person",
    "level": 1,
-   "en_g": "a singer"
+   "en_g": "a singer",
+   "feat": [
+    "person",
+    "appearance"
+   ]
   },
   {
    "h": "배우",
@@ -1154,7 +1872,11 @@
    ],
    "kind": "person",
    "level": 1,
-   "en_g": "an actor"
+   "en_g": "an actor",
+   "feat": [
+    "person",
+    "appearance"
+   ]
   },
   {
    "h": "떡볶이",
@@ -1166,7 +1888,11 @@
     "obj"
    ],
    "kind": "food",
-   "level": 1
+   "level": 1,
+   "feat": [
+    "taste",
+    "buy"
+   ]
   },
   {
    "h": "비빔밥",
@@ -1178,7 +1904,11 @@
     "obj"
    ],
    "kind": "food",
-   "level": 1
+   "level": 1,
+   "feat": [
+    "taste",
+    "buy"
+   ]
   },
   {
    "h": "치킨",
@@ -1190,7 +1920,11 @@
     "obj"
    ],
    "kind": "food",
-   "level": 1
+   "level": 1,
+   "feat": [
+    "taste",
+    "buy"
+   ]
   },
   {
    "h": "피자",
@@ -1202,7 +1936,11 @@
     "obj"
    ],
    "kind": "food",
-   "level": 1
+   "level": 1,
+   "feat": [
+    "taste",
+    "buy"
+   ]
   },
   {
    "h": "케이크",
@@ -1214,7 +1952,13 @@
     "obj"
    ],
    "kind": "food",
-   "level": 1
+   "level": 1,
+   "feat": [
+    "taste",
+    "buy",
+    "appearance",
+    "phys"
+   ]
   },
   {
    "h": "과일",
@@ -1226,7 +1970,11 @@
     "obj"
    ],
    "kind": "food",
-   "level": 1
+   "level": 1,
+   "feat": [
+    "taste",
+    "buy"
+   ]
   },
   {
    "h": "딸기",
@@ -1238,7 +1986,13 @@
     "obj"
    ],
    "kind": "food",
-   "level": 1
+   "level": 1,
+   "feat": [
+    "taste",
+    "buy",
+    "appearance",
+    "phys"
+   ]
   },
   {
    "h": "바나나",
@@ -1251,7 +2005,13 @@
    ],
    "kind": "food",
    "level": 1,
-   "en_g": "a banana"
+   "en_g": "a banana",
+   "feat": [
+    "taste",
+    "buy",
+    "appearance",
+    "phys"
+   ]
   },
   {
    "h": "계란",
@@ -1263,7 +2023,11 @@
     "obj"
    ],
    "kind": "food",
-   "level": 1
+   "level": 1,
+   "feat": [
+    "taste",
+    "buy"
+   ]
   },
   {
    "h": "고기",
@@ -1275,7 +2039,17 @@
     "obj"
    ],
    "kind": "food",
-   "level": 1
+   "level": 1,
+   "alias_en": [
+    "meat"
+   ],
+   "alias_ja": [
+    "肉"
+   ],
+   "feat": [
+    "taste",
+    "buy"
+   ]
   },
   {
    "h": "생선",
@@ -1287,7 +2061,11 @@
     "obj"
    ],
    "kind": "food",
-   "level": 1
+   "level": 1,
+   "feat": [
+    "taste",
+    "buy"
+   ]
   },
   {
    "h": "국",
@@ -1299,7 +2077,11 @@
     "obj"
    ],
    "kind": "food",
-   "level": 1
+   "level": 1,
+   "feat": [
+    "taste",
+    "buy"
+   ]
   },
   {
    "h": "맥주",
@@ -1311,7 +2093,17 @@
     "obj"
    ],
    "kind": "drink",
-   "level": 1
+   "level": 1,
+   "alias_en": [
+    "beer"
+   ],
+   "alias_ja": [
+    "ビール"
+   ],
+   "feat": [
+    "taste",
+    "buy"
+   ]
   },
   {
    "h": "소주",
@@ -1323,7 +2115,11 @@
     "obj"
    ],
    "kind": "drink",
-   "level": 1
+   "level": 1,
+   "feat": [
+    "taste",
+    "buy"
+   ]
   },
   {
    "h": "콜라",
@@ -1335,7 +2131,11 @@
     "obj"
    ],
    "kind": "drink",
-   "level": 1
+   "level": 1,
+   "feat": [
+    "taste",
+    "buy"
+   ]
   },
   {
    "h": "녹차",
@@ -1347,7 +2147,11 @@
     "obj"
    ],
    "kind": "drink",
-   "level": 1
+   "level": 1,
+   "feat": [
+    "taste",
+    "buy"
+   ]
   },
   {
    "h": "모자",
@@ -1361,7 +2165,12 @@
    ],
    "kind": "item",
    "level": 1,
-   "en_g": "a hat"
+   "en_g": "a hat",
+   "feat": [
+    "phys",
+    "buy",
+    "appearance"
+   ]
   },
   {
    "h": "안경",
@@ -1374,7 +2183,12 @@
     "have"
    ],
    "kind": "item",
-   "level": 1
+   "level": 1,
+   "feat": [
+    "phys",
+    "buy",
+    "appearance"
+   ]
   },
   {
    "h": "시계",
@@ -1388,7 +2202,12 @@
    ],
    "kind": "item",
    "level": 1,
-   "en_g": "a watch"
+   "en_g": "a watch",
+   "feat": [
+    "phys",
+    "buy",
+    "appearance"
+   ]
   },
   {
    "h": "지갑",
@@ -1402,7 +2221,12 @@
    ],
    "kind": "item",
    "level": 1,
-   "en_g": "a wallet"
+   "en_g": "a wallet",
+   "feat": [
+    "phys",
+    "buy",
+    "appearance"
+   ]
   },
   {
    "h": "열쇠",
@@ -1416,7 +2240,12 @@
    ],
    "kind": "item",
    "level": 1,
-   "en_g": "a key"
+   "en_g": "a key",
+   "feat": [
+    "phys",
+    "buy",
+    "appearance"
+   ]
   },
   {
    "h": "카메라",
@@ -1430,7 +2259,12 @@
    ],
    "kind": "item",
    "level": 1,
-   "en_g": "a camera"
+   "en_g": "a camera",
+   "feat": [
+    "phys",
+    "buy",
+    "appearance"
+   ]
   },
   {
    "h": "자전거",
@@ -1445,7 +2279,12 @@
    "kind": "item",
    "level": 1,
    "en_g": "a bicycle",
-   "ride": true
+   "ride": true,
+   "feat": [
+    "phys",
+    "appearance",
+    "ride"
+   ]
   },
   {
    "h": "자동차",
@@ -1460,7 +2299,19 @@
    "kind": "item",
    "level": 1,
    "en_g": "a car",
-   "ride": true
+   "ride": true,
+   "alias_en": [
+    "car"
+   ],
+   "alias_ja": [
+    "自動車",
+    "車"
+   ],
+   "feat": [
+    "phys",
+    "appearance",
+    "ride"
+   ]
   },
   {
    "h": "신문",
@@ -1474,7 +2325,13 @@
    "kind": "item",
    "level": 1,
    "read": true,
-   "en_g": "the newspaper"
+   "en_g": "the newspaper",
+   "feat": [
+    "phys",
+    "buy",
+    "appearance",
+    "content"
+   ]
   },
   {
    "h": "잡지",
@@ -1488,7 +2345,13 @@
    "kind": "item",
    "level": 1,
    "read": true,
-   "en_g": "a magazine"
+   "en_g": "a magazine",
+   "feat": [
+    "phys",
+    "buy",
+    "appearance",
+    "content"
+   ]
   },
   {
    "h": "메일",
@@ -1499,11 +2362,15 @@
     "subj",
     "obj"
    ],
-   "kind": "item",
+   "kind": "text",
    "level": 1,
    "read": true,
    "write": true,
-   "en_g": "an email"
+   "en_g": "an email",
+   "feat": [
+    "content",
+    "phys"
+   ]
   },
   {
    "h": "문자",
@@ -1514,11 +2381,15 @@
     "subj",
     "obj"
    ],
-   "kind": "item",
+   "kind": "text",
    "level": 1,
    "read": true,
    "write": true,
-   "en_g": "a text message"
+   "en_g": "a text message",
+   "feat": [
+    "content",
+    "phys"
+   ]
   },
   {
    "h": "일기",
@@ -1529,10 +2400,14 @@
     "subj",
     "obj"
    ],
-   "kind": "item",
+   "kind": "text",
    "level": 1,
    "write": true,
-   "en_g": "a diary"
+   "en_g": "a diary",
+   "feat": [
+    "content",
+    "phys"
+   ]
   },
   {
    "h": "게임",
@@ -1543,9 +2418,14 @@
     "subj",
     "obj"
    ],
-   "kind": "media",
+   "kind": "activity",
    "level": 1,
-   "en_g": "a game"
+   "en_g": "a game",
+   "do": true,
+   "feat": [
+    "activity",
+    "content"
+   ]
   },
   {
    "h": "만화",
@@ -1558,7 +2438,10 @@
    ],
    "kind": "media",
    "level": 1,
-   "read": true
+   "read": true,
+   "feat": [
+    "content"
+   ]
   },
   {
    "h": "공연",
@@ -1571,7 +2454,10 @@
    ],
    "kind": "media",
    "level": 1,
-   "en_g": "a concert"
+   "en_g": "a concert",
+   "feat": [
+    "content"
+   ]
   },
   {
    "h": "운동",
@@ -1582,9 +2468,12 @@
     "subj",
     "obj"
    ],
-   "kind": "skill",
+   "kind": "activity",
    "level": 1,
-   "do": true
+   "do": true,
+   "feat": [
+    "activity"
+   ]
   },
   {
    "h": "수영",
@@ -1595,9 +2484,12 @@
     "subj",
     "obj"
    ],
-   "kind": "skill",
+   "kind": "activity",
    "level": 1,
-   "do": true
+   "do": true,
+   "feat": [
+    "activity"
+   ]
   },
   {
    "h": "축구",
@@ -1608,8 +2500,12 @@
     "subj",
     "obj"
    ],
-   "kind": "media",
-   "level": 1
+   "kind": "activity",
+   "level": 1,
+   "do": true,
+   "feat": [
+    "activity"
+   ]
   },
   {
    "h": "피아노",
@@ -1622,7 +2518,10 @@
    ],
    "kind": "skill",
    "level": 1,
-   "play": true
+   "play": true,
+   "feat": [
+    "skill"
+   ]
   },
   {
    "h": "기타",
@@ -1635,7 +2534,10 @@
    ],
    "kind": "skill",
    "level": 1,
-   "play": true
+   "play": true,
+   "feat": [
+    "skill"
+   ]
   },
   {
    "h": "춤",
@@ -1646,8 +2548,12 @@
     "subj",
     "obj"
    ],
-   "kind": "skill",
-   "level": 1
+   "kind": "activity",
+   "level": 1,
+   "do": true,
+   "feat": [
+    "activity"
+   ]
   },
   {
    "h": "중국어",
@@ -1659,7 +2565,10 @@
     "obj"
    ],
    "kind": "skill",
-   "level": 1
+   "level": 1,
+   "feat": [
+    "skill"
+   ]
   },
   {
    "h": "역",
@@ -1673,7 +2582,17 @@
    ],
    "kind": "place",
    "level": 1,
-   "en_g": "the station"
+   "en_g": "the station",
+   "alias_en": [
+    "station"
+   ],
+   "alias_ja": [
+    "駅"
+   ],
+   "feat": [
+    "place",
+    "appearance"
+   ]
   },
   {
    "h": "공항",
@@ -1687,7 +2606,17 @@
    ],
    "kind": "place",
    "level": 1,
-   "en_g": "the airport"
+   "en_g": "the airport",
+   "alias_en": [
+    "airport"
+   ],
+   "alias_ja": [
+    "空港"
+   ],
+   "feat": [
+    "place",
+    "appearance"
+   ]
   },
   {
    "h": "은행",
@@ -1701,7 +2630,17 @@
    ],
    "kind": "place",
    "level": 1,
-   "en_g": "the bank"
+   "en_g": "the bank",
+   "alias_en": [
+    "bank"
+   ],
+   "alias_ja": [
+    "銀行"
+   ],
+   "feat": [
+    "place",
+    "appearance"
+   ]
   },
   {
    "h": "편의점",
@@ -1715,7 +2654,11 @@
    ],
    "kind": "place",
    "level": 1,
-   "en_g": "a convenience store"
+   "en_g": "a convenience store",
+   "feat": [
+    "place",
+    "appearance"
+   ]
   },
   {
    "h": "백화점",
@@ -1729,7 +2672,11 @@
    ],
    "kind": "place",
    "level": 1,
-   "en_g": "a department store"
+   "en_g": "a department store",
+   "feat": [
+    "place",
+    "appearance"
+   ]
   },
   {
    "h": "영화관",
@@ -1743,7 +2690,11 @@
    ],
    "kind": "place",
    "level": 1,
-   "en_g": "the movie theater"
+   "en_g": "the movie theater",
+   "feat": [
+    "place",
+    "appearance"
+   ]
   },
   {
    "h": "바다",
@@ -1757,7 +2708,19 @@
    ],
    "kind": "place",
    "level": 1,
-   "en_g": "the sea"
+   "en_g": "the sea",
+   "alias_en": [
+    "beach",
+    "ocean",
+    "sea"
+   ],
+   "alias_ja": [
+    "海"
+   ],
+   "feat": [
+    "place",
+    "appearance"
+   ]
   },
   {
    "h": "산",
@@ -1771,7 +2734,18 @@
    ],
    "kind": "place",
    "level": 1,
-   "en_g": "the mountains"
+   "en_g": "the mountains",
+   "alias_en": [
+    "mountain",
+    "mountains"
+   ],
+   "alias_ja": [
+    "山"
+   ],
+   "feat": [
+    "place",
+    "appearance"
+   ]
   },
   {
    "h": "호텔",
@@ -1785,11 +2759,15 @@
    ],
    "kind": "place",
    "level": 1,
-   "en_g": "a hotel"
+   "en_g": "a hotel",
+   "feat": [
+    "place",
+    "appearance"
+   ]
   },
   {
    "h": "부산",
-   "r": "busan",
+   "r": "Busan",
    "en": "Busan",
    "ja": "釜山",
    "roles": [
@@ -1798,11 +2776,15 @@
     "loc"
    ],
    "kind": "place",
-   "level": 1
+   "level": 1,
+   "feat": [
+    "place",
+    "appearance"
+   ]
   },
   {
    "h": "제주도",
-   "r": "jejudo",
+   "r": "Jejudo",
    "en": "Jeju Island",
    "ja": "済州島",
    "roles": [
@@ -1811,11 +2793,15 @@
     "loc"
    ],
    "kind": "place",
-   "level": 1
+   "level": 1,
+   "feat": [
+    "place",
+    "appearance"
+   ]
   },
   {
    "h": "미국",
-   "r": "miguk",
+   "r": "Miguk",
    "en": "the USA",
    "ja": "アメリカ",
    "roles": [
@@ -1825,11 +2811,15 @@
    ],
    "kind": "place",
    "level": 1,
-   "en_g": "the USA"
+   "en_g": "the USA",
+   "feat": [
+    "place",
+    "appearance"
+   ]
   },
   {
    "h": "중국",
-   "r": "jungguk",
+   "r": "Jungguk",
    "en": "China",
    "ja": "中国",
    "roles": [
@@ -1838,7 +2828,11 @@
     "loc"
    ],
    "kind": "place",
-   "level": 1
+   "level": 1,
+   "feat": [
+    "place",
+    "appearance"
+   ]
   },
   {
    "h": "방",
@@ -1852,7 +2846,11 @@
    ],
    "kind": "place",
    "level": 1,
-   "en_g": "my room"
+   "en_g": "my room",
+   "feat": [
+    "place",
+    "appearance"
+   ]
   },
   {
    "h": "교실",
@@ -1866,7 +2864,11 @@
    ],
    "kind": "place",
    "level": 1,
-   "en_g": "the classroom"
+   "en_g": "the classroom",
+   "feat": [
+    "place",
+    "appearance"
+   ]
   },
   {
    "h": "사무실",
@@ -1880,7 +2882,11 @@
    ],
    "kind": "place",
    "level": 1,
-   "en_g": "the office"
+   "en_g": "the office",
+   "feat": [
+    "place",
+    "appearance"
+   ]
   },
   {
    "h": "화장실",
@@ -1894,7 +2900,11 @@
    ],
    "kind": "place",
    "level": 1,
-   "en_g": "the bathroom"
+   "en_g": "the bathroom",
+   "feat": [
+    "place",
+    "appearance"
+   ]
   },
   {
    "h": "버스",
@@ -1908,7 +2918,12 @@
    "kind": "item",
    "level": 1,
    "en_g": "the bus",
-   "ride": true
+   "ride": true,
+   "feat": [
+    "phys",
+    "appearance",
+    "ride"
+   ]
   },
   {
    "h": "지하철",
@@ -1922,7 +2937,12 @@
    "kind": "item",
    "level": 1,
    "en_g": "the subway",
-   "ride": true
+   "ride": true,
+   "feat": [
+    "phys",
+    "appearance",
+    "ride"
+   ]
   },
   {
    "h": "택시",
@@ -1936,7 +2956,12 @@
    "kind": "item",
    "level": 1,
    "en_g": "a taxi",
-   "ride": true
+   "ride": true,
+   "feat": [
+    "phys",
+    "appearance",
+    "ride"
+   ]
   },
   {
    "h": "날씨",
@@ -1948,7 +2973,10 @@
    ],
    "kind": "abstract",
    "level": 1,
-   "en_g": "the weather"
+   "en_g": "the weather",
+   "feat": [
+    "weather"
+   ]
   },
   {
    "h": "이름",
@@ -1961,7 +2989,10 @@
    ],
    "kind": "abstract",
    "level": 1,
-   "en_g": "my name"
+   "en_g": "my name",
+   "feat": [
+    "abstract"
+   ]
   },
   {
    "h": "생일",
@@ -1974,7 +3005,10 @@
    ],
    "kind": "time",
    "level": 1,
-   "en_g": "my birthday"
+   "en_g": "my birthday",
+   "feat": [
+    "time"
+   ]
   },
   {
    "h": "방학",
@@ -1986,7 +3020,10 @@
     "time"
    ],
    "kind": "time",
-   "level": 1
+   "level": 1,
+   "feat": [
+    "time"
+   ]
   },
   {
    "h": "여행",
@@ -1997,10 +3034,13 @@
     "subj",
     "obj"
    ],
-   "kind": "skill",
+   "kind": "activity",
    "level": 1,
    "en_g": "a trip",
-   "do": true
+   "do": true,
+   "feat": [
+    "activity"
+   ]
   },
   {
    "h": "사람",
@@ -2014,7 +3054,12 @@
    ],
    "kind": "person",
    "level": 1,
-   "en_g": "a person"
+   "en_g": "a person",
+   "feat": [
+    "person",
+    "appearance",
+    "count"
+   ]
   },
   {
    "h": "아이",
@@ -2028,7 +3073,12 @@
    ],
    "kind": "person",
    "level": 1,
-   "en_g": "a child"
+   "en_g": "a child",
+   "feat": [
+    "person",
+    "appearance",
+    "count"
+   ]
   },
   {
    "h": "한국 사람",
@@ -2042,7 +3092,11 @@
    ],
    "kind": "person",
    "level": 1,
-   "en_g": "a Korean person"
+   "en_g": "a Korean person",
+   "feat": [
+    "person",
+    "appearance"
+   ]
   },
   {
    "h": "새",
@@ -2055,7 +3109,12 @@
    ],
    "kind": "animal",
    "level": 1,
-   "en_g": "a bird"
+   "en_g": "a bird",
+   "feat": [
+    "animal",
+    "appearance",
+    "phys"
+   ]
   },
   {
    "h": "물고기",
@@ -2068,7 +3127,12 @@
    ],
    "kind": "animal",
    "level": 1,
-   "en_g": "a fish"
+   "en_g": "a fish",
+   "feat": [
+    "animal",
+    "appearance",
+    "phys"
+   ]
   },
   {
    "h": "나무",
@@ -2081,7 +3145,38 @@
    ],
    "kind": "item",
    "level": 1,
-   "en_g": "a tree"
+   "en_g": "a tree",
+   "feat": [
+    "phys",
+    "buy",
+    "appearance"
+   ]
+  },
+  {
+   "h": "나",
+   "r": "na",
+   "en": "I (casual)",
+   "ja": "僕・私（くだけた言い方）",
+   "roles": [
+    "subj"
+   ],
+   "kind": "person",
+   "level": 1,
+   "ga": "내가",
+   "en_g": "I",
+   "alias_en": [
+    "i",
+    "me"
+   ],
+   "alias_ja": [
+    "僕",
+    "俺",
+    "私"
+   ],
+   "feat": [
+    "person",
+    "appearance"
+   ]
   }
  ],
  "verbs": [
@@ -2097,7 +3192,14 @@
     "food"
    ],
    "level": 1,
-   "fut": "먹을 거예요"
+   "fut": "먹을 거예요",
+   "ja_pres": "食べます",
+   "ja_past": "食べました",
+   "ja_want": "食べたいです",
+   "ja_p": "を",
+   "en_base": "eat",
+   "en_3s": "eats",
+   "en_past": "ate"
   },
   {
    "h": "마시다",
@@ -2111,7 +3213,14 @@
     "drink"
    ],
    "level": 1,
-   "fut": "마실 거예요"
+   "fut": "마실 거예요",
+   "ja_pres": "飲みます",
+   "ja_past": "飲みました",
+   "ja_want": "飲みたいです",
+   "ja_p": "を",
+   "en_base": "drink",
+   "en_3s": "drinks",
+   "en_past": "drank"
   },
   {
    "h": "사다",
@@ -2127,7 +3236,14 @@
     "item"
    ],
    "level": 1,
-   "fut": "살 거예요"
+   "fut": "살 거예요",
+   "ja_pres": "買います",
+   "ja_past": "買いました",
+   "ja_want": "買いたいです",
+   "ja_p": "を",
+   "en_base": "buy",
+   "en_3s": "buys",
+   "en_past": "bought"
   },
   {
    "h": "보다",
@@ -2140,10 +3256,17 @@
    "takes": [
     "media",
     "person",
-    "item"
+    "text"
    ],
    "level": 1,
-   "fut": "볼 거예요"
+   "fut": "볼 거예요",
+   "ja_pres": "見ます",
+   "ja_past": "見ました",
+   "ja_want": "見たいです",
+   "ja_p": "を",
+   "en_base": "watch",
+   "en_3s": "watches",
+   "en_past": "watched"
   },
   {
    "h": "읽다",
@@ -2157,7 +3280,14 @@
     "read"
    ],
    "level": 1,
-   "fut": "읽을 거예요"
+   "fut": "읽을 거예요",
+   "ja_pres": "読みます",
+   "ja_past": "読みました",
+   "ja_want": "読みたいです",
+   "ja_p": "を",
+   "en_base": "read",
+   "en_3s": "reads",
+   "en_past": "read"
   },
   {
    "h": "듣다",
@@ -2171,7 +3301,14 @@
     "audio"
    ],
    "level": 1,
-   "fut": "들을 거예요"
+   "fut": "들을 거예요",
+   "ja_pres": "聞きます",
+   "ja_past": "聞きました",
+   "ja_want": "聞きたいです",
+   "ja_p": "を",
+   "en_base": "listen to",
+   "en_3s": "listens to",
+   "en_past": "listened to"
   },
   {
    "h": "쓰다",
@@ -2182,11 +3319,17 @@
    "past": "썼어요",
    "want": "쓰고 싶어요",
    "takes": [
-    "write",
-    "skill"
+    "write"
    ],
    "level": 1,
-   "fut": "쓸 거예요"
+   "fut": "쓸 거예요",
+   "ja_pres": "書きます",
+   "ja_past": "書きました",
+   "ja_want": "書きたいです",
+   "ja_p": "を",
+   "en_base": "write",
+   "en_3s": "writes",
+   "en_past": "wrote"
   },
   {
    "h": "배우다",
@@ -2197,10 +3340,18 @@
    "past": "배웠어요",
    "want": "배우고 싶어요",
    "takes": [
-    "skill"
+    "skill",
+    "activity"
    ],
    "level": 1,
-   "fut": "배울 거예요"
+   "fut": "배울 거예요",
+   "ja_pres": "習います",
+   "ja_past": "習いました",
+   "ja_want": "習いたいです",
+   "ja_p": "を",
+   "en_base": "learn",
+   "en_3s": "learns",
+   "en_past": "learned"
   },
   {
    "h": "공부하다",
@@ -2214,7 +3365,14 @@
     "skill"
    ],
    "level": 1,
-   "fut": "공부할 거예요"
+   "fut": "공부할 거예요",
+   "ja_pres": "勉強します",
+   "ja_past": "勉強しました",
+   "ja_want": "勉強したいです",
+   "ja_p": "を",
+   "en_base": "study",
+   "en_3s": "studies",
+   "en_past": "studied"
   },
   {
    "h": "만나다",
@@ -2228,7 +3386,14 @@
     "person"
    ],
    "level": 1,
-   "fut": "만날 거예요"
+   "fut": "만날 거예요",
+   "ja_pres": "会います",
+   "ja_past": "会いました",
+   "ja_want": "会いたいです",
+   "ja_p": "に",
+   "en_base": "meet",
+   "en_3s": "meets",
+   "en_past": "met"
   },
   {
    "h": "좋아하다",
@@ -2250,7 +3415,14 @@
     "place"
    ],
    "level": 1,
-   "fut": null
+   "fut": null,
+   "ja_pres": "好きです",
+   "ja_past": "好きでした",
+   "ja_want": null,
+   "ja_p": "が",
+   "en_base": "like",
+   "en_3s": "likes",
+   "en_past": "liked"
   },
   {
    "h": "가다",
@@ -2262,7 +3434,14 @@
    "want": "가고 싶어요",
    "move": true,
    "level": 1,
-   "fut": "갈 거예요"
+   "fut": "갈 거예요",
+   "ja_pres": "行きます",
+   "ja_past": "行きました",
+   "ja_want": "行きたいです",
+   "ja_p": "に",
+   "en_base": "go",
+   "en_3s": "goes",
+   "en_past": "went"
   },
   {
    "h": "오다",
@@ -2274,7 +3453,14 @@
    "want": "오고 싶어요",
    "move": true,
    "level": 1,
-   "fut": "올 거예요"
+   "fut": "올 거예요",
+   "ja_pres": "来ます",
+   "ja_past": "来ました",
+   "ja_want": "来たいです",
+   "ja_p": "に",
+   "en_base": "come",
+   "en_3s": "comes",
+   "en_past": "came"
   },
   {
    "h": "있다",
@@ -2287,7 +3473,19 @@
    "exist": true,
    "level": 1,
    "have": true,
-   "fut": "있을 거예요"
+   "fut": "있을 거예요",
+   "ja_pres": "あります／います",
+   "ja_past": "ありました／いました",
+   "ja_want": null,
+   "ja_p": "が",
+   "en_base": "am at",
+   "en_3s": "is at",
+   "en_past": "was at",
+   "en_have": [
+    "have",
+    "has",
+    "had"
+   ]
   },
   {
    "h": "살다",
@@ -2299,7 +3497,15 @@
    "want": "살고 싶어요",
    "at": true,
    "level": 1,
-   "fut": "살 거예요"
+   "fut": "살 거예요",
+   "locBoth": true,
+   "ja_pres": "住んでいます",
+   "ja_past": "住んでいました",
+   "ja_want": "住みたいです",
+   "ja_p": "に",
+   "en_base": "live",
+   "en_3s": "lives",
+   "en_past": "lived"
   },
   {
    "h": "일하다",
@@ -2311,7 +3517,14 @@
    "want": "일하고 싶어요",
    "at": true,
    "level": 1,
-   "fut": "일할 거예요"
+   "fut": "일할 거예요",
+   "ja_pres": "働いています",
+   "ja_past": "働いていました",
+   "ja_want": "働きたいです",
+   "ja_p": "で",
+   "en_base": "work",
+   "en_3s": "works",
+   "en_past": "worked"
   },
   {
    "h": "없다",
@@ -2324,7 +3537,19 @@
    "exist": true,
    "have": true,
    "level": 1,
-   "fut": "없을 거예요"
+   "fut": "없을 거예요",
+   "ja_pres": "ありません／いません",
+   "ja_past": "ありませんでした／いませんでした",
+   "ja_want": null,
+   "ja_p": "が",
+   "en_base": "am not at",
+   "en_3s": "is not at",
+   "en_past": "was not at",
+   "en_have": [
+    "don't have",
+    "doesn't have",
+    "didn't have"
+   ]
   },
   {
    "h": "주다",
@@ -2341,7 +3566,14 @@
     "drink"
    ],
    "to": true,
-   "level": 1
+   "level": 1,
+   "ja_pres": "あげます",
+   "ja_past": "あげました",
+   "ja_want": "あげたいです",
+   "ja_p": "を",
+   "en_base": "give",
+   "en_3s": "gives",
+   "en_past": "gave"
   },
   {
    "h": "보내다",
@@ -2357,7 +3589,14 @@
     "item"
    ],
    "to": true,
-   "level": 1
+   "level": 1,
+   "ja_pres": "送ります",
+   "ja_past": "送りました",
+   "ja_want": "送りたいです",
+   "ja_p": "を",
+   "en_base": "send",
+   "en_3s": "sends",
+   "en_past": "sent"
   },
   {
    "h": "전화하다",
@@ -2370,7 +3609,14 @@
    "fut": "전화할 거예요",
    "to": true,
    "noobj": true,
-   "level": 1
+   "level": 1,
+   "ja_pres": "電話します",
+   "ja_past": "電話しました",
+   "ja_want": "電話したいです",
+   "ja_p": "に",
+   "en_base": "call",
+   "en_3s": "calls",
+   "en_past": "called"
   },
   {
    "h": "타다",
@@ -2384,7 +3630,14 @@
    "takes": [
     "ride"
    ],
-   "level": 1
+   "level": 1,
+   "ja_pres": "乗ります",
+   "ja_past": "乗りました",
+   "ja_want": "乗りたいです",
+   "ja_p": "に",
+   "en_base": "take",
+   "en_3s": "takes",
+   "en_past": "took"
   },
   {
    "h": "하다",
@@ -2396,9 +3649,16 @@
    "want": "하고 싶어요",
    "fut": "할 거예요",
    "takes": [
-    "skill"
+    "activity"
    ],
-   "level": 1
+   "level": 1,
+   "ja_pres": "します",
+   "ja_past": "しました",
+   "ja_want": "したいです",
+   "ja_p": "を",
+   "en_base": "do",
+   "en_3s": "does",
+   "en_past": "did"
   },
   {
    "h": "치다",
@@ -2412,7 +3672,14 @@
    "takes": [
     "play"
    ],
-   "level": 1
+   "level": 1,
+   "ja_pres": "弾きます",
+   "ja_past": "弾きました",
+   "ja_want": "弾きたいです",
+   "ja_p": "を",
+   "en_base": "play",
+   "en_3s": "plays",
+   "en_past": "played"
   },
   {
    "h": "찍다",
@@ -2426,7 +3693,14 @@
    "takes": [
     "photo"
    ],
-   "level": 1
+   "level": 1,
+   "ja_pres": "撮ります",
+   "ja_past": "撮りました",
+   "ja_want": "撮りたいです",
+   "ja_p": "を",
+   "en_base": "take",
+   "en_3s": "takes",
+   "en_past": "took"
   }
  ],
  "adjectives": [
@@ -2438,12 +3712,14 @@
    "pres": "커요",
    "past": "컸어요",
    "fits": [
-    "item",
+    "phys",
     "animal",
-    "place",
-    "food"
+    "place"
    ],
-   "level": 1
+   "level": 1,
+   "ja_pres": "大きいです",
+   "ja_past": "大きかったです",
+   "en_adj": "big"
   },
   {
    "h": "작다",
@@ -2453,12 +3729,14 @@
    "pres": "작아요",
    "past": "작았어요",
    "fits": [
-    "item",
+    "phys",
     "animal",
-    "place",
-    "food"
+    "place"
    ],
-   "level": 1
+   "level": 1,
+   "ja_pres": "小さいです",
+   "ja_past": "小さかったです",
+   "en_adj": "small"
   },
   {
    "h": "맛있다",
@@ -2468,10 +3746,12 @@
    "pres": "맛있어요",
    "past": "맛있었어요",
    "fits": [
-    "food",
-    "drink"
+    "taste"
    ],
-   "level": 1
+   "level": 1,
+   "ja_pres": "おいしいです",
+   "ja_past": "おいしかったです",
+   "en_adj": "delicious"
   },
   {
    "h": "예쁘다",
@@ -2481,13 +3761,12 @@
    "pres": "예뻐요",
    "past": "예뻤어요",
    "fits": [
-    "item",
-    "animal",
-    "place",
-    "person",
-    "media"
+    "appearance"
    ],
-   "level": 1
+   "level": 1,
+   "ja_pres": "きれいです",
+   "ja_past": "きれいでした",
+   "en_adj": "pretty"
   },
   {
    "h": "좋다",
@@ -2497,18 +3776,21 @@
    "pres": "좋아요",
    "past": "좋았어요",
    "fits": [
-    "item",
+    "phys",
     "place",
-    "media",
-    "audio",
-    "food",
-    "drink",
+    "content",
+    "taste",
     "person",
     "skill",
     "abstract",
-    "time"
+    "time",
+    "weather",
+    "activity"
    ],
-   "level": 1
+   "level": 1,
+   "ja_pres": "いいです",
+   "ja_past": "よかったです",
+   "en_adj": "good"
   },
   {
    "h": "비싸다",
@@ -2518,11 +3800,12 @@
    "pres": "비싸요",
    "past": "비쌌어요",
    "fits": [
-    "item",
-    "food",
-    "drink"
+    "buy"
    ],
-   "level": 1
+   "level": 1,
+   "ja_pres": "高いです",
+   "ja_past": "高かったです",
+   "en_adj": "expensive"
   },
   {
    "h": "싸다",
@@ -2532,11 +3815,12 @@
    "pres": "싸요",
    "past": "쌌어요",
    "fits": [
-    "item",
-    "food",
-    "drink"
+    "buy"
    ],
-   "level": 1
+   "level": 1,
+   "ja_pres": "安いです",
+   "ja_past": "安かったです",
+   "en_adj": "cheap"
   },
   {
    "h": "재미있다",
@@ -2546,14 +3830,16 @@
    "pres": "재미있어요",
    "past": "재미있었어요",
    "fits": [
-    "media",
-    "audio",
-    "skill",
-    "place",
+    "content",
+    "activity",
     "person",
-    "time"
+    "place",
+    "skill"
    ],
-   "level": 1
+   "level": 1,
+   "ja_pres": "面白いです",
+   "ja_past": "面白かったです",
+   "en_adj": "fun"
   },
   {
    "h": "어렵다",
@@ -2564,9 +3850,13 @@
    "past": "어려웠어요",
    "fits": [
     "skill",
-    "media"
+    "activity",
+    "content"
    ],
-   "level": 1
+   "level": 1,
+   "ja_pres": "難しいです",
+   "ja_past": "難しかったです",
+   "en_adj": "difficult"
   },
   {
    "h": "쉽다",
@@ -2577,9 +3867,13 @@
    "past": "쉬웠어요",
    "fits": [
     "skill",
-    "media"
+    "activity",
+    "content"
    ],
-   "level": 1
+   "level": 1,
+   "ja_pres": "易しいです",
+   "ja_past": "易しかったです",
+   "en_adj": "easy"
   },
   {
    "h": "춥다",
@@ -2589,11 +3883,14 @@
    "pres": "추워요",
    "past": "추웠어요",
    "fits": [
-    "abstract",
+    "weather",
     "place",
     "time"
    ],
-   "level": 1
+   "level": 1,
+   "ja_pres": "寒いです",
+   "ja_past": "寒かったです",
+   "en_adj": "cold"
   },
   {
    "h": "덥다",
@@ -2603,11 +3900,14 @@
    "pres": "더워요",
    "past": "더웠어요",
    "fits": [
-    "abstract",
+    "weather",
     "place",
     "time"
    ],
-   "level": 1
+   "level": 1,
+   "ja_pres": "暑いです",
+   "ja_past": "暑かったです",
+   "en_adj": "hot"
   },
   {
    "h": "바쁘다",
@@ -2620,7 +3920,10 @@
     "person",
     "time"
    ],
-   "level": 1
+   "level": 1,
+   "ja_pres": "忙しいです",
+   "ja_past": "忙しかったです",
+   "en_adj": "busy"
   },
   {
    "h": "멀다",
@@ -2632,7 +3935,10 @@
    "fits": [
     "place"
    ],
-   "level": 1
+   "level": 1,
+   "ja_pres": "遠いです",
+   "ja_past": "遠かったです",
+   "en_adj": "far"
   },
   {
    "h": "가깝다",
@@ -2644,7 +3950,10 @@
    "fits": [
     "place"
    ],
-   "level": 1
+   "level": 1,
+   "ja_pres": "近いです",
+   "ja_past": "近かったです",
+   "en_adj": "near"
   },
   {
    "h": "많다",
@@ -2654,13 +3963,16 @@
    "pres": "많아요",
    "past": "많았어요",
    "fits": [
+    "count",
+    "phys",
+    "taste",
     "person",
-    "item",
-    "food",
-    "abstract",
     "animal"
    ],
-   "level": 1
+   "level": 1,
+   "ja_pres": "多いです",
+   "ja_past": "多かったです",
+   "en_adj": "plentiful"
   },
   {
    "h": "친절하다",
@@ -2672,7 +3984,10 @@
    "fits": [
     "person"
    ],
-   "level": 1
+   "level": 1,
+   "ja_pres": "親切です",
+   "ja_past": "親切でした",
+   "en_adj": "kind"
   },
   {
    "h": "귀엽다",
@@ -2684,9 +3999,12 @@
    "fits": [
     "animal",
     "person",
-    "item"
+    "appearance"
    ],
-   "level": 1
+   "level": 1,
+   "ja_pres": "かわいいです",
+   "ja_past": "かわいかったです",
+   "en_adj": "cute"
   },
   {
    "h": "조용하다",
@@ -2699,7 +4017,10 @@
     "place",
     "person"
    ],
-   "level": 1
+   "level": 1,
+   "ja_pres": "静かです",
+   "ja_past": "静かでした",
+   "en_adj": "quiet"
   },
   {
    "h": "배고프다",
@@ -2712,7 +4033,10 @@
     "person",
     "animal"
    ],
-   "level": 1
+   "level": 1,
+   "ja_pres": "お腹が空いています",
+   "ja_past": "お腹が空いていました",
+   "en_adj": "hungry"
   }
  ]
 }
