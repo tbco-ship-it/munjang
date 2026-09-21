@@ -96,5 +96,25 @@ for (const j of [...M.BASIC_CONSONANTS, ...M.BASIC_VOWELS]) {
   const c = [...W.nouns, ...W.verbs, ...W.adjectives].filter(w => M.hasJamo(w.h, j)).length;
   if (c < 3) { fails++; console.log('FAIL jamo coverage', j, c); }
 }
+
+// sentence checker
+const chk = (s) => M.checkSentence(s, W, WHY);
+eq(chk('저는 커피를 마셔요.').verdict, 'ok', 'chk ok');
+eq(chk('저는 학교에서 가요.').notes.map(n => n.key), ['dest_wrong_loc'], 'chk 학교에서 가요');
+eq(chk('저는 카페에 커피를 마셔요.').notes.map(n => n.key), ['loc_wrong_dest'], 'chk 카페에 마셔요');
+eq(chk('가방 을 사요.').notes.map(n => n.key), ['chk_space_particle'], 'chk bare particle');
+eq(chk('저는 한국어를 배우고싶어요.').notes.map(n => n.key), ['chk_want_space'], 'chk 고싶어요');
+eq(chk('저는 커피를 안마셔요.').notes.map(n => n.key), ['chk_an_space'], 'chk 안 glued');
+eq(chk('저는 마셔요 커피를.').notes.map(n => n.key), ['chk_verb_last'], 'chk verb last');
+eq(chk('저가 커피를 마셔요.').notes.map(n => n.key), ['jeo_ga'], 'chk 저가');
+eq(chk('제가 커피를 마셔요.').verdict, 'ok', 'chk 제가');
+eq(chk('학교은 커요.').notes[0].fix, '학교는', 'chk form fix');
+eq(chk('선물은 커요.').verdict, 'partial', 'chk unknown noun form ok → partial');
+eq(chk('바나나은 맛있어요.').notes[0].fix, '바나나는', 'chk unknown noun form error');
+eq(chk('사과가 맛있어요.').verdict, 'ok', 'chk 사과 not parsed as 사+과');
+eq(chk('저는 커피').notes.map(n => n.key), ['chk_ending'], 'chk missing verb');
+eq(chk('저는 책을 마셔요.').notes.map(n => n.key), ['chk_pair'], 'chk odd pair');
+eq(chk('고양이가 집에서 있어요.').notes.map(n => n.key), ['exist_wrong_loc'], 'chk 집에서 있어요');
+
 console.log(fails ? `${fails} FAILED` : 'all passed');
 process.exit(fails ? 1 : 0);

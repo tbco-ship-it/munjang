@@ -19,6 +19,7 @@ PAGES = [  # (template, path, slug for title lookup)
     ("guide_word-order.html", "guide/word-order/", "order"),
     ("guide_spacing.html", "guide/spacing/", "spacing"),
     ("print.html", "print/", "print"),
+    ("check.html", "check/", "check"),
     ("about.html", "about/", "about"),
     ("privacy.html", "privacy/", "privacy"),
     ("contact.html", "contact/", "contact"),

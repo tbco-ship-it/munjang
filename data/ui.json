@@ -100,7 +100,17 @@
   "trust": "No account. No streaks to keep. Just your next sentence.",
   "ad_label": "Advertisement",
   "theme": "Switch theme",
-  "nav_guides": "Quick guides"
+  "nav_guides": "Quick guides",
+  "nav_check": "Check my sentence",
+  "check_h1": "Check my sentence",
+  "check_p": "Type a Korean sentence you wrote. We check what rules can check — particle forms after 받침, 에 vs 에서 vs 을/를 with the verb, spacing, verb-last order, the polite ending — and say plainly what a rule can’t judge.",
+  "check_ph": "저는 학교에서 가요",
+  "check_btn": "Check",
+  "check_ex": "Try:",
+  "check_legend": "✓ passes · ? not in our list (form checked only) · ✗ fix",
+  "check_send": "Send these to a tutor for the naturalness check",
+  "check_after": "Once the rules pass, the only question left is whether it sounds natural — that needs a Korean speaker.",
+  "check_meta": "A free rule-based checker for beginner Korean sentences: particle forms (은/는·이/가·을/를), 에 vs 에서, spacing, word order and polite endings, with the reason for every mark."
  },
  "ja": {
   "lang": "ja",
@@ -203,6 +213,16 @@
   "trust": "アカウント不要。連続記録も不要。次の一文だけ。",
   "ad_label": "広告",
   "theme": "テーマ切替",
-  "nav_guides": "ガイド"
+  "nav_guides": "ガイド",
+  "nav_check": "文をチェック",
+  "check_h1": "自分の文をチェック",
+  "check_p": "自分で書いた韓国語の文を入力してください。規則で判定できること——パッチム後の助詞の形、動詞に対する 에・에서・을/를、分かち書き、動詞が文末か、丁寧な語尾——を判定し、規則では判定できないことは正直にそう表示します。",
+  "check_ph": "저는 학교에서 가요",
+  "check_btn": "チェック",
+  "check_ex": "例：",
+  "check_legend": "✓ 通過 · ? 単語リスト外（形だけ判定） · ✗ 要修正",
+  "check_send": "自然さのチェックは先生に",
+  "check_after": "規則を通過したら、残る問題は「自然に聞こえるか」だけ。それは韓国語話者に見てもらう必要があります。",
+  "check_meta": "初級韓国語の文を規則で判定する無料チェッカー：助詞の形（은/는・이/가・을/를）、에 と 에서、分かち書き、語順、丁寧語尾。すべての印に理由つき。"
  }
 }

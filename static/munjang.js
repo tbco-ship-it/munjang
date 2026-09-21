@@ -173,6 +173,85 @@
     return out;
   }
 
-  return { CHO, JUNG, JONG, BASIC_CONSONANTS, BASIC_VOWELS, decompose, compose, syllables, batchim, hasBatchim, hasJamo, jamoPositions,
+
+  // ---------- sentence checker (rule-based, honest about its limits) ----------
+  // Splits the learner's sentence into 어절, recognises noun+particle / verb chunks from the word list, and applies only the
+  // rules it can be sure of: particle FORM after 받침, particle FAMILY vs a recognised verb (에/에서/을·를), spacing of particles,
+  // -고 싶어요 and 안, verb-last order, polite ending. Everything else is reported as "can't judge" — never guessed.
+  const PARTICLES = ['에서', '에게', '한테', '으로', '부터', '까지', '은', '는', '이', '가', '을', '를', '에', '도', '의', '와', '과', '로', '하고'];
+  const PAIRS = { '은': '는', '는': '은', '이': '가', '가': '이', '을': '를', '를': '을', '와': '과', '과': '와', '으로': '로', '로': '으로' };
+  function wantsBatchim(p) { return ['은', '이', '을', '과', '으로'].includes(p); }
+  function checkSentence(text, words, why) {
+    const raw = text.trim().replace(/\s+/g, ' ');
+    const notes = [], chunks = [];
+    if (!raw) return { chunks, notes, verdict: 'empty' };
+    const body = raw.replace(/[.!?。！？]+$/, '');
+    const tokens = body.split(' ');
+    const allVerbs = [...words.verbs, ...words.adjectives];
+    const verbForms = new Map();
+    for (const v of allVerbs) for (const k of ['pres', 'past', 'want']) if (v[k]) verbForms.set(v[k], { v, tense: k });
+    const nounByH = h => words.nouns.find(n => n.h === h);
+    let verbAt = -1, verb = null;
+    tokens.forEach((tok, i) => {
+      const c = { text: tok, kind: 'unknown', status: 'unknown' };
+      if (!syllables(tok).length) { c.kind = 'other'; c.status = 'skip'; chunks.push(c); return; }
+      // bare particle = spacing error
+      if (PARTICLES.includes(tok)) { c.kind = 'particle'; c.status = 'no'; notes.push({ grade: 'no', key: 'chk_space_particle', vars: { p: tok, prev: tokens[i - 1] || '' } }); chunks.push(c); return; }
+      // 안 glued: 안먹어요
+      if (tok.length > 1 && tok.startsWith('안') && verbForms.has(tok.slice(1))) { c.kind = 'verb'; c.status = 'no'; notes.push({ grade: 'no', key: 'chk_an_space', vars: { v: tok.slice(1) } }); chunks.push(c); return; }
+      // verb forms (also -고 싶어요 written together / split)
+      if (verbForms.has(tok)) { const f = verbForms.get(tok); c.kind = 'verb'; c.status = 'ok'; c.word = f.v; c.tense = f.tense; verbAt = i; verb = f.v; chunks.push(c); return; }
+      if (tok.endsWith('고싶어요') && verbForms.has(tok.replace('고싶어요', '고 싶어요'))) { c.kind = 'verb'; c.status = 'no'; notes.push({ grade: 'no', key: 'chk_want_space', vars: { v: tok.replace('고싶어요', '고 싶어요') } }); verbAt = i; verb = verbForms.get(tok.replace('고싶어요', '고 싶어요')).v; chunks.push(c); return; }
+      if (tok.endsWith('고') && i + 1 < tokens.length && tokens[i + 1] === '싶어요' && verbForms.has(tok + ' 싶어요')) { const f = verbForms.get(tok + ' 싶어요'); c.kind = 'verb'; c.status = 'ok'; c.word = f.v; c.tense = 'want'; verbAt = i; verb = f.v; chunks.push(c); return; }
+      if (tok === '싶어요' && i > 0 && tokens[i - 1].endsWith('고')) { c.kind = 'verb'; c.status = 'ok'; chunks.push(c); return; }
+      // whole token is a known noun (no particle)
+      if (nounByH(tok)) { c.kind = 'noun'; c.status = 'bare'; c.word = nounByH(tok); chunks.push(c); return; }
+      // noun + particle
+      let hit = null;
+      for (const p of PARTICLES) {
+        if (tok.length > p.length && tok.endsWith(p)) {
+          const stem = tok.slice(0, -p.length);
+          const n = nounByH(stem) || (stem === '제' && p === '가' ? nounByH('저') : null);
+          if (n) { hit = { p, stem, n, known: true }; break; }
+          if (!hit && /^[가-힣]+$/.test(stem)) hit = { p, stem, n: null, known: false };
+        }
+      }
+      if (hit) {
+        c.kind = 'noun'; c.particle = hit.p; c.stem = hit.stem; c.word = hit.n; c.known = hit.known;
+        if (hit.stem === '제' && hit.p === '가') { c.status = 'ok'; chunks.push(c); return; }
+        if (hit.stem === '저' && (hit.p === '가' || hit.p === '이')) { c.status = 'no'; notes.push({ grade: 'no', key: 'jeo_ga', vars: { w: '저' } }); chunks.push(c); return; }
+        if (PAIRS[hit.p]) {
+          const need = hasBatchim(hit.stem) ? (wantsBatchim(hit.p) ? hit.p : PAIRS[hit.p]) : (wantsBatchim(hit.p) ? PAIRS[hit.p] : hit.p);
+          if (need !== hit.p) { c.status = 'no'; notes.push({ grade: 'no', key: hasBatchim(hit.stem) ? 'batchim_yes' : 'batchim_no', vars: { w: hit.stem, f: batchim(hit.stem), p: need }, fix: hit.stem + need, unknown: !hit.known }); chunks.push(c); return; }
+        }
+        c.status = hit.known ? 'ok' : 'maybe';
+        chunks.push(c); return;
+      }
+      chunks.push(c);
+    });
+    // verb-last + polite ending
+    const last = tokens[tokens.length - 1];
+    if (verbAt >= 0 && verbAt < tokens.length - 1 && !(tokens[verbAt].endsWith('고') && tokens[verbAt + 1] === '싶어요' && verbAt + 1 === tokens.length - 1)) notes.push({ grade: 'no', key: 'chk_verb_last', vars: { v: tokens[verbAt] } });
+    if (verbAt < 0 && !/(요|습니다|ㅂ니다|다)$/.test(last)) notes.push({ grade: 'maybe', key: 'chk_ending', vars: { w: last } });
+    else if (!/요$/.test(last) && /(습니다|다)$/.test(last)) notes.push({ grade: 'info', key: 'chk_formal', vars: { w: last } });
+    // particle family vs recognised verb
+    if (verb) {
+      for (const c of chunks) {
+        if (c.kind !== 'noun' || !c.particle) continue;
+        const isPlace = c.word && c.word.kind === 'place';
+        if (verb.move && c.particle === '에서' && isPlace) notes.push({ grade: 'no', key: 'dest_wrong_loc', vars: { w: c.stem, v: verbLabel(verb, why) }, fix: c.stem + '에' });
+        if (verb.move && (c.particle === '을' || c.particle === '를') && isPlace) notes.push({ grade: 'no', key: 'dest_wrong_obj', vars: { w: c.stem, v: verbLabel(verb, why) }, fix: c.stem + '에' });
+        if (verb.exist && c.particle === '에서' && isPlace) notes.push({ grade: 'no', key: 'exist_wrong_loc', vars: { w: c.stem }, fix: c.stem + '에' });
+        if ((verb.takes || verb.at) && c.particle === '에' && isPlace && !verb.exist) notes.push({ grade: 'no', key: 'loc_wrong_dest', vars: { w: c.stem, v: verbLabel(verb, why) }, fix: c.stem + '에서' });
+        if (verb.takes && (c.particle === '에' || c.particle === '에서') && c.word && !isPlace) notes.push({ grade: 'no', key: c.particle === '에' ? 'obj_wrong_dest' : 'obj_wrong_loc', vars: { w: c.stem }, fix: c.stem + form(c.word, 'obj') });
+        if (verb.takes && (c.particle === '을' || c.particle === '를') && c.word && !compatible(verb, c.word) && c.word.kind !== 'unknown') notes.push({ grade: 'maybe', key: 'chk_pair', vars: { w: c.stem, v: verb.h } });
+      }
+    }
+    const unknown = chunks.filter(c => c.status === 'unknown' || c.status === 'maybe').length;
+    const bad = notes.some(n => n.grade === 'no');
+    return { chunks, notes, verb, verdict: bad ? 'no' : unknown ? 'partial' : 'ok', unknown };
+  }
+
+  return { PARTICLES, checkSentence, CHO, JUNG, JONG, BASIC_CONSONANTS, BASIC_VOWELS, decompose, compose, syllables, batchim, hasBatchim, hasJamo, jamoPositions,
     FAMILY, SP_OPTIONS, OP_OPTIONS, familyOf, form, chunk, judgeSP, judgeOP, candidates, verbsFor, adjectivesFor, compatible, verbForm, assemble, cells };
 });

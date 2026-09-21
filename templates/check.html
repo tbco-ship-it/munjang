@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block title %}{{ ui.check_h1 }} | Munjang{% endblock %}
+{% block description %}{{ ui.check_meta }}{% endblock %}
+{% block content %}
+<section class="prose print-head">
+  <h1>{{ ui.check_h1 }}</h1>
+  <p class="lead">{{ ui.check_p }}</p>
+</section>
+<section class="panel checker">
+  <form id="chk">
+    <div class="free-row"><input id="chk-in" type="text" lang="ko" placeholder="{{ ui.check_ph }}" autocomplete="off" autocapitalize="off" spellcheck="false"><button type="submit" class="btn">{{ ui.check_btn }}</button></div>
+    <p class="hint" style="margin-top:8px">{{ ui.check_ex }} <button type="button" class="link ex" data-ex="저는 학교에서 가요">저는 학교에서 가요</button> · <button type="button" class="link ex" data-ex="가방 을 사고싶어요">가방 을 사고싶어요</button> · <button type="button" class="link ex" data-ex="저가 커피를 마셔요">저가 커피를 마셔요</button> · <button type="button" class="link ex" data-ex="고양이가 집에 있어요">고양이가 집에 있어요</button></p>
+  </form>
+  <div id="chk-out" class="chk-out" hidden>
+    <p class="chk-chunks big" lang="ko"></p>
+    <p class="legend muted small">{{ ui.check_legend }}</p>
+    <div class="whys" id="chk-notes"></div>
+    <div class="why info verdict" id="chk-verdict"></div>
+    <div class="offer chk-offer">
+      <h3>{{ ui.upsell_tutor_h }}</h3>
+      <p>{{ ui.check_after }}</p>
+      <a class="link strong" href="https://www.italki.com/teachers/korean" rel="sponsored noopener" target="_blank">{{ ui.check_send }} ↗</a>
+    </div>
+  </div>
+</section>
+<section class="intro prose">
+{% if lang == 'ja' %}
+<h2>このチェッカーが判定すること・しないこと</h2>
+<ul><li><b>判定する</b>：助詞の形（パッチム規則）、저가→제가、認識できた動詞に対する 에/에서/을・를、助詞が離れている、-고 싶어요 と 안 の分かち書き、動詞が文末にあるか、丁寧な語尾。</li><li><b>判定しない</b>：意味が通るか、自然に聞こえるか、語彙の選択、敬語のレベル。これらは規則では決められません。</li><li>単語リスト（{{ counts.nouns }} 語・{{ counts.verbs }} 動詞・{{ counts.adjectives }} 形容詞）にない語は「?」で表示し、助詞の形だけ判定します。</li></ul>
+{% else %}
+<h2>What this checker does and does not judge</h2>
+<ul><li><b>Judges</b>: particle form (the 받침 rule), 저가 → 제가, 에 / 에서 / 을·를 against a recognised verb, detached particles, spacing of -고 싶어요 and 안, verb-last order, the polite ending.</li><li><b>Does not judge</b>: meaning, naturalness, word choice, politeness level. Rules cannot decide those, so we do not pretend.</li><li>Words outside our list ({{ counts.nouns }} nouns, {{ counts.verbs }} verbs, {{ counts.adjectives }} adjectives) are shown with “?” and only their particle form is checked.</li></ul>
+{% endif %}
+</section>
+{% endblock %}
+{% block scripts %}
+<script>window.MJ_UI={{ ui | tojson }};</script>
+<script src="{{ base }}static/data.js?v={{ v }}"></script>
+<script src="{{ base }}static/munjang.js?v={{ v }}"></script>
+<script src="{{ base }}static/check.js?v={{ v }}"></script>
+{% endblock %}

@@ -260,3 +260,19 @@ html.roman .w-r{display:block}
   .sheet.letter{--cell:8.4mm}
   .sent{break-inside:avoid}
 }
+
+/* checker */
+.checker{max-width:66ch;margin:0 auto 28px}
+.checker .free-row{grid-template-columns:1fr auto}
+.checker input{padding:13px 14px;border:1px solid var(--line-strong);border-radius:12px;background:var(--surface);font:500 1.15rem var(--hangul);color:var(--text);min-width:0}
+.checker input:focus{border-color:var(--accent);outline:0}
+.chk-out{margin-top:16px}
+.chk-chunks{display:flex;flex-wrap:wrap;gap:8px;font:600 1.6rem/1.3 var(--hangul);margin:0 0 6px}
+.ck-chunk{position:relative;padding:6px 12px 6px 10px;border-radius:10px;border:1px solid var(--line)}
+.ck-chunk i{position:absolute;top:-8px;right:-6px;width:18px;height:18px;border-radius:50%;font:700 .7rem/18px var(--font);font-style:normal;text-align:center;background:var(--line);color:var(--text-2)}
+.ck-chunk.ok{border-color:var(--ok)}.ck-chunk.ok i{background:var(--ok);color:var(--surface)}
+.ck-chunk.no{border-color:var(--no);background:var(--no-soft)}.ck-chunk.no i{background:var(--no);color:var(--surface)}
+.ck-chunk.maybe{border-style:dashed}.ck-chunk.maybe i{background:var(--warn);color:var(--surface)}
+.legend{margin:0 0 12px}
+.verdict{margin-top:4px}.verdict p{margin:0;color:var(--text)}
+.chk-offer{margin-top:14px;border:1px solid var(--line);border-radius:14px}
