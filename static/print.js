@@ -21,7 +21,7 @@
   function render() {
     if (!tray.length) return;
     sheet.innerHTML = '';
-    const title = document.createElement('div'); title.className = 'sheet-title'; title.innerHTML = `<b>문장 연습</b><span>${new Date().toISOString().slice(0, 10)} · munjanglab.com</span>`;
+    const title = document.createElement('div'); title.className = 'sheet-title'; title.innerHTML = `<b>한글 문장 연습</b><span>${new Date().toISOString().slice(0, 10)} · hangulsteps.com</span>`;
     sheet.appendChild(title);
     tray.forEach((s, i) => {
       const block = document.createElement('div'); block.className = 'sent';

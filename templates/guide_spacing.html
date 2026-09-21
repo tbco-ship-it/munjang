@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% block title %}{% if lang == 'ja' %}韓国語の分かち書き（띄어쓰기）— どこでスペースを入れるか | Munjang{% else %}Korean spacing (띄어쓰기) — where the spaces go | Munjang{% endif %}{% endblock %}
+{% block title %}{% if lang == 'ja' %}韓国語の分かち書き（띄어쓰기）— どこでスペースを入れるか | HangulSteps{% else %}Korean spacing (띄어쓰기) — where the spaces go | HangulSteps{% endif %}{% endblock %}
 {% block description %}{% if lang == 'ja' %}日本語にはない分かち書き。「単語＋助詞」のかたまりごとにスペース、助詞は前にくっつける、-고 싶어요 の前は空ける。原稿用紙での書き方も。{% else %}Korean writes spaces between words, but particles stick to the word before them, and -고 싶어요 splits. The four rules beginners need, plus how it looks on 원고지 manuscript paper.{% endif %}{% endblock %}
 {% block content %}
 <article class="prose">
@@ -13,7 +13,7 @@
 <li><b>안 は動詞と離す。</b> <span lang="ko">안⎵마셔요</span>。「名詞＋하다」の活動動詞は名詞と 하다 の間に：<span lang="ko">공부⎵안⎵해요</span>（ただし <span lang="ko">안 좋아해요</span> — 좋아하다 は分けません）。</li>
 </ol>
 <h2>原稿用紙では</h2>
-<p>1マスに1音節、スペースは1マス空ける、句点「.」は1マス。行頭にはスペースのマスを置かず、行頭に来る句読点は前の行の最後のマスに入れます。Munjang の<a href="{{ base }}{{ ui.dir }}print/">印刷ページ</a>はこの流儀でマスを割り当てます。</p>
+<p>1マスに1音節、スペースは1マス空ける、句点「.」は1マス。行頭にはスペースのマスを置かず、行頭に来る句読点は前の行の最後のマスに入れます。HangulSteps の<a href="{{ base }}{{ ui.dir }}print/">印刷ページ</a>はこの流儀でマスを割り当てます。</p>
 {% else %}
 <h1>Spacing — one space per “word + particle” chunk</h1>
 <p class="lead">Korean uses spaces, but not where English does. The chunk is the unit: a word together with its particle. Four rules cover every sentence on this site.</p>

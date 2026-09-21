@@ -11,9 +11,9 @@ concurrency:
   group: pages
   cancel-in-progress: true
 env:
-  ORIGIN: https://tbco-ship-it.github.io/munjang
-  BASE: /munjang/
-  CNAME: ""
+  ORIGIN: https://hangulsteps.com
+  BASE: /
+  CNAME: hangulsteps.com
 jobs:
   build:
     runs-on: ubuntu-latest

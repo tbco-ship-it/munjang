@@ -1,15 +1,15 @@
 {% extends "base.html" %}
-{% block title %}{{ ui.about_h1 }} | Munjang{% endblock %}
+{% block title %}{{ ui.about_h1 }} | HangulSteps{% endblock %}
 {% block content %}
 <article class="prose">
 <h1>{{ ui.about_h1 }}</h1>
 {% if lang == 'ja' %}
-<p>Munjang（문장＝文）は、ハングルを読めるようになった直後の学習者のためのツールです。文字 → 単語 → 助詞つきの文 → 手書き練習、を1画面でつなぎます。</p>
+<p>HangulSteps は、ハングルを読めるようになった直後の学習者のためのツールです。文字 → 単語 → 助詞つきの文 → 手書き練習、を1画面でつなぎます。</p>
 <h2>方針</h2>
 <ul><li>文は {{ counts.frames }} 種の検証済み文型と {{ counts.nouns }} の名詞・{{ counts.verbs }} の動詞・{{ counts.adjectives }} の形容詞からのみ作られます。ランダムな組み合わせは出しません。</li><li>助詞の判定は「形（パッチム）」と「自然さ（主題か主格か）」を分けて説明します。</li><li>音声は端末の韓国語音声（Web Speech API）を使い、外部に送信しません。作った文はこの端末のブラウザにだけ保存されます。</li></ul>
 <h2>収益について</h2><p>広告と、先生紹介リンク（紹介料を受け取る場合があります）で運営しています。判定や例文には影響しません。</p>
 {% else %}
-<p>Munjang (문장 = “sentence”) is for the moment right after you can read Hangul: letters → words → a sentence with the right particles → handwriting practice, all on one screen.</p>
+<p>HangulSteps is for the moment right after you can read Hangul: letters → words → a sentence with the right particles → handwriting practice, all on one screen.</p>
 <h2>How it works</h2>
 <ul><li>Sentences are built only from {{ counts.frames }} reviewed beginner frames and {{ counts.nouns }} nouns, {{ counts.verbs }} verbs and {{ counts.adjectives }} adjectives. Nothing is randomly combined.</li><li>Particle feedback separates the <em>form</em> rule (받침) from the <em>naturalness</em> rule (topic vs subject), so “grammatical but odd” is shown as exactly that.</li><li>Audio uses your device’s Korean voice (Web Speech API); nothing is sent anywhere. Your sentences are stored only in this browser.</li></ul>
 <h2>Money</h2><p>The site runs on ads and tutor referral links (we may earn a fee). Neither affects the feedback or the example sentences.</p>

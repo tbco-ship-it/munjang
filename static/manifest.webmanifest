@@ -1,6 +1,6 @@
 {
- "name": "Munjang — build your first Korean sentences",
- "short_name": "Munjang",
+ "name": "HangulSteps — build your first Korean sentences",
+ "short_name": "HangulSteps",
  "description": "Hangul letter → beginner words → sentences with the right particles → 원고지 practice sheet",
  "lang": "en",
  "start_url": "../?src=home",

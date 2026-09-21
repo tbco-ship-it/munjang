@@ -16,7 +16,7 @@
 <link rel="icon" href="{{ base }}static/favicon.svg?v={{ v }}" type="image/svg+xml">
 <link rel="apple-touch-icon" href="{{ base }}static/apple-touch-icon.png?v={{ v }}">
 <link rel="manifest" href="{{ base }}static/manifest.webmanifest?v={{ v }}">
-<meta name="apple-mobile-web-app-title" content="Munjang">
+<meta name="apple-mobile-web-app-title" content="HangulSteps">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="theme-color" content="#f8f9fc" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#10141d" media="(prefers-color-scheme: dark)">
@@ -29,7 +29,7 @@
 </head>
 <body>
 <header class="top">
-  <a class="brand" href="{{ base }}{{ ui.dir }}"><span class="mark" aria-hidden="true">문</span><b>Munjang</b><span class="ko">문장</span></a>
+  <a class="brand" href="{{ base }}{{ ui.dir }}"><span class="mark" aria-hidden="true">한</span><b>HangulSteps</b><span class="ko">한글</span></a>
   <nav aria-label="Main">
     <a href="{{ base }}{{ ui.dir }}"{% if slug == 'home' %} aria-current="page"{% endif %}>{{ ui.nav_builder }}</a>
     <details class="menu">
@@ -55,7 +55,7 @@
 {% block content %}{% endblock %}
 </main>
 <footer>
-  <p><b>Munjang</b> <span class="muted">{{ ui.tagline }}</span></p>
+  <p><b>HangulSteps</b> <span class="muted">{{ ui.tagline }}</span></p>
   <p><a href="{{ base }}{{ ui.dir }}about/">{{ ui.nav_about }}</a> · <a href="{{ base }}{{ ui.dir }}privacy/">{% if lang == 'ja' %}プライバシー{% else %}Privacy{% endif %}</a> · <a href="{{ base }}{{ ui.dir }}contact/">{% if lang == 'ja' %}お問い合わせ{% else %}Contact{% endif %}</a></p>
   <p class="muted">{{ ui.footer_note }}</p>
 </footer>

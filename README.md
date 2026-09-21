@@ -1,4 +1,4 @@
-# Munjang (문장)
+# HangulSteps (formerly Munjang)
 
 Build your first Korean sentences: Hangul letter → beginner words → a sentence with the right particles (은/는·이/가·을/를·에·에서, judged and explained) → 원고지 practice sheet. EN at `/`, JA at `/ja/`.
 

@@ -30,7 +30,7 @@ PAGES = [  # (template, path, slug for title lookup)
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--base", default="/")
-    ap.add_argument("--origin", default="https://munjanglab.com")
+    ap.add_argument("--origin", default="https://hangulsteps.com")
     ap.add_argument("--cname", default="")
     ap.add_argument("--adsense", default="")
     a = ap.parse_args()
