@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block title %}{{ ui.topik_h1 }} | Munjang{% endblock %}
+{% block description %}{{ ui.topik_meta }}{% endblock %}
+{% block content %}
+<section class="prose print-head">
+  <h1>{{ ui.topik_h1 }}</h1>
+  <p class="lead">{{ ui.topik_p }}</p>
+</section>
+<div class="topik">
+  <section class="panel" id="q5152">
+    <div class="panel-title"><span class="num">51</span><h2>{{ ui.topik_q5152 }}</h2><button type="button" class="link" id="tk-next">{{ ui.topik_next }} →</button></div>
+    <p class="hint">{{ ui.topik_practice_note }}</p>
+    <div id="tk-item"></div>
+  </section>
+  <section class="panel" id="q5354">
+    <div class="panel-title"><span class="num">53</span><h2>{{ ui.topik_q5354 }}</h2></div>
+    <div class="tk-ctl">
+      <div class="seg" role="group" aria-label="Task"><button type="button" class="on" data-q="53">53</button><button type="button" data-q="54">54</button></div>
+      <select id="tk-prompt" aria-label="{{ ui.topik_pick }}"></select>
+      <div class="tk-timer"><span id="tk-time">00:00</span><button type="button" class="btn ghost sm" id="tk-start">{{ ui.topik_start }}</button><button type="button" class="btn ghost sm" id="tk-reset">{{ ui.topik_reset }}</button></div>
+    </div>
+    <p class="tk-prompt-text" id="tk-prompt-text"></p>
+    <textarea id="tk-text" lang="ko" rows="8" placeholder="{{ ui.topik_ph }}"></textarea>
+    <div class="tk-meta"><b id="tk-count"></b><span id="tk-range" class="count"></span><span id="tk-status" class="tag"></span></div>
+    <div id="tk-notes" class="whys"></div>
+    <div id="tk-sheet" class="sheet a4 topik-sheet" aria-live="polite"></div>
+    <div class="acts"><button type="button" class="btn ghost" id="tk-print">🖨 {{ ui.topik_print }}</button><a class="btn soft" href="https://www.italki.com/teachers/korean" rel="sponsored noopener" target="_blank">{{ ui.topik_tutor }} ↗</a></div>
+    <h3 class="tk-rules-h">{{ ui.topik_rules_h }}</h3>
+    <ul class="tk-rules"><li>{{ ui.topik_r_para }}</li><li>{{ ui.topik_r_space }}</li><li>{{ ui.topik_r_punct }}</li><li>{{ ui.topik_r_ascii }}</li><li>{{ ui.topik_r_style }}</li></ul>
+  </section>
+</div>
+{% endblock %}
+{% block scripts %}
+<script>window.MJ_UI={{ ui | tojson }};</script>
+<script src="{{ base }}static/data.js?v={{ v }}"></script>
+<script src="{{ base }}static/munjang.js?v={{ v }}"></script>
+<script src="{{ base }}static/topik.js?v={{ v }}"></script>
+{% endblock %}

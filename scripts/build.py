@@ -20,6 +20,7 @@ PAGES = [  # (template, path, slug for title lookup)
     ("guide_spacing.html", "guide/spacing/", "spacing"),
     ("print.html", "print/", "print"),
     ("check.html", "check/", "check"),
+    ("topik.html", "topik/", "topik"),
     ("about.html", "about/", "about"),
     ("privacy.html", "privacy/", "privacy"),
     ("contact.html", "contact/", "contact"),
@@ -37,6 +38,7 @@ def main():
 
     words = json.loads((ROOT / "data/words.json").read_text())
     templates = json.loads((ROOT / "data/templates.json").read_text())
+    topik = json.loads((ROOT / "data/topik.json").read_text())
     ui = json.loads((ROOT / "data/ui.json").read_text())
     jamo_pages = json.loads((ROOT / "data/jamo.json").read_text()) if (ROOT / "data/jamo.json").exists() else {}
 
@@ -46,7 +48,7 @@ def main():
     for f in (ROOT / "static").iterdir():
         if f.is_file():
             shutil.copy(f, DIST / "static" / f.name)
-    data_js = "window.MJ_DATA=" + json.dumps({"words": words, "templates": templates}, ensure_ascii=False, separators=(",", ":")) + ";"
+    data_js = "window.MJ_DATA=" + json.dumps({"words": words, "templates": templates, "topik": topik}, ensure_ascii=False, separators=(",", ":")) + ";"
     (DIST / "static/data.js").write_text(data_js)
     v = hashlib.sha1(b"".join(sorted(p.read_bytes() for p in (DIST / "static").iterdir()))).hexdigest()[:8]
 

@@ -1,0 +1,70 @@
+{
+  "_note": "TOPIK II writing practice. 51/52 items are original practice items in the exam's shape (short text with blanks ㉠ ㉡), not past papers. 'accept' = regex patterns an answer must match (grammar the item tests); 'model' = a model answer. 53/54 targets are the official length ranges.",
+  "targets": { "53": [200, 300], "54": [600, 700] },
+  "items": [
+    {
+      "id": "51-1", "q": "51", "kind": "invite",
+      "title": {"en": "A club invitation", "ja": "サークルの案内"},
+      "text": "한국어 말하기 동아리 회원 모집\n\n안녕하세요. 저희는 매주 토요일에 모여서 한국어로 이야기하는 동아리입니다. 한국어를 재미있게 (  ㉠  ) 저희 동아리에 오세요. 신청은 이번 주 금요일까지 사무실로 (  ㉡  ).",
+      "blanks": [
+        {"k": "㉠", "accept": ["배우고 싶으면", "배우고 싶으시면", "배우고 싶은 분은", "연습하고 싶으면", "연습하고 싶으시면", "공부하고 싶으면", "공부하고 싶으시면"], "pattern": "고 싶(으)?(시)?(면|은 분)", "model": "배우고 싶으면", "grammar": "-고 싶으면 (if you want to …)", "grammar_ja": "-고 싶으면（〜したければ）"},
+        {"k": "㉡", "accept": ["해 주세요", "해 주시기 바랍니다", "하시기 바랍니다", "오시기 바랍니다", "해 주십시오", "신청해 주세요", "신청하시기 바랍니다"], "pattern": "(주세요|바랍니다|주십시오)$", "model": "해 주시기 바랍니다", "grammar": "-(으)시기 바랍니다 / -아/어 주세요 (polite request in notices)", "grammar_ja": "-(으)시기 바랍니다 / -아/어 주세요（案内文の依頼表現）"}
+      ]
+    },
+    {
+      "id": "51-2", "q": "51", "kind": "email",
+      "title": {"en": "An email to a teacher", "ja": "先生へのメール"},
+      "text": "김민수 선생님께\n\n선생님, 안녕하세요. 저는 3급 반 학생 마리아입니다. 내일 수업 시간에 병원에 가야 해서 수업에 (  ㉠  ). 그래서 숙제를 미리 (  ㉡  )? 답장 기다리겠습니다.\n\n마리아 드림",
+      "blanks": [
+        {"k": "㉠", "accept": ["못 갑니다", "못 가요", "갈 수 없습니다", "갈 수 없어요", "참석할 수 없습니다", "참석하지 못합니다", "못 갈 것 같습니다", "갈 수 없을 것 같습니다"], "pattern": "(못 가|갈 수 없|참석(할 수 없|하지 못))", "model": "갈 수 없습니다", "grammar": "-(으)ㄹ 수 없다 / 못 + verb (cannot)", "grammar_ja": "-(으)ㄹ 수 없다 / 못（〜できない）"},
+        {"k": "㉡", "accept": ["보내 주실 수 있을까요", "보내 주시겠어요", "보내 주시겠습니까", "알려 주실 수 있을까요", "알려 주시겠어요", "받을 수 있을까요", "주실 수 있을까요", "보내 주실 수 있습니까"], "pattern": "(주실 수 있|주시겠|받을 수 있)", "model": "보내 주실 수 있을까요", "grammar": "-아/어 주실 수 있을까요? (polite request as a question)", "grammar_ja": "-아/어 주실 수 있을까요?（丁寧な依頼の疑問文）"}
+      ]
+    },
+    {
+      "id": "52-1", "q": "52", "kind": "explain",
+      "title": {"en": "Why we forget", "ja": "忘れる理由"},
+      "text": "사람은 새로 배운 것을 시간이 지나면 잊어버린다. 그래서 배운 내용을 오래 기억하려면 반복해서 (  ㉠  ). 특히 배운 다음 날 한 번 더 보면 기억이 훨씬 오래 간다. 반대로 한 번만 보고 (  ㉡  ) 며칠 뒤에는 대부분 잊어버리게 된다.",
+      "blanks": [
+        {"k": "㉠", "accept": ["복습해야 한다", "봐야 한다", "공부해야 한다", "읽어야 한다", "복습하는 것이 좋다", "복습할 필요가 있다"], "pattern": "(해야 한다|봐야 한다|는 것이 좋다|필요가 있다)$", "model": "복습해야 한다", "grammar": "-아/어야 하다 (must) in plain style -ㄴ다", "grammar_ja": "-아/어야 하다（〜しなければならない）＋ 한다体"},
+        {"k": "㉡", "accept": ["다시 보지 않으면", "복습하지 않으면", "복습을 하지 않으면", "다시 공부하지 않으면", "그대로 두면", "보지 않으면"], "pattern": "(지 않으면|두면)$", "model": "다시 보지 않으면", "grammar": "-지 않으면 (if you don't …)", "grammar_ja": "-지 않으면（〜しなければ）"}
+      ]
+    },
+    {
+      "id": "52-2", "q": "52", "kind": "explain",
+      "title": {"en": "Walking and health", "ja": "歩くことと健康"},
+      "text": "걷기는 누구나 쉽게 할 수 있는 운동이다. 특별한 도구가 (  ㉠  ) 돈도 들지 않는다. 그러나 효과를 보려면 하루 30분 이상 꾸준히 걸어야 한다. 가끔 오래 걷는 것보다 매일 조금씩 (  ㉡  ) 건강에 더 좋다.",
+      "blanks": [
+        {"k": "㉠", "accept": ["필요 없고", "필요하지 않고", "없어도 되고", "없어도 괜찮고"], "pattern": "(필요 없고|필요하지 않고|없어도 되고|없어도 괜찮고)$", "model": "필요 없고", "grammar": "-고 (and) linking two clauses", "grammar_ja": "-고（〜して、そして）"},
+        {"k": "㉡", "accept": ["걷는 것이", "걷는 게", "걷는 편이", "걷는 것이 오히려"], "pattern": "걷는 (것이|게|편이)", "model": "걷는 것이", "grammar": "A보다 B-는 것이 더 … (B is more … than A)", "grammar_ja": "A보다 B-는 것이 더（AよりBの方が）"}
+      ]
+    },
+    {
+      "id": "51-3", "q": "51", "kind": "notice",
+      "title": {"en": "A lost-and-found notice", "ja": "落とし物の掲示"},
+      "text": "지갑을 찾습니다\n\n어제 오후에 도서관 3층에서 검은색 지갑을 (  ㉠  ). 지갑 안에 학생증과 카드가 들어 있습니다. 지갑을 (  ㉡  ) 아래 번호로 연락해 주시기 바랍니다.\n\n연락처: 010-1234-5678",
+      "blanks": [
+        {"k": "㉠", "accept": ["잃어버렸습니다", "잃어버렸어요", "분실했습니다", "두고 왔습니다", "놓고 왔습니다"], "pattern": "(잃어버렸|분실했|두고 왔|놓고 왔)", "model": "잃어버렸습니다", "grammar": "-았/었습니다 (past, formal) with 잃어버리다", "grammar_ja": "-았/었습니다（過去・格式体）＋ 잃어버리다"},
+        {"k": "㉡", "accept": ["보신 분은", "찾으신 분은", "주우신 분은", "보셨으면", "찾으셨으면", "보시면", "찾으시면"], "pattern": "(신 분은|셨으면|시면)$", "model": "보신 분은", "grammar": "-(으)신 분은 (anyone who has …, honorific)", "grammar_ja": "-(으)신 분은（〜された方は）"}
+      ]
+    },
+    {
+      "id": "52-3", "q": "52", "kind": "explain",
+      "title": {"en": "Reading aloud", "ja": "音読"},
+      "text": "외국어를 배울 때 소리 내어 읽는 것은 큰 도움이 된다. 눈으로만 읽으면 발음을 확인할 수 (  ㉠  ) 소리 내어 읽으면 자신의 발음을 직접 들을 수 있기 때문이다. 따라서 발음을 (  ㉡  ) 매일 조금씩이라도 소리 내어 읽는 것이 좋다.",
+      "blanks": [
+        {"k": "㉠", "accept": ["없지만", "없는데", "없으나"], "pattern": "없(지만|는데|으나)$", "model": "없지만", "grammar": "-(으)ㄹ 수 없지만 (cannot …, but)", "grammar_ja": "-(으)ㄹ 수 없지만（〜できないが）"},
+        {"k": "㉡", "accept": ["좋게 하려면", "잘하려면", "연습하려면", "고치려면", "좋게 하고 싶으면", "잘하고 싶으면"], "pattern": "(려면|고 싶으면)$", "model": "좋게 하려면", "grammar": "-(으)려면 (if you intend to …)", "grammar_ja": "-(으)려면（〜しようとするなら）"}
+      ]
+    }
+  ],
+  "prompts": {
+    "53": [
+      {"en": "Describe the chart: “Reasons for learning Korean among foreign students (2025)” — K-pop/drama 42%, work 28%, study abroad 20%, other 10%. State the survey, the biggest reason, compare it with the second, and add one sentence on what this suggests. 200–300 characters.", "ja": "グラフ「外国人留学生が韓国語を学ぶ理由（2025）」— K-pop・ドラマ 42%、仕事 28%、留学 20%、その他 10%。調査の紹介、最大の理由、2位との比較、示唆を1文。200〜300字。"},
+      {"en": "Describe the change: “Number of TOPIK examinees” 2015: 200,000 → 2025: 400,000. Explain the trend and give two likely reasons (Korean companies hiring abroad; K-content). 200–300 characters.", "ja": "変化を説明：「TOPIK受験者数」2015年 20万人 → 2025年 40万人。傾向と考えられる理由を2つ（韓国企業の海外採用、Kコンテンツ）。200〜300字。"}
+    ],
+    "54": [
+      {"en": "“Should foreign-language learning start in early childhood?” Give your position, two reasons, and address one counter-argument. 600–700 characters, formal written style (-ㄴ/는다, -(이)다).", "ja": "「外国語学習は幼児期から始めるべきか」。立場、理由2つ、反論への応答。600〜700字、文語体（-ㄴ/는다、-(이)다）。"},
+      {"en": "“Is it better to live in a big city or a small town?” Compare, take a side, and explain what matters most to you. 600–700 characters.", "ja": "「大都市と小さな町、どちらに住むのがよいか」。比較し、立場を決め、最も重視する点を説明。600〜700字。"}
+    ]
+  }
+}
