@@ -1076,6 +1076,41 @@
    ]
   },
   {
+   "id": "hon_exist",
+   "level": 4,
+   "slots": [
+    "S",
+    "SP",
+    "L",
+    "OP",
+    "V"
+   ],
+   "sp": "subject",
+   "op": "dest",
+   "verbs": "honexist",
+   "p": {
+    "SP": {
+     "expect": "subject",
+     "options": [
+      "이",
+      "가",
+      "께서"
+     ]
+    }
+   },
+   "en": "An elder is somewhere (께서 · 계세요)",
+   "ja": "目上の人がいる（께서・계세요）",
+   "vi": "Người lớn tuổi ở đâu (께서 · 계세요)",
+   "ex": "할머니께서 집에 계세요",
+   "ex_en": "My grandmother is at home.",
+   "ex_ja": "祖母が家にいらっしゃいます。",
+   "ex_vi": "Bà ở nhà.",
+   "tenses": [
+    "pres",
+    "past"
+   ]
+  },
+  {
    "id": "because_f",
    "level": 5,
    "slots": [
@@ -1242,6 +1277,52 @@
    "tenses": [
     "pres"
    ]
+  },
+  {
+   "id": "janh",
+   "level": 5,
+   "slots": [
+    "S",
+    "SP",
+    "O",
+    "OP",
+    "VF:janayo"
+   ],
+   "sp": "topic",
+   "op": "obj",
+   "verbs": "transitive",
+   "no_first": true,
+   "en": "“You know …” (-잖아요)",
+   "ja": "「〜じゃないですか」（-잖아요）",
+   "vi": "“… mà” (-잖아요)",
+   "ex": "친구는 커피를 좋아하잖아요",
+   "ex_en": "My friend likes coffee, you know.",
+   "ex_ja": "友だちはコーヒーが好きじゃないですか。",
+   "ex_vi": "Bạn tôi thích cà phê mà.",
+   "tenses": [
+    "pres"
+   ]
+  },
+  {
+   "id": "geodeun",
+   "level": 5,
+   "slots": [
+    "S",
+    "SP",
+    "AF:geodeunyo"
+   ],
+   "sp": "topic",
+   "en": "“… you see” — giving a reason (-거든요)",
+   "ja": "「〜なんですよ」— 理由を添える（-거든요）",
+   "vi": "“… mà / vì …” (-거든요)",
+   "ex": "저는 지금 바쁘거든요",
+   "ex_en": "I’m busy, you see.",
+   "ex_ja": "私は忙しいんですよ。",
+   "ex_vi": "Tôi đang bận mà.",
+   "tenses": [
+    "pres"
+   ],
+   "person": true
   }
  ],
  "why": {
@@ -1316,7 +1397,12 @@
    "pref_wrong_obj": "좋아요 is an adjective — it cannot take an object. Say {w}{p} 좋아요, or switch to the verb: {w}{q} 좋아해요.",
    "mot": "못 = cannot (ability or circumstances). 안 = do not (choice). 못 goes right before the verb, like 안.",
    "aux_do": "도 = also / too. It REPLACES 은/는·이/가·을/를 — never stack them: 저도 (not 저는도), 커피도 (not 커피를도).",
-   "aux_man": "만 = only. It replaces 을/를 (커피만 마셔요). After a subject you may also see 만 + 이: 저만 / 저만이 — both fine."
+   "aux_man": "만 = only. It replaces 을/를 (커피만 마셔요). After a subject you may also see 만 + 이: 저만 / 저만이 — both fine.",
+   "hon_subj_ok": "께서 is the honorific subject particle — for grandparents, teachers, bosses — and it pairs with the honorific verb 계세요.",
+   "hon_subj_soft": "Grammatical, but for an elder the honorific set is expected: {w}께서 … 계세요.",
+   "hon_subj_wrong": "께서 is only for people you honour (grandmother, teacher). For “{w}” use 이/가.",
+   "qplace_both": "With {v} both work: 어디에 살아요? and 어디에서 살아요? are equally natural.",
+   "chk_incomplete": "The sentence stops after “{v}” — a connective needs a second part with its own predicate at the end."
   },
   "ja": {
    "batchim_yes": "「{w}」はパッチム（{f}）で終わる → {p}",
@@ -1381,7 +1467,7 @@
    "qobj_reul": "뭐 + 를 → 뭘（뭘 먹어요?）も自然です。",
    "to_hon_ok": "께 は 에게 の尊敬形 — 祖父母・先生・上司に。",
    "to_hon_soft": "文法的には正しいですが、目上の人には尊敬の 께（＋드려요）が期待されます。",
-   "pos_ok": "「{w}」が位置を表し、그の後に 에：의자 위에。",
+   "pos_ok": "「{w}」が位置を表し、その後に 에 を付けます：의자 위에。",
    "location_ok": "있어요 では、ある物に 이/가、場所＋位置語＋에。",
    "like_ok": "좋아하다 は動詞なので、好きなものは目的語 → {w}{p} 좋아해요。",
    "like_wrong_ga": "「{w}{s} 좋아요」も正しい文ですが、それは形容詞 좋다 の文です。動詞 좋아해요 では好きなものが目的語：{w}{p} 좋아해요。",
@@ -1389,7 +1475,12 @@
    "pref_wrong_obj": "좋아요 は形容詞なので目的語を取れません。{w}{p} 좋아요 か、動詞に変えて {w}{q} 좋아해요。",
    "mot": "못 = できない（能力・状況）。안 = しない（選択）。못 も 안 と同じく動詞の直前に置きます。",
    "aux_do": "도 =「〜も」。은/는・이/가・을/를 と入れ替わります。重ねません：저도（× 저는도）、커피도（× 커피를도）。",
-   "aux_man": "만 =「〜だけ」。을/를 と入れ替わります（커피만 마셔요）。主語では 저만／저만이 のどちらも使えます。"
+   "aux_man": "만 =「〜だけ」。을/를 と入れ替わります（커피만 마셔요）。主語では 저만／저만이 のどちらも使えます。",
+   "hon_subj_ok": "께서 は主格助詞の尊敬形（祖父母・先生・上司）。尊敬動詞 계세요 とセットです。",
+   "hon_subj_soft": "文法的には正しいですが、目上の人には尊敬のセット {w}께서 … 계세요 が期待されます。",
+   "hon_subj_wrong": "께서 は敬う相手（祖母・先生）にだけ。「{w}」には 이/가。",
+   "qplace_both": "{v} はどちらも自然です：어디에 살아요？ も 어디에서 살아요？ も使えます。",
+   "chk_incomplete": "「{v}」で文が止まっています。接続語尾の後には述語で終わる後半が必要です。"
   },
   "vi": {
    "batchim_yes": "“{w}” kết thúc bằng phụ âm (받침 {f}) → {p}",
@@ -1462,7 +1553,12 @@
    "pref_wrong_obj": "좋아요 là tính từ — không có tân ngữ. Nói {w}{p} 좋아요, hoặc đổi sang động từ: {w}{q} 좋아해요.",
    "mot": "못 = không thể (khả năng, hoàn cảnh). 안 = không (lựa chọn). 못 đứng ngay trước động từ, như 안.",
    "aux_do": "도 = cũng. Nó THAY THẾ 은/는·이/가·을/를 — không xếp chồng: 저도 (không phải 저는도), 커피도 (không phải 커피를도).",
-   "aux_man": "만 = chỉ. Thay thế 을/를 (커피만 마셔요). Sau chủ ngữ có thể thấy 저만 / 저만이 — đều được."
+   "aux_man": "만 = chỉ. Thay thế 을/를 (커피만 마셔요). Sau chủ ngữ có thể thấy 저만 / 저만이 — đều được.",
+   "hon_subj_ok": "께서 là tiểu từ chủ ngữ kính ngữ — với ông bà, thầy cô, cấp trên — đi cùng động từ kính ngữ 계세요.",
+   "hon_subj_soft": "Đúng ngữ pháp, nhưng với người lớn tuổi nên dùng bộ kính ngữ: {w}께서 … 계세요.",
+   "hon_subj_wrong": "께서 chỉ dùng với người được kính trọng (bà, thầy cô). Với “{w}” dùng 이/가.",
+   "qplace_both": "Với {v} cả hai đều được: 어디에 살아요? và 어디에서 살아요? đều tự nhiên.",
+   "chk_incomplete": "Câu dừng ở “{v}” — sau đuôi nối cần vế thứ hai kết thúc bằng vị ngữ."
   }
  },
  "levels": {
@@ -1551,9 +1647,9 @@
    "lab": "-(으)면서"
   },
   "ttaemun": {
-   "en": "because — formal",
-   "ja": "〜ので：文語的",
-   "vi": "vì — trang trọng",
+   "en": "because / due to: gives an explicit reason",
+   "ja": "〜ので／〜ため：理由を明示する",
+   "vi": "vì / do: nêu rõ nguyên nhân",
    "lab": "-기 때문에"
   }
  }

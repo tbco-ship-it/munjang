@@ -92,6 +92,10 @@
 
   // Judge the subject/topic particle. Returns {grade: 'ok'|'soft'|'no', why, correct}
   function judgeSP(tpl, word, choice, why) {
+    if (choice === '께서') { // honorific subject particle: only for elders, and only where the frame offers it
+      if (!word) return { grade: 'no', why: '', correct: '께서' };
+      return word.elder ? { grade: 'ok', why: fill(why.hon_subj_ok, { w: word.h }), correct: '께서' } : { grade: 'no', why: fill(why.hon_subj_wrong, { w: word.h }), correct: form(word, 'subject') };
+    }
     const fam = familyOf(choice);
     const natural = tpl.sp; // 'topic' | 'subject'
     const correctForm = form(word, natural);
@@ -108,6 +112,7 @@
       return { grade: 'no', why: fill(bat ? why.batchim_yes : why.batchim_no, { w, f: bat, p: FAMILY[fam][bat ? 'yes' : 'no'] }), correct: correctForm };
     }
     if (fam === natural) {
+      if (tpl.id === 'hon_exist' && word.elder) return { grade: 'soft', why: fill(why.hon_subj_soft, { w }), correct: '께서' };
       const key = natural === 'topic' ? 'topic_ok' : (tpl.id === 'exist' ? 'exist_subject_ok' : 'subject_ok');
       return { grade: 'ok', why: fill(why[key], { w }), correct: correctForm };
     }
@@ -125,12 +130,12 @@
       if (expect === 'obj' && FAMILY.obj[bat ? 'yes' : 'no'] !== choice) {
         return { grade: 'no', why: fill(bat ? why.batchim_yes : why.batchim_no, { w, f: bat, p: correctForm }), correct: correctForm };
       }
-      const key = expect === 'obj' ? 'obj_ok' : expect === 'dest' ? (tpl.id === 'exist' ? 'exist_place_ok' : tpl.id === 'location' ? 'location_ok' : 'dest_ok') : 'loc_ok';
+      const key = expect === 'obj' ? 'obj_ok' : expect === 'dest' ? (tpl.id === 'exist' || tpl.id === 'hon_exist' ? 'exist_place_ok' : tpl.id === 'location' ? 'location_ok' : 'dest_ok') : 'loc_ok';
       return { grade: 'ok', why: fill(why[key], { w, v: verb ? verb.h : '' }), correct: correctForm };
     }
     if (expect === 'loc' && fam === 'dest' && verb && verb.locBoth) return { grade: 'ok', why: fill(why.live_both, { w, v: verb.h }), correct: '에서' };
     const key = expect === 'obj' ? (fam === 'dest' ? 'obj_wrong_dest' : 'obj_wrong_loc')
-      : expect === 'dest' ? (fam === 'loc' ? (tpl.id === 'exist' || tpl.id === 'location' ? 'exist_wrong_loc' : 'dest_wrong_loc') : 'dest_wrong_obj')
+      : expect === 'dest' ? (fam === 'loc' ? (tpl.id === 'exist' || tpl.id === 'location' || tpl.id === 'hon_exist' ? 'exist_wrong_loc' : 'dest_wrong_loc') : 'dest_wrong_obj')
       : (fam === 'dest' ? 'loc_wrong_dest' : 'loc_wrong_obj');
     return { grade: 'no', why: fill(why[key], { w, v: verbLabel(verb, why) }), correct: correctForm };
   }
@@ -168,8 +173,9 @@
     }
     if (expect === 'qplace') { // 어디에 가요? (destination) vs 어디에서 먹어요? (where it happens); 살다 takes both
       const move = !!(verb && verb.move), both = !!(verb && verb.locBoth);
-      if (choice === '에') return move || both ? { grade: 'ok', why: fill(why.qplace_ok, { w }), correct: '에' } : { grade: 'no', why: fill(why.qplace_wrong_e, { w }), correct: '에서' };
-      if (choice === '에서') return !move || both ? { grade: 'ok', why: fill(why.qplace_ok, { w }), correct: '에서' } : { grade: 'no', why: fill(why.qplace_wrong_eseo, { w }), correct: '에' };
+      if (both && (choice === '에' || choice === '에서')) return { grade: 'ok', why: fill(why.qplace_both, { w, v: verb.h }), correct: choice };
+      if (choice === '에') return move ? { grade: 'ok', why: fill(why.qplace_ok, { w }), correct: '에' } : { grade: 'no', why: fill(why.qplace_wrong_e, { w }), correct: '에서' };
+      if (choice === '에서') return !move ? { grade: 'ok', why: fill(why.qplace_ok, { w }), correct: '에서' } : { grade: 'no', why: fill(why.qplace_wrong_eseo, { w }), correct: '에' };
       return { grade: 'no', why: fill(why.qplace_wrong_e, { w }), correct: move ? '에' : '에서' };
     }
     if (expect === 'like') { // 좋아하다 (verb) takes 을/를; 이/가 belongs to the adjective 좋다
@@ -226,6 +232,8 @@
       if (tpl.id === 'exist') return subj.filter(n => ['person', 'animal', 'item', 'text'].includes(n.kind));
       if (tpl.id === 'want') return subj.filter(n => !!n.ga); // -고 싶어요 declaratives: first person only
       if (tpl.id === 'have' || tpl.id === 'pref') return subj.filter(n => n.kind === 'person');
+      if (tpl.id === 'hon_exist') return subj.filter(n => n.elder);
+      if (tpl.person) return subj.filter(n => n.kind === 'person');
       if (tpl.id === 'location') return subj.filter(n => ['item', 'animal', 'person'].includes(n.kind) && n.h !== '저' && n.h !== '나');
       if (tpl.plain) return subj.filter(n => n.h === '나'); // 나는 …ㄴ/는다: the written style never takes 저
       if (tpl.q || tpl.no_first) return subj.filter(n => n.kind === 'person' && !n.ga); // questions / -는 것 같아요 are about someone else
@@ -238,7 +246,13 @@
       return list;
     }
     if (slotKey === 'REF') return nouns.filter(n => n.roles.includes('ref') && !(picks && picks.S && picks.S.h === n.h));
-    if (slotKey === 'POS') return nouns.filter(n => n.kind === 'pos');
+    if (slotKey === 'POS') { // 안/밖 need a container; animals and people only have a front, back and side
+      const ref = picks && picks.REF; const pos = nouns.filter(n => n.kind === 'pos');
+      if (!ref) return pos;
+      if (ref.container) return pos;
+      if (ref.kind === 'animal' || ref.kind === 'person') return pos.filter(n => ['앞', '뒤', '옆'].includes(n.h));
+      return pos.filter(n => n.h !== '안' && n.h !== '밖');
+    }
     if (slotKey === 'QD') return nouns.filter(n => n.roles.includes('qd'));
     if (slotKey === 'QO') return nouns.filter(n => n.roles.includes('qo'));
     if (slotKey === 'A1') return words.adjectives.filter(a => (!picks || !picks.S || a.fits.some(f => (picks.S.feat || []).includes(f))) && (tpl.conns || [tpl.conn]).every(k => !!a[k]));
@@ -268,9 +282,10 @@
     else if (kind === 'exist') list = words.verbs.filter(v => v.exist);
     else if (kind === 'at') list = words.verbs.filter(v => v.at && has(v));
     else if (kind === 'give') list = words.verbs.filter(v => v.to && v.takes && !v.hon && has(v));
-    else if (kind === 'hongive') list = words.verbs.filter(v => v.hon && has(v));
+    else if (kind === 'hongive') list = words.verbs.filter(v => v.hon && v.to && has(v));
     else if (kind === 'have') list = words.verbs.filter(v => v.have);
     else if (kind === 'like') list = words.verbs.filter(v => v.h === '좋아하다');
+    else if (kind === 'honexist') list = words.verbs.filter(v => v.honexist);
     else if (kind === 'any_place') list = words.verbs.filter(v => (v.move || v.at || v.takes) && !v.to && !v.hon && has(v));
     else list = [];
     const vf = tpl.slots.find(k => k.startsWith('VF:'));
@@ -307,7 +322,7 @@
     const pushV = (kind, f, word) => f.split(' ').forEach((part, j) => chunks.push({ kind, text: part, word, tail: j > 0 }));
     for (let i = 0; i < slots.length; i++) {
       const k = slots[i];
-      if (k === 'S') { if (picks.tense === 'please') continue; const p = picks.SP || form(picks.S, tpl.sp); chunks.push({ kind: 'S', text: chunk(picks.S, p), word: picks.S, particle: p }); } // -(으)세요 is a request to the listener: no subject
+      if (k === 'S') { if (picks.tense === 'please') continue; const p = picks.SP || (tpl.id === 'hon_exist' ? '께서' : form(picks.S, tpl.sp)); chunks.push({ kind: 'S', text: chunk(picks.S, p), word: picks.S, particle: p }); } // -(으)세요 is a request to the listener: no subject
       else if (NOUN_SLOTS.includes(k)) {
         if (!picks[k]) return { chunks, text: '', incomplete: true };
         const pk = slots[i + 1], spec = pspec(tpl, pk);
@@ -360,8 +375,9 @@
   // Splits the learner's sentence into 어절, recognises noun+particle / verb chunks from the word list, and applies only the
   // rules it can be sure of: particle FORM after 받침, particle FAMILY vs a recognised verb (에/에서/을·를), spacing of particles,
   // -고 싶어요 and 안, verb-last order, polite ending. Everything else is reported as "can't judge" — never guessed.
-  const PARTICLES = ['에서', '에게', '한테', '으로', '부터', '까지', '은', '는', '이', '가', '을', '를', '에', '도', '의', '와', '과', '로', '하고'];
+  const PARTICLES = ['께서', '에서', '에게', '한테', '으로', '부터', '까지', '은', '는', '이', '가', '을', '를', '에', '도', '의', '와', '과', '로', '하고', '만', '께'];
   const PAIRS = { '은': '는', '는': '은', '이': '가', '가': '이', '을': '를', '를': '을', '와': '과', '과': '와', '으로': '로', '로': '으로' };
+  const ADVERBS = ['같이', '함께', '지금', '아주', '정말', '너무', '잘', '많이', '조금', '빨리', '자주', '아직', '벌써', '다시', '꼭', '오늘', '내일', '어제', '매일', '항상', '가끔', '먼저', '천천히', '열심히'];
   function wantsBatchim(p) { return ['은', '이', '을', '과', '으로'].includes(p); }
   // 로/으로: 로 after a vowel or ㄹ, 으로 after other consonants
   function needRo(stem) { const b = batchim(stem); return !b || b === 'ㄹ' ? '로' : '으로'; }
@@ -376,7 +392,7 @@
     let tokens = joined.split(' ').map(x => x.replace(/ /g, ' '));
     const allVerbs = [...words.verbs, ...words.adjectives];
     const verbForms = new Map();
-    for (const v of allVerbs) for (const k of ['pres', 'past', 'want', 'fut', 'can', 'must', 'please', 'kkayo', 'juseyo', 'jimaseyo', 'bwasseoyo', 'jeok', 'geotgatayo', 'plain', 'ryeogo', 'giro', 'yagesseoyo', 'gedoeda', 'neyo']) if (v[k] && !verbForms.has(v[k])) verbForms.set(v[k], { v, tense: k });
+    for (const v of allVerbs) for (const k of ['pres', 'past', 'want', 'fut', 'can', 'must', 'please', 'kkayo', 'juseyo', 'jimaseyo', 'bwasseoyo', 'jeok', 'geotgatayo', 'plain', 'ryeogo', 'giro', 'yagesseoyo', 'gedoeda', 'neyo', 'janayo', 'geodeunyo']) if (v[k] && !verbForms.has(v[k].replace(/\?$/, ''))) verbForms.set(v[k].replace(/\?$/, ''), { v, tense: k });
     // connective forms (먹고 · 먹어서 · 먹으면 · 먹을 때 · 먹으러 …) are recognised as a first clause, not as the final predicate
     const connForms = new Map();
     for (const v of allVerbs) for (const k of ['go', 'eoseo', 'jiman', 'myeon', 'lttae', 'reo', 'ttaemun', 'myeonseo', 'gi_jeone', 'n_hue']) if (v[k] && !connForms.has(v[k])) connForms.set(v[k], { v, conn: k });
@@ -398,7 +414,7 @@
       if (verbForms.has(tok)) { const f = verbForms.get(tok); c.kind = 'verb'; c.status = 'ok'; c.word = f.v; c.tense = f.tense; verbAt = i; verb = f.v; verbTense = f.tense; chunks.push(c); return; }
       if (connForms.has(tok)) { const f = connForms.get(tok); c.kind = 'conn'; c.status = 'ok'; c.word = f.v; c.conn = f.conn; chunks.push(c); return; }
       if (tok.endsWith('고싶어요') && verbForms.has(tok.replace('고싶어요', '고 싶어요'))) { c.kind = 'verb'; c.status = 'no'; notes.push({ grade: 'no', key: 'chk_want_space', vars: { v: tok.replace('고싶어요', '고 싶어요') } }); verbAt = i; verb = verbForms.get(tok.replace('고싶어요', '고 싶어요')).v; chunks.push(c); return; }
-      if (tok === '안' || tok === '못') { c.kind = 'adv'; c.status = 'ok'; chunks.push(c); return; }
+      if (tok === '안' || tok === '못' || ADVERBS.includes(tok)) { c.kind = 'adv'; c.status = 'ok'; chunks.push(c); return; }
       if (tok.length > 1 && tok.startsWith('못') && verbForms.has(tok.slice(1))) { c.kind = 'verb'; c.status = 'no'; notes.push({ grade: 'no', key: 'chk_an_space', vars: { v: tok.slice(1) } }); chunks.push(c); return; }
       if (nounByH(tok)) { c.kind = 'noun'; c.status = 'bare'; c.word = nounByH(tok); chunks.push(c); return; }
       let hit = null;
@@ -431,11 +447,25 @@
     if (verbAt >= 0 && verbAt < tokens.length - 1) notes.push({ grade: 'maybe', key: 'chk_verb_last', vars: { v: tokens[verbAt] } });
     if (verbAt < 0 && !/(요|습니다|ㅂ니다|다)$/.test(last)) notes.push({ grade: 'maybe', key: 'chk_ending', vars: { w: last } });
     else if (verbAt < 0 && /(습니다|다)$/.test(last)) notes.push({ grade: 'info', key: 'chk_formal', vars: { w: last } });
-    if (verb) {
-      const objs = chunks.filter(c => c.kind === 'noun' && (c.particle === '을' || c.particle === '를'));
+    // A connective form closes its clause: the nouns before 먹고 / 가기 전에 belong to that predicate, the rest to the final one.
+    const clauses = [{ verb: null, nouns: [] }];
+    for (const c of chunks) {
+      if (c.kind === 'conn') {
+        const cur = clauses[clauses.length - 1]; cur.verb = c.word; const next = { verb: null, nouns: [] };
+        if (c.conn === 'reo') { next.nouns = cur.nouns.filter(n => n.particle === '에' && n.word && n.word.kind === 'place'); cur.nouns = cur.nouns.filter(n => !next.nouns.includes(n)); } // 도서관에 책을 읽으러 가요: the destination belongs to 가다
+        clauses.push(next);
+      }
+      else if (c.kind === 'noun') clauses[clauses.length - 1].nouns.push(c);
+    }
+    clauses[clauses.length - 1].verb = verb;
+    const lastChunk = chunks[chunks.length - 1];
+    if (chunks.some(c => c.kind === 'conn') && (!verb || (lastChunk && lastChunk.kind !== 'verb'))) notes.push({ grade: 'no', key: 'chk_incomplete', vars: { v: (chunks.filter(c => c.kind === 'conn').pop() || {}).text || '' } });
+    for (const cl of clauses) {
+      const verb = cl.verb; if (!verb) continue;
+      const objs = cl.nouns.filter(c => (c.particle === '을' || c.particle === '를'));
       if (objs.length > 1 && !(verb.to)) notes.push({ grade: 'maybe', key: 'chk_dup_obj', vars: {} });
-      for (const c of chunks) {
-        if (c.kind !== 'noun' || !c.particle || !c.word) continue;
+      for (const c of cl.nouns) {
+        if (!c.particle || !c.word) continue;
         const w = c.word, isPlace = w.kind === 'place', isPerson = w.kind === 'person';
         // recipients first: 친구에 주다 → 친구에게 (never "친구를")
         if (verb.to && isPerson && c.particle === '에') { notes.push({ grade: 'no', key: 'chk_to_person', vars: { w: c.stem }, fix: c.stem + '에게' }); c.status = 'no'; continue; }
@@ -452,6 +482,7 @@
       }
     }
     const unknown = chunks.filter(c => c.status === 'unknown' || c.status === 'maybe').length;
+    if (chunks.length && (lastChunk.kind === 'conn' || (lastChunk.kind === 'noun' && verbAt < 0 && chunks.some(c => c.kind === 'conn')))) { /* handled above */ }
     const bad = notes.some(n => n.grade === 'no');
     return { chunks, notes, verb, verbTense, verdict: bad ? 'no' : unknown ? 'partial' : 'ok', unknown };
   }

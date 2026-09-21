@@ -304,5 +304,38 @@ eq(asm('notice', { S: noun('커피'), SP: '가', A: adj('맛있다'), tense: 'pr
 eq(M.adjectivesFor(noun('커피'), W, tpl('notice')).every(a => !!a.neyo), true, 'notice adjectives have neyo form');
 eq(M.candidates(tpl('notice'), 'S', W).length > 10, true, 'notice subjects');
 
+// 께서/계세요, -잖아요, -거든요
+eq(asm('hon_exist', { S: noun('할머니'), SP: '께서', L: noun('집'), OP: '에', V: verb('계시다'), tense: 'pres' }), '할머니께서 집에 계세요.', '께서 계세요');
+eq(M.judgeP(tpl('hon_exist'), 'SP', noun('할머니'), null, '께서', WHY).grade, 'ok', '께서 ok');
+eq(M.judgeP(tpl('hon_exist'), 'SP', noun('할머니'), null, '가', WHY).grade, 'soft', '할머니가 soft');
+eq(M.judgeP(tpl('exist'), 'SP', noun('고양이'), null, '께서', WHY).grade, 'no', '고양이께서 no');
+eq(M.candidates(tpl('hon_exist'), 'S', W).every(n => n.elder), true, 'hon_exist subjects are elders');
+eq(M.verbsFor(tpl('hon_exist'), W).map(v => v.h), ['계시다'], 'hon_exist verb');
+eq(asm('janh', { S: noun('친구'), O: noun('커피'), V: verb('좋아하다'), tense: 'pres' }), '친구는 커피를 좋아하잖아요.', '-잖아요');
+eq(asm('geodeun', { S: noun('저'), A: adj('바쁘다'), tense: 'pres' }), '저는 바쁘거든요.', '-거든요');
+eq(chk('할머니께서 집에 계세요').verdict, 'ok', 'checker: 께서 계세요');
+eq(chk('저는 바쁘거든요').verdict, 'ok', 'checker: -거든요');
+
+// ---- GPT-5.6 Sol round 3 (2026-09-22): checker round-trip, incomplete sentences, ?, clause domains ----
+for (const tp of T.templates) { // every frame's own example sentence must pass the free checker with no ✗ and no bogus warnings
+  const r = chk(tp.ex + (tp.q ? '?' : '.'));
+  eq(r.verdict !== 'no', true, `round-trip ${tp.id}: ${tp.ex} → ${r.verdict} ${JSON.stringify(r.notes.filter(n => n.grade === 'no').map(n => n.key))}`);
+  eq(r.notes.some(n => n.key === 'chk_dup_obj' || n.key === 'chk_pair'), false, `round-trip ${tp.id}: no bogus warnings ${JSON.stringify(r.notes.map(n => n.key))}`);
+}
+eq(chk('저는 밥을 먹고').verdict, 'no', 'incomplete after -고 is not ok');
+eq(chk('저는 밥을 먹고 커피를').verdict, 'no', 'incomplete after -고 + noun is not ok');
+eq(chk('저는 밥을 먹고').notes.some(n => n.key === 'chk_incomplete'), true, 'incomplete note');
+eq(chk('같이 영화를 볼까요?').verdict, 'ok', '-(으)ㄹ까요? with ? is ok');
+eq(chk('저는 학교에 가기 전에 커피를 마셔요').verdict, 'ok', '-기 전에 clause keeps its own verb');
+eq(chk('저는 학교에 간 후에 커피를 마셔요').verdict, 'ok', '-(으)ㄴ 후에 clause');
+eq(chk('저는 학교에 가서 밥을 먹어요').verdict, 'ok', '-아/어서 clause');
+eq(chk('저는 시간이 없은 후에 운동을 해요').verdict === 'ok', false, '없은 후에 not accepted');
+eq(chk('저는 배고파야겠어요').verdict === 'ok', false, '배고파야겠어요 not accepted');
+eq(W.verbs.find(v => v.h === '좋아하다').jeok, '좋아한 적이 있어요', '좋아한 적이 있어요 kept');
+eq(M.candidates(tpl('location'), 'POS', W, null, { REF: noun('의자') }).map(n => n.h).includes('안'), false, '의자 안에 excluded');
+eq(M.candidates(tpl('location'), 'POS', W, null, { REF: noun('가방') }).map(n => n.h).includes('안'), true, '가방 안에 allowed');
+eq(M.candidates(tpl('location'), 'POS', W, null, { REF: noun('고양이') }).map(n => n.h).sort().join(), '뒤,앞,옆', '고양이 앞/뒤/옆 only');
+eq(M.judgeP(tpl('q_where'), 'QP', noun('어디'), verb('살다'), '에서', WHY).why, WHY.qplace_both.replace('{v}', '살다'), 'qplace_both why for 살다');
+
 console.log(fails ? `${fails} FAILED` : 'all passed');
 process.exit(fails ? 1 : 0);

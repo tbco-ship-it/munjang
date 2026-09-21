@@ -348,7 +348,8 @@
     "taste",
     "buy"
    ],
-   "vi": "trà"
+   "vi": "trà",
+   "container": true
   },
   {
    "h": "주스",
@@ -558,7 +559,8 @@
     "buy",
     "appearance"
    ],
-   "vi": "túi xách"
+   "vi": "túi xách",
+   "container": true
   },
   {
    "h": "옷",
@@ -801,7 +803,8 @@
     "place",
     "appearance"
    ],
-   "vi": "nhà"
+   "vi": "nhà",
+   "container": true
   },
   {
    "h": "학교",
@@ -3080,7 +3083,8 @@
     "place",
     "appearance"
    ],
-   "vi": "phòng"
+   "vi": "phòng",
+   "container": true
   },
   {
    "h": "교실",
@@ -3624,7 +3628,8 @@
     "appearance"
    ],
    "level": 2,
-   "en_g": "the fridge"
+   "en_g": "the fridge",
+   "container": true
   },
   {
    "h": "상자",
@@ -3643,7 +3648,8 @@
     "appearance"
    ],
    "level": 2,
-   "en_g": "a box"
+   "en_g": "a box",
+   "container": true
   },
   {
    "h": "문",
@@ -3751,7 +3757,9 @@
    "ja_dict": "食べる",
    "ja_te": "食べて",
    "ja_stem": "食べ",
-   "ja_nai": "食べない"
+   "ja_nai": "食べない",
+   "janayo": "먹잖아요",
+   "geodeunyo": "먹거든요"
   },
   {
    "h": "마시다",
@@ -3809,7 +3817,9 @@
    "ja_dict": "飲む",
    "ja_te": "飲んで",
    "ja_stem": "飲み",
-   "ja_nai": "飲まない"
+   "ja_nai": "飲まない",
+   "janayo": "마시잖아요",
+   "geodeunyo": "마시거든요"
   },
   {
    "h": "사다",
@@ -3868,7 +3878,9 @@
    "ja_dict": "買う",
    "ja_te": "買って",
    "ja_stem": "買い",
-   "ja_nai": "買わない"
+   "ja_nai": "買わない",
+   "janayo": "사잖아요",
+   "geodeunyo": "사거든요"
   },
   {
    "h": "보다",
@@ -3928,7 +3940,9 @@
    "ja_dict": "見る",
    "ja_te": "見て",
    "ja_stem": "見",
-   "ja_nai": "見ない"
+   "ja_nai": "見ない",
+   "janayo": "보잖아요",
+   "geodeunyo": "보거든요"
   },
   {
    "h": "읽다",
@@ -3985,7 +3999,9 @@
    "ja_dict": "読む",
    "ja_te": "読んで",
    "ja_stem": "読み",
-   "ja_nai": "読まない"
+   "ja_nai": "読まない",
+   "janayo": "읽잖아요",
+   "geodeunyo": "읽거든요"
   },
   {
    "h": "듣다",
@@ -4042,7 +4058,9 @@
    "ja_dict": "聞く",
    "ja_te": "聞いて",
    "ja_stem": "聞き",
-   "ja_nai": "聞かない"
+   "ja_nai": "聞かない",
+   "janayo": "듣잖아요",
+   "geodeunyo": "듣거든요"
   },
   {
    "h": "쓰다",
@@ -4099,7 +4117,9 @@
    "ja_dict": "書く",
    "ja_te": "書いて",
    "ja_stem": "書き",
-   "ja_nai": "書かない"
+   "ja_nai": "書かない",
+   "janayo": "쓰잖아요",
+   "geodeunyo": "쓰거든요"
   },
   {
    "h": "배우다",
@@ -4157,7 +4177,9 @@
    "ja_dict": "習う",
    "ja_te": "習って",
    "ja_stem": "習い",
-   "ja_nai": "習わない"
+   "ja_nai": "習わない",
+   "janayo": "배우잖아요",
+   "geodeunyo": "배우거든요"
   },
   {
    "h": "공부하다",
@@ -4214,7 +4236,9 @@
    "ja_dict": "勉強する",
    "ja_te": "勉強して",
    "ja_stem": "勉強し",
-   "ja_nai": "勉強しない"
+   "ja_nai": "勉強しない",
+   "janayo": "공부하잖아요",
+   "geodeunyo": "공부하거든요"
   },
   {
    "h": "만나다",
@@ -4271,7 +4295,9 @@
    "ja_dict": "会う",
    "ja_te": "会って",
    "ja_stem": "会い",
-   "ja_nai": "会わない"
+   "ja_nai": "会わない",
+   "janayo": "만나잖아요",
+   "geodeunyo": "만나거든요"
   },
   {
    "h": "좋아하다",
@@ -4322,14 +4348,14 @@
    "neyo": "좋아하네요",
    "myeonseo": "좋아하면서",
    "giro": null,
-   "gedoeda": null,
+   "gedoeda": "좋아하게 됐어요",
    "yagesseoyo": null,
    "reo": null,
    "kkayo": null,
    "juseyo": null,
    "jimaseyo": null,
    "bwasseoyo": null,
-   "jeok": null,
+   "jeok": "좋아한 적이 있어요",
    "n_hue": "좋아한 후에",
    "geotgatayo": "좋아하는 것 같아요",
    "plain": "좋아한다",
@@ -4337,7 +4363,9 @@
    "ja_dict": "好きだ",
    "ja_te": "好きで",
    "ja_stem": "好き",
-   "ja_nai": null
+   "ja_nai": null,
+   "janayo": "좋아하잖아요",
+   "geodeunyo": "좋아하거든요"
   },
   {
    "h": "가다",
@@ -4393,7 +4421,9 @@
    "ja_dict": "行く",
    "ja_te": "行って",
    "ja_stem": "行き",
-   "ja_nai": "行かない"
+   "ja_nai": "行かない",
+   "janayo": "가잖아요",
+   "geodeunyo": "가거든요"
   },
   {
    "h": "오다",
@@ -4449,7 +4479,9 @@
    "ja_dict": "来る",
    "ja_te": "来て",
    "ja_stem": "来",
-   "ja_nai": "来ない"
+   "ja_nai": "来ない",
+   "janayo": "오잖아요",
+   "geodeunyo": "오거든요"
   },
   {
    "h": "있다",
@@ -4504,14 +4536,16 @@
    "jimaseyo": null,
    "bwasseoyo": null,
    "jeok": null,
-   "n_hue": "있은 후에",
+   "n_hue": null,
    "geotgatayo": "있는 것 같아요",
    "plain": "있다",
    "ryeogo": null,
    "ja_dict": "ある／いる",
    "ja_te": "あって／いて",
    "ja_stem": "あり／い",
-   "ja_nai": "いない"
+   "ja_nai": "いない",
+   "janayo": "있잖아요",
+   "geodeunyo": "있거든요"
   },
   {
    "h": "살다",
@@ -4568,7 +4602,9 @@
    "ja_dict": "住む",
    "ja_te": "住んで",
    "ja_stem": "住み",
-   "ja_nai": "住まない"
+   "ja_nai": "住まない",
+   "janayo": "살잖아요",
+   "geodeunyo": "살거든요"
   },
   {
    "h": "일하다",
@@ -4623,7 +4659,9 @@
    "ja_dict": "働く",
    "ja_te": "働いて",
    "ja_stem": "働き",
-   "ja_nai": "働かない"
+   "ja_nai": "働かない",
+   "janayo": "일하잖아요",
+   "geodeunyo": "일하거든요"
   },
   {
    "h": "없다",
@@ -4678,14 +4716,16 @@
    "jimaseyo": null,
    "bwasseoyo": null,
    "jeok": null,
-   "n_hue": "없은 후에",
+   "n_hue": null,
    "geotgatayo": "없는 것 같아요",
    "plain": "없다",
    "ryeogo": null,
    "ja_dict": "ない／いない",
    "ja_te": "なくて／いなくて",
    "ja_stem": "なく／いなく",
-   "ja_nai": null
+   "ja_nai": null,
+   "janayo": "없잖아요",
+   "geodeunyo": "없거든요"
   },
   {
    "h": "주다",
@@ -4745,7 +4785,9 @@
    "ja_dict": "あげる",
    "ja_te": "あげて",
    "ja_stem": "あげ",
-   "ja_nai": "あげない"
+   "ja_nai": "あげない",
+   "janayo": "주잖아요",
+   "geodeunyo": "주거든요"
   },
   {
    "h": "보내다",
@@ -4803,7 +4845,9 @@
    "ja_dict": "送る",
    "ja_te": "送って",
    "ja_stem": "送り",
-   "ja_nai": "送らない"
+   "ja_nai": "送らない",
+   "janayo": "보내잖아요",
+   "geodeunyo": "보내거든요"
   },
   {
    "h": "전화하다",
@@ -4859,7 +4903,9 @@
    "ja_dict": "電話する",
    "ja_te": "電話して",
    "ja_stem": "電話し",
-   "ja_nai": "電話しない"
+   "ja_nai": "電話しない",
+   "janayo": "전화하잖아요",
+   "geodeunyo": "전화하거든요"
   },
   {
    "h": "타다",
@@ -4916,7 +4962,9 @@
    "ja_dict": "乗る",
    "ja_te": "乗って",
    "ja_stem": "乗り",
-   "ja_nai": "乗らない"
+   "ja_nai": "乗らない",
+   "janayo": "타잖아요",
+   "geodeunyo": "타거든요"
   },
   {
    "h": "하다",
@@ -4973,7 +5021,9 @@
    "ja_dict": "する",
    "ja_te": "して",
    "ja_stem": "し",
-   "ja_nai": "しない"
+   "ja_nai": "しない",
+   "janayo": "하잖아요",
+   "geodeunyo": "하거든요"
   },
   {
    "h": "치다",
@@ -5030,7 +5080,9 @@
    "ja_dict": "弾く",
    "ja_te": "弾いて",
    "ja_stem": "弾き",
-   "ja_nai": "弾かない"
+   "ja_nai": "弾かない",
+   "janayo": "치잖아요",
+   "geodeunyo": "치거든요"
   },
   {
    "h": "찍다",
@@ -5087,7 +5139,9 @@
    "ja_dict": "撮る",
    "ja_te": "撮って",
    "ja_stem": "撮り",
-   "ja_nai": "撮らない"
+   "ja_nai": "撮らない",
+   "janayo": "찍잖아요",
+   "geodeunyo": "찍거든요"
   },
   {
    "h": "드리다",
@@ -5148,7 +5202,59 @@
    "geotgatayo": "드리는 것 같아요",
    "plain": "드린다",
    "ryeogo": "드리려고 해요",
-   "ja_nai": "差し上げない"
+   "ja_nai": "差し上げない",
+   "janayo": "드리잖아요",
+   "geodeunyo": "드리거든요"
+  },
+  {
+   "h": "계시다",
+   "r": "gyesida",
+   "en": "to be (there) — honorific",
+   "ja": "いらっしゃる",
+   "vi": "ở (kính ngữ)",
+   "pres": "계세요",
+   "past": "계셨어요",
+   "fut": "계실 거예요",
+   "exist": true,
+   "hon": true,
+   "honexist": true,
+   "animal": false,
+   "level": 4,
+   "en_base": "is",
+   "en_3s": "is",
+   "en_past": "was",
+   "ja_pres": "いらっしゃいます",
+   "ja_past": "いらっしゃいました",
+   "ja_fut": "いらっしゃるでしょう",
+   "ja_dict": "いらっしゃる",
+   "ja_te": "いらっしゃって",
+   "ja_stem": "いらっしゃい",
+   "ja_nai": "いらっしゃらない",
+   "ja_p": "に",
+   "go": "계시고",
+   "eoseo": "계셔서",
+   "jiman": "계시지만",
+   "myeon": "계시면",
+   "lttae": "계실 때",
+   "ttaemun": "계시기 때문에",
+   "gi_jeone": "계시기 전에",
+   "neyo": "계시네요",
+   "myeonseo": "계시면서",
+   "giro": null,
+   "gedoeda": null,
+   "yagesseoyo": null,
+   "janayo": "계시잖아요",
+   "geodeunyo": "계시거든요",
+   "reo": null,
+   "kkayo": null,
+   "juseyo": null,
+   "jimaseyo": null,
+   "bwasseoyo": null,
+   "jeok": null,
+   "n_hue": "계신 후에",
+   "geotgatayo": null,
+   "plain": null,
+   "ryeogo": null
   }
  ],
  "adjectives": [
@@ -5178,13 +5284,15 @@
    "gi_jeone": "크기 전에",
    "neyo": "크네요",
    "myeonseo": "크면서",
-   "giro": "크기로 했어요",
-   "gedoeda": "크게 됐어요",
-   "yagesseoyo": "커야겠어요",
+   "giro": null,
+   "gedoeda": null,
+   "yagesseoyo": null,
    "geotgatayo": "큰 것 같아요",
    "plain": "크다",
    "ja_dict": "大きい",
-   "ja_te": "大きくて"
+   "ja_te": "大きくて",
+   "janayo": "크잖아요",
+   "geodeunyo": "크거든요"
   },
   {
    "h": "작다",
@@ -5212,13 +5320,15 @@
    "gi_jeone": "작기 전에",
    "neyo": "작네요",
    "myeonseo": "작으면서",
-   "giro": "작기로 했어요",
-   "gedoeda": "작게 됐어요",
-   "yagesseoyo": "작아야겠어요",
+   "giro": null,
+   "gedoeda": null,
+   "yagesseoyo": null,
    "geotgatayo": "작은 것 같아요",
    "plain": "작다",
    "ja_dict": "小さい",
-   "ja_te": "小さくて"
+   "ja_te": "小さくて",
+   "janayo": "작잖아요",
+   "geodeunyo": "작거든요"
   },
   {
    "h": "맛있다",
@@ -5244,13 +5354,15 @@
    "gi_jeone": "맛있기 전에",
    "neyo": "맛있네요",
    "myeonseo": "맛있으면서",
-   "giro": "맛있기로 했어요",
-   "gedoeda": "맛있게 됐어요",
-   "yagesseoyo": "맛있어야겠어요",
+   "giro": null,
+   "gedoeda": null,
+   "yagesseoyo": null,
    "geotgatayo": "맛있는 것 같아요",
    "plain": "맛있다",
    "ja_dict": "おいしい",
-   "ja_te": "おいしくて"
+   "ja_te": "おいしくて",
+   "janayo": "맛있잖아요",
+   "geodeunyo": "맛있거든요"
   },
   {
    "h": "예쁘다",
@@ -5276,13 +5388,15 @@
    "gi_jeone": "예쁘기 전에",
    "neyo": "예쁘네요",
    "myeonseo": "예쁘면서",
-   "giro": "예쁘기로 했어요",
-   "gedoeda": "예쁘게 됐어요",
-   "yagesseoyo": "예뻐야겠어요",
+   "giro": null,
+   "gedoeda": null,
+   "yagesseoyo": null,
    "geotgatayo": "예쁜 것 같아요",
    "plain": "예쁘다",
    "ja_dict": "きれいだ",
-   "ja_te": "きれいで"
+   "ja_te": "きれいで",
+   "janayo": "예쁘잖아요",
+   "geodeunyo": "예쁘거든요"
   },
   {
    "h": "좋다",
@@ -5317,13 +5431,15 @@
    "gi_jeone": "좋기 전에",
    "neyo": "좋네요",
    "myeonseo": "좋으면서",
-   "giro": "좋기로 했어요",
-   "gedoeda": "좋게 됐어요",
-   "yagesseoyo": "좋아야겠어요",
+   "giro": null,
+   "gedoeda": null,
+   "yagesseoyo": null,
    "geotgatayo": "좋은 것 같아요",
    "plain": "좋다",
    "ja_dict": "いい",
-   "ja_te": "よくて"
+   "ja_te": "よくて",
+   "janayo": "좋잖아요",
+   "geodeunyo": "좋거든요"
   },
   {
    "h": "비싸다",
@@ -5349,13 +5465,15 @@
    "gi_jeone": "비싸기 전에",
    "neyo": "비싸네요",
    "myeonseo": "비싸면서",
-   "giro": "비싸기로 했어요",
-   "gedoeda": "비싸게 됐어요",
-   "yagesseoyo": "비싸야겠어요",
+   "giro": null,
+   "gedoeda": null,
+   "yagesseoyo": null,
    "geotgatayo": "비싼 것 같아요",
    "plain": "비싸다",
    "ja_dict": "高い",
-   "ja_te": "高くて"
+   "ja_te": "高くて",
+   "janayo": "비싸잖아요",
+   "geodeunyo": "비싸거든요"
   },
   {
    "h": "싸다",
@@ -5381,13 +5499,15 @@
    "gi_jeone": "싸기 전에",
    "neyo": "싸네요",
    "myeonseo": "싸면서",
-   "giro": "싸기로 했어요",
-   "gedoeda": "싸게 됐어요",
-   "yagesseoyo": "싸야겠어요",
+   "giro": null,
+   "gedoeda": null,
+   "yagesseoyo": null,
    "geotgatayo": "싼 것 같아요",
    "plain": "싸다",
    "ja_dict": "安い",
-   "ja_te": "安くて"
+   "ja_te": "安くて",
+   "janayo": "싸잖아요",
+   "geodeunyo": "싸거든요"
   },
   {
    "h": "재미있다",
@@ -5417,13 +5537,15 @@
    "gi_jeone": "재미있기 전에",
    "neyo": "재미있네요",
    "myeonseo": "재미있으면서",
-   "giro": "재미있기로 했어요",
-   "gedoeda": "재미있게 됐어요",
-   "yagesseoyo": "재미있어야겠어요",
+   "giro": null,
+   "gedoeda": null,
+   "yagesseoyo": null,
    "geotgatayo": "재미있는 것 같아요",
    "plain": "재미있다",
    "ja_dict": "面白い",
-   "ja_te": "面白くて"
+   "ja_te": "面白くて",
+   "janayo": "재미있잖아요",
+   "geodeunyo": "재미있거든요"
   },
   {
    "h": "어렵다",
@@ -5451,13 +5573,15 @@
    "gi_jeone": "어렵기 전에",
    "neyo": "어렵네요",
    "myeonseo": "어려우면서",
-   "giro": "어렵기로 했어요",
-   "gedoeda": "어렵게 됐어요",
-   "yagesseoyo": "어려워야겠어요",
+   "giro": null,
+   "gedoeda": null,
+   "yagesseoyo": null,
    "geotgatayo": "어려운 것 같아요",
    "plain": "어렵다",
    "ja_dict": "難しい",
-   "ja_te": "難しくて"
+   "ja_te": "難しくて",
+   "janayo": "어렵잖아요",
+   "geodeunyo": "어렵거든요"
   },
   {
    "h": "쉽다",
@@ -5485,13 +5609,15 @@
    "gi_jeone": "쉽기 전에",
    "neyo": "쉽네요",
    "myeonseo": "쉬우면서",
-   "giro": "쉽기로 했어요",
-   "gedoeda": "쉽게 됐어요",
-   "yagesseoyo": "쉬워야겠어요",
+   "giro": null,
+   "gedoeda": null,
+   "yagesseoyo": null,
    "geotgatayo": "쉬운 것 같아요",
    "plain": "쉽다",
    "ja_dict": "易しい",
-   "ja_te": "易しくて"
+   "ja_te": "易しくて",
+   "janayo": "쉽잖아요",
+   "geodeunyo": "쉽거든요"
   },
   {
    "h": "춥다",
@@ -5519,13 +5645,15 @@
    "gi_jeone": "춥기 전에",
    "neyo": "춥네요",
    "myeonseo": "추우면서",
-   "giro": "춥기로 했어요",
-   "gedoeda": "춥게 됐어요",
-   "yagesseoyo": "추워야겠어요",
+   "giro": null,
+   "gedoeda": null,
+   "yagesseoyo": null,
    "geotgatayo": "추운 것 같아요",
    "plain": "춥다",
    "ja_dict": "寒い",
-   "ja_te": "寒くて"
+   "ja_te": "寒くて",
+   "janayo": "춥잖아요",
+   "geodeunyo": "춥거든요"
   },
   {
    "h": "덥다",
@@ -5553,13 +5681,15 @@
    "gi_jeone": "덥기 전에",
    "neyo": "덥네요",
    "myeonseo": "더우면서",
-   "giro": "덥기로 했어요",
-   "gedoeda": "덥게 됐어요",
-   "yagesseoyo": "더워야겠어요",
+   "giro": null,
+   "gedoeda": null,
+   "yagesseoyo": null,
    "geotgatayo": "더운 것 같아요",
    "plain": "덥다",
    "ja_dict": "暑い",
-   "ja_te": "暑くて"
+   "ja_te": "暑くて",
+   "janayo": "덥잖아요",
+   "geodeunyo": "덥거든요"
   },
   {
    "h": "바쁘다",
@@ -5586,13 +5716,15 @@
    "gi_jeone": "바쁘기 전에",
    "neyo": "바쁘네요",
    "myeonseo": "바쁘면서",
-   "giro": "바쁘기로 했어요",
-   "gedoeda": "바쁘게 됐어요",
-   "yagesseoyo": "바빠야겠어요",
+   "giro": null,
+   "gedoeda": null,
+   "yagesseoyo": null,
    "geotgatayo": "바쁜 것 같아요",
    "plain": "바쁘다",
    "ja_dict": "忙しい",
-   "ja_te": "忙しくて"
+   "ja_te": "忙しくて",
+   "janayo": "바쁘잖아요",
+   "geodeunyo": "바쁘거든요"
   },
   {
    "h": "멀다",
@@ -5618,14 +5750,16 @@
    "gi_jeone": "멀기 전에",
    "neyo": "머네요",
    "myeonseo": "멀면서",
-   "giro": "멀기로 했어요",
-   "gedoeda": "멀게 됐어요",
-   "yagesseoyo": "멀어야겠어요",
+   "giro": null,
+   "gedoeda": null,
+   "yagesseoyo": null,
    "geotgatayo": "먼 것 같아요",
    "plain": "멀다",
    "ryeogo": null,
    "ja_dict": "遠い",
-   "ja_te": "遠くて"
+   "ja_te": "遠くて",
+   "janayo": "멀잖아요",
+   "geodeunyo": "멀거든요"
   },
   {
    "h": "가깝다",
@@ -5651,13 +5785,15 @@
    "gi_jeone": "가깝기 전에",
    "neyo": "가깝네요",
    "myeonseo": "가까우면서",
-   "giro": "가깝기로 했어요",
-   "gedoeda": "가깝게 됐어요",
-   "yagesseoyo": "가까워야겠어요",
+   "giro": null,
+   "gedoeda": null,
+   "yagesseoyo": null,
    "geotgatayo": "가까운 것 같아요",
    "plain": "가깝다",
    "ja_dict": "近い",
-   "ja_te": "近くて"
+   "ja_te": "近くて",
+   "janayo": "가깝잖아요",
+   "geodeunyo": "가깝거든요"
   },
   {
    "h": "많다",
@@ -5687,13 +5823,15 @@
    "gi_jeone": "많기 전에",
    "neyo": "많네요",
    "myeonseo": "많으면서",
-   "giro": "많기로 했어요",
-   "gedoeda": "많게 됐어요",
-   "yagesseoyo": "많아야겠어요",
+   "giro": null,
+   "gedoeda": null,
+   "yagesseoyo": null,
    "geotgatayo": "많은 것 같아요",
    "plain": "많다",
    "ja_dict": "多い",
-   "ja_te": "多くて"
+   "ja_te": "多くて",
+   "janayo": "많잖아요",
+   "geodeunyo": "많거든요"
   },
   {
    "h": "친절하다",
@@ -5719,13 +5857,15 @@
    "gi_jeone": "친절하기 전에",
    "neyo": "친절하네요",
    "myeonseo": "친절하면서",
-   "giro": "친절하기로 했어요",
-   "gedoeda": "친절하게 됐어요",
-   "yagesseoyo": "친절해야겠어요",
+   "giro": null,
+   "gedoeda": null,
+   "yagesseoyo": null,
    "geotgatayo": "친절한 것 같아요",
    "plain": "친절하다",
    "ja_dict": "親切だ",
-   "ja_te": "親切で"
+   "ja_te": "親切で",
+   "janayo": "친절하잖아요",
+   "geodeunyo": "친절하거든요"
   },
   {
    "h": "귀엽다",
@@ -5753,13 +5893,15 @@
    "gi_jeone": "귀엽기 전에",
    "neyo": "귀엽네요",
    "myeonseo": "귀여우면서",
-   "giro": "귀엽기로 했어요",
-   "gedoeda": "귀엽게 됐어요",
-   "yagesseoyo": "귀여워야겠어요",
+   "giro": null,
+   "gedoeda": null,
+   "yagesseoyo": null,
    "geotgatayo": "귀여운 것 같아요",
    "plain": "귀엽다",
    "ja_dict": "かわいい",
-   "ja_te": "かわいくて"
+   "ja_te": "かわいくて",
+   "janayo": "귀엽잖아요",
+   "geodeunyo": "귀엽거든요"
   },
   {
    "h": "조용하다",
@@ -5786,13 +5928,15 @@
    "gi_jeone": "조용하기 전에",
    "neyo": "조용하네요",
    "myeonseo": "조용하면서",
-   "giro": "조용하기로 했어요",
-   "gedoeda": "조용하게 됐어요",
-   "yagesseoyo": "조용해야겠어요",
+   "giro": null,
+   "gedoeda": null,
+   "yagesseoyo": null,
    "geotgatayo": "조용한 것 같아요",
    "plain": "조용하다",
    "ja_dict": "静かだ",
-   "ja_te": "静かで"
+   "ja_te": "静かで",
+   "janayo": "조용하잖아요",
+   "geodeunyo": "조용하거든요"
   },
   {
    "h": "배고프다",
@@ -5819,13 +5963,15 @@
    "gi_jeone": "배고프기 전에",
    "neyo": "배고프네요",
    "myeonseo": "배고프면서",
-   "giro": "배고프기로 했어요",
-   "gedoeda": "배고프게 됐어요",
-   "yagesseoyo": "배고파야겠어요",
+   "giro": null,
+   "gedoeda": null,
+   "yagesseoyo": null,
    "geotgatayo": "배고픈 것 같아요",
    "plain": "배고프다",
    "ja_dict": "お腹が空いている",
-   "ja_te": "お腹が空いていて"
+   "ja_te": "お腹が空いていて",
+   "janayo": "배고프잖아요",
+   "geodeunyo": "배고프거든요"
   }
  ]
 }

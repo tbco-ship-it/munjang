@@ -46,7 +46,8 @@
         if (/[a-z0-9]/.test(ch)) { asciiBuf += ch; if (asciiBuf.length === 2) flush(); continue; }
         flush();
         if (ch === ' ') { if (row.length === 0) continue; push({ ch: '', kind: 'space' }); }
-        else if (/[.,!?。、！？]/.test(ch)) { if (row.length === 0 && rows.length) rows[rows.length - 1][COLS - 1].tail = (rows[rows.length - 1][COLS - 1].tail || '') + ch; else push({ ch, kind: 'punct' }); if (/[!?！？]/.test(ch) && row.length) push({ ch: '', kind: 'space' }); }
+        else if (/[.,!?:。、！？：]/.test(ch)) { if (row.length === 0 && rows.length) rows[rows.length - 1][COLS - 1].tail = (rows[rows.length - 1][COLS - 1].tail || '') + ch; else push({ ch, kind: 'punct' }); if (/[!?！？]/.test(ch) && row.length) push({ ch: '', kind: 'space' }); }
+        else if (/[―—]/.test(ch)) { push({ ch: '―', kind: 'punct' }); push({ ch: '―', kind: 'punct' }); } // a dash takes two squares (official rule 5)
         else push({ ch, kind: 'syl' });
       }
       flush();
