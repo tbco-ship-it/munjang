@@ -109,12 +109,42 @@ eq(chk('저는 마셔요 커피를.').notes.map(n => n.key), ['chk_verb_last'], 
 eq(chk('저가 커피를 마셔요.').notes.map(n => n.key), ['jeo_ga'], 'chk 저가');
 eq(chk('제가 커피를 마셔요.').verdict, 'ok', 'chk 제가');
 eq(chk('학교은 커요.').notes[0].fix, '학교는', 'chk form fix');
-eq(chk('선물은 커요.').verdict, 'partial', 'chk unknown noun form ok → partial');
+eq(chk('연필은 커요.').verdict, 'partial', 'chk unknown noun form ok → partial');
 eq(chk('바나나은 맛있어요.').notes[0].fix, '바나나는', 'chk unknown noun form error');
 eq(chk('사과가 맛있어요.').verdict, 'ok', 'chk 사과 not parsed as 사+과');
 eq(chk('저는 커피').notes.map(n => n.key), ['chk_ending'], 'chk missing verb');
 eq(chk('저는 책을 마셔요.').notes.map(n => n.key), ['chk_pair'], 'chk odd pair');
 eq(chk('고양이가 집에서 있어요.').notes.map(n => n.key), ['exist_wrong_loc'], 'chk 집에서 있어요');
+
+// new frames
+eq(M.assemble(tpl('neg'), { S: noun('저'), O: noun('커피'), V: verb('마시다') }).text, '저는 커피를 안 마셔요.', 'neg');
+eq(M.assemble(tpl('time'), { T: noun('주말'), S: noun('저'), D: noun('공원'), V: verb('가다') }).text, '주말에 저는 공원에 가요.', 'time 주말에');
+eq(M.assemble(tpl('time'), { T: noun('오늘'), S: noun('저'), D: noun('공원'), V: verb('가다'), tense: 'fut' }).text, '오늘 저는 공원에 갈 거예요.', 'time 오늘 ∅ + fut');
+eq(M.assemble(tpl('have'), { S: noun('저'), H: noun('시간'), V: verb('있다') }).text, '저는 시간이 있어요.', 'have');
+eq(M.assemble(tpl('have'), { S: noun('저'), H: noun('돈'), V: verb('없다'), tense: 'past' }).text, '저는 돈이 없었어요.', 'have 없다 past');
+eq(M.assemble(tpl('with'), { S: noun('저'), W: noun('친구'), O: noun('영화'), V: verb('보다') }).text, '저는 친구와 영화를 봐요.', 'with 친구와');
+eq(M.assemble(tpl('with'), { S: noun('저'), W: noun('동생'), O: noun('영화'), V: verb('보다') }).text, '저는 동생과 영화를 봐요.', 'with 동생과');
+eq(M.assemble(tpl('give'), { S: noun('저'), R: noun('친구'), O: noun('선물'), V: verb('주다') }).text, '저는 친구에게 선물을 줘요.', 'give');
+eq(M.judgeP(tpl('time'), 'TP', noun('오늘'), null, '에', WHY).grade, 'no', '오늘에 wrong');
+eq(M.judgeP(tpl('time'), 'TP', noun('오늘'), null, '∅', WHY).grade, 'ok', '오늘 ∅ ok');
+eq(M.judgeP(tpl('time'), 'TP', noun('주말'), null, '∅', WHY).grade, 'no', '주말 ∅ wrong');
+eq(M.judgeP(tpl('time'), 'TP', noun('아침'), null, '에', WHY).grade, 'ok', '아침에 ok');
+eq(M.judgeP(tpl('have'), 'HP', noun('시간'), verb('있다'), '을', WHY).grade, 'no', '시간을 있어요 wrong');
+eq(M.judgeP(tpl('have'), 'HP', noun('시간'), verb('있다'), '이', WHY).grade, 'ok', '시간이 있어요');
+eq(M.judgeP(tpl('have'), 'HP', noun('시간'), verb('있다'), '가', WHY).grade, 'no', '시간가 form');
+eq(M.judgeP(tpl('with'), 'WP', noun('친구'), verb('보다'), '과', WHY).grade, 'no', '친구과 form');
+eq(M.judgeP(tpl('with'), 'WP', noun('친구'), verb('보다'), '하고', WHY).grade, 'ok', '친구하고 ok');
+eq(M.judgeP(tpl('give'), 'RP', noun('친구'), verb('주다'), '에', WHY).grade, 'no', '친구에 주다 wrong');
+eq(M.judgeP(tpl('give'), 'RP', noun('친구'), verb('주다'), '한테', WHY).grade, 'ok', '친구한테 ok');
+eq(M.judgeP(tpl('give'), 'RP', noun('친구'), verb('주다'), '를', WHY).grade, 'no', '친구를 주다 wrong');
+eq(M.judgeP(tpl('act'), 'OP', noun('커피'), verb('마시다'), '를', WHY).grade, 'ok', 'judgeP delegates OP');
+eq(M.verbsFor(tpl('give'), W).map(v => v.h), ['주다', '보내다'], 'give verbs');
+eq(M.candidates(tpl('act'), 'O', W, verb('타다')).map(n => n.h).includes('버스'), true, '타다 버스');
+eq(M.candidates(tpl('act'), 'O', W, verb('치다')).map(n => n.h), ['피아노', '기타'], '치다 objects');
+eq(M.assemble(tpl('act'), { S: noun('저'), O: noun('버스'), V: verb('타다'), tense: 'fut' }).text, '저는 버스를 탈 거예요.', 'fut 타다');
+console.log('  why(시간,을):', M.judgeP(tpl('have'), 'HP', noun('시간'), verb('있다'), '을', WHY).why);
+console.log('  why(오늘,에):', M.judgeP(tpl('time'), 'TP', noun('오늘'), null, '에', WHY).why);
+for (const v of W.verbs) if (v.fut === undefined && v.h !== '좋아하다') { fails++; console.log('FAIL missing fut', v.h); }
 
 console.log(fails ? `${fails} FAILED` : 'all passed');
 process.exit(fails ? 1 : 0);

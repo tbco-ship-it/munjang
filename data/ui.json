@@ -151,7 +151,19 @@
   "drill_q": "{i} of 3",
   "drill_done": "Drill done: {n} / 3",
   "drill_again": "Three more",
-  "drill_close": "Back to my sentence"
+  "drill_close": "Back to my sentence",
+  "slot_T": "When",
+  "slot_H": "What (have)",
+  "slot_W": "With whom",
+  "slot_R": "To whom",
+  "slot_NV": "Doesn’t",
+  "slot_HV": "Has?",
+  "tense_fut": "Future (-ㄹ 거예요)",
+  "particle_time_h": "Does “{w}” take 에?",
+  "particle_have_h": "Which particle after “{w}” with 있어요/없어요?",
+  "particle_with_h": "Which “with” particle after “{w}”?",
+  "particle_to_h": "Which particle marks “{w}” as the receiver?",
+  "none_label": "(nothing)"
  },
  "ja": {
   "lang": "ja",
@@ -305,6 +317,18 @@
   "drill_q": "{i} / 3",
   "drill_done": "練習完了：{n} / 3",
   "drill_again": "もう3問",
-  "drill_close": "自分の文に戻る"
+  "drill_close": "自分の文に戻る",
+  "slot_T": "いつ",
+  "slot_H": "何を（所有）",
+  "slot_W": "誰と",
+  "slot_R": "誰に",
+  "slot_NV": "〜しない",
+  "slot_HV": "ある？",
+  "tense_fut": "未来（-ㄹ 거예요）",
+  "particle_time_h": "「{w}」に 에 は付く？",
+  "particle_have_h": "있어요/없어요 のとき「{w}」の後の助詞は？",
+  "particle_with_h": "「{w}」の後の「〜と」は？",
+  "particle_to_h": "「{w}」を相手として示す助詞は？",
+  "none_label": "（なし）"
  }
 }

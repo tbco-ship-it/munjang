@@ -20,7 +20,8 @@
    "ex_ja": "私はコーヒーを飲みます。",
    "tenses": [
     "pres",
-    "past"
+    "past",
+    "fut"
    ]
   },
   {
@@ -64,7 +65,8 @@
    "tenses": [
     "pres",
     "past",
-    "want"
+    "want",
+    "fut"
    ]
   },
   {
@@ -89,7 +91,8 @@
    "ex_ja": "友だちはカフェでコーヒーを飲みます。",
    "tenses": [
     "pres",
-    "past"
+    "past",
+    "fut"
    ]
   },
   {
@@ -111,7 +114,8 @@
    "ex_ja": "私はソウルに住んでいます。",
    "tenses": [
     "pres",
-    "past"
+    "past",
+    "fut"
    ]
   },
   {
@@ -153,6 +157,165 @@
     "pres",
     "past"
    ]
+  },
+  {
+   "id": "neg",
+   "slots": [
+    "S",
+    "SP",
+    "O",
+    "OP",
+    "NV"
+   ],
+   "sp": "topic",
+   "op": "obj",
+   "verbs": "transitive",
+   "en": "Not doing something (안)",
+   "ja": "〜しない（안）",
+   "ex": "저는 커피를 안 마셔요",
+   "ex_en": "I don’t drink coffee.",
+   "ex_ja": "私はコーヒーを飲みません。",
+   "tenses": [
+    "pres",
+    "past"
+   ]
+  },
+  {
+   "id": "time",
+   "slots": [
+    "T",
+    "TP",
+    "S",
+    "SP",
+    "D",
+    "OP",
+    "V"
+   ],
+   "sp": "topic",
+   "op": "dest",
+   "verbs": "move",
+   "en": "When you go somewhere",
+   "ja": "いつ、どこへ",
+   "ex": "주말에 저는 공원에 가요",
+   "ex_en": "On the weekend I go to the park.",
+   "ex_ja": "週末に私は公園に行きます。",
+   "tenses": [
+    "pres",
+    "past",
+    "fut"
+   ],
+   "p": {
+    "TP": {
+     "expect": "time",
+     "options": [
+      "에",
+      "∅"
+     ]
+    }
+   }
+  },
+  {
+   "id": "have",
+   "slots": [
+    "S",
+    "SP",
+    "H",
+    "HP",
+    "HV"
+   ],
+   "sp": "topic",
+   "en": "Having / not having",
+   "ja": "持っている・いない",
+   "ex": "저는 시간이 있어요",
+   "ex_en": "I have time.",
+   "ex_ja": "私は時間があります。",
+   "tenses": [
+    "pres",
+    "past"
+   ],
+   "p": {
+    "HP": {
+     "expect": "have",
+     "options": [
+      "이",
+      "가",
+      "을",
+      "를"
+     ]
+    }
+   }
+  },
+  {
+   "id": "with",
+   "slots": [
+    "S",
+    "SP",
+    "W",
+    "WP",
+    "O",
+    "OP",
+    "V"
+   ],
+   "sp": "topic",
+   "op": "obj",
+   "verbs": "transitive",
+   "en": "Doing something with someone",
+   "ja": "誰かと一緒に",
+   "ex": "저는 친구와 영화를 봐요",
+   "ex_en": "I watch a movie with a friend.",
+   "ex_ja": "私は友だちと映画を見ます。",
+   "tenses": [
+    "pres",
+    "past",
+    "fut"
+   ],
+   "p": {
+    "WP": {
+     "expect": "with",
+     "options": [
+      "와",
+      "과",
+      "하고"
+     ]
+    }
+   }
+  },
+  {
+   "id": "give",
+   "slots": [
+    "S",
+    "SP",
+    "R",
+    "RP",
+    "O",
+    "OP",
+    "V"
+   ],
+   "sp": "topic",
+   "op": "obj",
+   "verbs": "give",
+   "en": "Giving / sending to someone",
+   "ja": "誰かにあげる・送る",
+   "ex": "저는 친구에게 선물을 줘요",
+   "ex_en": "I give a present to a friend.",
+   "ex_ja": "私は友だちにプレゼントをあげます。",
+   "tenses": [
+    "pres",
+    "past",
+    "fut"
+   ],
+   "p": {
+    "RP": {
+     "expect": "to",
+     "options": [
+      "에게",
+      "한테",
+      "에",
+      "을",
+      "를"
+     ]
+    }
+   }
   }
  ],
  "why": {
@@ -188,7 +351,19 @@
    "chk_unknown": "Not in our word list — we checked the particle form only, not the meaning.",
    "chk_ok": "Every rule we can check passed. Naturalness (does it sound like something a Korean would say?) needs a person.",
    "chk_partial": "No rule errors found in the parts we recognise. {n} chunk(s) are outside our word list — unchecked.",
-   "chk_no": "Fix the marked chunks, then run it again."
+   "chk_no": "Fix the marked chunks, then run it again.",
+   "time_ok": "“{w}” is a point in time → 에 (at / on / in)",
+   "time_none_ok": "“{w}” never takes 에 — 오늘·내일·어제·매일·지금 stand alone",
+   "time_wrong_none": "“{w}” is one of the words that stands alone: no 에 after 오늘·내일·어제·매일·지금",
+   "time_wrong_e": "A time word like “{w}” takes 에 (주말에, 아침에, 월요일에)",
+   "have_ok": "With 있어요 / 없어요 the thing you have takes 이/가, not 을/를 — Korean says “as for me, time exists”",
+   "have_wrong_obj": "있어요 / 없어요 are not “have” verbs: the thing takes 이/가, never 을/를 → “{w}{p}”",
+   "with_ok": "“{w}” + 와/과 = with. 와 after a vowel, 과 after a consonant",
+   "with_hago": "하고 also means “with” and works after any word — more casual than 와/과",
+   "to_ok": "“{w}” is a person → 에게 (or the more casual 한테). 에 is only for places",
+   "to_wrong_e": "에 is for places. To a person, use 에게 or 한테: “{w}에게”",
+   "to_wrong_obj": "“{w}” is who receives, not the thing given → 에게 / 한테",
+   "neg_space": "안 stands right before the verb, with a space: 안 마셔요"
   },
   "ja": {
    "batchim_yes": "「{w}」はパッチム（{f}）で終わる → {p}",
@@ -222,7 +397,19 @@
    "chk_unknown": "単語リストにない語です。助詞の形だけを判定し、意味は判定していません。",
    "chk_ok": "判定できる規則はすべて通過しました。自然さ（韓国人がそう言うか）は人に見てもらいましょう。",
    "chk_partial": "認識できた部分に規則上の誤りはありません。{n} 個の語は単語リスト外で未判定です。",
-   "chk_no": "印のついた語を直して、もう一度チェックしてください。"
+   "chk_no": "印のついた語を直して、もう一度チェックしてください。",
+   "time_ok": "「{w}」は時点 → 에（〜に）",
+   "time_none_ok": "「{w}」には 에 を付けません — 오늘・내일・어제・매일・지금 は単独で使います",
+   "time_wrong_none": "「{w}」は単独で使う語です：오늘・내일・어제・매일・지금 の後に 에 は付けません",
+   "time_wrong_e": "「{w}」のような時を表す語には 에（주말에、아침에、월요일에）",
+   "have_ok": "있어요 / 없어요 では持っているものに 이/가。을/를 ではありません — 韓国語では「私は時間がある」と言います",
+   "have_wrong_obj": "있어요 / 없어요 は「持つ」動詞ではありません。対象には 이/가、을/를 は不可 → 「{w}{p}」",
+   "with_ok": "「{w}」＋ 와/과 ＝ 〜と。母音の後は 와、子音の後は 과",
+   "with_hago": "하고 も「〜と」。どの語の後でも使え、와/과 よりくだけた言い方です",
+   "to_ok": "「{w}」は人 → 에게（または口語の 한테）。에 は場所にだけ使います",
+   "to_wrong_e": "에 は場所用。人には 에게 か 한테：「{w}에게」",
+   "to_wrong_obj": "「{w}」は受け取る相手であって、あげる物ではありません → 에게 / 한테",
+   "neg_space": "안 は動詞の直前にスペースを空けて：안 마셔요"
   }
  }
 }

@@ -107,9 +107,9 @@ html.landing .rail{position:static}
 @media(max-width:760px){.rail{position:static}}
 .jamo-group{margin-bottom:10px}
 .jamo-label{font-size:.72rem;font-weight:600;color:var(--muted);margin:0 0 6px;letter-spacing:.04em;text-transform:uppercase}
-.jamo-row{display:grid;grid-template-columns:repeat(7,1fr);gap:6px}
+.jamo-row{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:6px}
 html.landing .jamo-row{gap:8px;grid-template-columns:repeat(7,minmax(0,64px));justify-content:space-between}
-.jamo{aspect-ratio:1;display:grid;place-items:center;border:1px solid var(--line);border-radius:10px;background:var(--surface);font:600 1.25rem/1 var(--hangul);color:var(--text);cursor:pointer;transition:border-color var(--motion),background var(--motion),color var(--motion),transform var(--motion)}
+.jamo{aspect-ratio:1;min-width:0;padding:0;display:grid;place-items:center;border:1px solid var(--line);border-radius:10px;background:var(--surface);font:600 1.25rem/1 var(--hangul);color:var(--text);cursor:pointer;transition:border-color var(--motion),background var(--motion),color var(--motion),transform var(--motion)}
 html.landing .jamo{font-size:1.5rem;border-radius:12px}
 @media(hover:hover){.jamo:hover{border-color:var(--accent);background:var(--accent-soft)}}
 .jamo.on{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
@@ -301,3 +301,4 @@ html.roman .w-r{display:block}
 .drill-btn{display:block;margin-top:6px}
 .drill .drill-s{font:600 1.4rem/1.4 var(--hangul);margin:0 0 10px}.drill .drill-s u{text-decoration:none;color:var(--accent-text);border-bottom:2px solid var(--accent);display:inline-block;min-width:1.1em}
 .drill .why{margin-top:10px}.drill .why .link{display:block;margin-top:6px}.drill-done{font-weight:700;margin:0 0 10px}
+.p-opt.none{font:600 .85rem var(--font);min-width:80px}

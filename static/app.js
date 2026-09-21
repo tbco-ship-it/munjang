@@ -17,7 +17,8 @@
   const tplById = id => D.templates.templates.find(x => x.id === id);
   const el = (tag, cls, html) => { const e = document.createElement(tag); if (cls) e.className = cls; if (html != null) e.innerHTML = html; return e; };
   const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
-  const isP = k => /^(SP|OP|OP2)$/.test(k);
+  const isP = k => M.isPKey(k);
+  const NOUN_KEYS = ['O', 'D', 'L', 'T', 'H', 'W', 'R'];
   const SPEAKER = '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H3v6h3l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13"/></svg>';
 
   // ---------- letters ----------
@@ -69,13 +70,15 @@
   function pickWord(n) {
     st.word = n;
     const k = n.kind, me = nounByH('저');
-    if (k === 'place') { st.tpl = tplById('go'); st.picks = { S: me, D: n, V: verbByH('가다') }; }
+    if (k === 'time') { st.tpl = tplById('time'); st.picks = { T: n, S: me, D: nounByH('학교'), V: verbByH('가다') }; }
+    else if (k === 'abstract') { st.tpl = tplById('have'); st.picks = { S: me, H: n, V: verbByH('있다') }; }
+    else if (k === 'place') { st.tpl = tplById('go'); st.picks = { S: me, D: n, V: verbByH('가다') }; }
     else if (k === 'food') { st.tpl = tplById('act'); st.picks = { S: me, O: n, V: verbByH('먹다') }; }
     else if (k === 'drink') { st.tpl = tplById('act'); st.picks = { S: me, O: n, V: verbByH('마시다') }; }
     else if (k === 'skill') { st.tpl = tplById('want'); st.picks = { S: me, O: n, V: verbByH('배우다') }; }
     else if (k === 'media') { st.tpl = tplById('act'); st.picks = { S: me, O: n, V: verbByH('보다') }; }
     else if (k === 'audio') { st.tpl = tplById('act'); st.picks = { S: me, O: n, V: verbByH('듣다') }; }
-    else if (k === 'item') { st.tpl = tplById('act'); st.picks = { S: me, O: n, V: n.read ? verbByH('읽다') : verbByH('사다') }; }
+    else if (k === 'item') { st.tpl = tplById('act'); st.picks = { S: me, O: n, V: n.read ? verbByH('읽다') : n.ride ? verbByH('타다') : n.photo ? verbByH('찍다') : verbByH('사다') }; }
     else if (k === 'animal') { st.tpl = tplById('exist'); st.picks = { S: n, L: nounByH('집'), V: verbByH('있다') }; }
     else { st.tpl = tplById('act'); st.picks = { S: n, O: nounByH('커피'), V: verbByH('마시다') }; }
     st.tense = st.tpl.tenses[0]; st.judges = {}; st.active = null;
@@ -85,10 +88,15 @@
   function setTemplate(tpl) {
     const old = st.picks; st.tpl = tpl; st.judges = {}; st.active = null;
     const p = { S: old.S || nounByH('저') }, slots = tpl.slots;
-    if (slots.includes('O')) { const vs = M.verbsFor(tpl, D.words); p.V = old.V && vs.includes(old.V) ? old.V : vs[0]; const cs = M.candidates(tpl, 'O', D.words, p.V); p.O = old.O && cs.includes(old.O) ? old.O : cs[0]; }
+    if (slots.includes('O')) { const vs = M.verbsFor(tpl, D.words).filter(v => tpl.verbs !== 'transitive' || !v.to); p.V = old.V && vs.includes(old.V) ? old.V : vs[0]; const cs = M.candidates(tpl, 'O', D.words, p.V); p.O = old.O && cs.includes(old.O) ? old.O : cs[0]; }
     if (slots.includes('D')) { p.D = old.D || old.L || nounByH('학교'); p.V = M.verbsFor(tpl, D.words)[0]; }
     if (slots.includes('L')) { p.L = old.L || old.D || (tpl.id === 'exist' ? nounByH('집') : nounByH('카페')); if (!slots.includes('O')) p.V = M.verbsFor(tpl, D.words)[0]; }
     if (slots.includes('A')) { let as = M.adjectivesFor(p.S, D.words); if (!as.length) { p.S = nounByH('김치'); as = M.adjectivesFor(p.S, D.words); } p.A = as[0]; }
+    if (slots.includes('T')) { p.T = old.T || nounByH('주말'); if (!p.D) p.D = old.D || nounByH('공원'); p.V = old.V && old.V.move ? old.V : verbByH('가다'); }
+    if (slots.includes('H')) { p.H = old.H || (old.O && old.O.roles.includes('have') ? old.O : nounByH('시간')); p.V = old.V && old.V.have ? old.V : verbByH('있다'); if (p.S.kind !== 'person') p.S = nounByH('저'); }
+    if (slots.includes('W')) { p.W = old.W || nounByH('친구'); }
+    if (slots.includes('R')) { p.R = old.R || nounByH('친구'); const vs = M.verbsFor(tpl, D.words); p.V = vs.includes(old.V) ? old.V : vs[0]; const cs = M.candidates(tpl, 'O', D.words, p.V); p.O = cs.includes(old.O) ? old.O : cs[0]; }
+    if (tpl.id === 'neg' && (!p.V || !p.V.takes)) { p.V = verbByH('마시다'); p.O = nounByH('커피'); }
     if (tpl.id === 'exist' && p.S.h === '저') p.S = nounByH('고양이');
     st.picks = p; if (!tpl.tenses.includes(st.tense)) st.tense = tpl.tenses[0];
     $('#frames').hidden = true; renderBuilder();
@@ -98,25 +106,24 @@
     if (k === 'O') return M.candidates(st.tpl, 'O', D.words, st.picks.V);
     if (k === 'D') return M.candidates(st.tpl, 'D', D.words);
     if (k === 'L') return M.candidates(st.tpl, 'L', D.words);
-    if (k === 'V' || k === 'VW') return M.verbsFor(st.tpl, D.words);
+    if (['T', 'H', 'W', 'R'].includes(k)) return M.candidates(st.tpl, k, D.words);
+    if (k === 'V' || k === 'VW' || k === 'NV' || k === 'HV') return M.verbsFor(st.tpl, D.words);
     if (k === 'A') return M.adjectivesFor(st.picks.S, D.words);
     return [];
   }
   function setPick(k, item) {
-    const key = k === 'VW' ? 'V' : k;
+    const key = (k === 'VW' || k === 'NV' || k === 'HV') ? 'V' : k;
     st.picks[key] = item;
     if (key === 'V' && st.picks.O && !M.compatible(item, st.picks.O)) { st.picks.O = M.candidates(st.tpl, 'O', D.words, item)[0]; clearP('OP'); clearP('OP2'); }
     if (key === 'O') { clearP('OP'); clearP('OP2'); }
     if (key === 'S') { clearP('SP'); if (st.tpl.slots.includes('A')) { const as = M.adjectivesFor(item, D.words); if (!as.includes(st.picks.A)) st.picks.A = as[0] || st.picks.A; } }
-    if (key === 'D' || key === 'L') clearP(st.tpl.slots[st.tpl.slots.indexOf(key) + 1]);
+    if (['D', 'L', 'T', 'H', 'W', 'R'].includes(key)) clearP(st.tpl.slots[st.tpl.slots.indexOf(key) + 1]);
     st.active = null; renderBuilder();
   }
   function clearP(pk) { delete st.judges[pk]; delete st.picks[pk]; }
   function setParticle(pk, choice) {
     const slots = st.tpl.slots, nounKey = slots[slots.indexOf(pk) - 1];
-    let j;
-    if (pk === 'SP') j = M.judgeSP(st.tpl, st.picks.S, choice, WHY);
-    else j = M.judgeOP(st.tpl, pk === 'OP2' ? st.tpl.op2 : st.tpl.op, st.picks[nounKey], st.picks.V, choice, WHY);
+    const j = M.judgeP(st.tpl, pk, st.picks[nounKey], st.picks.V, choice, WHY);
     st.judges[pk] = Object.assign({ choice }, j);
     st.picks[pk] = j.grade === 'no' ? undefined : choice; // a wrong form never enters the sentence; the why line names the right one
     st.active = j.grade === 'no' ? pk : (particleSlots().find(x => !st.picks[x]) || null);
@@ -150,12 +157,14 @@
         const j = st.judges[k];
         s.classList.add(j && st.picks[k] ? j.grade : 'empty'); if (k === act) s.classList.add('active');
         s.appendChild(el('span', 'slot-l', t('slot_SP')));
-        const b = el('button', 'slot-v', `<b>${st.picks[k] ? esc(st.picks[k]) : '?'}</b>`); b.type = 'button'; b.setAttribute('aria-label', t('slot_SP')); b.onclick = () => { st.active = k; renderBuilder(); };
+        const shown = st.picks[k] === '∅' ? t('none_label') : st.picks[k];
+        const b = el('button', 'slot-v', `<b>${st.picks[k] ? esc(shown) : '?'}</b>`); b.type = 'button'; b.setAttribute('aria-label', t('slot_SP')); b.onclick = () => { st.active = k; renderBuilder(); };
         s.appendChild(b);
       } else {
-        const key = k === 'VW' ? 'V' : k, item = st.picks[key], isV = k === 'V' || k === 'VW' || k === 'A';
+        const key = (k === 'VW' || k === 'NV' || k === 'HV') ? 'V' : k, item = st.picks[key], isV = ['V', 'VW', 'NV', 'HV', 'A'].includes(k);
         s.appendChild(el('span', 'slot-l', t('slot_' + (k === 'VW' ? 'V' : k))));
-        const b = el('button', 'slot-v', item ? `<b lang="ko">${esc(isV ? M.verbForm(item, k === 'VW' ? 'want' : st.tense) : item.h)}</b><small>${esc(mean(item).replace(/^to /, ''))}</small>` : t('pick'));
+        const vf = item && isV ? (k === 'NV' ? '안 ' : '') + M.verbForm(item, k === 'VW' ? 'want' : st.tense) : '';
+        const b = el('button', 'slot-v', item ? `<b lang="ko">${esc(isV ? vf : item.h)}</b><small>${esc(mean(item).replace(/^to /, ''))}</small>` : t('pick'));
         b.type = 'button'; b.onclick = () => openPicker(k, s);
         s.appendChild(b);
       }
@@ -181,10 +190,12 @@
     const pp = $('#ppanel');
     if (!pk) { pp.hidden = true; pp.innerHTML = ''; return; }
     const slots = st.tpl.slots, nounKey = slots[slots.indexOf(pk) - 1], noun = st.picks[nounKey];
-    const opts = pk === 'SP' ? M.SP_OPTIONS : M.OP_OPTIONS, j = st.judges[pk];
-    pp.innerHTML = `<div class="ph"><span>${pk === 'SP' ? t('particle_topic_h') : t('particle_obj_h', { w: noun ? noun.h : '' })}</span><small>${pk === 'SP' ? t('particle_hint_topic') : t('particle_hint_obj')}</small></div><div class="p-opts"></div><p class="pn" lang="ko">${noun ? esc(noun.h) + ' + ?' : ''}</p>`;
+    const spec = M.pspec(st.tpl, pk), opts = spec.options, j = st.judges[pk];
+    const hk = { time: 'particle_time_h', have: 'particle_have_h', with: 'particle_with_h', to: 'particle_to_h' }[spec.expect];
+    const head = pk === 'SP' ? t('particle_topic_h') : hk ? t(hk, { w: noun ? noun.h : '' }) : t('particle_obj_h', { w: noun ? noun.h : '' });
+    pp.innerHTML = `<div class="ph"><span>${head}</span><small>${pk === 'SP' ? t('particle_hint_topic') : hk ? '' : t('particle_hint_obj')}</small></div><div class="p-opts"></div><p class="pn" lang="ko">${noun ? esc(noun.h) + ' + ?' : ''}</p>`;
     const box = $('.p-opts', pp);
-    opts.forEach(p => { const b = el('button', 'p-opt' + (j && j.choice === p ? ' on ' + j.grade : ''), p); b.type = 'button'; b.onclick = () => setParticle(pk, p); box.appendChild(b); });
+    opts.forEach(p => { const b = el('button', 'p-opt' + (j && j.choice === p ? ' on ' + j.grade : '') + (p === '∅' ? ' none' : ''), p === '∅' ? t('none_label') : p); b.type = 'button'; b.onclick = () => setParticle(pk, p); box.appendChild(b); });
     pp.hidden = false;
   }
   function renderPreview() {
@@ -194,8 +205,8 @@
     const done = complete();
     // Unchosen particles render as a blank so the sentence takes shape while the learner works.
     const html = a.chunks.map((c, i) => {
-      const pkey = c.kind === 'S' ? 'SP' : (c.kind === 'O' || c.kind === 'D' || c.kind === 'L') ? st.tpl.slots[st.tpl.slots.indexOf(c.kind) + 1] : null;
-      const blank = pkey && !st.picks[pkey];
+      const pkey = c.kind === 'S' ? 'SP' : NOUN_KEYS.includes(c.kind) ? st.tpl.slots[st.tpl.slots.indexOf(c.kind) + 1] : null;
+      const blank = pkey && st.picks[pkey] == null;
       const text = blank ? `${esc(c.word.h)}<u>&nbsp;&nbsp;</u>` : esc(c.text);
       return `${i ? (done ? '<span class="sp" aria-hidden="true">⎵</span>' : '<span class="sp" aria-hidden="true">&nbsp;</span>') : ''}<span class="ck ck-${c.kind}"><span lang="ko">${text}</span><small lang="${LANG}">${done && !c.tail ? esc(chunkGloss(c)) : '&nbsp;'}</small></span>`;
     }).join('') + `<span class="ck"><span>.</span><small>&nbsp;</small></span>`;
@@ -207,24 +218,32 @@
   // One-word meaning under each chunk: shows the SOV mapping without pretending to be a translation.
   function chunkGloss(c) {
     const w = c.word; if (!w) return '';
-    if (c.kind === 'V' || c.kind === 'A') { const m = mean(w).replace(/^to /, '').replace(/^be /, ''); return st.tense === 'want' && c.kind === 'V' ? (LANG === 'ja' ? m + 'たい' : 'want to ' + m) : m; }
+    if (c.kind === 'N') return LANG === 'ja' ? '（否定）' : 'not';
+    if (c.kind === 'V' || c.kind === 'A') { const m = mean(w).replace(/^to /, '').replace(/^be /, ''); return st.tense === 'want' && c.kind === 'V' ? (LANG === 'ja' ? m + 'たい' : 'want to ' + m) : st.tense === 'fut' && c.kind === 'V' ? (LANG === 'ja' ? m + '（予定）' : 'will ' + m) : m; }
     const base = (LANG === 'en' && w.en_g) || mean(w).replace(/ ?[（(].*?[)）]$/, '');
-    if (LANG === 'ja') return base + ({ '은': 'は', '는': 'は', '이': 'が', '가': 'が', '을': 'を', '를': 'を', '에': 'に', '에서': 'で' }[c.particle] || '');
+    if (LANG === 'ja') return base + ({ '은': 'は', '는': 'は', '이': 'が', '가': 'が', '을': 'を', '를': 'を', '에': c.kind === 'T' ? 'に' : 'に', '에서': 'で', '와': 'と', '과': 'と', '하고': 'と', '에게': 'に', '한테': 'に' }[c.particle] || '');
+    if (c.kind === 'T') return c.particle ? ({ '아침': 'in the morning', '저녁': 'in the evening', '밤': 'at night', '점심': 'at lunch' }[w.h] || 'on ' + base) : base;
+    if (c.kind === 'W') return 'with ' + base; if (c.kind === 'R') return 'to ' + base; if (c.kind === 'H') return base;
     return c.kind === 'D' ? (w.h === '집' ? 'home' : 'to ' + base) : c.kind === 'L' ? (st.tpl.id === 'live' ? 'in ' : 'at ') + base : base;
   }
   function gloss(a) {
     const p = st.picks, m = x => x ? ((LANG === 'en' && x.en_g) || mean(x)).replace(/^to /, '').replace(/ ?[（(].*?[)）]$/, '') : '';
     if (LANG === 'ja') {
       const V = p.V ? (st.tense === 'want' ? m(p.V) + '（〜たい）' : m(p.V)) : '';
-      return [p.S && m(p.S) + (st.tpl.sp === 'topic' ? 'は' : 'が'), p.L && m(p.L) + (st.tpl.op === 'loc' || st.tpl.op2 ? 'で' : 'に'), p.D && m(p.D) + 'に', p.O && m(p.O) + 'を', p.A ? m(p.A) : V].filter(Boolean).join(' ');
+      const Vj = st.tpl.id === 'neg' ? m(p.V) + '（〜ない）' : st.tense === 'fut' ? m(p.V) + '（予定）' : V;
+      return [p.T && m(p.T) + (p.T.tp === 'none' ? '' : 'に'), p.S && m(p.S) + (st.tpl.sp === 'topic' ? 'は' : 'が'), p.W && m(p.W) + 'と', p.R && m(p.R) + 'に', p.H && m(p.H) + 'が', p.L && m(p.L) + (st.tpl.op === 'loc' || st.tpl.op2 ? 'で' : 'に'), p.D && m(p.D) + 'に', p.O && m(p.O) + 'を', p.A ? m(p.A) : Vj].filter(Boolean).join(' ');
     }
     const S = p.S ? m(p.S) : '';
     if (p.A) return `${S} ${st.tense === 'past' ? 'was' : 'is'} ${m(p.A).replace(/^be /, '')}`;
-    const V = st.tense === 'want' ? `want${S === 'I' ? '' : 's'} to ${m(p.V)}` : st.tense === 'past' ? pastEn(p.V) : (S === 'I' ? m(p.V) : thirdEn(m(p.V)));
-    return [S, V, p.O && m(p.O), p.D && (p.D.h === '집' ? 'home' : 'to ' + m(p.D)), p.L && (st.tpl.id === 'live' ? 'in ' : 'at ') + m(p.L)].filter(Boolean).join(' ');
+    const neg = st.tpl.id === 'neg';
+    let V = st.tense === 'want' ? `want${S === 'I' ? '' : 's'} to ${m(p.V)}` : st.tense === 'fut' ? 'will ' + m(p.V) : st.tense === 'past' ? pastEn(p.V) : (S === 'I' ? m(p.V) : thirdEn(m(p.V)));
+    if (neg) V = st.tense === 'past' ? "didn't " + m(p.V) : (S === 'I' ? "don't " : "doesn't ") + m(p.V);
+    if (st.tpl.id === 'have') V = (p.V && p.V.h === '없다' ? (st.tense === 'past' ? "didn't have" : (S === 'I' ? "don't have" : "doesn't have")) : (st.tense === 'past' ? 'had' : (S === 'I' ? 'have' : 'has')));
+    const T = p.T ? (p.T.tp === 'none' ? m(p.T) : ({ '아침': 'in the morning', '저녁': 'in the evening', '밤': 'at night', '점심': 'at lunch' }[p.T.h] || 'on ' + m(p.T))) : '';
+    return [S, V, p.H && m(p.H), p.O && m(p.O), p.R && 'to ' + m(p.R), p.W && 'with ' + m(p.W), p.D && (p.D.h === '집' ? 'home' : 'to ' + m(p.D)), p.L && (st.tpl.id === 'live' ? 'in ' : 'at ') + m(p.L), T].filter(Boolean).join(' ');
   }
   function thirdEn(v) { return v.replace(/^(\w+)/, x => /(s|ch|sh)$/.test(x) ? x + 'es' : /[^aeiou]y$/.test(x) ? x.slice(0, -1) + 'ies' : x + 's'); }
-  function pastEn(v) { const m = { eat: 'ate', drink: 'drank', buy: 'bought', 'see, watch': 'saw', read: 'read', listen: 'listened to', write: 'wrote', learn: 'learned', study: 'studied', meet: 'met', like: 'liked', go: 'went', come: 'came', 'be (there), exist': 'was', live: 'lived', work: 'worked' }; const k = mean(v).replace(/^to /, ''); return m[k] || k + 'ed'; }
+  function pastEn(v) { const m = { eat: 'ate', drink: 'drank', buy: 'bought', 'see, watch': 'saw', read: 'read', listen: 'listened to', write: 'wrote', learn: 'learned', study: 'studied', meet: 'met', like: 'liked', go: 'went', come: 'came', 'be (there), exist': 'was', live: 'lived', work: 'worked', give: 'gave', send: 'sent', 'call (on the phone)': 'called', 'ride, take (a bus)': 'took', do: 'did', 'play (piano/guitar)': 'played', 'take (a photo)': 'took' }; const k = mean(v).replace(/^to /, ''); return m[k] || k + 'ed'; }
 
   // word picker
   function openPicker(k, anchor) {
@@ -256,7 +275,7 @@
       const n = freeWord(inp.value);
       if (!n) { hint.textContent = t('free_hint_unknown', { w: inp.value.trim() }); return; }
       // Put it where the frame takes a noun: object if there is one, else destination/location, else subject.
-      const k = st.tpl.slots.includes('O') && n.roles.includes('obj') ? 'O' : st.tpl.slots.includes('D') ? 'D' : st.tpl.slots.includes('L') ? 'L' : 'S';
+      const k = st.tpl.slots.includes('O') && n.roles.includes('obj') ? 'O' : st.tpl.slots.includes('H') ? 'H' : st.tpl.slots.includes('D') ? 'D' : st.tpl.slots.includes('L') ? 'L' : 'S';
       if (!st.word) { st.word = n; if (document.documentElement.classList.contains('landing')) leaveLanding(); }
       setPick(k, n); hint.textContent = t('free_hint_ok', { w: n.h, slot: t('slot_' + k) }); inp.value = '';
     };
@@ -276,6 +295,14 @@
       const yes = pool.filter(n => M.hasBatchim(n.h)), no = pool.filter(n => !M.hasBatchim(n.h));
       const nouns = pickN([...pickN(yes, 2), ...pickN(no, 2)], 3);
       nouns.forEach(n => { const picks = Object.assign({}, st.picks, { S: n, SP: M.form(n, fam) }); const a = M.assemble(st.tpl, Object.assign(picks, { tense: st.tense })); items.push({ noun: n, before: '', after: a.chunks.slice(1).map(c => c.text).join(' ') + '.', opts, judge: c => M.judgeSP(st.tpl, n, c, WHY) }); });
+    } else if (!['obj', 'dest', 'loc'].includes(M.pspec(st.tpl, pk).expect)) {
+      // same-family drill (time / have / with / to): three fresh nouns in this frame
+      const slots = st.tpl.slots, key = slots[slots.indexOf(pk) - 1], spec = M.pspec(st.tpl, pk);
+      pickN(M.candidates(st.tpl, key, D.words, st.picks.V).filter(n => n !== st.picks[key]), 3).forEach(n => {
+        const picks = Object.assign({}, st.picks, { [key]: n, [pk]: M.form(n, spec.expect) || '∅', tense: st.tense });
+        const a = M.assemble(st.tpl, picks); const idx = a.chunks.findIndex(c => c.kind === key);
+        items.push({ noun: n, before: a.chunks.slice(0, idx).map(c => c.text).join(' '), after: a.chunks.slice(idx + 1).map(c => c.text).join(' ') + '.', opts: spec.options, judge: c => M.judgeP(st.tpl, pk, n, st.picks.V, c, WHY) });
+      });
     } else {
       // family drill: 에 vs 에서 vs 을/를 across move / action / exist frames
       const frames = [['go', 'dest'], ['at', 'loc'], ['exist', 'dest'], ['act', 'obj'], ['live', 'loc']];
@@ -300,7 +327,7 @@
     const it = drill.items[drill.i];
     box.innerHTML = `<div class="ph"><span>${t('drill_h')}</span><small>${t('drill_q', { i: drill.i + 1 })}</small></div><p class="drill-s" lang="ko">${esc(it.before)} <b>${esc(it.noun.h)}<u>&nbsp;&nbsp;</u></b> ${esc(it.after)}</p><div class="p-opts"></div><div class="why" hidden></div>`;
     const opts = $('.p-opts', box);
-    it.opts.forEach(o => { const b = el('button', 'p-opt', o); b.type = 'button'; b.onclick = () => {
+    it.opts.forEach(o => { const b = el('button', 'p-opt' + (o === '∅' ? ' none' : ''), o === '∅' ? t('none_label') : o); b.type = 'button'; b.onclick = () => {
       const r = it.judge(o); $$('.p-opt', box).forEach(x => x.className = 'p-opt'); b.classList.add('on', r.grade);
       const w = $('.why', box); w.hidden = false; w.className = 'why ' + r.grade; w.innerHTML = `<span class="tag">${t(r.grade === 'ok' ? 'correct' : r.grade === 'soft' ? 'soft' : 'wrong')}</span><p>${esc(r.why)}</p><button type="button" class="link" id="drill-next">${drill.i + 1 < drill.items.length ? t('drill_q', { i: drill.i + 2 }) + ' →' : t('drill_done', { n: drill.score + (r.grade === 'ok' ? 1 : 0) })}</button>`;
       if (r.grade === 'ok') drill.score++; $$('.p-opt', box).forEach(x => x.disabled = true);
