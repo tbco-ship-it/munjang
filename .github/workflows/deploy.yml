@@ -14,6 +14,7 @@ env:
   ORIGIN: https://hangulsteps.com
   BASE: /
   CNAME: hangulsteps.com
+  ADSENSE: pub-8425563704095379
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -24,7 +25,7 @@ jobs:
           python-version: "3.12"
       - run: pip install jinja2
       - run: node scripts/test_munjang.mjs
-      - run: python scripts/build.py --base "$BASE" --origin "$ORIGIN" --cname "$CNAME"
+      - run: python scripts/build.py --base "$BASE" --origin "$ORIGIN" --cname "$CNAME" --adsense "$ADSENSE"
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist
@@ -37,3 +38,14 @@ jobs:
     steps:
       - id: deployment
         uses: actions/deploy-pages@v4
+  indexnow:
+    needs: deploy
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install jinja2
+      - run: python scripts/build.py --base "$BASE" --origin "$ORIGIN" --cname "$CNAME"
+      - run: python scripts/indexnow.py || true

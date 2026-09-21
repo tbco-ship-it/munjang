@@ -79,6 +79,10 @@ def main():
     sm.append("</urlset>")
     (DIST / "sitemap.xml").write_text("\n".join(sm))
     (DIST / "robots.txt").write_text(f"User-agent: *\nAllow: /\nSitemap: {a.origin}{base}sitemap.xml\n")
+    key = (ROOT / "static/indexnow-key.txt").read_text().strip()
+    (DIST / f"{key}.txt").write_text(key + "\n")
+    if a.adsense:
+        (DIST / "ads.txt").write_text(f"google.com, {a.adsense}, DIRECT, f08c47fec0942fa0\n")
     if a.cname:
         (DIST / "CNAME").write_text(a.cname + "\n")
     (DIST / ".nojekyll").write_text("")

@@ -25,6 +25,7 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="{{ origin }}{{ base }}{{ path }}">
 {% if adsense_pub %}<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-{{ adsense_pub }}" crossorigin="anonymous"></script>{% endif %}
+{% if origin == "https://hangulsteps.com" %}<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "b020fd84fa45497b803250d3ba683808"}'></script>{% endif %}
 {% block head %}{% endblock %}
 </head>
 <body>
