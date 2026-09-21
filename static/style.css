@@ -325,3 +325,4 @@ html.roman .w-r{display:block}
 .preview .ck u{border-bottom:2px dashed var(--accent)}
 @media print{.answers{break-before:avoid}}
 .sheet.ws .cell.t{color:#202738}
+.fm-h{font-size:.72rem;font-weight:700;color:var(--muted);letter-spacing:.04em;text-transform:uppercase;padding:6px 10px 2px}

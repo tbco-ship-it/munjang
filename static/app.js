@@ -155,12 +155,14 @@
   function renderBuilder() {
     // frame menu + line
     const lv = $('#levels'); lv.innerHTML = '';
-    Object.entries(D.templates.levels).forEach(([n, lab]) => { const b = el('button', 'chip' + (+n === st.level ? ' on' : ''), esc(lab[LANG] || lab.en)); b.type = 'button'; b.onclick = () => { st.level = +n; try { localStorage.setItem('munjang.level', n); } catch (e) {} if ((st.tpl.level || 1) > st.level) setTemplate(D.templates.templates.find(x => (x.level || 1) <= st.level)); if ((D.templates.tense_levels[st.tense] || 1) > st.level) st.tense = 'pres'; renderBuilder(); }; lv.appendChild(b); });
+    Object.entries(D.templates.levels).forEach(([n, lab]) => { const b = el('button', 'chip' + (+n === st.level ? ' on' : ''), esc(lab[LANG] || lab.en)); b.type = 'button'; b.onclick = () => { st.level = +n; try { localStorage.setItem('munjang.level', n); } catch (e) {} if ((st.tpl.level || 1) !== st.level) setTemplate(D.templates.templates.find(x => (x.level || 1) === st.level)); renderBuilder(); }; lv.appendChild(b); });
     const fm = $('#frames'); fm.innerHTML = '';
-    D.templates.templates.filter(tp => (tp.level || 1) <= st.level).forEach(tp => { const b = el('button', tp === st.tpl ? 'on' : '', `<span class="lvtag">Lv${tp.level || 1}</span>${esc(tp[LANG] || tp.en)}<small>${esc(tp.ex)}</small>`); b.type = 'button'; b.onclick = () => setTemplate(tp); fm.appendChild(b); });
+    // the menu lists the selected level's frames only (Aiden 22:03Z); the level chips switch sets
+    const lvLabel = D.templates.levels[String(st.level)]; fm.appendChild(el('div', 'fm-h', esc(lvLabel ? (lvLabel[LANG] || lvLabel.en) : 'Lv' + st.level)));
+    D.templates.templates.filter(tp => (tp.level || 1) === st.level).forEach(tp => { const b = el('button', tp === st.tpl ? 'on' : '', `${esc(tp[LANG] || tp.en)}<small>${esc(tp.ex)}</small>`); b.type = 'button'; b.onclick = () => setTemplate(tp); fm.appendChild(b); });
     $('#frame-line').innerHTML = `<span class="num" aria-hidden="true">✎</span><span>${t('frame_of')}: <b>${esc(st.tpl[LANG] || st.tpl.en)}</b></span>`;
     const tenses = $('#tenses'); tenses.innerHTML = '';
-    st.tpl.tenses.filter(x => (D.templates.tense_levels[x] || 1) <= st.level).forEach(x => { const b = el('button', 'chip' + (x === st.tense ? ' on' : ''), t('tense_' + x)); b.type = 'button'; b.onclick = () => { st.tense = x; if (st.picks.V && !M.verbForm(st.picks.V, x)) { const vs = M.verbsFor(st.tpl, D.words, x); st.picks.V = vs[0]; if (st.picks.O && !M.compatible(st.picks.V, st.picks.O)) st.picks.O = M.candidates(st.tpl, 'O', D.words, st.picks.V)[0]; rejudge(); } renderBuilder(); }; tenses.appendChild(b); });
+    st.tpl.tenses.forEach(x => { const b = el('button', 'chip' + (x === st.tense ? ' on' : ''), t('tense_' + x)); b.type = 'button'; b.onclick = () => { st.tense = x; if (st.picks.V && !M.verbForm(st.picks.V, x)) { const vs = M.verbsFor(st.tpl, D.words, x); st.picks.V = vs[0]; if (st.picks.O && !M.compatible(st.picks.V, st.picks.O)) st.picks.O = M.candidates(st.tpl, 'O', D.words, st.picks.V)[0]; rejudge(); } renderBuilder(); }; tenses.appendChild(b); });
     tenses.hidden = tenses.children.length < 2;
     // word head
     const wh = $('#wordhead'), w = st.word;
