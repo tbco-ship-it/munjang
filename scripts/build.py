@@ -12,7 +12,7 @@ from jinja2 import Environment, FileSystemLoader, select_autoescape
 
 ROOT = Path(__file__).resolve().parent.parent
 DIST = ROOT / "dist"
-LOCALES = ["en", "ja"]
+LOCALES = ["en", "ja", "vi"]
 PAGES = [  # (template, path, slug for title lookup)
     ("index.html", "", "home"),
     ("guide_particles.html", "guide/particles/", "particles"),

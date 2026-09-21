@@ -1,6 +1,6 @@
 // "Check my sentence" page — rule-based only; the verdict line always says what was NOT judged.
 (function () {
-  const M = window.Munjang, D = window.MJ_DATA, UI = window.MJ_UI, LANG = document.documentElement.lang.slice(0, 2) === 'ja' ? 'ja' : 'en';
+  const M = window.Munjang, D = window.MJ_DATA, UI = window.MJ_UI, LANG = ['ja', 'vi'].includes(document.documentElement.lang.slice(0, 2)) ? document.documentElement.lang.slice(0, 2) : 'en';
   const WHY = Object.assign({ _lang: LANG }, D.templates.why[LANG]);
   const t = (k, v) => (UI[k] || k).replace(/\{(\w+)\}/g, (_, x) => v && v[x] != null ? v[x] : '');
   const fill = (k, v) => (WHY[k] || k).replace(/\{(\w+)\}/g, (_, x) => v && v[x] != null ? v[x] : '');

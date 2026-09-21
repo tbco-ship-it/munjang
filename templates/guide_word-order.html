@@ -1,6 +1,6 @@
 {% extends "base.html" %}
-{% block title %}{% if lang == 'ja' %}韓国語の語順（SOV）— 日本語と同じところ、違うところ | HangulSteps{% else %}Korean word order (SOV) — why the verb goes last, and what can move | HangulSteps{% endif %}{% endblock %}
-{% block description %}{% if lang == 'ja' %}韓国語は日本語と同じ SOV。助詞があるから語順は動かせる、でも動詞は最後。初級で使う5つの型を例文で。{% else %}Korean is Subject–Object–Verb. Because particles mark each role, the middle can move, but the verb always ends the sentence. The five beginner frames, with examples.{% endif %}{% endblock %}
+{% block title %}{% if lang == 'vi' %}Trật tự từ tiếng Hàn (SOV) — vì sao động từ đứng cuối | HangulSteps{% elif lang == 'ja' %}韓国語の語順（SOV）— 日本語と同じところ、違うところ | HangulSteps{% else %}Korean word order (SOV) — why the verb goes last, and what can move | HangulSteps{% endif %}{% endblock %}
+{% block description %}{% if lang == 'vi' %}Tiếng Hàn là Chủ ngữ–Tân ngữ–Động từ. Vì có tiểu từ đánh dấu vai trò, phần giữa có thể đổi chỗ, nhưng động từ luôn kết câu. Năm mẫu câu sơ cấp kèm ví dụ.{% elif lang == 'ja' %}韓国語は日本語と同じ SOV。助詞があるから語順は動かせる、でも動詞は最後。初級で使う5つの型を例文で。{% else %}Korean is Subject–Object–Verb. Because particles mark each role, the middle can move, but the verb always ends the sentence. The five beginner frames, with examples.{% endif %}{% endblock %}
 {% block content %}
 <article class="prose">
 {% if lang == 'ja' %}
@@ -16,6 +16,19 @@
 <ul><li>助詞が役割を示すので、<span lang="ko">커피를 저는 마셔요</span> でも通じます（強調のニュアンス）。</li><li>ここで練習する基本の書き言葉では述語が最後：<span lang="ko">저는 커피를 마셔요</span>（<span lang="ko">마셔요 저는 커피를</span> ではなく）。話し言葉では語順が動くこともありますが、初級の目標は述語を最後に。</li><li>主語が分かりきっているときは省略します。<span lang="ko">커피 마셔요?</span>（コーヒー飲む？）</li></ul>
 <h2>否定</h2>
 <p>動詞の直前に <b>안</b>：<span lang="ko">저는 커피를 안 마셔요.</span></p>
+{% elif lang == 'vi' %}
+<h1>Trật tự từ tiếng Hàn — động từ đứng cuối, tiểu từ lo phần còn lại</h1>
+<p class="lead">Tiếng Việt là Chủ ngữ–Động từ–Tân ngữ: <i>Tôi uống cà phê</i>. Tiếng Hàn là Chủ ngữ–Tân ngữ–Động từ: <span lang="ko">저는 커피를 마셔요</span> — nghĩa đen “tôi cà phê uống”. Nắm được điều này, hầu hết câu sơ cấp chỉ là lắp từ vào mẫu.</p>
+<h2>Mẫu cơ bản</h2>
+<p><b>[ai] + [ở đâu] + [cái gì] + [làm gì]</b>. Động từ (hoặc tính từ) luôn kết thúc câu, và trong lời nói lịch sự hằng ngày nó kết thúc bằng -아요/어요.</p>
+<h2>Các mẫu câu sơ cấp</h2>
+<table><tr><th>Mẫu</th><th>Ví dụ</th><th>Nghĩa</th></tr>
+{% for f in frames %}<tr><td>{{ f.vi }}</td><td lang="ko">{{ f.ex }}.</td><td>{{ f.ex_vi }}</td></tr>
+{% endfor %}</table>
+<h2>Cái gì đổi chỗ được, cái gì không</h2>
+<ul><li>Vì tiểu từ đánh dấu vai trò, <span lang="ko">커피를 저는 마셔요</span> vẫn hiểu được (nhấn mạnh cà phê).</li><li>Trong các mẫu viết cơ bản luyện ở đây, vị ngữ đứng cuối: <span lang="ko">저는 커피를 마셔요</span>, không phải <span lang="ko">마셔요 저는 커피를</span>. (Khẩu ngữ có thể đảo, nhưng mục tiêu sơ cấp là động từ cuối.)</li><li>Tiếng Hàn lược chủ ngữ khi đã rõ: <span lang="ko">커피 마셔요?</span> — “(Bạn) uống cà phê không?”</li></ul>
+<h2>Phủ định</h2>
+<p>Đặt <b>안</b> ngay trước động từ: <span lang="ko">저는 커피를 안 마셔요.</span> (Tôi không uống cà phê.)</p>
 {% else %}
 <h1>Korean word order — the verb goes last, particles do the rest</h1>
 <p class="lead">English is Subject–Verb–Object: <i>I drink coffee</i>. Korean is Subject–Object–Verb: <span lang="ko">저는 커피를 마셔요</span> — literally “I coffee drink”. Once that clicks, most beginner sentences are just slotting words into a frame.</p>
@@ -30,6 +43,6 @@
 <h2>Negation</h2>
 <p>Put <b>안</b> right before the verb: <span lang="ko">저는 커피를 안 마셔요.</span> (I don’t drink coffee.)</p>
 {% endif %}
-<p><a class="btn" href="{{ base }}{{ ui.dir }}#j=ㅁ">{% if lang == 'ja' %}組み立てツールで練習する →{% else %}Practice in the builder →{% endif %}</a></p>
+<p><a class="btn" href="{{ base }}{{ ui.dir }}#j=ㅁ">{% if lang == 'ja' %}組み立てツールで練習する →{% elif lang == 'vi' %}Luyện trong xưởng ghép câu →{% else %}Practice in the builder →{% endif %}</a></p>
 </article>
 {% endblock %}

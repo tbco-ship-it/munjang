@@ -1,7 +1,7 @@
 // TOPIK II writing practice: 51/52 blank items judged by the grammar pattern they test; 53/54 원고지 editor with the exam's
 // character count (every square counts: syllables, spaces, punctuation) and manuscript-paper rules.
 (function () {
-  const D = window.MJ_DATA.topik, UI = window.MJ_UI, LANG = document.documentElement.lang.slice(0, 2) === 'ja' ? 'ja' : 'en';
+  const D = window.MJ_DATA.topik, UI = window.MJ_UI, LANG = ['ja', 'vi'].includes(document.documentElement.lang.slice(0, 2)) ? document.documentElement.lang.slice(0, 2) : 'en';
   const t = (k, v) => (UI[k] || k).replace(/\{(\w+)\}/g, (_, x) => v && v[x] != null ? v[x] : '');
   const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
   const $ = s => document.querySelector(s);

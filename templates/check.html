@@ -27,6 +27,9 @@
 {% if lang == 'ja' %}
 <h2>このチェッカーが判定すること・しないこと</h2>
 <ul><li><b>判定する</b>：助詞の形（パッチム規則）、저가→제가、認識できた動詞に対する 에/에서/을・를、助詞が離れている、-고 싶어요 と 안 の分かち書き、動詞が文末にあるか、丁寧な語尾。</li><li><b>判定しない</b>：意味が通るか、自然に聞こえるか、語彙の選択、敬語のレベル。これらは規則では決められません。</li><li>単語リスト（{{ counts.nouns }} 語・{{ counts.verbs }} 動詞・{{ counts.adjectives }} 形容詞）にない語は「?」で表示し、助詞の形だけ判定します。</li></ul>
+{% elif lang == 'vi' %}
+<h2>Công cụ này kiểm tra gì và không kiểm tra gì</h2>
+<ul><li><b>Kiểm tra</b>: dạng tiểu từ (quy tắc 받침), 저가 → 제가, 에 / 에서 / 을·를 theo động từ nhận ra được, tiểu từ bị tách rời, viết cách của -고 싶어요 và 안, động từ đứng cuối, đuôi câu lịch sự.</li><li><b>Không kiểm tra</b>: nghĩa, độ tự nhiên, cách chọn từ, mức độ lịch sự. Quy tắc không quyết định được những điều này, nên chúng tôi không giả vờ.</li><li>Từ ngoài danh sách ({{ counts.nouns }} danh từ, {{ counts.verbs }} động từ, {{ counts.adjectives }} tính từ) hiện với “?” và chỉ được kiểm tra dạng tiểu từ.</li></ul>
 {% else %}
 <h2>What this checker does and does not judge</h2>
 <ul><li><b>Judges</b>: particle form (the 받침 rule), 저가 → 제가, 에 / 에서 / 을·를 against a recognised verb, detached particles, spacing of -고 싶어요 and 안, verb-last order, the polite ending.</li><li><b>Does not judge</b>: meaning, naturalness, word choice, politeness level. Rules cannot decide those, so we do not pretend.</li><li>Words outside our list ({{ counts.nouns }} nouns, {{ counts.verbs }} verbs, {{ counts.adjectives }} adjectives) are shown with “?” and only their particle form is checked.</li></ul>

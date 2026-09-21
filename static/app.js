@@ -3,7 +3,7 @@
 // (letters become the left rail, builder centre, tray right). The particle slots are the quiz: they show "?" until chosen,
 // and the panel under the slots asks for one particle at a time with a one-line why after each answer.
 (function () {
-  const M = window.Munjang, D = window.MJ_DATA, UI = window.MJ_UI, LANG = document.documentElement.lang.slice(0, 2) === 'ja' ? 'ja' : 'en';
+  const M = window.Munjang, D = window.MJ_DATA, UI = window.MJ_UI, LANG = ['ja', 'vi'].includes(document.documentElement.lang.slice(0, 2)) ? document.documentElement.lang.slice(0, 2) : 'en';
   const WHY = Object.assign({ _lang: LANG }, D.templates.why[LANG]);
   const $ = (s, r) => (r || document).querySelector(s), $$ = (s, r) => Array.from((r || document).querySelectorAll(s));
   const t = (k, v) => (UI[k] || k).replace(/\{(\w+)\}/g, (_, x) => v && v[x] != null ? v[x] : '');
@@ -256,8 +256,9 @@
   // One-word meaning under each chunk: shows the SOV mapping without pretending to be a translation.
   function chunkGloss(c) {
     const w = c.word; if (!w) return c.kind === 'N' ? (LANG === 'ja' ? '（否定）' : 'not') : '';
-    if (c.kind === 'V' || c.kind === 'A') return predJa(c.kind, w, false) === null ? '' : (LANG === 'ja' ? predJa(c.kind, w, true) : predEn(c.kind, w, 'I', true));
+    if (c.kind === 'V' || c.kind === 'A') return LANG === 'ja' ? (predJa(c.kind, w, true) || '') : LANG === 'vi' ? predVi(c.kind, w) : predEn(c.kind, w, 'I', true);
     const base = (LANG === 'en' && w.en_g) || mean(w).replace(/ ?[（(].*?[)）]$/, '');
+    if (LANG === 'vi') { const vp = { '에': c.kind === 'T' ? 'vào ' : c.kind === 'D' ? 'đến ' : 'ở ', '에서': 'ở ', '와': 'với ', '과': 'với ', '하고': 'với ', '에게': 'cho ', '한테': 'cho ' }[c.particle] || ''; return (c.kind === 'T' && !c.particle ? '' : vp) + base; }
     if (LANG === 'ja') { const jp = { '은': 'は', '는': 'は', '이': 'が', '가': 'が', '을': 'を', '를': 'を', '에': 'に', '에서': 'で', '와': 'と', '과': 'と', '하고': 'と', '에게': 'に', '한테': 'に' }[c.particle] || ''; return base + (c.kind === 'O' && st.picks.V && st.picks.V.ja_p ? st.picks.V.ja_p : jp); }
     if (c.kind === 'T') return c.particle ? ({ '아침': 'in the morning', '저녁': 'in the evening', '밤': 'at night', '점심': 'at lunch' }[w.h] || 'on ' + base) : base;
     if (c.kind === 'W') return 'with ' + base; if (c.kind === 'R') return 'to ' + base; if (c.kind === 'H') return base;
@@ -275,6 +276,16 @@
     if (st.tpl.id === 'have') f = w.h === '없다' ? (st.tense === 'past' ? 'ありませんでした' : 'ありません') : (st.tense === 'past' ? 'ありました' : 'あります');
     if (st.tpl.id === 'exist' && w.h === '있다') { const S = st.picks.S; f = S && (S.kind === 'person' || S.kind === 'animal') ? (st.tense === 'past' ? 'いました' : 'います') : (st.tense === 'past' ? 'ありました' : 'あります'); }
     return f;
+  }
+  // Vietnamese predicate: no conjugation; tense/mood particles before the verb.
+  function predVi(kind, w) {
+    const base = w.vi || mean(w);
+    if (kind === 'A') return (st.tense === 'past' ? 'đã ' : '') + base;
+    if (st.tpl.id === 'have') return w.h === '없다' ? 'không có' : 'có';
+    if (st.tpl.id === 'exist') return (st.tense === 'past' ? 'đã ' : '') + 'ở';
+    const neg = st.tpl.id === 'neg' ? 'không ' : '';
+    const pre = { pres: '', past: 'đã ', want: 'muốn ', fut: 'sẽ ', can: 'có thể ', must: 'phải ', please: 'hãy ' }[st.tense] || '';
+    return pre + neg + base.replace(/ \(.*\)$/, '');
   }
   // English predicate with agreement, from stored en_base/en_3s/en_past.
   function predEn(kind, w, S, short) {
@@ -297,6 +308,14 @@
       if (V === null) return '';
       const op = p.V && p.V.ja_p ? p.V.ja_p : 'を';
       return [p.T && m(p.T) + (p.T.tp === 'none' ? '' : 'に'), p.S && st.tense !== 'please' && m(p.S) + (st.judges.SP && st.judges.SP.choice && /^(이|가)$/.test(st.judges.SP.choice) ? 'が' : 'は'), p.W && m(p.W) + 'と', p.R && m(p.R) + 'に', p.H && m(p.H) + 'が', p.L && m(p.L) + (p.V && p.V.locBoth ? 'に' : st.tpl.op === 'loc' || st.tpl.op2 ? 'で' : 'に'), p.D && m(p.D) + 'に', p.O && m(p.O) + op, V].filter(Boolean).join('') + '。';
+    }
+    if (LANG === 'vi') {
+      const mv = x => x ? (x.vi || mean(x)).replace(/ \(.*\)$/, '') : '';
+      const Sv = p.S && st.tense !== 'please' ? mv(p.S) : '';
+      const Vv = p.A ? predVi('A', p.A) : (p.V ? predVi('V', p.V) : '');
+      const Tv = p.T ? (p.T.tp === 'none' ? mv(p.T) : 'vào ' + mv(p.T)) : '';
+      const parts = [Sv, Vv, p.H && mv(p.H), p.O && mv(p.O), p.R && 'cho ' + mv(p.R), p.W && 'với ' + mv(p.W), p.D && (p.D.h === '집' ? 'về nhà' : 'đến ' + mv(p.D)), p.L && 'ở ' + mv(p.L), Tv].filter(Boolean).join(' ');
+      return parts.charAt(0).toUpperCase() + parts.slice(1) + '.';
     }
     const S = p.S && st.tense !== 'please' ? m(p.S) : '';
     const V = p.A ? predEn('A', p.A, S) : (p.V ? predEn('V', p.V, S || 'you') : '');
@@ -323,7 +342,7 @@
     q = (q || '').normalize('NFC').trim().replace(/\s+/g, ' ').slice(0, 30); if (!q) return null;
     const lq = q.toLowerCase();
     const known = D.words.nouns.find(n => n.h === q)
-      || D.words.nouns.find(n => (n.alias_en || []).some(a => a.toLowerCase() === lq) || (n.alias_ja || []).includes(q))
+      || D.words.nouns.find(n => (n.alias_en || []).some(a => a.toLowerCase() === lq) || (n.alias_ja || []).includes(q) || (n.vi || '').toLowerCase().replace(/ \(.*\)$/, '') === lq)
       || D.words.nouns.find(n => n.en.toLowerCase() === lq || n.ja === q || (n.en_g || '').toLowerCase().replace(/^(a|an|the|my) /, '') === lq)
       || D.words.nouns.find(n => n.en.toLowerCase().split(/[,(]/)[0].trim() === lq || n.ja.split(/[・（]/)[0] === q);
     if (known) return known;

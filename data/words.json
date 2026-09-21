@@ -25,7 +25,8 @@
    "feat": [
     "person",
     "appearance"
-   ]
+   ],
+   "vi": "tôi (khiêm tốn)"
   },
   {
    "h": "친구",
@@ -53,7 +54,8 @@
     "person",
     "appearance",
     "count"
-   ]
+   ],
+   "vi": "bạn"
   },
   {
    "h": "엄마",
@@ -81,7 +83,8 @@
    "feat": [
     "person",
     "appearance"
-   ]
+   ],
+   "vi": "mẹ"
   },
   {
    "h": "아빠",
@@ -108,7 +111,8 @@
    "feat": [
     "person",
     "appearance"
-   ]
+   ],
+   "vi": "bố"
   },
   {
    "h": "선생님",
@@ -132,7 +136,8 @@
    "feat": [
     "person",
     "appearance"
-   ]
+   ],
+   "vi": "thầy/cô giáo"
   },
   {
    "h": "동생",
@@ -160,7 +165,8 @@
    "feat": [
     "person",
     "appearance"
-   ]
+   ],
+   "vi": "em"
   },
   {
    "h": "학생",
@@ -186,7 +192,8 @@
     "person",
     "appearance",
     "count"
-   ]
+   ],
+   "vi": "học sinh"
   },
   {
    "h": "고양이",
@@ -212,7 +219,8 @@
     "animal",
     "appearance",
     "phys"
-   ]
+   ],
+   "vi": "con mèo"
   },
   {
    "h": "강아지",
@@ -240,7 +248,8 @@
     "animal",
     "appearance",
     "phys"
-   ]
+   ],
+   "vi": "chó con"
   },
   {
    "h": "물",
@@ -262,7 +271,8 @@
    "feat": [
     "taste",
     "buy"
-   ]
+   ],
+   "vi": "nước"
   },
   {
    "h": "커피",
@@ -284,7 +294,8 @@
    "feat": [
     "taste",
     "buy"
-   ]
+   ],
+   "vi": "cà phê"
   },
   {
    "h": "우유",
@@ -307,7 +318,8 @@
    "feat": [
     "taste",
     "buy"
-   ]
+   ],
+   "vi": "sữa"
   },
   {
    "h": "차",
@@ -330,7 +342,8 @@
    "feat": [
     "taste",
     "buy"
-   ]
+   ],
+   "vi": "trà"
   },
   {
    "h": "주스",
@@ -352,7 +365,8 @@
    "feat": [
     "taste",
     "buy"
-   ]
+   ],
+   "vi": "nước ép"
   },
   {
    "h": "김치",
@@ -368,7 +382,8 @@
    "feat": [
     "taste",
     "buy"
-   ]
+   ],
+   "vi": "kim chi"
   },
   {
    "h": "밥",
@@ -394,7 +409,8 @@
    "feat": [
     "taste",
     "buy"
-   ]
+   ],
+   "vi": "cơm"
   },
   {
    "h": "빵",
@@ -416,7 +432,8 @@
    "feat": [
     "taste",
     "buy"
-   ]
+   ],
+   "vi": "bánh mì"
   },
   {
    "h": "사과",
@@ -442,7 +459,8 @@
     "buy",
     "appearance",
     "phys"
-   ]
+   ],
+   "vi": "táo"
   },
   {
    "h": "라면",
@@ -458,7 +476,8 @@
    "feat": [
     "taste",
     "buy"
-   ]
+   ],
+   "vi": "mì gói"
   },
   {
    "h": "불고기",
@@ -474,7 +493,8 @@
    "feat": [
     "taste",
     "buy"
-   ]
+   ],
+   "vi": "bulgogi"
   },
   {
    "h": "책",
@@ -501,7 +521,8 @@
     "buy",
     "appearance",
     "content"
-   ]
+   ],
+   "vi": "sách"
   },
   {
    "h": "가방",
@@ -528,7 +549,8 @@
     "phys",
     "buy",
     "appearance"
-   ]
+   ],
+   "vi": "túi xách"
   },
   {
    "h": "옷",
@@ -552,7 +574,8 @@
     "phys",
     "buy",
     "appearance"
-   ]
+   ],
+   "vi": "quần áo"
   },
   {
    "h": "신발",
@@ -575,7 +598,8 @@
     "phys",
     "buy",
     "appearance"
-   ]
+   ],
+   "vi": "giày"
   },
   {
    "h": "핸드폰",
@@ -606,7 +630,8 @@
     "buy",
     "appearance",
     "content"
-   ]
+   ],
+   "vi": "điện thoại di động"
   },
   {
    "h": "영화",
@@ -629,7 +654,8 @@
    ],
    "feat": [
     "content"
-   ]
+   ],
+   "vi": "phim"
   },
   {
    "h": "드라마",
@@ -645,7 +671,8 @@
    "en_g": "a drama",
    "feat": [
     "content"
-   ]
+   ],
+   "vi": "phim truyền hình"
   },
   {
    "h": "노래",
@@ -667,7 +694,8 @@
    ],
    "feat": [
     "content"
-   ]
+   ],
+   "vi": "bài hát"
   },
   {
    "h": "음악",
@@ -688,7 +716,8 @@
    ],
    "feat": [
     "content"
-   ]
+   ],
+   "vi": "âm nhạc"
   },
   {
    "h": "사진",
@@ -712,7 +741,8 @@
    ],
    "feat": [
     "content"
-   ]
+   ],
+   "vi": "ảnh"
   },
   {
    "h": "편지",
@@ -731,7 +761,8 @@
    "feat": [
     "content",
     "phys"
-   ]
+   ],
+   "vi": "lá thư"
   },
   {
    "h": "집",
@@ -758,7 +789,8 @@
    "feat": [
     "place",
     "appearance"
-   ]
+   ],
+   "vi": "nhà"
   },
   {
    "h": "학교",
@@ -782,7 +814,8 @@
    "feat": [
     "place",
     "appearance"
-   ]
+   ],
+   "vi": "trường học"
   },
   {
    "h": "회사",
@@ -808,7 +841,8 @@
    "feat": [
     "place",
     "appearance"
-   ]
+   ],
+   "vi": "công ty"
   },
   {
    "h": "카페",
@@ -835,7 +869,8 @@
    "feat": [
     "place",
     "appearance"
-   ]
+   ],
+   "vi": "quán cà phê"
   },
   {
    "h": "식당",
@@ -860,7 +895,8 @@
    "feat": [
     "place",
     "appearance"
-   ]
+   ],
+   "vi": "nhà hàng"
   },
   {
    "h": "공원",
@@ -884,7 +920,8 @@
    "feat": [
     "place",
     "appearance"
-   ]
+   ],
+   "vi": "công viên"
   },
   {
    "h": "도서관",
@@ -908,7 +945,8 @@
    "feat": [
     "place",
     "appearance"
-   ]
+   ],
+   "vi": "thư viện"
   },
   {
    "h": "시장",
@@ -932,7 +970,8 @@
    "feat": [
     "place",
     "appearance"
-   ]
+   ],
+   "vi": "chợ"
   },
   {
    "h": "병원",
@@ -956,7 +995,8 @@
    "feat": [
     "place",
     "appearance"
-   ]
+   ],
+   "vi": "bệnh viện"
   },
   {
    "h": "서울",
@@ -973,7 +1013,8 @@
    "feat": [
     "place",
     "appearance"
-   ]
+   ],
+   "vi": "Seoul"
   },
   {
    "h": "한국",
@@ -990,7 +1031,8 @@
    "feat": [
     "place",
     "appearance"
-   ]
+   ],
+   "vi": "Hàn Quốc"
   },
   {
    "h": "일본",
@@ -1007,7 +1049,8 @@
    "feat": [
     "place",
     "appearance"
-   ]
+   ],
+   "vi": "Nhật Bản"
   },
   {
    "h": "한국어",
@@ -1029,7 +1072,8 @@
    ],
    "feat": [
     "skill"
-   ]
+   ],
+   "vi": "tiếng Hàn"
   },
   {
    "h": "영어",
@@ -1050,7 +1094,8 @@
    ],
    "feat": [
     "skill"
-   ]
+   ],
+   "vi": "tiếng Anh"
   },
   {
    "h": "일본어",
@@ -1071,7 +1116,8 @@
    ],
    "feat": [
     "skill"
-   ]
+   ],
+   "vi": "tiếng Nhật"
   },
   {
    "h": "한글",
@@ -1087,7 +1133,8 @@
    "write": true,
    "feat": [
     "skill"
-   ]
+   ],
+   "vi": "Hangul"
   },
   {
    "h": "토마토",
@@ -1106,7 +1153,8 @@
     "buy",
     "appearance",
     "phys"
-   ]
+   ],
+   "vi": "cà chua"
   },
   {
    "h": "야채",
@@ -1122,7 +1170,8 @@
    "feat": [
     "taste",
     "buy"
-   ]
+   ],
+   "vi": "rau"
   },
   {
    "h": "귤",
@@ -1141,7 +1190,8 @@
     "buy",
     "appearance",
     "phys"
-   ]
+   ],
+   "vi": "quýt"
   },
   {
    "h": "컴퓨터",
@@ -1169,7 +1219,8 @@
     "buy",
     "appearance",
     "content"
-   ]
+   ],
+   "vi": "máy tính"
   },
   {
    "h": "텔레비전",
@@ -1194,7 +1245,8 @@
     "content",
     "phys",
     "buy"
-   ]
+   ],
+   "vi": "tivi"
   },
   {
    "h": "뉴스",
@@ -1210,7 +1262,8 @@
    "en_g": "the news",
    "feat": [
     "content"
-   ]
+   ],
+   "vi": "tin tức"
   },
   {
    "h": "유튜브",
@@ -1225,7 +1278,8 @@
    "level": 1,
    "feat": [
     "content"
-   ]
+   ],
+   "vi": "YouTube"
   },
   {
    "h": "야구",
@@ -1242,7 +1296,8 @@
    "do": true,
    "feat": [
     "activity"
-   ]
+   ],
+   "vi": "bóng chày"
   },
   {
    "h": "교회",
@@ -1260,7 +1315,8 @@
    "feat": [
     "place",
     "appearance"
-   ]
+   ],
+   "vi": "nhà thờ"
   },
   {
    "h": "요리",
@@ -1276,7 +1332,8 @@
    "do": true,
    "feat": [
     "activity"
-   ]
+   ],
+   "vi": "nấu ăn"
   },
   {
    "h": "태권도",
@@ -1292,7 +1349,8 @@
    "do": true,
    "feat": [
     "activity"
-   ]
+   ],
+   "vi": "taekwondo"
   },
   {
    "h": "아침",
@@ -1313,7 +1371,8 @@
    ],
    "feat": [
     "time"
-   ]
+   ],
+   "vi": "buổi sáng"
   },
   {
    "h": "점심",
@@ -1329,7 +1388,8 @@
    "level": 1,
    "feat": [
     "time"
-   ]
+   ],
+   "vi": "buổi trưa"
   },
   {
    "h": "저녁",
@@ -1354,7 +1414,8 @@
    ],
    "feat": [
     "time"
-   ]
+   ],
+   "vi": "buổi tối"
   },
   {
    "h": "주말",
@@ -1375,7 +1436,8 @@
    ],
    "feat": [
     "time"
-   ]
+   ],
+   "vi": "cuối tuần"
   },
   {
    "h": "월요일",
@@ -1390,7 +1452,8 @@
    "level": 1,
    "feat": [
     "time"
-   ]
+   ],
+   "vi": "thứ Hai"
   },
   {
    "h": "금요일",
@@ -1405,7 +1468,8 @@
    "level": 1,
    "feat": [
     "time"
-   ]
+   ],
+   "vi": "thứ Sáu"
   },
   {
    "h": "밤",
@@ -1420,7 +1484,8 @@
    "level": 1,
    "feat": [
     "time"
-   ]
+   ],
+   "vi": "ban đêm"
   },
   {
    "h": "오늘",
@@ -1441,7 +1506,8 @@
    ],
    "feat": [
     "time"
-   ]
+   ],
+   "vi": "hôm nay"
   },
   {
    "h": "내일",
@@ -1462,7 +1528,8 @@
    ],
    "feat": [
     "time"
-   ]
+   ],
+   "vi": "ngày mai"
   },
   {
    "h": "어제",
@@ -1483,7 +1550,8 @@
    ],
    "feat": [
     "time"
-   ]
+   ],
+   "vi": "hôm qua"
   },
   {
    "h": "매일",
@@ -1505,7 +1573,8 @@
    ],
    "feat": [
     "time"
-   ]
+   ],
+   "vi": "mỗi ngày"
   },
   {
    "h": "지금",
@@ -1526,7 +1595,8 @@
    ],
    "feat": [
     "time"
-   ]
+   ],
+   "vi": "bây giờ"
   },
   {
    "h": "시간",
@@ -1548,7 +1618,8 @@
    "feat": [
     "abstract",
     "count"
-   ]
+   ],
+   "vi": "thời gian"
   },
   {
    "h": "돈",
@@ -1572,7 +1643,8 @@
    "feat": [
     "abstract",
     "count"
-   ]
+   ],
+   "vi": "tiền"
   },
   {
    "h": "선물",
@@ -1599,7 +1671,8 @@
     "phys",
     "buy",
     "appearance"
-   ]
+   ],
+   "vi": "quà"
   },
   {
    "h": "꽃",
@@ -1624,7 +1697,8 @@
     "phys",
     "buy",
     "appearance"
-   ]
+   ],
+   "vi": "hoa"
   },
   {
    "h": "우산",
@@ -1643,7 +1717,8 @@
     "phys",
     "buy",
     "appearance"
-   ]
+   ],
+   "vi": "ô (dù)"
   },
   {
    "h": "숙제",
@@ -1660,7 +1735,8 @@
    "do": true,
    "feat": [
     "skill"
-   ]
+   ],
+   "vi": "bài tập về nhà"
   },
   {
    "h": "약속",
@@ -1676,7 +1752,8 @@
    "en_g": "plans",
    "feat": [
     "abstract"
-   ]
+   ],
+   "vi": "cuộc hẹn"
   },
   {
    "h": "남자 친구",
@@ -1695,7 +1772,8 @@
    "feat": [
     "person",
     "appearance"
-   ]
+   ],
+   "vi": "bạn trai"
   },
   {
    "h": "여자 친구",
@@ -1714,7 +1792,8 @@
    "feat": [
     "person",
     "appearance"
-   ]
+   ],
+   "vi": "bạn gái"
   },
   {
    "h": "할머니",
@@ -1732,7 +1811,8 @@
    "feat": [
     "person",
     "appearance"
-   ]
+   ],
+   "vi": "bà"
   },
   {
    "h": "할아버지",
@@ -1750,7 +1830,8 @@
    "feat": [
     "person",
     "appearance"
-   ]
+   ],
+   "vi": "ông"
   },
   {
    "h": "언니",
@@ -1768,7 +1849,8 @@
    "feat": [
     "person",
     "appearance"
-   ]
+   ],
+   "vi": "chị (nữ gọi)"
   },
   {
    "h": "형",
@@ -1786,7 +1868,8 @@
    "feat": [
     "person",
     "appearance"
-   ]
+   ],
+   "vi": "anh (nam gọi)"
   },
   {
    "h": "의사",
@@ -1804,7 +1887,8 @@
    "feat": [
     "person",
     "appearance"
-   ]
+   ],
+   "vi": "bác sĩ"
   },
   {
    "h": "회사원",
@@ -1822,7 +1906,8 @@
    "feat": [
     "person",
     "appearance"
-   ]
+   ],
+   "vi": "nhân viên công ty"
   },
   {
    "h": "요리사",
@@ -1840,7 +1925,8 @@
    "feat": [
     "person",
     "appearance"
-   ]
+   ],
+   "vi": "đầu bếp"
   },
   {
    "h": "가수",
@@ -1858,7 +1944,8 @@
    "feat": [
     "person",
     "appearance"
-   ]
+   ],
+   "vi": "ca sĩ"
   },
   {
    "h": "배우",
@@ -1876,7 +1963,8 @@
    "feat": [
     "person",
     "appearance"
-   ]
+   ],
+   "vi": "diễn viên"
   },
   {
    "h": "떡볶이",
@@ -1892,7 +1980,8 @@
    "feat": [
     "taste",
     "buy"
-   ]
+   ],
+   "vi": "tteokbokki"
   },
   {
    "h": "비빔밥",
@@ -1908,7 +1997,8 @@
    "feat": [
     "taste",
     "buy"
-   ]
+   ],
+   "vi": "bibimbap"
   },
   {
    "h": "치킨",
@@ -1924,7 +2014,8 @@
    "feat": [
     "taste",
     "buy"
-   ]
+   ],
+   "vi": "gà rán"
   },
   {
    "h": "피자",
@@ -1940,7 +2031,8 @@
    "feat": [
     "taste",
     "buy"
-   ]
+   ],
+   "vi": "pizza"
   },
   {
    "h": "케이크",
@@ -1958,7 +2050,8 @@
     "buy",
     "appearance",
     "phys"
-   ]
+   ],
+   "vi": "bánh kem"
   },
   {
    "h": "과일",
@@ -1974,7 +2067,8 @@
    "feat": [
     "taste",
     "buy"
-   ]
+   ],
+   "vi": "trái cây"
   },
   {
    "h": "딸기",
@@ -1992,7 +2086,8 @@
     "buy",
     "appearance",
     "phys"
-   ]
+   ],
+   "vi": "dâu tây"
   },
   {
    "h": "바나나",
@@ -2011,7 +2106,8 @@
     "buy",
     "appearance",
     "phys"
-   ]
+   ],
+   "vi": "chuối"
   },
   {
    "h": "계란",
@@ -2027,7 +2123,8 @@
    "feat": [
     "taste",
     "buy"
-   ]
+   ],
+   "vi": "trứng"
   },
   {
    "h": "고기",
@@ -2049,7 +2146,8 @@
    "feat": [
     "taste",
     "buy"
-   ]
+   ],
+   "vi": "thịt"
   },
   {
    "h": "생선",
@@ -2065,7 +2163,8 @@
    "feat": [
     "taste",
     "buy"
-   ]
+   ],
+   "vi": "cá (để ăn)"
   },
   {
    "h": "국",
@@ -2081,7 +2180,8 @@
    "feat": [
     "taste",
     "buy"
-   ]
+   ],
+   "vi": "canh"
   },
   {
    "h": "맥주",
@@ -2103,7 +2203,8 @@
    "feat": [
     "taste",
     "buy"
-   ]
+   ],
+   "vi": "bia"
   },
   {
    "h": "소주",
@@ -2119,7 +2220,8 @@
    "feat": [
     "taste",
     "buy"
-   ]
+   ],
+   "vi": "rượu soju"
   },
   {
    "h": "콜라",
@@ -2135,7 +2237,8 @@
    "feat": [
     "taste",
     "buy"
-   ]
+   ],
+   "vi": "cô-ca"
   },
   {
    "h": "녹차",
@@ -2151,7 +2254,8 @@
    "feat": [
     "taste",
     "buy"
-   ]
+   ],
+   "vi": "trà xanh"
   },
   {
    "h": "모자",
@@ -2170,7 +2274,8 @@
     "phys",
     "buy",
     "appearance"
-   ]
+   ],
+   "vi": "mũ"
   },
   {
    "h": "안경",
@@ -2188,7 +2293,8 @@
     "phys",
     "buy",
     "appearance"
-   ]
+   ],
+   "vi": "kính"
   },
   {
    "h": "시계",
@@ -2207,7 +2313,8 @@
     "phys",
     "buy",
     "appearance"
-   ]
+   ],
+   "vi": "đồng hồ"
   },
   {
    "h": "지갑",
@@ -2226,7 +2333,8 @@
     "phys",
     "buy",
     "appearance"
-   ]
+   ],
+   "vi": "ví"
   },
   {
    "h": "열쇠",
@@ -2245,7 +2353,8 @@
     "phys",
     "buy",
     "appearance"
-   ]
+   ],
+   "vi": "chìa khóa"
   },
   {
    "h": "카메라",
@@ -2264,7 +2373,8 @@
     "phys",
     "buy",
     "appearance"
-   ]
+   ],
+   "vi": "máy ảnh"
   },
   {
    "h": "자전거",
@@ -2284,7 +2394,8 @@
     "phys",
     "appearance",
     "ride"
-   ]
+   ],
+   "vi": "xe đạp"
   },
   {
    "h": "자동차",
@@ -2311,7 +2422,8 @@
     "phys",
     "appearance",
     "ride"
-   ]
+   ],
+   "vi": "ô tô"
   },
   {
    "h": "신문",
@@ -2331,7 +2443,8 @@
     "buy",
     "appearance",
     "content"
-   ]
+   ],
+   "vi": "báo"
   },
   {
    "h": "잡지",
@@ -2351,7 +2464,8 @@
     "buy",
     "appearance",
     "content"
-   ]
+   ],
+   "vi": "tạp chí"
   },
   {
    "h": "메일",
@@ -2370,7 +2484,8 @@
    "feat": [
     "content",
     "phys"
-   ]
+   ],
+   "vi": "email"
   },
   {
    "h": "문자",
@@ -2389,7 +2504,8 @@
    "feat": [
     "content",
     "phys"
-   ]
+   ],
+   "vi": "tin nhắn"
   },
   {
    "h": "일기",
@@ -2407,7 +2523,8 @@
    "feat": [
     "content",
     "phys"
-   ]
+   ],
+   "vi": "nhật ký"
   },
   {
    "h": "게임",
@@ -2425,7 +2542,8 @@
    "feat": [
     "activity",
     "content"
-   ]
+   ],
+   "vi": "trò chơi"
   },
   {
    "h": "만화",
@@ -2441,7 +2559,8 @@
    "read": true,
    "feat": [
     "content"
-   ]
+   ],
+   "vi": "truyện tranh"
   },
   {
    "h": "공연",
@@ -2457,7 +2576,8 @@
    "en_g": "a concert",
    "feat": [
     "content"
-   ]
+   ],
+   "vi": "buổi biểu diễn"
   },
   {
    "h": "운동",
@@ -2473,7 +2593,8 @@
    "do": true,
    "feat": [
     "activity"
-   ]
+   ],
+   "vi": "thể thao"
   },
   {
    "h": "수영",
@@ -2489,7 +2610,8 @@
    "do": true,
    "feat": [
     "activity"
-   ]
+   ],
+   "vi": "bơi lội"
   },
   {
    "h": "축구",
@@ -2505,7 +2627,8 @@
    "do": true,
    "feat": [
     "activity"
-   ]
+   ],
+   "vi": "bóng đá"
   },
   {
    "h": "피아노",
@@ -2521,7 +2644,8 @@
    "play": true,
    "feat": [
     "skill"
-   ]
+   ],
+   "vi": "piano"
   },
   {
    "h": "기타",
@@ -2537,7 +2661,8 @@
    "play": true,
    "feat": [
     "skill"
-   ]
+   ],
+   "vi": "ghi-ta"
   },
   {
    "h": "춤",
@@ -2553,7 +2678,8 @@
    "do": true,
    "feat": [
     "activity"
-   ]
+   ],
+   "vi": "nhảy múa"
   },
   {
    "h": "중국어",
@@ -2568,7 +2694,8 @@
    "level": 1,
    "feat": [
     "skill"
-   ]
+   ],
+   "vi": "tiếng Trung"
   },
   {
    "h": "역",
@@ -2592,7 +2719,8 @@
    "feat": [
     "place",
     "appearance"
-   ]
+   ],
+   "vi": "nhà ga"
   },
   {
    "h": "공항",
@@ -2616,7 +2744,8 @@
    "feat": [
     "place",
     "appearance"
-   ]
+   ],
+   "vi": "sân bay"
   },
   {
    "h": "은행",
@@ -2640,7 +2769,8 @@
    "feat": [
     "place",
     "appearance"
-   ]
+   ],
+   "vi": "ngân hàng"
   },
   {
    "h": "편의점",
@@ -2658,7 +2788,8 @@
    "feat": [
     "place",
     "appearance"
-   ]
+   ],
+   "vi": "cửa hàng tiện lợi"
   },
   {
    "h": "백화점",
@@ -2676,7 +2807,8 @@
    "feat": [
     "place",
     "appearance"
-   ]
+   ],
+   "vi": "trung tâm thương mại"
   },
   {
    "h": "영화관",
@@ -2694,7 +2826,8 @@
    "feat": [
     "place",
     "appearance"
-   ]
+   ],
+   "vi": "rạp chiếu phim"
   },
   {
    "h": "바다",
@@ -2720,7 +2853,8 @@
    "feat": [
     "place",
     "appearance"
-   ]
+   ],
+   "vi": "biển"
   },
   {
    "h": "산",
@@ -2745,7 +2879,8 @@
    "feat": [
     "place",
     "appearance"
-   ]
+   ],
+   "vi": "núi"
   },
   {
    "h": "호텔",
@@ -2763,7 +2898,8 @@
    "feat": [
     "place",
     "appearance"
-   ]
+   ],
+   "vi": "khách sạn"
   },
   {
    "h": "부산",
@@ -2780,7 +2916,8 @@
    "feat": [
     "place",
     "appearance"
-   ]
+   ],
+   "vi": "Busan"
   },
   {
    "h": "제주도",
@@ -2797,7 +2934,8 @@
    "feat": [
     "place",
     "appearance"
-   ]
+   ],
+   "vi": "đảo Jeju"
   },
   {
    "h": "미국",
@@ -2815,7 +2953,8 @@
    "feat": [
     "place",
     "appearance"
-   ]
+   ],
+   "vi": "Mỹ"
   },
   {
    "h": "중국",
@@ -2832,7 +2971,8 @@
    "feat": [
     "place",
     "appearance"
-   ]
+   ],
+   "vi": "Trung Quốc"
   },
   {
    "h": "방",
@@ -2850,7 +2990,8 @@
    "feat": [
     "place",
     "appearance"
-   ]
+   ],
+   "vi": "phòng"
   },
   {
    "h": "교실",
@@ -2868,7 +3009,8 @@
    "feat": [
     "place",
     "appearance"
-   ]
+   ],
+   "vi": "lớp học"
   },
   {
    "h": "사무실",
@@ -2886,7 +3028,8 @@
    "feat": [
     "place",
     "appearance"
-   ]
+   ],
+   "vi": "văn phòng"
   },
   {
    "h": "화장실",
@@ -2904,7 +3047,8 @@
    "feat": [
     "place",
     "appearance"
-   ]
+   ],
+   "vi": "nhà vệ sinh"
   },
   {
    "h": "버스",
@@ -2923,7 +3067,8 @@
     "phys",
     "appearance",
     "ride"
-   ]
+   ],
+   "vi": "xe buýt"
   },
   {
    "h": "지하철",
@@ -2942,7 +3087,8 @@
     "phys",
     "appearance",
     "ride"
-   ]
+   ],
+   "vi": "tàu điện ngầm"
   },
   {
    "h": "택시",
@@ -2961,7 +3107,8 @@
     "phys",
     "appearance",
     "ride"
-   ]
+   ],
+   "vi": "taxi"
   },
   {
    "h": "날씨",
@@ -2976,7 +3123,8 @@
    "en_g": "the weather",
    "feat": [
     "weather"
-   ]
+   ],
+   "vi": "thời tiết"
   },
   {
    "h": "이름",
@@ -2992,7 +3140,8 @@
    "en_g": "my name",
    "feat": [
     "abstract"
-   ]
+   ],
+   "vi": "tên"
   },
   {
    "h": "생일",
@@ -3008,7 +3157,8 @@
    "en_g": "my birthday",
    "feat": [
     "time"
-   ]
+   ],
+   "vi": "sinh nhật"
   },
   {
    "h": "방학",
@@ -3023,7 +3173,8 @@
    "level": 1,
    "feat": [
     "time"
-   ]
+   ],
+   "vi": "kỳ nghỉ học"
   },
   {
    "h": "여행",
@@ -3040,7 +3191,8 @@
    "do": true,
    "feat": [
     "activity"
-   ]
+   ],
+   "vi": "du lịch"
   },
   {
    "h": "사람",
@@ -3059,7 +3211,8 @@
     "person",
     "appearance",
     "count"
-   ]
+   ],
+   "vi": "người"
   },
   {
    "h": "아이",
@@ -3078,7 +3231,8 @@
     "person",
     "appearance",
     "count"
-   ]
+   ],
+   "vi": "đứa trẻ"
   },
   {
    "h": "한국 사람",
@@ -3096,7 +3250,8 @@
    "feat": [
     "person",
     "appearance"
-   ]
+   ],
+   "vi": "người Hàn Quốc"
   },
   {
    "h": "새",
@@ -3114,7 +3269,8 @@
     "animal",
     "appearance",
     "phys"
-   ]
+   ],
+   "vi": "con chim"
   },
   {
    "h": "물고기",
@@ -3132,7 +3288,8 @@
     "animal",
     "appearance",
     "phys"
-   ]
+   ],
+   "vi": "con cá"
   },
   {
    "h": "나무",
@@ -3150,7 +3307,8 @@
     "phys",
     "buy",
     "appearance"
-   ]
+   ],
+   "vi": "cây"
   },
   {
    "h": "나",
@@ -3176,7 +3334,8 @@
    "feat": [
     "person",
     "appearance"
-   ]
+   ],
+   "vi": "tôi (thân mật)"
   }
  ],
  "verbs": [
@@ -3202,7 +3361,8 @@
    "en_past": "ate",
    "can": "먹을 수 있어요",
    "must": "먹어야 해요",
-   "please": "드세요"
+   "please": "드세요",
+   "vi": "ăn"
   },
   {
    "h": "마시다",
@@ -3226,7 +3386,8 @@
    "en_past": "drank",
    "can": "마실 수 있어요",
    "must": "마셔야 해요",
-   "please": "드세요"
+   "please": "드세요",
+   "vi": "uống"
   },
   {
    "h": "사다",
@@ -3252,7 +3413,8 @@
    "en_past": "bought",
    "can": "살 수 있어요",
    "must": "사야 해요",
-   "please": "사세요"
+   "please": "사세요",
+   "vi": "mua"
   },
   {
    "h": "보다",
@@ -3278,7 +3440,8 @@
    "en_past": "watched",
    "can": "볼 수 있어요",
    "must": "봐야 해요",
-   "please": "보세요"
+   "please": "보세요",
+   "vi": "xem"
   },
   {
    "h": "읽다",
@@ -3302,7 +3465,8 @@
    "en_past": "read",
    "can": "읽을 수 있어요",
    "must": "읽어야 해요",
-   "please": "읽으세요"
+   "please": "읽으세요",
+   "vi": "đọc"
   },
   {
    "h": "듣다",
@@ -3326,7 +3490,8 @@
    "en_past": "listened to",
    "can": "들을 수 있어요",
    "must": "들어야 해요",
-   "please": "들으세요"
+   "please": "들으세요",
+   "vi": "nghe"
   },
   {
    "h": "쓰다",
@@ -3350,7 +3515,8 @@
    "en_past": "wrote",
    "can": "쓸 수 있어요",
    "must": "써야 해요",
-   "please": "쓰세요"
+   "please": "쓰세요",
+   "vi": "viết"
   },
   {
    "h": "배우다",
@@ -3375,7 +3541,8 @@
    "en_past": "learned",
    "can": "배울 수 있어요",
    "must": "배워야 해요",
-   "please": "배우세요"
+   "please": "배우세요",
+   "vi": "học"
   },
   {
    "h": "공부하다",
@@ -3399,7 +3566,8 @@
    "en_past": "studied",
    "can": "공부할 수 있어요",
    "must": "공부해야 해요",
-   "please": "공부하세요"
+   "please": "공부하세요",
+   "vi": "học (bài)"
   },
   {
    "h": "만나다",
@@ -3423,7 +3591,8 @@
    "en_past": "met",
    "can": "만날 수 있어요",
    "must": "만나야 해요",
-   "please": "만나세요"
+   "please": "만나세요",
+   "vi": "gặp"
   },
   {
    "h": "좋아하다",
@@ -3455,7 +3624,8 @@
    "en_past": "liked",
    "can": null,
    "must": null,
-   "please": null
+   "please": null,
+   "vi": "thích"
   },
   {
    "h": "가다",
@@ -3477,7 +3647,8 @@
    "en_past": "went",
    "can": "갈 수 있어요",
    "must": "가야 해요",
-   "please": "가세요"
+   "please": "가세요",
+   "vi": "đi"
   },
   {
    "h": "오다",
@@ -3499,7 +3670,8 @@
    "en_past": "came",
    "can": "올 수 있어요",
    "must": "와야 해요",
-   "please": "오세요"
+   "please": "오세요",
+   "vi": "đến"
   },
   {
    "h": "있다",
@@ -3527,7 +3699,8 @@
    ],
    "can": "있을 수 있어요",
    "must": "있어야 해요",
-   "please": "계세요"
+   "please": "계세요",
+   "vi": "có / ở"
   },
   {
    "h": "살다",
@@ -3550,7 +3723,8 @@
    "en_past": "lived",
    "can": "살 수 있어요",
    "must": "살아야 해요",
-   "please": "사세요"
+   "please": "사세요",
+   "vi": "sống"
   },
   {
    "h": "일하다",
@@ -3572,7 +3746,8 @@
    "en_past": "worked",
    "can": "일할 수 있어요",
    "must": "일해야 해요",
-   "please": "일하세요"
+   "please": "일하세요",
+   "vi": "làm việc"
   },
   {
    "h": "없다",
@@ -3600,7 +3775,8 @@
    ],
    "can": null,
    "must": null,
-   "please": null
+   "please": null,
+   "vi": "không có"
   },
   {
    "h": "주다",
@@ -3627,7 +3803,8 @@
    "en_past": "gave",
    "can": "줄 수 있어요",
    "must": "줘야 해요",
-   "please": "주세요"
+   "please": "주세요",
+   "vi": "đưa / tặng"
   },
   {
    "h": "보내다",
@@ -3653,7 +3830,8 @@
    "en_past": "sent",
    "can": "보낼 수 있어요",
    "must": "보내야 해요",
-   "please": "보내세요"
+   "please": "보내세요",
+   "vi": "gửi"
   },
   {
    "h": "전화하다",
@@ -3676,7 +3854,8 @@
    "en_past": "called",
    "can": "전화할 수 있어요",
    "must": "전화해야 해요",
-   "please": "전화하세요"
+   "please": "전화하세요",
+   "vi": "gọi điện"
   },
   {
    "h": "타다",
@@ -3700,7 +3879,8 @@
    "en_past": "took",
    "can": "탈 수 있어요",
    "must": "타야 해요",
-   "please": "타세요"
+   "please": "타세요",
+   "vi": "đi (xe)"
   },
   {
    "h": "하다",
@@ -3724,7 +3904,8 @@
    "en_past": "did",
    "can": "할 수 있어요",
    "must": "해야 해요",
-   "please": "하세요"
+   "please": "하세요",
+   "vi": "làm"
   },
   {
    "h": "치다",
@@ -3748,7 +3929,8 @@
    "en_past": "played",
    "can": "칠 수 있어요",
    "must": "쳐야 해요",
-   "please": "치세요"
+   "please": "치세요",
+   "vi": "chơi (đàn)"
   },
   {
    "h": "찍다",
@@ -3772,7 +3954,8 @@
    "en_past": "took",
    "can": "찍을 수 있어요",
    "must": "찍어야 해요",
-   "please": "찍으세요"
+   "please": "찍으세요",
+   "vi": "chụp"
   }
  ],
  "adjectives": [
@@ -3791,7 +3974,8 @@
    "level": 1,
    "ja_pres": "大きいです",
    "ja_past": "大きかったです",
-   "en_adj": "big"
+   "en_adj": "big",
+   "vi": "to"
   },
   {
    "h": "작다",
@@ -3808,7 +3992,8 @@
    "level": 1,
    "ja_pres": "小さいです",
    "ja_past": "小さかったです",
-   "en_adj": "small"
+   "en_adj": "small",
+   "vi": "nhỏ"
   },
   {
    "h": "맛있다",
@@ -3823,7 +4008,8 @@
    "level": 1,
    "ja_pres": "おいしいです",
    "ja_past": "おいしかったです",
-   "en_adj": "delicious"
+   "en_adj": "delicious",
+   "vi": "ngon"
   },
   {
    "h": "예쁘다",
@@ -3838,7 +4024,8 @@
    "level": 1,
    "ja_pres": "きれいです",
    "ja_past": "きれいでした",
-   "en_adj": "pretty"
+   "en_adj": "pretty",
+   "vi": "đẹp"
   },
   {
    "h": "좋다",
@@ -3862,7 +4049,8 @@
    "level": 1,
    "ja_pres": "いいです",
    "ja_past": "よかったです",
-   "en_adj": "good"
+   "en_adj": "good",
+   "vi": "tốt"
   },
   {
    "h": "비싸다",
@@ -3877,7 +4065,8 @@
    "level": 1,
    "ja_pres": "高いです",
    "ja_past": "高かったです",
-   "en_adj": "expensive"
+   "en_adj": "expensive",
+   "vi": "đắt"
   },
   {
    "h": "싸다",
@@ -3892,7 +4081,8 @@
    "level": 1,
    "ja_pres": "安いです",
    "ja_past": "安かったです",
-   "en_adj": "cheap"
+   "en_adj": "cheap",
+   "vi": "rẻ"
   },
   {
    "h": "재미있다",
@@ -3911,7 +4101,8 @@
    "level": 1,
    "ja_pres": "面白いです",
    "ja_past": "面白かったです",
-   "en_adj": "fun"
+   "en_adj": "fun",
+   "vi": "thú vị"
   },
   {
    "h": "어렵다",
@@ -3928,7 +4119,8 @@
    "level": 1,
    "ja_pres": "難しいです",
    "ja_past": "難しかったです",
-   "en_adj": "difficult"
+   "en_adj": "difficult",
+   "vi": "khó"
   },
   {
    "h": "쉽다",
@@ -3945,7 +4137,8 @@
    "level": 1,
    "ja_pres": "易しいです",
    "ja_past": "易しかったです",
-   "en_adj": "easy"
+   "en_adj": "easy",
+   "vi": "dễ"
   },
   {
    "h": "춥다",
@@ -3962,7 +4155,8 @@
    "level": 1,
    "ja_pres": "寒いです",
    "ja_past": "寒かったです",
-   "en_adj": "cold"
+   "en_adj": "cold",
+   "vi": "lạnh"
   },
   {
    "h": "덥다",
@@ -3979,7 +4173,8 @@
    "level": 1,
    "ja_pres": "暑いです",
    "ja_past": "暑かったです",
-   "en_adj": "hot"
+   "en_adj": "hot",
+   "vi": "nóng"
   },
   {
    "h": "바쁘다",
@@ -3995,7 +4190,8 @@
    "level": 1,
    "ja_pres": "忙しいです",
    "ja_past": "忙しかったです",
-   "en_adj": "busy"
+   "en_adj": "busy",
+   "vi": "bận"
   },
   {
    "h": "멀다",
@@ -4010,7 +4206,8 @@
    "level": 1,
    "ja_pres": "遠いです",
    "ja_past": "遠かったです",
-   "en_adj": "far"
+   "en_adj": "far",
+   "vi": "xa"
   },
   {
    "h": "가깝다",
@@ -4025,7 +4222,8 @@
    "level": 1,
    "ja_pres": "近いです",
    "ja_past": "近かったです",
-   "en_adj": "near"
+   "en_adj": "near",
+   "vi": "gần"
   },
   {
    "h": "많다",
@@ -4044,7 +4242,8 @@
    "level": 1,
    "ja_pres": "多いです",
    "ja_past": "多かったです",
-   "en_adj": "plentiful"
+   "en_adj": "plentiful",
+   "vi": "nhiều"
   },
   {
    "h": "친절하다",
@@ -4059,7 +4258,8 @@
    "level": 1,
    "ja_pres": "親切です",
    "ja_past": "親切でした",
-   "en_adj": "kind"
+   "en_adj": "kind",
+   "vi": "tốt bụng"
   },
   {
    "h": "귀엽다",
@@ -4076,7 +4276,8 @@
    "level": 1,
    "ja_pres": "かわいいです",
    "ja_past": "かわいかったです",
-   "en_adj": "cute"
+   "en_adj": "cute",
+   "vi": "dễ thương"
   },
   {
    "h": "조용하다",
@@ -4092,7 +4293,8 @@
    "level": 1,
    "ja_pres": "静かです",
    "ja_past": "静かでした",
-   "en_adj": "quiet"
+   "en_adj": "quiet",
+   "vi": "yên tĩnh"
   },
   {
    "h": "배고프다",
@@ -4108,7 +4310,8 @@
    "level": 1,
    "ja_pres": "お腹が空いています",
    "ja_past": "お腹が空いていました",
-   "en_adj": "hungry"
+   "en_adj": "hungry",
+   "vi": "đói"
   }
  ]
 }

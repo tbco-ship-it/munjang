@@ -8,6 +8,11 @@
 <h2>方針</h2>
 <ul><li>文は {{ counts.frames }} 種の検証済み文型と {{ counts.nouns }} の名詞・{{ counts.verbs }} の動詞・{{ counts.adjectives }} の形容詞からのみ作られます。ランダムな組み合わせは出しません。</li><li>助詞の判定は「形（パッチム）」と「自然さ（主題か主格か）」を分けて説明します。</li><li>音声は端末の韓国語音声（Web Speech API）を使い、外部に送信しません。作った文はこの端末のブラウザにだけ保存されます。</li></ul>
 <h2>収益について</h2><p>広告と、先生紹介リンク（紹介料を受け取る場合があります）で運営しています。判定や例文には影響しません。</p>
+{% elif lang == 'vi' %}
+<p>HangulSteps dành cho khoảnh khắc ngay sau khi bạn đọc được Hangul: chữ cái → từ vựng → câu với đúng tiểu từ → luyện viết tay, tất cả trên một màn hình.</p>
+<h2>Cách hoạt động</h2>
+<ul><li>Câu chỉ được tạo từ {{ counts.frames }} mẫu câu sơ cấp đã duyệt và {{ counts.nouns }} danh từ, {{ counts.verbs }} động từ, {{ counts.adjectives }} tính từ. Không ghép ngẫu nhiên.</li><li>Nhận xét về tiểu từ tách riêng quy tắc <em>hình thức</em> (받침) và quy tắc <em>tự nhiên</em> (chủ đề hay chủ ngữ).</li><li>Âm thanh dùng giọng tiếng Hàn của thiết bị (Web Speech API); không gửi gì đi đâu. Câu của bạn chỉ lưu trong trình duyệt này.</li></ul>
+<h2>Nguồn thu</h2><p>Trang chạy bằng quảng cáo và liên kết giới thiệu gia sư (chúng tôi có thể nhận hoa hồng). Không ảnh hưởng đến nhận xét hay câu ví dụ.</p>
 {% else %}
 <p>HangulSteps is for the moment right after you can read Hangul: letters → words → a sentence with the right particles → handwriting practice, all on one screen.</p>
 <h2>How it works</h2>

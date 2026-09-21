@@ -1,6 +1,6 @@
 {% extends "base.html" %}
-{% block title %}{% if lang == 'ja' %}韓国語の分かち書き（띄어쓰기）— どこでスペースを入れるか | HangulSteps{% else %}Korean spacing (띄어쓰기) — where the spaces go | HangulSteps{% endif %}{% endblock %}
-{% block description %}{% if lang == 'ja' %}日本語にはない分かち書き。「単語＋助詞」のかたまりごとにスペース、助詞は前にくっつける、-고 싶어요 の前は空ける。原稿用紙での書き方も。{% else %}Korean writes spaces between words, but particles stick to the word before them, and -고 싶어요 splits. The four rules beginners need, plus how it looks on 원고지 manuscript paper.{% endif %}{% endblock %}
+{% block title %}{% if lang == 'vi' %}Viết cách trong tiếng Hàn (띄어쓰기) — đặt khoảng trắng ở đâu | HangulSteps{% elif lang == 'ja' %}韓国語の分かち書き（띄어쓰기）— どこでスペースを入れるか | HangulSteps{% else %}Korean spacing (띄어쓰기) — where the spaces go | HangulSteps{% endif %}{% endblock %}
+{% block description %}{% if lang == 'vi' %}Tiếng Hàn viết cách giữa các từ, nhưng tiểu từ dính liền với từ đứng trước, và -고 싶어요 tách làm hai. Bốn quy tắc người mới học cần, kèm cách trình bày trên giấy ô vuông 원고지.{% elif lang == 'ja' %}日本語にはない分かち書き。「単語＋助詞」のかたまりごとにスペース、助詞は前にくっつける、-고 싶어요 の前は空ける。原稿用紙での書き方も。{% else %}Korean writes spaces between words, but particles stick to the word before them, and -고 싶어요 splits. The four rules beginners need, plus how it looks on 원고지 manuscript paper.{% endif %}{% endblock %}
 {% block content %}
 <article class="prose">
 {% if lang == 'ja' %}
@@ -14,6 +14,17 @@
 </ol>
 <h2>原稿用紙では</h2>
 <p>1マスに1音節、スペースは1マス空ける、句点「.」は1マス。行頭にはスペースのマスを置かず、行頭に来る句読点は前の行の最後のマスに入れます。HangulSteps の<a href="{{ base }}{{ ui.dir }}print/">印刷ページ</a>はこの流儀でマスを割り当てます。</p>
+{% elif lang == 'vi' %}
+<h1>Viết cách — một khoảng trắng cho mỗi cụm “từ + tiểu từ”</h1>
+<p class="lead">Tiếng Hàn dùng khoảng trắng, nhưng không như tiếng Việt. Đơn vị là cụm: một từ cùng với tiểu từ của nó. Bốn quy tắc bao trọn mọi câu trên trang này.</p>
+<ol>
+<li><b>Tiểu từ dính liền với từ đứng trước.</b> <span lang="ko">저는 / 커피를 / 학교에</span> — không bao giờ <span lang="ko">저 는</span>.</li>
+<li><b>Một khoảng trắng giữa các cụm.</b> <span lang="ko">저는⎵커피를⎵마셔요.</span></li>
+<li><b>-고 싶어요 tách trước 싶어요.</b> <span lang="ko">배우고⎵싶어요</span> — hai từ.</li>
+<li><b>안 đứng tách khỏi động từ.</b> <span lang="ko">안⎵마셔요</span>. Với động từ “danh từ + 하다” tách được, 안 đứng giữa danh từ và 하다: <span lang="ko">공부⎵안⎵해요</span> (nhưng <span lang="ko">안 좋아해요</span> — 좋아하다 không tách).</li>
+</ol>
+<h2>Trên giấy ô vuông (원고지)</h2>
+<p>Mỗi ô một âm tiết, mỗi khoảng trắng một ô trống, dấu chấm chiếm một ô riêng. Khoảng trắng không bao giờ mở đầu dòng — dấu câu rơi vào đầu dòng thì viết chung ô cuối của dòng trước. <a href="{{ base }}{{ ui.dir }}print/">Trang in</a> tự sắp xếp câu của bạn theo cách này.</p>
 {% else %}
 <h1>Spacing — one space per “word + particle” chunk</h1>
 <p class="lead">Korean uses spaces, but not where English does. The chunk is the unit: a word together with its particle. Four rules cover every sentence on this site.</p>
@@ -26,6 +37,6 @@
 <h2>On manuscript paper (원고지)</h2>
 <p>One syllable per square, one empty square per space, and the full stop gets its own square. A space never starts a line — punctuation that would fall at the start shares the last square of the previous line. The <a href="{{ base }}{{ ui.dir }}print/">print page</a> lays your sentences out this way automatically.</p>
 {% endif %}
-<p><a class="btn" href="{{ base }}{{ ui.dir }}#j=ㅅ">{% if lang == 'ja' %}組み立てツールで練習する →{% else %}Practice in the builder →{% endif %}</a></p>
+<p><a class="btn" href="{{ base }}{{ ui.dir }}#j=ㅅ">{% if lang == 'ja' %}組み立てツールで練習する →{% elif lang == 'vi' %}Luyện trong xưởng ghép câu →{% else %}Practice in the builder →{% endif %}</a></p>
 </article>
 {% endblock %}

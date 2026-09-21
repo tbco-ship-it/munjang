@@ -2,7 +2,7 @@
 (function () {
   const M = window.Munjang, D = window.MJ_DATA, box = document.getElementById('quiz');
   if (!box) return;
-  const LANG = box.dataset.lang === 'ja' ? 'ja' : 'en';
+  const LANG = ['ja', 'vi'].includes(box.dataset.lang) ? box.dataset.lang : 'en';
   const WHY = Object.assign({ _lang: LANG }, D.templates.why[LANG]);
   const noun = h => D.words.nouns.find(n => n.h === h), verb = h => D.words.verbs.find(v => v.h === h), tpl = id => D.templates.templates.find(t => t.id === id);
   const Q = [
@@ -13,7 +13,7 @@
     { t: tpl('act'), kind: 'OP', expect: 'obj', w: noun('책'), v: verb('읽다'), lead: '저는 ', rest: ' 읽어요' },
     { t: tpl('exist'), kind: 'SP', w: noun('고양이'), rest: ' 집에 있어요' },
   ];
-  const L = LANG === 'ja' ? { ok: '自然', soft: '文法的にはOK、でも…', no: 'ちがいます' } : { ok: 'Natural', soft: 'Grammatical, but…', no: 'Not quite' };
+  const U = window.MJ_UI || {}; const L = { ok: U.correct || 'Natural', soft: U.soft || 'Also possible', no: U.wrong || 'Not quite' };
   Q.forEach((q, i) => {
     const d = document.createElement('div'); d.className = 'qz';
     const opts = q.kind === 'SP' ? M.SP_OPTIONS : M.OP_OPTIONS;

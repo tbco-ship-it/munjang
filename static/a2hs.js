@@ -26,6 +26,9 @@
     ja: { pill: 'ホーム画面に追加', sub: '次からはアイコン1つで', close: '閉じる', title: 'ホーム画面に追加', lead: 'アプリのようにすぐ開けます。インストール不要。',
           s1new: 'アドレスバー右の<b>⋯</b>をタップして<b>共有</b>', s1old: 'Safari下部の<b>共有</b>ボタンをタップ', s2: 'メニュー下の<b>ホーム画面に追加</b>をタップ', s2n: '見当たらなければ<b>その他</b>の中にあります', s3: '右上の<b>追加</b>',
           ok2: 'わかりました', later: 'あとで', ok: 'インストール', add: '追加', remnew: '<b>⋯</b> → 共有 → ホーム画面に追加', remold: '共有 → ホーム画面に追加' },
+    vi: { pill: 'Thêm vào Màn hình chính', sub: 'Lần sau chỉ cần một chạm', close: 'Đóng', title: 'Thêm vào Màn hình chính', lead: 'Mở như ứng dụng. Không cần cài, không tốn dung lượng.',
+          s1new: 'Chạm <b>⋯</b> cạnh thanh địa chỉ, rồi <b>Chia sẻ</b>', s1old: 'Chạm nút <b>chia sẻ</b> của Safari ở dưới', s2: 'Chạm <b>Thêm vào MH chính</b> ở gần cuối', s2n: 'Không thấy? Nó nằm trong <b>Thêm</b>', s3: 'Chạm <b>Thêm</b> ở góc trên phải',
+          ok2: 'Đã hiểu', later: 'Để sau', ok: 'Cài đặt', add: 'Thêm', remnew: '<b>⋯</b> → Chia sẻ → Thêm vào MH chính', remold: 'Chia sẻ → Thêm vào MH chính' },
     en: { pill: 'Add to Home Screen', sub: 'Next time, one tap', close: 'Close', title: 'Add to Home Screen', lead: 'Opens like an app. Nothing to install, no storage used.',
           s1new: 'Tap <b>⋯</b> next to the address bar, then <b>Share</b>', s1old: 'Tap Safari\'s <b>share</b> button at the bottom', s2: 'Tap <b>Add to Home Screen</b> near the bottom', s2n: 'Not there? It is under <b>More</b>', s3: 'Tap <b>Add</b> top right',
           ok2: 'Got it', later: 'Not now', ok: 'Install', add: 'Add', remnew: '<b>⋯</b> → Share → Add to Home Screen', remold: 'Share → Add to Home Screen' }

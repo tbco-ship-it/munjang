@@ -1,6 +1,6 @@
 {% extends "base.html" %}
-{% block title %}{% if lang == 'ja' %}은/는 と 이/가 の使い分け — 例文で判定する助詞ガイド | HangulSteps{% else %}은/는 vs 이/가 — the Korean particle guide with a built-in quiz | HangulSteps{% endif %}{% endblock %}
-{% block description %}{% if lang == 'ja' %}「저는」なのに「제가」？ 은/는（主題）と 이/가（主格）の違いを、パッチムの形の規則と、どちらが自然かの規則に分けて解説。을/를・에・에서 も同じ流儀で。ミニクイズ付き。{% else %}Why is it 저는 but 제가? 은/는 (topic) vs 이/가 (subject), split into the form rule (받침) and the naturalness rule, plus 을/를 · 에 · 에서. With a mini quiz that explains every answer.{% endif %}{% endblock %}
+{% block title %}{% if lang == 'vi' %}은/는 và 이/가 — hướng dẫn tiểu từ tiếng Hàn có bài tập | HangulSteps{% elif lang == 'ja' %}은/는 と 이/가 の使い分け — 例文で判定する助詞ガイド | HangulSteps{% else %}은/는 vs 이/가 — the Korean particle guide with a built-in quiz | HangulSteps{% endif %}{% endblock %}
+{% block description %}{% if lang == 'vi' %}Vì sao là 저는 nhưng lại 제가? 은/는 (chủ đề) và 이/가 (chủ ngữ), tách thành quy tắc hình thức (받침) và quy tắc tự nhiên, cộng thêm 을/를 · 에 · 에서. Có bài tập nhỏ giải thích từng đáp án.{% elif lang == 'ja' %}「저는」なのに「제가」？ 은/는（主題）と 이/가（主格）の違いを、パッチムの形の規則と、どちらが自然かの規則に分けて解説。을/를・에・에서 も同じ流儀で。ミニクイズ付き。{% else %}Why is it 저는 but 제가? 은/는 (topic) vs 이/가 (subject), split into the form rule (받침) and the naturalness rule, plus 을/를 · 에 · 에서. With a mini quiz that explains every answer.{% endif %}{% endblock %}
 {% block content %}
 <article class="prose">
 {% if lang == 'ja' %}
@@ -26,6 +26,29 @@
 <li><b>에서</b>：動作が行われる場所。<span lang="ko">카페에서 커피를 마셔요. 서울에서 살아요.</span></li>
 </ul>
 <p>覚え方：「行く・いる」なら 에、「そこで何かをする」なら 에서。</p>
+{% elif lang == 'vi' %}
+<h1>은/는 và 이/가 — quy tắc hình thức và quy tắc tự nhiên</h1>
+<p class="lead">Đây là câu hỏi số một của người mới học, và nó khó vì hai quy tắc riêng biệt bị lẫn vào nhau. Một quy tắc máy móc. Quy tắc kia là chuyện câu nghe thế nào.</p>
+<h2>1. Quy tắc hình thức (máy móc)</h2>
+<p>Nếu từ đứng trước tiểu từ kết thúc bằng phụ âm (받침), dùng <b>은 / 이 / 을</b>. Nếu kết thúc bằng nguyên âm, dùng <b>는 / 가 / 를</b>. Chỉ vậy thôi.</p>
+<table><tr><th>Từ</th><th>Kết thúc</th><th>Chủ đề</th><th>Chủ ngữ</th><th>Tân ngữ</th></tr>
+<tr><td>가방 (túi)</td><td>ㅇ (phụ âm)</td><td>가방<b>은</b></td><td>가방<b>이</b></td><td>가방<b>을</b></td></tr>
+<tr><td>커피 (cà phê)</td><td>nguyên âm</td><td>커피<b>는</b></td><td>커피<b>가</b></td><td>커피<b>를</b></td></tr>
+<tr><td>저 (tôi)</td><td>nguyên âm</td><td>저<b>는</b></td><td><b>제가</b> (bất quy tắc)</td><td>저<b>를</b></td></tr></table>
+<p>Ngoại lệ duy nhất là đại từ: 저 + 가 → <b>제가</b>, 나 + 가 → <b>내가</b>, 누구 + 가 → <b>누가</b>.</p>
+<h2>2. Quy tắc tự nhiên (은/는 hay 이/가?)</h2>
+<ul>
+<li><b>은/는 (chủ đề)</b> — “về X thì…”. Dùng khi nói bạn hoặc một người đã biết làm gì. <span lang="ko">저는 커피를 마셔요.</span> (Tôi uống cà phê.)</li>
+<li><b>이/가 (chủ ngữ)</b> — miêu tả, thông tin mới, sự tồn tại. <span lang="ko">김치가 맛있어요.</span> (Kim chi ngon.) <span lang="ko">고양이가 집에 있어요.</span> (Con mèo ở nhà.)</li>
+<li>Đổi cho nhau thường vẫn đúng ngữ pháp, nhưng sắc thái thay đổi. <span lang="ko">김치는 맛있어요</span> nghe như “kim chi thì ngon (khác với món khác)”. <span lang="ko">제가 커피를 마셔요</span> nghe như “chính tôi là người uống cà phê”.</li>
+</ul>
+<h2>3. 을/를 · 에 · 에서</h2>
+<ul>
+<li><b>을/를</b> — thứ chịu tác động. <span lang="ko">책을 읽어요.</span> (Tôi đọc sách.)</li>
+<li><b>에</b> — đích đến, hoặc nơi có gì đó. <span lang="ko">학교에 가요. 집에 있어요.</span></li>
+<li><b>에서</b> — nơi hành động diễn ra. <span lang="ko">카페에서 커피를 마셔요. 서울에서 살아요.</span></li>
+</ul>
+<p>Mẹo: đi đến hoặc ở đâu → 에; làm gì ở đó → 에서.</p>
 {% else %}
 <h1>은/는 vs 이/가 — the form rule and the naturalness rule</h1>
 <p class="lead">This is the number-one beginner question, and the reason it feels impossible is that two separate rules are tangled together. One is mechanical. The other is about how the sentence sounds.</p>
@@ -50,9 +73,9 @@
 </ul>
 <p>Rule of thumb: going or being somewhere → 에; doing something there → 에서.</p>
 {% endif %}
-<h2 id="quiz-heading">{% if lang == 'ja' %}ミニクイズ{% else %}Mini quiz{% endif %}</h2>
+<h2 id="quiz-heading">{% if lang == 'ja' %}ミニクイズ{% elif lang == 'vi' %}Bài tập nhỏ{% else %}Mini quiz{% endif %}</h2>
 <div class="quiz" id="quiz" data-lang="{{ lang }}"></div>
-<p><a class="btn" href="{{ base }}{{ ui.dir }}#j=ㄱ">{% if lang == 'ja' %}組み立てツールで練習する →{% else %}Practice in the builder →{% endif %}</a></p>
+<p><a class="btn" href="{{ base }}{{ ui.dir }}#j=ㄱ">{% if lang == 'ja' %}組み立てツールで練習する →{% elif lang == 'vi' %}Luyện trong xưởng ghép câu →{% else %}Practice in the builder →{% endif %}</a></p>
 </article>
 {% endblock %}
 {% block scripts %}

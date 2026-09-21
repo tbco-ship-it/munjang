@@ -26,7 +26,9 @@
     "must",
     "please"
    ],
-   "level": 1
+   "level": 1,
+   "vi": "Ai đó làm gì",
+   "ex_vi": "Tôi uống cà phê."
   },
   {
    "id": "want",
@@ -48,7 +50,9 @@
    "tenses": [
     "want"
    ],
-   "level": 2
+   "level": 2,
+   "vi": "Tôi muốn…",
+   "ex_vi": "Tôi muốn học tiếng Hàn."
   },
   {
    "id": "go",
@@ -76,7 +80,9 @@
     "must",
     "please"
    ],
-   "level": 1
+   "level": 1,
+   "vi": "Đi đâu đó",
+   "ex_vi": "Tôi đi đến trường."
   },
   {
    "id": "at",
@@ -106,7 +112,9 @@
     "must",
     "please"
    ],
-   "level": 2
+   "level": 2,
+   "vi": "Làm gì ở một nơi",
+   "ex_vi": "Bạn tôi uống cà phê ở quán cà phê."
   },
   {
    "id": "live",
@@ -133,7 +141,9 @@
     "must",
     "please"
    ],
-   "level": 2
+   "level": 2,
+   "vi": "Sống / làm việc ở đâu",
+   "ex_vi": "Tôi sống ở Seoul."
   },
   {
    "id": "is",
@@ -152,7 +162,9 @@
     "pres",
     "past"
    ],
-   "level": 1
+   "level": 1,
+   "vi": "Miêu tả cái gì đó",
+   "ex_vi": "Kimchi ngon."
   },
   {
    "id": "exist",
@@ -175,7 +187,9 @@
     "pres",
     "past"
    ],
-   "level": 1
+   "level": 1,
+   "vi": "Cái gì đó ở đâu",
+   "ex_vi": "Con mèo ở nhà."
   },
   {
    "id": "neg",
@@ -198,7 +212,9 @@
     "pres",
     "past"
    ],
-   "level": 2
+   "level": 2,
+   "vi": "Không làm gì (안)",
+   "ex_vi": "Tôi không uống cà phê."
   },
   {
    "id": "time",
@@ -233,7 +249,9 @@
      ]
     }
    },
-   "level": 2
+   "level": 2,
+   "vi": "Khi nào đi đâu",
+   "ex_vi": "Cuối tuần tôi đi công viên."
   },
   {
    "id": "have",
@@ -265,7 +283,9 @@
      ]
     }
    },
-   "level": 2
+   "level": 2,
+   "vi": "Có / không có",
+   "ex_vi": "Tôi có thời gian."
   },
   {
    "id": "with",
@@ -304,7 +324,9 @@
      ]
     }
    },
-   "level": 3
+   "level": 3,
+   "vi": "Làm gì cùng ai",
+   "ex_vi": "Tôi xem phim với bạn."
   },
   {
    "id": "give",
@@ -345,7 +367,9 @@
      ]
     }
    },
-   "level": 3
+   "level": 3,
+   "vi": "Đưa / gửi cho ai",
+   "ex_vi": "Tôi tặng quà cho bạn."
   }
  ],
  "why": {
@@ -444,20 +468,71 @@
    "exist_subject_ok": "있어요 / 없어요 では 이/가 が存在するものを示します。「{w}」がすでに話題なら 은/는 も使えます。",
    "exist_place_ok": "에 は、人や物がいる・ある場所を示します：집에 있어요。",
    "live_both": "「{v}」は 에 と 에서 の両方が使えます：서울에 살아요／서울에서 살아요。"
+  },
+  "vi": {
+   "batchim_yes": "“{w}” kết thúc bằng phụ âm (받침 {f}) → {p}",
+   "batchim_no": "“{w}” kết thúc bằng nguyên âm → {p}",
+   "topic_ok": "은/는 biến “{w}” thành chủ đề — điều câu này nói về.",
+   "topic_contrast": "Cũng được: 이/가 đánh dấu “{w}” là chủ ngữ — trả lời “ai/cái gì?” hoặc kể một sự việc. Ngữ cảnh quyết định.",
+   "subject_ok": "이/가 đánh dấu “{w}” là chủ ngữ của lời miêu tả này. 은/는 cũng được khi “{w}” là chủ đề.",
+   "subject_contrast": "Cũng được: 은/는 biến “{w}” thành chủ đề. Có thể gợi ý sự đối chiếu, nhưng không bắt buộc.",
+   "exist_subject_ok": "Với 있어요 / 없어요, 이/가 đánh dấu thứ tồn tại. 은/는 cũng dùng được khi “{w}” đã là chủ đề.",
+   "exist_place_ok": "에 đánh dấu nơi ai đó hoặc cái gì đó đang ở: 집에 있어요.",
+   "jeo_ga": "저 + 가 trở thành 제가 (và 나 + 가 thành 내가)",
+   "obj_ok": "Trong mẫu này “{w}” là tân ngữ của động từ “{v}” → 을/를.",
+   "obj_wrong_dest": "에 đánh dấu nơi đến hoặc nơi có gì đó. “{w}” là thứ chịu tác động → 을/를",
+   "obj_wrong_loc": "에서 đánh dấu nơi hành động diễn ra. “{w}” là thứ chịu tác động → 을/를",
+   "dest_ok": "“{v}” là di chuyển → 에 đánh dấu đích đến.",
+   "dest_wrong_loc": "Ô này hỏi đích đến, nên chọn 에. Với 가다/오다, 에서 đánh dấu điểm xuất phát (한국에서 왔어요).",
+   "dest_wrong_obj": "Bài này luyện đích đến với 에 (학교에 가요). 학교를 가요 cũng nghe thấy trong khẩu ngữ — nhưng không phải mẫu luyện ở đây.",
+   "exist_wrong_loc": "Với 있어요, nơi có gì đó dùng 에, không dùng 에서",
+   "loc_ok": "Hành động diễn ra ở {w} → 에서 (nơi diễn ra)",
+   "loc_wrong_dest": "에 dùng cho đích đến hoặc nơi CÓ gì đó. Với hành động diễn ra ở đó (“{v}”), tiểu từ thường dùng là 에서.",
+   "loc_wrong_obj": "“{w}” là địa điểm, không phải thứ chịu tác động → 에서",
+   "live_both": "“{v}” dùng được cả hai: 서울에 살아요 / 서울에서 살아요.",
+   "space": "Khoảng trắng đặt sau mỗi cụm từ + tiểu từ. Tiểu từ dính liền với từ đứng trước.",
+   "incompatible": "Chưa có câu tự nhiên cho “{w}” với {v} — hãy thử một trong các từ gợi ý.",
+   "pick_word": "Chọn một từ cho ô này",
+   "time_ok": "“{w}” là một thời điểm → 에 (vào)",
+   "time_none_ok": "“{w}” không bao giờ đi với 에 — 오늘·내일·어제·매일·지금 đứng một mình",
+   "time_wrong_none": "“{w}” thuộc nhóm đứng một mình: không có 에 sau 오늘·내일·어제·매일·지금",
+   "time_wrong_e": "Từ chỉ thời gian như “{w}” đi với 에 (주말에, 아침에, 월요일에)",
+   "have_ok": "Với 있어요 / 없어요, thứ bạn có đi với 이/가, không phải 을/를 — tiếng Hàn nói “với tôi thì thời gian tồn tại”",
+   "have_wrong_obj": "있어요 / 없어요 không phải động từ “có”: thứ đó đi với 이/가, không bao giờ 을/를 → “{w}{p}”",
+   "with_ok": "“{w}” + 와/과 = với. 와 sau nguyên âm, 과 sau phụ âm",
+   "with_hago": "하고 cũng có nghĩa “với” và dùng được sau mọi từ — thân mật hơn 와/과",
+   "to_ok": "“{w}” là người → 에게 (hoặc 한테 thân mật hơn). 에 chỉ dùng cho địa điểm",
+   "to_wrong_e": "에 dùng cho địa điểm. Với người, dùng 에게 hoặc 한테: “{w}에게”",
+   "to_wrong_obj": "“{w}” là người nhận, không phải thứ được đưa → 에게 / 한테",
+   "neg_space": "안 đứng ngay trước động từ, có khoảng trắng: 안 마셔요",
+   "chk_space_particle": "“{p}” là tiểu từ — nó dính liền với từ đứng trước: “{prev}{p}”, không có khoảng trắng.",
+   "chk_an_space": "안 đứng tách khỏi động từ: “안 {v}”.",
+   "chk_want_space": "-고 싶어요 viết thành hai từ: “{v}”.",
+   "chk_verb_last": "Động từ ({v}) đứng ở cuối câu tiếng Hàn.",
+   "chk_ending": "“{w}” không giống đuôi động từ lịch sự (-아요/어요, -습니다). Thiếu động từ chăng?",
+   "chk_formal": "“{w}” là văn phong trang trọng/thường; trong khẩu ngữ lịch sự dùng -아요/어요.",
+   "chk_pair": "“{w}” với {v} là kết hợp lạ trong danh sách từ của chúng tôi — có thể vẫn ổn; gia sư sẽ biết.",
+   "chk_unknown": "Không có trong danh sách từ — chỉ kiểm tra dạng tiểu từ, không kiểm tra nghĩa.",
+   "chk_ok": "Mọi quy tắc kiểm tra được đều đạt. Độ tự nhiên (người Hàn có nói vậy không?) cần một người thật.",
+   "chk_partial": "Không thấy lỗi quy tắc ở các phần nhận ra được. {n} cụm nằm ngoài danh sách từ — chưa kiểm tra.",
+   "chk_no": "Sửa các cụm được đánh dấu rồi kiểm tra lại."
   }
  },
  "levels": {
   "1": {
    "en": "Lv1 · First sentences",
-   "ja": "Lv1 · はじめの文"
+   "ja": "Lv1 · はじめの文",
+   "vi": "Cấp 1 · Câu đầu tiên"
   },
   "2": {
    "en": "Lv2 · Wants, places, time",
-   "ja": "Lv2 · 〜したい・場所・時間"
+   "ja": "Lv2 · 〜したい・場所・時間",
+   "vi": "Cấp 2 · Muốn, địa điểm, thời gian"
   },
   "3": {
    "en": "Lv3 · With, to, can, must, please",
-   "ja": "Lv3 · 〜と・〜に・できる・〜べき・〜てください"
+   "ja": "Lv3 · 〜と・〜に・できる・〜べき・〜てください",
+   "vi": "Cấp 3 · Với, cho, có thể, phải, hãy"
   }
  },
  "tense_levels": {
