@@ -88,8 +88,8 @@ eq(M.adjectivesFor(noun('김치'), W).map(a => a.h).includes('어렵다'), false
 // cells
 eq(M.cells('저는 커피를 마셔요.', 10), ['저', '는', '', '커', '피', '를', '', '마', '셔', '요', '.', '', '', '', '', '', '', '', '', ''], 'cells');
 
-// every verb/adjective conjugation present, every noun has en+ja+r (뵙다 has defective eo forms suppressed to null)
-for (const v of [...W.verbs, ...W.adjectives]) if ((!v.pres || !v.past) && v.h !== '뵙다') { fails++; console.log('FAIL missing forms', v.h); }
+// every verb/adjective conjugation present, every noun has en+ja+r
+for (const v of [...W.verbs, ...W.adjectives]) if (!v.pres || !v.past) { fails++; console.log('FAIL missing forms', v.h); }
 for (const n of W.nouns) if (!n.en || !n.ja || !n.r) { fails++; console.log('FAIL missing meaning', n.h); }
 // every basic jamo has at least 3 words
 for (const j of [...M.BASIC_CONSONANTS, ...M.BASIC_VOWELS]) {

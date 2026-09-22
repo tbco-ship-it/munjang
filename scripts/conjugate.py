@@ -370,6 +370,7 @@ OVERRIDES = {
     '바쁘다': {'eoseo': '바빠서'}, '예쁘다': {'eoseo': '예뻐서'}, '크다': {'eoseo': '커서'}, '싸다': {'eoseo': '싸서'}, '비싸다': {'eoseo': '비싸서'},
     '좋다': {'geotgatayo': '좋은 것 같아요'}, '많다': {'geotgatayo': '많은 것 같아요'}, '작다': {'geotgatayo': '작은 것 같아요'}, '맛있다': {'geotgatayo': '맛있는 것 같아요', 'plain': '맛있다'}, '재미있다': {'geotgatayo': '재미있는 것 같아요', 'plain': '재미있다'},
     '친절하다': {'geotgatayo': '친절한 것 같아요'}, '조용하다': {'geotgatayo': '조용한 것 같아요'},
+    '뵙다': {'pres': '봬요', 'past': '뵀어요', 'must': '봬야 해요', 'please': None, 'juseyo': None, 'eoseo': '봬서', 'yagesseoyo': '봬야겠어요', 'bwasseoyo': '봬 봤어요', 'hon_pres': None, 'hon_past': None},
 }
 
 

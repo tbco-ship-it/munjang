@@ -233,7 +233,8 @@
   "footer_krdict": "Vocabulary data: <a href=\"https://krdict.korean.go.kr\" target=\"_blank\" rel=\"noopener\">National Institute of Korean Language Korean Basic Dictionary</a> (CC BY-SA 2.0 KR)",
   "gloss_auto_badge": "Auto-translated",
   "picker_search_ph": "Search...",
-  "picker_more": "Show more"
+  "picker_more": "Show more",
+  "picker_auto_notice": "Definitions are auto-translated · Unreviewed"
  },
  "ja": {
   "lang": "ja",
@@ -469,7 +470,8 @@
   "footer_krdict": "語彙データ：<a href=\"https://krdict.korean.go.kr\" target=\"_blank\" rel=\"noopener\">国立国語院 韓国語基礎辞典</a> (CC BY-SA 2.0 KR)",
   "gloss_auto_badge": "自動翻訳",
   "picker_search_ph": "検索...",
-  "picker_more": "もっと見る"
+  "picker_more": "もっと見る",
+  "picker_auto_notice": "訳語は自動翻訳です · 未校閲"
  },
  "vi": {
   "lang": "vi",
@@ -704,6 +706,7 @@
   "footer_krdict": "Dữ liệu từ vựng: <a href=\"https://krdict.korean.go.kr\" target=\"_blank\" rel=\"noopener\">Từ điển tiếng Hàn cơ bản của Viện Ngôn ngữ Quốc gia</a> (CC BY-SA 2.0 KR)",
   "gloss_auto_badge": "Bản dịch tự động",
   "picker_search_ph": "Tìm kiếm...",
-  "picker_more": "Xem thêm"
+  "picker_more": "Xem thêm",
+  "picker_auto_notice": "Nghĩa từ được dịch tự động · Chưa kiểm duyệt"
  }
 }

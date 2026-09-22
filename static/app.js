@@ -753,11 +753,32 @@
     searchWrap.appendChild(searchInp);
     sh.appendChild(searchWrap);
 
+    if (opts.some(o => o.gloss_auto)) {
+      const notice = el('div', 'picker-notice', esc(t('picker_auto_notice')));
+      sh.appendChild(notice);
+    }
+
     const list = el('div', 'picker-list');
     sh.appendChild(list);
 
     const minL = Math.min(...opts.map(o => o.level || 1));
     let curLevel = Math.max(st.tpl.level || 1, minL);
+
+    function alignPicker() {
+      sh.style.left = '0';
+      sh.style.right = 'auto';
+      const rect = sh.getBoundingClientRect();
+      if (rect.right > window.innerWidth - 12) {
+        sh.style.left = 'auto';
+        sh.style.right = '0';
+        const r2 = sh.getBoundingClientRect();
+        if (r2.left < 12) {
+          const anchorRect = anchor.getBoundingClientRect();
+          sh.style.right = 'auto';
+          sh.style.left = `${Math.max(12 - anchorRect.left, 0)}px`;
+        }
+      }
+    }
 
     function renderList() {
       list.innerHTML = '';
@@ -787,8 +808,7 @@
         list.appendChild(emp);
       } else {
         matched.forEach(o => {
-          const autoBadge = o.gloss_auto ? ` <span class="badge-auto">${esc(t('gloss_auto_badge'))}</span>` : '';
-          const b = el('button', 'pk', `<b lang="ko">${esc(shown(o))}</b><small>${esc(mean(o))}${autoBadge}</small>`);
+          const b = el('button', 'pk', `<b lang="ko">${esc(shown(o))}</b><small>${esc(mean(o))}</small>`);
           b.type = 'button';
           b.onclick = () => { setPick(k, o); closePicker(); };
           list.appendChild(b);
@@ -808,6 +828,7 @@
           list.appendChild(moreBtn);
         }
       }
+      alignPicker();
     }
 
     searchInp.oninput = () => renderList();
@@ -815,6 +836,7 @@
 
     renderList();
     anchor.appendChild(sh);
+    alignPicker();
     if (window.matchMedia && window.matchMedia('(pointer: fine)').matches) {
       setTimeout(() => searchInp.focus(), 0);
     }

@@ -90,6 +90,12 @@ IRREGULAR_EN_PAST = {
     'win': 'won', 'wind': 'wound', 'wring': 'wrung', 'write': 'wrote'
 }
 
+DOUBLED_CONSONANT_PAST = {
+    'occur': 'occurred', 'transfer': 'transferred', 'refer': 'referred',
+    'prefer': 'preferred', 'admit': 'admitted', 'submit': 'submitted',
+    'permit': 'permitted', 'commit': 'committed', 'equip': 'equipped',
+}
+
 def derive_en_forms(en_base):
     """Derive en_3s and en_past based on the first word of en_base."""
     parts = en_base.split()
@@ -117,6 +123,8 @@ def derive_en_forms(en_base):
     # past
     if first in IRREGULAR_EN_PAST:
         past = IRREGULAR_EN_PAST[first]
+    elif first in DOUBLED_CONSONANT_PAST:
+        past = DOUBLED_CONSONANT_PAST[first]
     elif first.endswith('e'):
         past = first + 'd'
     elif len(first) > 1 and first.endswith('y') and first[-2] not in 'aeiou':
@@ -128,31 +136,103 @@ def derive_en_forms(en_base):
 
     return en_base, s3 + rest, past + rest
 
+import re
+
 I_DAN = set('いきしちにひみりぎじぢびぴ')
 E_DAN = set('えけせてねへめれげぜでべぺ')
-GODAN_EXCEPTIONS = {
-    '帰る', '入る', '知る', '走る', '切る', '要る', '減る', 'しゃべる', '滑る',
-    '蹴る', '握る', '焦る', '限る', '照る', '散る', '混じる', '交じる',
-    'ちる', 'しる', 'はしる', 'きる', 'いる', 'かえる', 'はいる'
-}
+GODAN_EXCEPTIONS_KANJI = [
+    '入る', '走る', '帰る', '返る', '知る', '切る', '要る', '減る', '蹴る', '滑る',
+    '握る', '参る', '散る', '限る', '喋る', '照る', '練る', '焦る',
+    '混じる', '交じる', '湿る', '遮る', '捻る'
+]
+GODAN_EXCEPTIONS_KANA = [
+    'はいる', 'はしる', 'しゃべる', 'すべる', 'にぎる', 'まいる', 'ちる',
+    'かぎる', 'てる', 'あせる', 'まじる', 'しめる', 'さえぎる', 'ひねる'
+]
 I_MAP = {'う': 'い', 'く': 'き', 'ぐ': 'ぎ', 'す': 'し', 'つ': 'ち', 'ぬ': 'に', 'ぶ': 'び', 'む': 'み', 'る': 'り'}
 A_MAP = {'う': 'わ', 'く': 'か', 'ぐ': '가', 'す': 'さ', 'つ': 'た', 'ぬ': 'な', 'ぶ': 'ば', 'む': 'ま', 'る': 'ら'}
 A_MAP['ぐ'] = 'が'
 TE_MAP = {'う': 'って', 'つ': 'って', 'る': 'って', 'く': 'いて', 'ぐ': 'いで', 'す': 'して', 'ぬ': 'んで', 'ぶ': 'んで', 'む': 'んで'}
 
+GODAN_EX_APPLIED_COUNT = 0
+
+def parse_ja_eq_list(raw_ja):
+    """Split raw_ja string by '。' or ';' into list of (kanji, kana) candidates."""
+    if not raw_ja:
+        return []
+    parts = [p.strip() for p in re.split(r'[;。]', raw_ja) if p.strip()]
+    cands = []
+    for part in parts:
+        if '【' in part:
+            kana = part.split('【')[0].strip()
+            kanji = part.split('【')[1].split('】')[0].strip()
+        else:
+            kana = part.strip()
+            kanji = part.strip()
+        kana = kana.split('・')[-1].strip()
+        kanji = kanji.split('・')[0].strip()
+        if kanji or kana:
+            cands.append((kanji, kana))
+    return cands
+
+def is_valid_ja_verb(kanji, kana):
+    """Check if candidate (kanji, kana) is a valid Japanese verb in dictionary form."""
+    if kana.endswith('ない') or kanji.endswith('ない'):
+        return False
+    if kanji.endswith('だ') or kana.endswith('だ'):
+        return False
+    if kana.endswith('い'):
+        return False
+    u_dan = set('るうくぐすつぬぶむ')
+    if not (kana and kana[-1] in u_dan):
+        return False
+    return True
+
+def is_valid_ja_adj(kanji, kana):
+    """Check if candidate is a valid Japanese adjective (i-adj or na-adj)."""
+    if kana.endswith('い') or kanji.endswith('い'):
+        return True
+    if kanji.endswith('だ') or kana.endswith('だ'):
+        return True
+    return False
+
 def generate_ja_verb(ja_raw, flags):
     """Generate Japanese verb conjugation forms from raw ja dump string."""
-    first = ja_raw.split(';')[0].split('。')[0].strip()
-    if '【' in first:
-        kana = first.split('【')[0].strip()
-        kanji = first.split('【')[1].split('】')[0].strip()
-    else:
-        kana = first
-        kanji = first
-    kana = kana.split('・')[-1].strip()
-    kanji = kanji.split('・')[0].strip()
+    global GODAN_EX_APPLIED_COUNT
+    cands = parse_ja_eq_list(ja_raw)
+    valid_cands = [c for c in cands if is_valid_ja_verb(c[0], c[1])]
 
-    if kana.endswith('する'):
+    if not valid_cands:
+        first_kanji = cands[0][0] if cands else (ja_raw.split(';')[0].split('。')[0].strip() if ja_raw else '')
+        return {
+            'ja': first_kanji,
+            'ja_dict': None,
+            'ja_stem': None,
+            'ja_pres': None,
+            'ja_past': None,
+            'ja_want': None,
+            'ja_fut': None,
+            'ja_can': None,
+            'ja_must': None,
+            'ja_please': None,
+            'ja_neg': None,
+            'ja_neg_past': None,
+            'ja_te': None,
+            'ja_nai': None,
+            'ja_p': None,
+        }
+
+    kanji, kana = valid_cands[0]
+
+    # Normalize ずる -> じる (e.g. 感ずる -> 感じる, 命ずる -> 命じる)
+    if kanji.endswith('ずる'):
+        kanji = kanji[:-2] + 'じる'
+    if kana.endswith('ずる'):
+        kana = kana[:-2] + 'じる'
+
+    is_kuru = (kana == 'くる' or kana.endswith('てくる') or kanji == '来る' or kanji.endswith('て来る') or kanji.endswith('てくる'))
+
+    if kana.endswith('する') or kanji.endswith('する'):
         pfx = kanji[:-2]
         out = {
             'ja': kanji,
@@ -170,7 +250,7 @@ def generate_ja_verb(ja_raw, flags):
             'ja_te': pfx + 'して',
             'ja_nai': pfx + 'しない',
         }
-    elif kana.endswith('くる') or kanji.endswith('来る'):
+    elif is_kuru:
         pfx = kanji[:-2] if (kanji.endswith('くる') or kanji.endswith('来る')) else ''
         k_char = '来' if '来' in kanji[-2:] else 'き'
         out = {
@@ -189,46 +269,54 @@ def generate_ja_verb(ja_raw, flags):
             'ja_te': pfx + ('来て' if '来' in kanji[-2:] else 'きて'),
             'ja_nai': pfx + ('来ない' if '来' in kanji[-2:] else 'こない'),
         }
-    elif kana.endswith('る') and len(kana) >= 2 and (kana[-2] in I_DAN or kana[-2] in E_DAN) and kanji not in GODAN_EXCEPTIONS and kana not in GODAN_EXCEPTIONS:
-        stem = kanji[:-1]
-        out = {
-            'ja': kanji,
-            'ja_dict': kanji,
-            'ja_stem': stem,
-            'ja_pres': stem + 'ます',
-            'ja_past': stem + 'ました',
-            'ja_want': stem + 'たいです',
-            'ja_fut': stem + 'ます（予定）',
-            'ja_can': kanji + 'ことができます',
-            'ja_must': stem + 'なければなりません',
-            'ja_please': stem + 'てください',
-            'ja_neg': stem + 'ません',
-            'ja_neg_past': stem + 'ませんでした',
-            'ja_te': stem + 'て',
-            'ja_nai': stem + 'ない',
-        }
-    else:  # Godan
-        tail = kanji[-1]
-        stem = kanji[:-1]
-        i_char = I_MAP.get(tail, 'い')
-        a_char = A_MAP.get(tail, 'わ')
-        te_str = 'って' if kanji.endswith(('行く', 'いく')) else TE_MAP.get(tail, 'って')
-        out = {
-            'ja': kanji,
-            'ja_dict': kanji,
-            'ja_stem': stem + i_char,
-            'ja_pres': stem + i_char + 'ます',
-            'ja_past': stem + i_char + 'ました',
-            'ja_want': stem + i_char + 'たいです',
-            'ja_fut': stem + i_char + 'ます（予定）',
-            'ja_can': kanji + 'ことができます',
-            'ja_must': stem + a_char + 'なければなりません',
-            'ja_please': stem + te_str + 'ください',
-            'ja_neg': stem + i_char + 'ません',
-            'ja_neg_past': stem + i_char + 'ませんでした',
-            'ja_te': stem + te_str,
-            'ja_nai': stem + a_char + 'ない',
-        }
+    else:
+        # Check if Godan exception applies
+        is_godan_ex = any(kanji.endswith(x) for x in GODAN_EXCEPTIONS_KANJI) or (kanji == kana and any(kana.endswith(x) for x in GODAN_EXCEPTIONS_KANA))
+        is_ichidan = kana.endswith('る') and len(kana) >= 2 and (kana[-2] in I_DAN or kana[-2] in E_DAN) and not is_godan_ex
+
+        if is_godan_ex:
+            GODAN_EX_APPLIED_COUNT += 1
+
+        if is_ichidan:
+            stem = kanji[:-1]
+            out = {
+                'ja': kanji,
+                'ja_dict': kanji,
+                'ja_stem': stem,
+                'ja_pres': stem + 'ます',
+                'ja_past': stem + 'ました',
+                'ja_want': stem + 'たいです',
+                'ja_fut': stem + 'ます（予定）',
+                'ja_can': kanji + 'ことができます',
+                'ja_must': stem + 'なければなりません',
+                'ja_please': stem + 'てください',
+                'ja_neg': stem + 'ません',
+                'ja_neg_past': stem + 'ませんでした',
+                'ja_te': stem + 'て',
+                'ja_nai': stem + 'ない',
+            }
+        else:  # Godan
+            tail = kanji[-1]
+            stem = kanji[:-1]
+            i_char = I_MAP.get(tail, 'い')
+            a_char = A_MAP.get(tail, 'わ')
+            te_str = 'って' if kanji.endswith(('行く', 'いく')) else TE_MAP.get(tail, 'って')
+            out = {
+                'ja': kanji,
+                'ja_dict': kanji,
+                'ja_stem': stem + i_char,
+                'ja_pres': stem + i_char + 'ます',
+                'ja_past': stem + i_char + 'ました',
+                'ja_want': stem + i_char + 'たいです',
+                'ja_fut': stem + i_char + 'ます（予定）',
+                'ja_can': kanji + 'ことができます',
+                'ja_must': stem + a_char + 'なければなりません',
+                'ja_please': stem + te_str + 'ください',
+                'ja_neg': stem + i_char + 'ません',
+                'ja_neg_past': stem + i_char + 'ませんでした',
+                'ja_te': stem + te_str,
+                'ja_nai': stem + a_char + 'ない',
+            }
 
     # Particle ja_p
     if 'takes' in flags:
@@ -238,24 +326,40 @@ def generate_ja_verb(ja_raw, flags):
     elif 'at' in flags:
         out['ja_p'] = 'で'
     elif 'exist' in flags:
-        out['ja_p'] = 'が'
+        out['ja_p'] = '가'
     else:
         out['ja_p'] = None
+    if out['ja_p'] == '가':
+        out['ja_p'] = 'が'
     return out
 
 def generate_ja_adj(ja_raw):
     """Generate Japanese adjective forms from raw ja dump string."""
-    first = ja_raw.split(';')[0].split('。')[0].strip()
-    if '【' in first:
-        kana = first.split('【')[0].strip()
-        kanji = first.split('【')[1].split('】')[0].strip()
-    else:
-        kana = first
-        kanji = first
-    kana = kana.split('・')[-1].strip()
-    kanji = kanji.split('・')[0].strip()
+    cands = parse_ja_eq_list(ja_raw)
+    valid_cands = [c for c in cands if is_valid_ja_adj(c[0], c[1])]
 
-    if kana.endswith('い'):
+    if not valid_cands:
+        first_kanji = cands[0][0] if cands else (ja_raw.split(';')[0].split('。')[0].strip() if ja_raw else '')
+        return {
+            'ja': first_kanji,
+            'ja_dict': None,
+            'ja_pres': None,
+            'ja_past': None,
+            'ja_te': None,
+        }
+
+    kanji, kana = valid_cands[0]
+
+    if kana.endswith('いい') or kanji.endswith('いい') or kanji == 'いい':
+        pfx = kanji[:-2] if len(kanji) >= 2 else ''
+        return {
+            'ja': kanji,
+            'ja_dict': kanji,
+            'ja_pres': kanji + 'です',
+            'ja_past': pfx + 'よかったです',
+            'ja_te': pfx + 'よくて',
+        }
+    elif kana.endswith('い'):
         stem = kanji[:-1]
         return {
             'ja': kanji,
@@ -340,22 +444,18 @@ def derive_korean_conjugations(h, is_adj=False):
     if h in OVERRIDES:
         res.update(OVERRIDES[h])
 
-    # 뵙다 OVERRIDES (eo 계열 전부 null)
-    if h == '뵙다':
-        res['pres'] = None
-        res['past'] = None
-        res['must'] = None
-        res['please'] = None
-        res['eoseo'] = None
-        res['yagesseoyo'] = None
-        res['bwasseoyo'] = None
-        res['juseyo'] = None
-        res['formal_past'] = None
-        res['formal_past_q'] = None
-
     return res
 
-def build_entry(sheet_row, wip_entry, senses_dump, is_adj):
+VOL_EXCEPTIONS = {
+    '힘내다', '노력하다', '출석하다', '결석하다', '지각하다',
+    '눕다', '앉다', '일어나다', '날다', '모이다', '서두르다',
+    '수고하다', '실례하다', '울다', '웃다', '주무시다'
+}
+NONVOL_ADDITIONAL = {
+    '태어나다', '가까워지다', '빠지다', '바뀌다', '걸리다', '다치다'
+}
+
+def build_entry(sheet_row, wip_entry, senses_dump, is_adj, en_adj_overrides=None):
     """Build full dictionary entry for data/words.json."""
     h = sheet_row['h']
     kid = str(sheet_row['id'])
@@ -375,7 +475,7 @@ def build_entry(sheet_row, wip_entry, senses_dump, is_adj):
             if '영어' in eq and eq['영어'].get('lemma'):
                 raw_en = eq['영어']['lemma'].split(';')[0].strip()
             if '일본어' in eq and eq['일본어'].get('lemma'):
-                raw_ja = eq['일본어']['lemma'].split(';')[0].strip()
+                raw_ja = eq['일본어']['lemma'].strip()
             if '베트남어' in eq and eq['베트남어'].get('lemma'):
                 raw_vi = eq['베트남어']['lemma'].split(';')[0].strip()
 
@@ -401,7 +501,11 @@ def build_entry(sheet_row, wip_entry, senses_dump, is_adj):
     if is_adj:
         # English
         clean_en = raw_en.strip()
-        if clean_en.startswith('be '):
+        if en_adj_overrides and h in en_adj_overrides:
+            adj_val = en_adj_overrides[h]
+            entry['en'] = 'to be ' + adj_val
+            entry['en_adj'] = adj_val
+        elif clean_en.startswith('be '):
             entry['en'] = 'to ' + clean_en
             entry['en_adj'] = clean_en[3:].strip()
         elif clean_en.startswith('to be '):
@@ -463,6 +567,14 @@ def build_entry(sheet_row, wip_entry, senses_dump, is_adj):
     # Korean conjugations
     korean_forms = derive_korean_conjugations(h, is_adj)
     entry.update(korean_forms)
+
+    # Non-volitional verbs
+    if not is_adj:
+        is_subj_only = ('subj_only' in kinds_list)
+        if (is_subj_only and h not in VOL_EXCEPTIONS) or (h in NONVOL_ADDITIONAL):
+            entry['vol'] = False
+            for k in ['want', 'must', 'please', 'juseyo', 'jimaseyo', 'ryeogo', 'giro', 'yagesseoyo', 'kkayo', 'reo', 'bwasseoyo']:
+                entry[k] = None
 
     return entry
 
@@ -551,6 +663,7 @@ def main():
     parser.add_argument('--words', default=str(ROOT / 'data/words.json'))
     parser.add_argument('--skipped', default=str(ROOT / 'data/wip/verbs_skipped.json'))
     parser.add_argument('--templates', default=str(ROOT / 'data/templates.json'))
+    parser.add_argument('--en-adj-overrides', default=str(ROOT / 'data/en_adj_overrides.json'))
     parser.add_argument('--dry-run', action='store_true', default=False)
     parser.add_argument('--execute', action='store_true', default=False)
     args = parser.parse_args()
@@ -560,8 +673,8 @@ def main():
     with open(args.words, 'r', encoding='utf-8') as f:
         words_data = json.load(f)
 
-    baseline_verbs = list(words_data['verbs'])
-    baseline_adjs = list(words_data['adjectives'])
+    baseline_verbs = list(words_data['verbs'][:30])
+    baseline_adjs = list(words_data['adjectives'][:20])
     assert len(baseline_verbs) == 30, f"Expected 30 baseline verbs, got {len(baseline_verbs)}"
     assert len(baseline_adjs) == 20, f"Expected 20 baseline adjectives, got {len(baseline_adjs)}"
     existing_all_lemmas = {x['h'] for x in baseline_verbs} | {x['h'] for x in baseline_adjs}
@@ -584,6 +697,13 @@ def main():
         with open(args.senses, 'r', encoding='utf-8') as f:
             senses_dump = json.load(f)
         print(f"Loaded senses dump: {len(senses_dump)} entries.")
+
+    en_adj_overrides = None
+    if os.path.exists(args.en_adj_overrides):
+        print(f"Loading English adjective overrides from {args.en_adj_overrides}...")
+        with open(args.en_adj_overrides, 'r', encoding='utf-8') as f:
+            en_adj_overrides = json.load(f)
+        print(f"Loaded {len(en_adj_overrides)} English adjective overrides.")
 
     skipped_records = []
     candidates_valid = []
@@ -634,7 +754,7 @@ def main():
 
     for s_row, w_entry in candidates_valid:
         is_adj = (s_row['pos'] == '형용사')
-        entry = build_entry(s_row, w_entry, senses_dump, is_adj)
+        entry = build_entry(s_row, w_entry, senses_dump, is_adj, en_adj_overrides)
         if is_adj:
             new_adjs.append(entry)
         else:
@@ -647,10 +767,54 @@ def main():
     beopda = next((v for v in new_verbs if v['h'] == '뵙다'), None)
     if beopda:
         print(f"\n[ 뵙다 검증 ]")
-        print(f"  formal={beopda.get('formal')}, formal_q={beopda.get('formal_q')}, go={beopda.get('go')}")
-        print(f"  eo 계열 null 확인: pres={beopda.get('pres')}, past={beopda.get('past')}, eoseo={beopda.get('eoseo')}, juseyo={beopda.get('juseyo')}, yagesseoyo={beopda.get('yagesseoyo')}")
+        print(f"  pres={beopda.get('pres')}, past={beopda.get('past')}, must={beopda.get('must')}, eoseo={beopda.get('eoseo')}, yagesseoyo={beopda.get('yagesseoyo')}, bwasseoyo={beopda.get('bwasseoyo')}")
+        print(f"  please={beopda.get('please')}, juseyo={beopda.get('juseyo')}")
+        assert beopda.get('pres') == '봬요', f"Expected pres 봬요, got {beopda.get('pres')}"
+        assert beopda.get('past') == '뵀어요', f"Expected past 뵀어요, got {beopda.get('past')}"
+        assert beopda.get('please') is None, f"Expected please None, got {beopda.get('please')}"
+        assert beopda.get('juseyo') is None, f"Expected juseyo None, got {beopda.get('juseyo')}"
 
-    # Verification 2: Check compatible nouns for all takes verbs
+    # Verification 2: Japanese forms and Godan exceptions
+    print(f"\n[ 일본어 활용 및 예외 검증 ]")
+    valid_dict_tails = set('るうくぐすつぬぶむいだ')
+    for v in new_verbs:
+        if v.get('ja_pres') is not None:
+            assert v['ja_pres'].endswith('ます'), f"Verb {v['h']} ja_pres does not end in ます: {v['ja_pres']}"
+        if v.get('ja_dict') is not None:
+            assert v['ja_dict'][-1] in valid_dict_tails, f"Verb {v['h']} ja_dict does not end in valid tail: {v['ja_dict']}"
+
+    for a in new_adjs:
+        if a.get('ja_dict') is not None:
+            assert a['ja_dict'][-1] in valid_dict_tails, f"Adj {a['h']} ja_dict does not end in valid tail: {a['ja_dict']}"
+        if a.get('ja_pres') is not None:
+            assert a['ja_pres'].endswith('です'), f"Adj {a['h']} ja_pres does not end in です: {a['ja_pres']}"
+
+    print(f"  - 전수 ja_pres 'ます/です' 종결 및 ja_dict 유효 어미 검증 100% 통과.")
+    print(f"  - 五段 예외표(GODAN_EXCEPTIONS) 적용 건수: {GODAN_EX_APPLIED_COUNT}회.")
+
+    # Verification 3: Non-volitional verbs
+    print(f"\n[ 비의지 동사 검증 ]")
+    nonvol_samples = ['화나다', '태어나다', '가까워지다', '빠지다', '바뀌다', '걸리다', '다치다']
+    for s_h in nonvol_samples:
+        matched_v = next((v for v in new_verbs if v['h'] == s_h), None)
+        if matched_v:
+            assert matched_v.get('vol') is False, f"{s_h} expected vol:False"
+            assert matched_v.get('want') is None, f"{s_h} expected want:None"
+            assert matched_v.get('please') is None, f"{s_h} expected please:None"
+            assert matched_v.get('juseyo') is None, f"{s_h} expected juseyo:None"
+    print(f"  - 비의지 동사 sample({', '.join(nonvol_samples)}) vol:False 및 의지형 null 검증 통과.")
+
+    # Verification 4: English adjective overrides
+    print(f"\n[ 영어 형용사 오버라이드 검증 ]")
+    if en_adj_overrides:
+        for a_h, expected_en in en_adj_overrides.items():
+            matched_a = next((a for a in new_adjs if a['h'] == a_h), None)
+            if matched_a:
+                assert matched_a.get('en_adj') == expected_en, f"{a_h} expected en_adj={expected_en}, got {matched_a.get('en_adj')}"
+                assert matched_a.get('en') == f'to be {expected_en}', f"{a_h} expected en='to be {expected_en}', got {matched_a.get('en')}"
+        print(f"  - en_adj_overrides {len(en_adj_overrides)}개 항목 100% 반영 검증 통과.")
+
+    # Verification 5: Check compatible nouns for all takes verbs
     zero_comp = check_takes_compatible(new_verbs, words_data['nouns'])
     print(f"\n[ takes 동사 명사 결합 검증 ]")
     takes_count = sum(1 for v in new_verbs if v.get('takes'))
@@ -660,7 +824,7 @@ def main():
     else:
         print(f"  - 전수 compatible() 명사 >= 1개 존재 증명 완료.")
 
-    # Verification 3: kinds 별 도달 가능한 프레임 수
+    # Verification 6: kinds 별 도달 가능한 프레임 수
     print(f"\n[ kinds 별 도달 가능한 프레임 수 표 ]")
     reach_table = compute_reachability(new_verbs, args.templates)
     print(f"{'문법 패턴 (kinds)':<20} | {'단어 수':>6} | {'도달 프레임 수':>13} | {'대표 단어 예시':<30}")

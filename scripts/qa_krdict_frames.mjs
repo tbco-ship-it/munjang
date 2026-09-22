@@ -112,39 +112,63 @@ try {
         console.log(`Saved screenshot: frame_${fr.id}_${vp.name}_${theme}.png`);
       }
 
-      // Test Picker UI features on desktop light and mobile dark
-      if ((vp.name === '1280' && theme === 'light') || (vp.name === '390' && theme === 'dark')) {
-        // Switch to 'act' frame so transitive verbs like '주문하다' can be selected
-        await page.click('#frame-btn');
-        await page.waitForTimeout(200);
-        await page.click('#frames button:has-text("Someone does something")');
+      // Test Picker UI features across all viewports (390, 820, 1280) and themes (light, dark)
+      // Switch to 'act' frame so transitive verbs like '주문하다' can be selected
+      await page.click('#frame-btn');
+      await page.waitForTimeout(200);
+      await page.click('#frames button:has-text("Someone does something")');
+      await page.waitForTimeout(300);
+
+      // Find a verb slot button to open picker
+      const verbSlots = await page.$$('#slots .slot-w .slot-v');
+      if (verbSlots.length > 0) {
+        // Click the verb slot
+        await verbSlots[verbSlots.length - 1].click();
         await page.waitForTimeout(300);
 
-        // Find a verb slot button to open picker
-        const verbSlots = await page.$$('#slots .slot-w .slot-v');
-        if (verbSlots.length > 0) {
-          // Click the verb slot
-          await verbSlots[verbSlots.length - 1].click();
+        // Assert 0 horizontal overflow with picker open (initial state)
+        const scrollWidthInit = await page.evaluate(() => document.documentElement.scrollWidth);
+        const innerWidth = await page.evaluate(() => window.innerWidth);
+        console.log(`[QA Overflow Check] ${vp.name}_${theme} (initial): scrollWidth=${scrollWidthInit}, innerWidth=${innerWidth}`);
+        if (scrollWidthInit > innerWidth) {
+          throw new Error(`Horizontal scroll detected on picker initial in ${vp.name}_${theme}! scrollWidth (${scrollWidthInit}) > innerWidth (${innerWidth})`);
+        }
+
+        // Count Lv1 items
+        const countLv1 = await page.$$eval('.picker-list .pk', els => els.length);
+
+        // Screenshot 1: Picker initial state with search and "Show more" button
+        const pickerInitPath = path.join(CAPTURES_DIR, `picker_initial_${vp.name}_${theme}.png`);
+        await page.screenshot({ path: pickerInitPath, fullPage: false });
+        capturedFiles.push(pickerInitPath);
+        console.log(`Saved screenshot: picker_initial_${vp.name}_${theme}.png`);
+
+        // Click "Show more" ("더 보기")
+        const moreBtn = await page.$('.picker-more');
+        if (moreBtn) {
+          await moreBtn.click();
           await page.waitForTimeout(300);
 
-          // Screenshot 1: Picker initial state with search and "Show more" button
-          const pickerInitPath = path.join(CAPTURES_DIR, `picker_initial_${vp.name}_${theme}.png`);
-          await page.screenshot({ path: pickerInitPath, fullPage: false });
-          capturedFiles.push(pickerInitPath);
-          console.log(`Saved screenshot: picker_initial_${vp.name}_${theme}.png`);
+          const countAll = await page.$$eval('.picker-list .pk', els => els.length);
+          console.log(`[Picker Counts] ${vp.name}_${theme}: Lv1 ${countLv1} words / Total ${countAll} words`);
 
-          // Click "Show more" ("더 보기")
-          const moreBtn = await page.$('.picker-more');
-          if (moreBtn) {
-            await moreBtn.click();
-            await page.waitForTimeout(300);
-            const pickerMorePath = path.join(CAPTURES_DIR, `picker_more_${vp.name}_${theme}.png`);
-            await page.screenshot({ path: pickerMorePath, fullPage: false });
-            capturedFiles.push(pickerMorePath);
-            console.log(`Saved screenshot: picker_more_${vp.name}_${theme}.png`);
+          // Assert 0 horizontal overflow with picker expanded
+          const scrollWidthMore = await page.evaluate(() => document.documentElement.scrollWidth);
+          console.log(`[QA Overflow Check] ${vp.name}_${theme} (more): scrollWidth=${scrollWidthMore}, innerWidth=${innerWidth}`);
+          if (scrollWidthMore > innerWidth) {
+            throw new Error(`Horizontal scroll detected on picker more in ${vp.name}_${theme}! scrollWidth (${scrollWidthMore}) > innerWidth (${innerWidth})`);
           }
 
-          // Test search input
+          const pickerMorePath = path.join(CAPTURES_DIR, `picker_more_${vp.name}_${theme}.png`);
+          await page.screenshot({ path: pickerMorePath, fullPage: false });
+          capturedFiles.push(pickerMorePath);
+          console.log(`Saved screenshot: picker_more_${vp.name}_${theme}.png`);
+        } else {
+          console.log(`[Picker Counts] ${vp.name}_${theme}: Lv1 ${countLv1} words (No more button)`);
+        }
+
+        // Test search input on desktop light and mobile dark
+        if ((vp.name === '1280' && theme === 'light') || (vp.name === '390' && theme === 'dark')) {
           const searchInp = await page.$('.picker-search-input');
           if (searchInp) {
             await searchInp.fill('주문'); // order
@@ -179,15 +203,15 @@ try {
               console.log(`Saved screenshot: preview_auto_badge_${vp.name}_${theme}.png`);
             }
           }
-        }
 
-        // Footer license screenshot
-        await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight));
-        await page.waitForTimeout(300);
-        const footerPath = path.join(CAPTURES_DIR, `footer_license_${vp.name}_${theme}.png`);
-        await page.screenshot({ path: footerPath, fullPage: false });
-        capturedFiles.push(footerPath);
-        console.log(`Saved screenshot: footer_license_${vp.name}_${theme}.png`);
+          // Footer license screenshot
+          await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight));
+          await page.waitForTimeout(300);
+          const footerPath = path.join(CAPTURES_DIR, `footer_license_${vp.name}_${theme}.png`);
+          await page.screenshot({ path: footerPath, fullPage: false });
+          capturedFiles.push(footerPath);
+          console.log(`Saved screenshot: footer_license_${vp.name}_${theme}.png`);
+        }
       }
 
       if (pageErrs.length > 0) {
