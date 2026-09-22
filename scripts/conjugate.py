@@ -69,7 +69,9 @@ def reu_irr(stem):  # 부르 → 불러, 빠르 → 빨라 (르 불규칙)
 
 def eu_drop(stem):  # 크 → 커, 쓰 → 써, 바쁘 → 바빠 (으 탈락)
     c, j, g = dec(stem[-1])
-    if len(stem) > 1:
+    if stem[-1] in ('쓰', '크', '뜨', '끄', '트'):
+        v = 'ㅓ'
+    elif len(stem) > 1:
         c0, j0, g0 = dec(stem[-2])
         v = 'ㅏ' if j0 in ('ㅏ', 'ㅗ') else 'ㅓ'
     else:
@@ -94,6 +96,8 @@ IRR = {
     '가볍다': 'b', '무겁다': 'b', '고맙다': 'b', '반갑다': 'b', '아름답다': 'b', '즐겁다': 'b',
     '부끄럽다': 'b', '외롭다': 'b', '더럽다': 'b', '어둡다': 'b', '뜨겁다': 'b', '차갑다': 'b',
     '맵다': 'b', '싱겁다': 'b', '그립다': 'b', '돕다': 'b', '눕다': 'b', '굽다': 'b',
+    '두껍다': 'b', '무섭다': 'b', '부드럽다': 'b', '부럽다': 'b', '새롭다': 'b', '시끄럽다': 'b',
+    '여쭙다': 'b', '줍다': 'b',
     # 르 불규칙
     '부르다': 'reu', '빠르다': 'reu', '모르다': 'reu', '다르다': 'reu', '고르다': 'reu',
     '자르다': 'reu', '흐르다': 'reu', '마르다': 'reu', '기르다': 'reu', '나르다': 'reu',
@@ -122,21 +126,21 @@ def derive_eo(h, pos='동사', irr=None):
     if h == '하다' or st.endswith('하'):
         return st[:-1] + '해'
     if irr == 'd':
-        return comp(c, j, 'ㄹ') + ('아' if j in ('ㅏ', 'ㅗ') else '어')
+        return comp(c, j, 'ㄹ') + ('아' if j in ('ㅏ', 'ㅗ', 'ㅑ') else '어')
     if irr == 'b':
         if h == '돕다':
             return st[:-1] + '도와'
         return st[:-1] + comp(c, j) + '워'
     if irr == 's':
-        return comp(c, j) + ('아' if j in ('ㅏ', 'ㅗ') else '어')
+        return comp(c, j) + ('아' if j in ('ㅏ', 'ㅗ', 'ㅑ') else '어')
     if irr == 'h':
         if j == 'ㅑ':
             return st[:-1] + comp(c, 'ㅒ')
         return st[:-1] + comp(c, 'ㅐ')
-    if irr == 'reu' or st.endswith('르'):
-        return reu_irr(st)
     if irr == 'reo' or h == '푸르다':
         return st + '러'
+    if irr == 'reu' or st.endswith('르'):
+        return reu_irr(st)
     if irr == 'u' or h == '푸다':
         return u_irr(st)
     if irr == 'eu' or (j == 'ㅡ' and not g):
@@ -151,7 +155,7 @@ def derive_eo(h, pos='동사', irr=None):
         if j == 'ㅐ': return st
         if j == 'ㅔ': return st
         if j == 'ㅚ': return st[:-1] + comp(c, 'ㅙ')
-    return st + ('아' if j in ('ㅏ', 'ㅗ') else '어')
+    return st + ('아' if j in ('ㅏ', 'ㅗ', 'ㅑ') else '어')
 
 
 def forms(h, pres='', past='', adj=False):
