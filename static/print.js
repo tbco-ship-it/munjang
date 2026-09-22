@@ -91,7 +91,8 @@
     const ua = navigator.userAgent || '';
     const isIPad = /iPad/.test(ua) || (/Macintosh|Mac OS X|MacIntel/.test(ua) && navigator.maxTouchPoints > 1);
     const isIPhone = /iPhone|iPod/.test(ua);
-    return isIPad || isIPhone || location.hash === '#ios-guide' || new URLSearchParams(location.search).has('ios');
+    const isQa = new URLSearchParams(location.search).get('ios') === '1'; // QA hook
+    return isIPad || isIPhone || isQa;
   }
   const isIOS = isIOSDevice();
 
@@ -107,12 +108,15 @@
     document.documentElement.classList.add('pdf-open');
     pdfSheet.setAttribute('aria-hidden', 'false');
     if (pdfBg) pdfBg.setAttribute('aria-hidden', 'false');
+    if (pdfGo) pdfGo.focus();
   }
 
   function closePdfSheet() {
+    if (!document.documentElement.classList.contains('pdf-open')) return;
     document.documentElement.classList.remove('pdf-open');
     if (pdfSheet) pdfSheet.setAttribute('aria-hidden', 'true');
     if (pdfBg) pdfBg.setAttribute('aria-hidden', 'true');
+    if (printBtn) printBtn.focus();
   }
 
   if (pdfBg) pdfBg.onclick = closePdfSheet;
@@ -124,6 +128,13 @@
       window.print();
     };
   }
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && document.documentElement.classList.contains('pdf-open')) {
+      e.preventDefault();
+      closePdfSheet();
+    }
+  });
 
   window.openPdfSheet = openPdfSheet;
   window.closePdfSheet = closePdfSheet;
@@ -140,5 +151,4 @@
   }
 
   if (location.hash === '#ws') document.querySelector('[data-mode="ws"]').click(); else render();
-  if (location.hash === '#ios-guide' && tray.length) openPdfSheet();
 })();
