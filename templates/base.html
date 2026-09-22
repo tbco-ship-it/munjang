@@ -36,11 +36,12 @@
   <nav id="main-nav" aria-label="Main">
     <a href="{{ base }}{{ ui.dir }}"{% if slug == 'home' %} aria-current="page"{% endif %}>{{ ui.nav_builder }}</a>
     <details class="menu">
-      <summary{% if slug in ['particles','order','spacing'] %} aria-current="page"{% endif %}>{{ ui.nav_guides }} <span aria-hidden="true">⌄</span></summary>
+      <summary{% if slug in ['particles','order','spacing','connectives'] %} aria-current="page"{% endif %}>{{ ui.nav_guides }} <span aria-hidden="true">⌄</span></summary>
       <div class="menu-list">
         <a href="{{ base }}{{ ui.dir }}guide/particles/">{{ ui.nav_particles }}<small>은/는 · 이/가 · 을/를 · 에 · 에서</small></a>
         <a href="{{ base }}{{ ui.dir }}guide/word-order/">{{ ui.nav_order }}<small>S · O · V</small></a>
         <a href="{{ base }}{{ ui.dir }}guide/spacing/">{{ ui.nav_spacing }}<small>띄어쓰기</small></a>
+        <a href="{{ base }}{{ ui.dir }}guide/connectives/">{{ ui.nav_connectives }}<small>-아서 · -(으)니까 · -는데 · -지만</small></a>
       </div>
     </details>
     <a href="{{ base }}{{ ui.dir }}check/"{% if slug == 'check' %} aria-current="page"{% endif %}>{{ ui.nav_check }}</a>

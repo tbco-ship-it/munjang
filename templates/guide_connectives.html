@@ -1,0 +1,288 @@
+{% extends "base.html" %}
+{% block title %}{% if lang == 'vi' %}-아서 vs -(으)니까 vs -는데 vs -지만 — so sánh đuôi liên kết tiếng Hàn có bài tập | HangulSteps{% elif lang == 'ja' %}-아서 と -(으)니까 と -는데 と -지만 の違い — 接続語尾の使い分けガイド | HangulSteps{% else %}-아서 vs -(으)니까 vs -는데 vs -지만 — Korean connectives comparison guide with quiz | HangulSteps{% endif %}{% endblock %}
+{% block description %}{% if lang == 'vi' %}So sánh 4 đuôi liên kết cơ bản nhất: -아서/어서 (nguyên nhân tự nhiên), -(으)니까 (lý do/mệnh lệnh), -는데 (bối cảnh/tương phản nhẹ), -지만 (tương phản đối lập). Kèm bảng đối chiếu và 6 câu bài tập.{% elif lang == 'ja' %}初級で誰もが迷う4大接続語尾 -아서/어서（原因・理由）、-(으)니까（理由・判断・命令）、-는데（前置き・背景・対比）、-지만（逆接）を徹底比較。命令文の可否・時制制約・6問のクイズ付き。{% else %}The complete 4-way guide to Korean connectives: -아서/어서 (natural cause), -(으)니까 (justification/commands), -는데 (background/contrast), and -지만 (direct contrast). Clear comparison table and interactive 6-question quiz.{% endif %}{% endblock %}
+{% block content %}
+<article class="prose">
+{% if lang == 'ja' %}
+<h1>-아서 vs -(으)니까 vs -는데 vs -지만 — 接続語尾の使い分け</h1>
+<p class="lead">韓国語の複文（2つの節をつなぐ文）で最もよく使われ、最も学習者が混乱するのがこの4つの接続語尾です。どれも文をつなぎますが、<b>後ろに命令文を置けるか</b>、<b>過去形（-았/었-）が付けられるか</b>、<b>どのようなニュアンスを持つか</b>という文法規則が明確に異なります。</p>
+
+<h2>1. 4大接続語尾の比較一覧表</h2>
+<div style="overflow-x:auto">
+<table>
+<tr>
+  <th>語尾</th>
+  <th>主な意味・役割</th>
+  <th>後ろに命令・勧誘（-세요 / -ㅂ시다）</th>
+  <th>過去形（-았/었-）の結合</th>
+  <th>代表例文</th>
+</tr>
+<tr>
+  <td><b>-아서 / -어서</b></td>
+  <td>自然な原因・理由、先行動作</td>
+  <td><b>不可（✗）</b></td>
+  <td><b>不可（✗）</b></td>
+  <td><span lang="ko">배가 고파서 밥을 먹어요.</span></td>
+</tr>
+<tr>
+  <td><b>-(으)니까</b></td>
+  <td>話し手の理由・判断の根拠</td>
+  <td><b>可能（✓ 自然）</b></td>
+  <td><b>可能（✓）</b></td>
+  <td><span lang="ko">비가 오니까 우산을 가져가세요.</span></td>
+</tr>
+<tr>
+  <td><b>-는데 / -(으)ㄴ데</b></td>
+  <td>前置き・背景の提示、軽い対比</td>
+  <td><b>可能（✓）</b></td>
+  <td><b>可能（✓）</b></td>
+  <td><span lang="ko">저는 바쁜데 친구를 만나요.</span></td>
+</tr>
+<tr>
+  <td><b>-지만</b></td>
+  <td>事実と事実の明確な対比・逆接</td>
+  <td><b>可能（✓）</b></td>
+  <td><b>可能（✓）</b></td>
+  <td><span lang="ko">한국어가 어렵지만 재미있어요.</span></td>
+</tr>
+</table>
+</div>
+
+<h2>2. 語尾ごとの詳しい特徴と注意点</h2>
+
+<h3>① -아서 / -어서（自然な原因・結果）</h3>
+<ul>
+  <li><b>自然の成り行きや生理現象</b>：「お腹が空いたから食べる」「疲れたから休む」といった客観的・自然な因果関係を表します。</li>
+  <li><b>命令・勧誘文は絶対に不可</b>：後ろに <span lang="ko">-세요</span>（〜してください）や <span lang="ko">-(으)ㅂ시다</span>（〜しましょう）を置くことはできません（<span lang="ko">×비가 와서 우산을 가져가세요</span> → <span lang="ko">○비가 오니까 우산을 가져가세요</span>）。</li>
+  <li><b>過去形は前に付かない</b>：文全体が過去の出来事であっても、接続語尾の前に <span lang="ko">-았/었-</span> は付けず、末尾の動詞でのみ過去を表します（<span lang="ko">×비가 왔어서 집에 있었어요</span> → <span lang="ko">○비가 와서 집에 있었어요</span>）。</li>
+  <li><b>挨拶・お礼・お詫びの慣用句</b>：<span lang="ko">만나서 반갑습니다</span>（お会いできて嬉しいです）、<span lang="ko">늦어서 죄송합니다</span>（遅れて申し訳ありません）などの定型表現は常に <span lang="ko">-아서/어서</span> を使います。</li>
+</ul>
+
+<h3>② -(으)니까（理由・判断の根拠・命令文の前置き）</h3>
+<ul>
+  <li><b>話し手の主観的な理由や判断</b>：「〜だから…して」「〜だから…しよう」と後ろに<b>命令・勧誘・提案</b>を続ける場合の定番です。</li>
+  <li><b>命令文・勧誘文との相性が抜群</b>：<span lang="ko">비가 오니까 우산을 가져가세요.</span>（雨が降るから傘を持って行ってください。）</li>
+  <li><b>過去形と結合可能</b>：<span lang="ko">밥을 먹었으니까 커피를 마셔요.</span>（ご飯を食べたからコーヒーを飲みましょう。）のように <span lang="ko">-았/었-</span> と自然に結びつきます。</li>
+  <li><b>感謝・お詫びには使わない</b>：<span lang="ko">×늦으니까 죄송합니다</span> と言うと「遅れるんだから当然でしょ」のような不遜なニュアンスになってしまうため避けます。</li>
+</ul>
+
+<h3>③ -는데 / -(으)ㄴ데（背景・前置き・軽い逆接）</h3>
+<ul>
+  <li><b>会話の文脈・背景を提示する</b>：「〜なんですが…」「〜けれど…」と本題に入る前の前提条件や背景状況を整えます。</li>
+  <li><b>品詞による形の使い分け</b>：
+    <ul>
+      <li>動詞・存在詞（있다/없다）：<b>-는데</b>（<span lang="ko">먹는데, 가는데, 있는데</span>）</li>
+      <li>形容詞：パッチムなし <b>-ㄴ데</b> / パッチムあり <b>-은데</b>（<span lang="ko">바쁜데, 좋은데</span>）</li>
+    </ul>
+  </li>
+  <li>後ろに質問・依頼・提案・状況説明など自由な文を続けられます。</li>
+</ul>
+
+<h3>④ -지만（対比・逆接）</h3>
+<ul>
+  <li><b>「AだけれどB」という対立</b>：2つの対照的な事実をはっきりと対比させます。</li>
+  <li><span lang="ko">한국어가 어렵지만 재미있어요.</span>（韓国語は難しいですが面白いです。）</li>
+  <li>-는데 よりも対比のニュアンスがストレートで客観的です。</li>
+</ul>
+
+<h2>3. 迷ったときの3秒判定フロー</h2>
+<ol>
+  <li><b>後ろが「〜してください（-세요）」「〜しましょう（-ㅂ시다）」か？</b> → <b>-(으)니까</b> を選ぶ。</li>
+  <li><b>「お会いできて」「遅れてすみません」などの挨拶・お詫びか？</b> → <b>-아서/어서</b> を選ぶ。</li>
+  <li><b>「〜なんだけど（どうしよう／…）」と会話の前置きを作りたいか？</b> → <b>-는데 / -(으)ㄴ데</b> を選ぶ。</li>
+  <li><b>「Aだけど、Bだ」と反対の事実をはっきり対比させたいか？</b> → <b>-지만</b> を選ぶ。</li>
+</ol>
+
+{% elif lang == 'vi' %}
+<h1>-아서 vs -(으)니까 vs -는데 vs -지만 — phân biệt đuôi liên kết</h1>
+<p class="lead">Trong ngữ pháp tiếng Hàn, 4 đuôi liên kết này xuất hiện với tần suất cao nhất và cũng là nguyên nhân gây nhầm lẫn lớn nhất. Mặc dù đều dùng để nối hai mệnh đề, nhưng chúng có <b>quy tắc ngữ pháp khác nhau hoàn toàn</b> về câu mệnh lệnh, sự kết hợp thì quá khứ và sắc thái biểu đạt.</p>
+
+<h2>1. Bảng so sánh tổng hợp 4 đuôi liên kết</h2>
+<div style="overflow-x:auto">
+<table>
+<tr>
+  <th>Đuôi liên kết</th>
+  <th>Ý nghĩa cốt lõi</th>
+  <th>Đi cùng câu mệnh lệnh / rủ rê (-세요 / -ㅂ시다)</th>
+  <th>Kết hợp thì quá khứ (-았/었-)</th>
+  <th>Câu ví dụ tiêu biểu</th>
+</tr>
+<tr>
+  <td><b>-아서 / -어서</b></td>
+  <td>Nguyên nhân - kết quả tự nhiên; trình tự</td>
+  <td><b>KHÔNG ĐƯỢC (✗)</b></td>
+  <td><b>KHÔNG ĐƯỢC (✗)</b></td>
+  <td><span lang="ko">배가 고파서 밥을 먹어요.</span></td>
+</tr>
+<tr>
+  <td><b>-(으)니까</b></td>
+  <td>Lý do chủ quan; căn cứ đề nghị, mệnh lệnh</td>
+  <td><b>ĐƯỢC (✓ Rất tự nhiên)</b></td>
+  <td><b>ĐƯỢC (✓)</b></td>
+  <td><span lang="ko">비가 오니까 우산을 가져가세요.</span></td>
+</tr>
+<tr>
+  <td><b>-는데 / -(으)ㄴ데</b></td>
+  <td>Mở đầu bối cảnh, tiền đề; tương phản nhẹ</td>
+  <td><b>ĐƯỢC (✓)</b></td>
+  <td><b>ĐƯỢC (✓)</b></td>
+  <td><span lang="ko">저는 바쁜데 친구를 만나요.</span></td>
+</tr>
+<tr>
+  <td><b>-지만</b></td>
+  <td>Tương phản trực tiếp giữa hai vế đối lập</td>
+  <td><b>ĐƯỢC (✓)</b></td>
+  <td><b>ĐƯỢC (✓)</b></td>
+  <td><span lang="ko">한국어가 어렵지만 재미있어요.</span></td>
+</tr>
+</table>
+</div>
+
+<h2>2. Chi tiết từng đuôi liên kết & lỗi thường gặp</h2>
+
+<h3>① -아서 / -어서 (Nguyên nhân - kết quả tự nhiên)</h3>
+<ul>
+  <li><b>Diễn tả nhân quả tự nhiên, sinh lý</b>: "vì đói bụng nên ăn cơm", "vì mệt nên nghỉ ngơi".</li>
+  <li><b>Tuyệt đối không đi với câu mệnh lệnh, thỉnh dụ</b>: Không dùng trước <span lang="ko">-세요</span> (hãy) hoặc <span lang="ko">-(으)ㅂ시다</span> (cùng làm). (Sai: <span lang="ko">×비가 와서 우산을 가져가세요</span> → Đúng: <span lang="ko">○비가 오니까 우산을 가져가세요</span>).</li>
+  <li><b>Không chia thì quá khứ ở đuôi liên kết</b>: Dù kể việc quá khứ, vế đầu vẫn ở dạng nguyên thể, thì quá khứ chỉ chia ở động từ cuối câu (Sai: <span lang="ko">×비가 왔어서 집에 있었어요</span> → Đúng: <span lang="ko">○비가 와서 집에 있었어요</span>).</li>
+  <li><b>Dùng trong câu chào hỏi, cảm ơn, xin lỗi cố định</b>: <span lang="ko">만나서 반갑습니다</span> (rất vui được gặp), <span lang="ko">늦어서 죄송합니다</span> (xin lỗi vì đến muộn).</li>
+</ul>
+
+<h3>② -(으)니까 (Lý do chủ quan, tiền đề cho mệnh lệnh)</h3>
+<ul>
+  <li><b>Căn cứ suy nghĩ của người nói</b>: Thường dùng khi đưa ra lời khuyên, đề nghị hoặc yêu cầu hành động ở vế sau.</li>
+  <li><b>Đặc biệt phù hợp với câu mệnh lệnh</b>: <span lang="ko">비가 오니까 우산을 가져가세요.</span> (Vì trời mưa nên hãy mang ô theo.)</li>
+  <li><b>Có thể chia thì quá khứ</b>: <span lang="ko">밥을 먹었으니까 커피를 마셔요.</span> (Vì đã ăn cơm rồi nên chúng ta uống cà phê nhé.)</li>
+  <li><b>Không dùng khi xin lỗi / chào hỏi</b>: <span lang="ko">×늦으니까 죄송합니다</span> nghe như "vì tôi muộn nên đương nhiên xin lỗi", thiếu lịch sự.</li>
+</ul>
+
+<h3>③ -는데 / -(으)ㄴ데 (Bối cảnh, gợi mở, tương phản nhẹ)</h3>
+<ul>
+  <li><b>Đặt bối cảnh trước khi nói điều chính</b>: "tôi đang bận đấy nhưng mà...", "trời đẹp quá chúng mình ra ngoài nhé".</li>
+  <li><b>Cách chia theo từ loại</b>:
+    <ul>
+      <li>Động từ & từ tồn tại (있다/없다): dùng <b>-는데</b> (<span lang="ko">먹는데, 가는데, 있는데</span>).</li>
+      <li>Tính từ: không patchim dùng <b>-ㄴ데</b> / có patchim dùng <b>-은데</b> (<span lang="ko">바쁜데, 좋은데</span>).</li>
+    </ul>
+  </li>
+  <li>Vế sau có thể là câu hỏi, rủ rê, nhờ vả hoặc giải thích.</li>
+</ul>
+
+<h3>④ -지만 (Nhưng — tương phản đối lập)</h3>
+<ul>
+  <li><b>Đối lập rõ ràng giữa 2 sự thật</b>: "A nhưng B".</li>
+  <li><span lang="ko">한국어가 어렵지만 재미있어요.</span> (Tiếng Hàn khó nhưng thú vị.)</li>
+  <li>Sắc thái đối lập mạnh mẽ và dứt khoát hơn -는데.</li>
+</ul>
+
+<h2>3. Mẹo phân biệt nhanh trong 3 giây</h2>
+<ol>
+  <li><b>Vế sau có "hãy làm (-세요)" hay "cùng làm (-ㅂ시다)"?</b> → Chọn <b>-(으)니까</b>.</li>
+  <li><b>Câu chào hỏi, xin lỗi, cảm ơn thông dụng?</b> → Chọn <b>-아서/어서</b>.</li>
+  <li><b>Nói mào đầu tạo bối cảnh giao tiếp?</b> → Chọn <b>-는데 / -(으)ㄴ데</b>.</li>
+  <li><b>Đối lập trực diện hai đặc điểm trái ngược?</b> → Chọn <b>-지만</b>.</li>
+</ol>
+
+{% else %}
+<h1>-아서 vs -(으)니까 vs -는데 vs -지만 — Korean Connectives Compared</h1>
+<p class="lead">Connecting two clauses is where Korean sentences come to life. Beginners frequently struggle because English uses “because” or “but” for everything, while Korean has <b>four distinct connectives</b> with strict grammar rules regarding sentence endings, tense markers, and conversational etiquette.</p>
+
+<h2>1. 4-Way Comparison Table</h2>
+<div style="overflow-x:auto">
+<table>
+<tr>
+  <th>Connective</th>
+  <th>Core Meaning & Nuance</th>
+  <th>Can Follow with Commands / Suggestions (-세요 / -ㅂ시다)</th>
+  <th>Tense Marker (-았/었-) Allowed Before</th>
+  <th>Example Sentence</th>
+</tr>
+<tr>
+  <td><b>-아서 / -어서</b></td>
+  <td>Natural cause & effect; sequential action</td>
+  <td><b>FORBIDDEN (✗)</b></td>
+  <td><b>FORBIDDEN (✗)</b></td>
+  <td><span lang="ko">배가 고파서 밥을 먹어요.</span></td>
+</tr>
+<tr>
+  <td><b>-(으)니까</b></td>
+  <td>Speaker’s reasoning, justification, grounds</td>
+  <td><b>NATURAL (✓ Yes)</b></td>
+  <td><b>ALLOWED (✓)</b></td>
+  <td><span lang="ko">비가 오니까 우산을 가져가세요.</span></td>
+</tr>
+<tr>
+  <td><b>-는데 / -(으)ㄴ데</b></td>
+  <td>Background context, conversational premise, mild contrast</td>
+  <td><b>ALLOWED (✓)</b></td>
+  <td><b>ALLOWED (✓)</b></td>
+  <td><span lang="ko">저는 바쁜데 친구를 만나요.</span></td>
+</tr>
+<tr>
+  <td><b>-지만</b></td>
+  <td>Direct factual contrast (“A, but B”)</td>
+  <td><b>ALLOWED (✓)</b></td>
+  <td><b>ALLOWED (✓)</b></td>
+  <td><span lang="ko">한국어가 어렵지만 재미있어요.</span></td>
+</tr>
+</table>
+</div>
+
+<h2>2. Deep Dive & Common Traps</h2>
+
+<h3>① -아서 / -어서 (Natural Cause & Sequence)</h3>
+<ul>
+  <li><b>Natural, objective cause</b>: Used when the first clause naturally and unavoidably leads to the second (“I was hungry, so I ate”).</li>
+  <li><b>Never followed by commands or suggestions</b>: You cannot say <span lang="ko">×비가 와서 우산을 가져가세요</span>. When telling someone to do something, use <span lang="ko">-(으)니까</span> instead (<span lang="ko">○비가 오니까 우산을 가져가세요</span>).</li>
+  <li><b>Never takes the past tense marker</b>: Even when talking about yesterday, do not say <span lang="ko">×비가 왔어서 집에 있었어요</span>. The past tense goes exclusively on the sentence’s final verb (<span lang="ko">○비가 와서 집에 있었어요</span>).</li>
+  <li><b>Social formulas & greetings</b>: Always use <span lang="ko">-아서/어서</span> for greetings, thanks, and apologies: <span lang="ko">만나서 반갑습니다</span> (Pleased to meet you), <span lang="ko">늦어서 죄송합니다</span> (Sorry for being late).</li>
+</ul>
+
+<h3>② -(으)니까 (Reasoning, Justification & Commands)</h3>
+<ul>
+  <li><b>The speaker’s ground for action</b>: Introduces the reason why the speaker is making a request, command, or proposal.</li>
+  <li><b>The command-friendly connective</b>: Works naturally with <span lang="ko">-세요</span> (Please do...) and <span lang="ko">-(으)ㅂ시다</span> (Let’s...): <span lang="ko">비가 오니까 우산을 가져가세요.</span> (Because it is raining, please take an umbrella.)</li>
+  <li><b>Freely combines with past tense</b>: <span lang="ko">밥을 먹었으니까 커피를 마셔요.</span> (Since we have eaten, let's drink coffee.)</li>
+  <li><b>Do not use for polite apologies</b>: Saying <span lang="ko">×늦으니까 죄송합니다</span> sounds abrasive (like “Since I’m late, you get an apology”). Use <span lang="ko">늦어서 죄송합니다</span>.</li>
+</ul>
+
+<h3>③ -는데 / -(으)ㄴ데 (Background & Mild Contrast)</h3>
+<ul>
+  <li><b>Setting the stage</b>: Tells the listener the background circumstance before asking a question, making an invitation, or explaining an event.</li>
+  <li><b>Verb vs Adjective morphology</b>:
+    <ul>
+      <li>Verbs & Existential verbs (있다/없다): <b>-는데</b> (<span lang="ko">먹는데, 가는데, 있는데</span>)</li>
+      <li>Adjectives: <b>-(으)ㄴ데</b> (<span lang="ko">바쁜데, 좋은데</span>)</li>
+    </ul>
+  </li>
+  <li>Much softer and more natural in daily conversation than the rigid -지만.</li>
+</ul>
+
+<h3>④ -지만 (Direct Opposition & Contrast)</h3>
+<ul>
+  <li><b>Factual contrast</b>: Directly opposes two conflicting facts or qualities.</li>
+  <li><span lang="ko">한국어가 어렵지만 재미있어요.</span> (Korean is difficult, but it is fun.)</li>
+  <li>Clear, neutral, and matter-of-fact.</li>
+</ul>
+
+<h2>3. 3-Second Quick Decision Flowchart</h2>
+<ol>
+  <li><b>Does the sentence end with a command (“Please do”, -세요) or suggestion (“Let’s”, -ㅂ시다)?</b> → Use <b>-(으)니까</b>.</li>
+  <li><b>Is it a social greeting or apology (“Sorry I am late”, “Nice to meet you”)?</b> → Use <b>-아서/어서</b>.</li>
+  <li><b>Are you setting background context before asking or telling (“I’m busy right now, but...”)?</b> → Use <b>-는데 / -(으)ㄴ데</b>.</li>
+  <li><b>Are you cleanly contrasting two opposite facts (“It is hard, but fun”)?</b> → Use <b>-지만</b>.</li>
+</ol>
+{% endif %}
+
+<h2 id="quiz-heading">{% if lang == 'ja' %}ミニクイズ（全6問）{% elif lang == 'vi' %}Bài tập trắc nghiệm (6 câu){% else %}Mini Quiz (6 Questions){% endif %}</h2>
+<p class="lead">{% if lang == 'ja' %}文脈に合った最も自然な接続語尾を選んでください。タップするとその場ですぐに解説が表示されます。{% elif lang == 'vi' %}Chọn đuôi liên kết tự nhiên và chính xác nhất cho từng câu. Chạm vào đáp án để xem giải thích chi tiết ngay lập tức.{% else %}Choose the most natural connective for each context. Tap any option to check your answer and see the full explanation.{% endif %}</p>
+<div class="quiz" id="quiz-connectives" data-lang="{{ lang }}"></div>
+<p><a class="btn" href="{{ base }}{{ ui.dir }}#j=ㄱ">{% if lang == 'ja' %}組み立てツールで練習する →{% elif lang == 'vi' %}Luyện trong xưởng ghép câu →{% else %}Practice in the builder →{% endif %}</a></p>
+</article>
+{% endblock %}
+{% block scripts %}
+<script>window.MJ_UI={{ ui | tojson }};</script>
+<script src="{{ base }}static/data.js?v={{ v }}"></script>
+<script src="{{ base }}static/munjang.js?v={{ v }}"></script>
+<script src="{{ base }}static/quiz_connectives.js?v={{ v }}"></script>
+{% endblock %}

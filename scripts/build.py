@@ -18,6 +18,7 @@ PAGES = [  # (template, path, slug for title lookup)
     ("guide_particles.html", "guide/particles/", "particles"),
     ("guide_word-order.html", "guide/word-order/", "order"),
     ("guide_spacing.html", "guide/spacing/", "spacing"),
+    ("guide_connectives.html", "guide/connectives/", "connectives"),
     ("print.html", "print/", "print"),
     ("check.html", "check/", "check"),
     ("topik.html", "topik/", "topik"),
