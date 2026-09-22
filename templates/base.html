@@ -51,7 +51,7 @@
       <summary class="lang-trigger" aria-label="{{ ui.language }}: {{ ui['lang_' ~ lang] }}" aria-expanded="false" title="{{ ui.language }}: {{ ui['lang_' ~ lang] }}">
         <svg aria-hidden="true" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.2 2.4 3.3 5.4 3.3 9s-1.1 6.6-3.3 9c-2.2-2.4-3.3-5.4-3.3-9S9.8 5.4 12 3Z"/></svg>
         <span class="lang-current">{{ ui['lang_' ~ lang] }}</span>
-        <span class="lang-chevron" aria-hidden="true">⌄</span>
+        <svg class="lang-chevron" aria-hidden="true" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
       </summary>
       <div class="lang-list" aria-label="{{ ui.language_choose }}" role="menu">
         {% for l, key in [('en','lang_en'),('ja','lang_ja'),('vi','lang_vi')] %}<a class="lang-option" role="menuitem" href="{{ alt[l] if alt else base ~ ('' if l == 'en' else l ~ '/') }}"{% if lang == l %} aria-current="true"{% endif %} tabindex="-1"><span>{{ ui[key] }}</span><span class="lang-check" aria-hidden="true">✓</span></a>{% endfor %}
