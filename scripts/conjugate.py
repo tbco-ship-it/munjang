@@ -37,47 +37,170 @@ def drop_l(stem):  # 살 → 사 (ㄹ 탈락)
     return stem[:-1] + comp(c, j)
 
 
-def d_irr(stem):  # 듣 → 들
+def d_irr(stem):  # 듣 → 들 (ㄷ 불규칙)
     c, j, g = dec(stem[-1])
     return stem[:-1] + comp(c, j, 'ㄹ')
 
 
-def b_irr(stem):  # 춥 → 추우
+def b_irr(stem):  # 춥 → 추우 (ㅂ 불규칙)
     c, j, g = dec(stem[-1])
     return stem[:-1] + comp(c, j) + '우'
 
 
-IRR = {'듣다': 'd', '살다': 'l', '춥다': 'b', '덥다': 'b', '가깝다': 'b', '귀엽다': 'b', '어렵다': 'b', '쉽다': 'b', '멀다': 'l'}
+def s_irr(stem):  # 짓 → 지 (ㅅ 불규칙)
+    c, j, g = dec(stem[-1])
+    return stem[:-1] + comp(c, j)
 
 
-def forms(h, pres, past='', adj=False):
+def h_irr(stem):  # 그렇 → 그러 (ㅎ 불규칙)
+    c, j, g = dec(stem[-1])
+    return stem[:-1] + comp(c, j)
+
+
+def reu_irr(stem):  # 부르 → 불러, 빠르 → 빨라 (르 불규칙)
+    c, j, g = dec(stem[-1])
+    if len(stem) > 1:
+        c0, j0, g0 = dec(stem[-2])
+        p = comp(c0, j0, 'ㄹ')
+        v = '라' if j0 in ('ㅏ', 'ㅗ') else '러'
+        return stem[:-2] + p + v
+    return '러'
+
+
+def eu_drop(stem):  # 크 → 커, 쓰 → 써, 바쁘 → 바빠 (으 탈락)
+    c, j, g = dec(stem[-1])
+    if len(stem) > 1:
+        c0, j0, g0 = dec(stem[-2])
+        v = 'ㅏ' if j0 in ('ㅏ', 'ㅗ') else 'ㅓ'
+    else:
+        v = 'ㅓ'
+    return stem[:-1] + comp(c, v)
+
+
+def u_irr(stem):  # 푸 → 퍼 (우 불규칙)
+    c, j, g = dec(stem[-1])
+    return stem[:-1] + comp(c, 'ㅓ')
+
+
+IRR = {
+    # ㄷ 불규칙
+    '듣다': 'd', '걷다': 'd', '묻다': 'd', '싣다': 'd',
+    # ㄹ 탈락
+    '살다': 'l', '멀다': 'l', '만들다': 'l', '알다': 'l', '열다': 'l', '놀다': 'l', '걸다': 'l',
+    '울다': 'l', '돌다': 'l', '밀다': 'l', '팔다': 'l', '풀다': 'l', '틀다': 'l', '흔들다': 'l',
+    '힘들다': 'l', '가늘다': 'l', '길다': 'l', '달다': 'l',
+    # ㅂ 불규칙
+    '춥다': 'b', '덥다': 'b', '가깝다': 'b', '귀엽다': 'b', '어렵다': 'b', '쉽다': 'b',
+    '가볍다': 'b', '무겁다': 'b', '고맙다': 'b', '반갑다': 'b', '아름답다': 'b', '즐겁다': 'b',
+    '부끄럽다': 'b', '외롭다': 'b', '더럽다': 'b', '어둡다': 'b', '뜨겁다': 'b', '차갑다': 'b',
+    '맵다': 'b', '싱겁다': 'b', '그립다': 'b', '돕다': 'b', '눕다': 'b', '굽다': 'b',
+    # 르 불규칙
+    '부르다': 'reu', '빠르다': 'reu', '모르다': 'reu', '다르다': 'reu', '고르다': 'reu',
+    '자르다': 'reu', '흐르다': 'reu', '마르다': 'reu', '기르다': 'reu', '나르다': 'reu',
+    '게으르다': 'reu', '배부르다': 'reu', '서투르다': 'reu', '어지르다': 'reu', '지르다': 'reu',
+    '오르다': 'reu', '누르다': 'reu',
+    # ㅅ 불규칙
+    '짓다': 's', '낫다': 's', '붓다': 's',
+    # ㅎ 불규칙
+    '하얗다': 'h', '그렇다': 'h', '빨갛다': 'h', '파랗다': 'h', '노랗다': 'h', '까맣다': 'h',
+    '이렇다': 'h', '저렇다': 'h', '어떻다': 'h',
+    # 으 탈락
+    '크다': 'eu', '쓰다': 'eu', '뜨다': 'eu', '끄다': 'eu', '트다': 'eu', '바쁘다': 'eu',
+    '예쁘다': 'eu', '슬프다': 'eu', '아프다': 'eu', '기쁘다': 'eu', '나쁘다': 'eu', '배고프다': 'eu',
+    # 우 불규칙 / 러 불규칙
+    '푸다': 'u', '푸르다': 'reo',
+}
+
+
+def derive_eo(h, pos='동사', irr=None):
+    """Derive -아/어 stem from dictionary form h and part of speech."""
+    st = stem_of(h)
+    if irr is None:
+        irr = IRR.get(h)
+    c, j, g = dec(st[-1])
+
+    if h == '하다' or st.endswith('하'):
+        return st[:-1] + '해'
+    if irr == 'd':
+        return comp(c, j, 'ㄹ') + ('아' if j in ('ㅏ', 'ㅗ') else '어')
+    if irr == 'b':
+        if h == '돕다':
+            return st[:-1] + '도와'
+        return st[:-1] + comp(c, j) + '워'
+    if irr == 's':
+        return comp(c, j) + ('아' if j in ('ㅏ', 'ㅗ') else '어')
+    if irr == 'h':
+        if j == 'ㅑ':
+            return st[:-1] + comp(c, 'ㅒ')
+        return st[:-1] + comp(c, 'ㅐ')
+    if irr == 'reu' or st.endswith('르'):
+        return reu_irr(st)
+    if irr == 'reo' or h == '푸르다':
+        return st + '러'
+    if irr == 'u' or h == '푸다':
+        return u_irr(st)
+    if irr == 'eu' or (j == 'ㅡ' and not g):
+        return eu_drop(st)
+    if not g:
+        if j == 'ㅏ': return st
+        if j == 'ㅓ': return st
+        if j == 'ㅕ': return st
+        if j == 'ㅗ': return st[:-1] + comp(c, 'ㅘ')
+        if j == 'ㅜ': return st[:-1] + comp(c, 'ㅝ')
+        if j == 'ㅣ': return st[:-1] + comp(c, 'ㅕ')
+        if j == 'ㅐ': return st
+        if j == 'ㅔ': return st
+        if j == 'ㅚ': return st[:-1] + comp(c, 'ㅙ')
+    return st + ('아' if j in ('ㅏ', 'ㅗ') else '어')
+
+
+def forms(h, pres='', past='', adj=False):
     st = stem_of(h)
     irr = IRR.get(h)
     bat = batchim(st)
+    if not irr and bat == 'ㄹ':
+        irr = 'l'
     # stems for vowel-initial endings (으-endings)
     st_eu = d_irr(st) if irr == 'd' else st  # 들으면
     st_l = drop_l(st) if irr == 'l' else st  # 사네요, 사는
-    eo = pres[:-1]  # 먹어요 → 먹어 (해요체 stem)
+    eo = pres[:-1] if pres else derive_eo(h, '형용사' if adj else '동사', irr)
+
     def eu(e_bat, e_vow):
         if irr == 'b':
             return b_irr(st) + e_vow
         if irr == 'l':
             return st_l + e_vow if e_vow.startswith('ㄹ') is False else st_l + e_vow
+        if irr == 's':
+            return s_irr(st) + e_bat
+        if irr == 'h':
+            return h_irr(st) + e_vow
         return (st_eu + e_bat) if bat else (st + e_vow)
+
     def l_ending(tail):  # (으)ㄹ + tail
         if irr == 'l':
             return st + tail  # 살 때
         if irr == 'b':
             return b_irr(st)[:-1] + comp(*dec(b_irr(st)[-1])[:2], 'ㄹ') + tail  # 추울 때
+        if irr == 's':
+            return s_irr(st) + '을' + tail
+        if irr == 'h':
+            c, j, g = dec(h_irr(st)[-1])
+            return h_irr(st)[:-1] + comp(c, j, 'ㄹ') + tail
         if bat:
             return st_eu + '을' + tail  # 먹을 때, 들을 때
         c, j, g = dec(st[-1])
         return st[:-1] + comp(c, j, 'ㄹ') + tail  # 볼 때
+
     def n_ending(tail):  # (으)ㄴ + tail
         if irr == 'l':
             return drop_l(st)[:-1] + comp(*dec(st_l[-1])[:2], 'ㄴ') + tail  # 산 후에
         if irr == 'b':
             b = b_irr(st); c, j, g = dec(b[-1]); return b[:-1] + comp(c, j, 'ㄴ') + tail  # 추운
+        if irr == 's':
+            return s_irr(st) + '은' + tail
+        if irr == 'h':
+            c, j, g = dec(h_irr(st)[-1])
+            return h_irr(st)[:-1] + comp(c, j, 'ㄴ') + tail
         if bat:
             return st_eu + '은' + tail
         c, j, g = dec(st[-1])
@@ -88,6 +211,9 @@ def forms(h, pres, past='', adj=False):
         c, j, g = dec(st_l[-1])
         formal = st_l[:-1] + comp(c, j, 'ㅂ') + '니다'
         formal_q = st_l[:-1] + comp(c, j, 'ㅂ') + '니까?'
+    elif irr == 'h':
+        formal = st + '습니다'
+        formal_q = st + '습니까?'
     elif bat:
         formal = st + '습니다'
         formal_q = st + '습니까?'
@@ -106,6 +232,9 @@ def forms(h, pres, past='', adj=False):
         elif irr == 'd':
             hon_pres = d_irr(st) + '으세요'
             hon_past = d_irr(st) + '으셨어요'
+        elif irr == 's':
+            hon_pres = s_irr(st) + '으세요'
+            hon_past = s_irr(st) + '으셨어요'
         elif bat:
             hon_pres = st + '으세요'
             hon_past = st + '으셨어요'
@@ -135,6 +264,10 @@ def forms(h, pres, past='', adj=False):
         nika = b_irr(st) + '니까'
     elif irr == 'd':
         nika = d_irr(st) + '으니까'
+    elif irr == 's':
+        nika = s_irr(st) + '으니까'
+    elif irr == 'h':
+        nika = h_irr(st) + '니까'
     elif bat:
         nika = st + '으니까'
     else:
@@ -151,6 +284,9 @@ def forms(h, pres, past='', adj=False):
             neunde = st_l[:-1] + comp(c, j, 'ㄴ') + '데'
         elif irr == 'b':
             b = b_irr(st); c, j, g = dec(b[-1]); neunde = b[:-1] + comp(c, j, 'ㄴ') + '데'
+        elif irr == 'h':
+            c, j, g = dec(h_irr(st)[-1])
+            neunde = h_irr(st)[:-1] + comp(c, j, 'ㄴ') + '데'
         elif bat:
             neunde = st + '은데'
         else:
