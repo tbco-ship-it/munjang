@@ -262,6 +262,7 @@ html.roman .w-r{display:block}
 .quiz{display:flex;flex-direction:column;gap:12px;margin:12px 0 24px}
 .qz{padding:14px 16px;border-radius:14px;background:var(--surface);border:1px solid var(--line)}
 .qz-s{font:600 1.3rem/1.4 var(--hangul);margin:0 0 10px}.qz-s u{text-decoration:none;color:var(--accent-text);border-bottom:2px solid var(--accent)}
+.qz-hint{margin:-4px 0 10px;font-size:.88rem;color:var(--text-2);font-style:italic}
 .qz-why{margin:10px 0 0;font-size:.9rem;color:var(--text-2)}.qz-why .tag{margin-right:6px}
 .qz-why.ok .tag{background:var(--ok);color:var(--surface)}.qz-why.soft .tag{background:var(--warn);color:var(--surface)}.qz-why.no .tag{background:var(--no);color:var(--surface)}
 
