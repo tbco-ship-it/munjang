@@ -1146,7 +1146,7 @@
     }
    },
    "en": "Because I have (no) … , I … (-기 때문에)",
-   "ja": "〜がないので…（-기 때문에）",
+   "ja": "〜だから／〜のために（-기 때문에）",
    "vi": "Vì (không) có … nên … (-기 때문에)",
    "ex": "저는 시간이 없기 때문에 운동을 안 해요",
    "ex_en": "Because I have no time, I don’t exercise.",
@@ -1244,7 +1244,7 @@
    "op": "obj",
    "verbs": "transitive",
    "en": "I’d better … (-아/어야겠어요)",
-   "ja": "〜しなくちゃ（-아/어야겠어요）",
+   "ja": "〜しなくては／〜しないと（-아/어야겠어요）",
    "vi": "Tôi phải … thôi (-아/어야겠어요)",
    "ex": "저는 숙제를 해야겠어요",
    "ex_en": "I’d better do my homework.",
