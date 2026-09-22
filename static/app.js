@@ -502,15 +502,66 @@
     p.A = cut < 0 ? st.picks.A : n === 1 ? st.picks.A1 : null;
     return p;
   }
+  const VI_DO = {
+    '요리': 'nấu ăn',
+    '태권도': 'tập taekwondo',
+    '운동': 'tập thể thao',
+    '수영': 'bơi lội',
+    '야구': 'chơi bóng chày',
+    '축구': 'chơi bóng đá',
+    '게임': 'chơi trò chơi',
+    '춤': 'nhảy múa',
+    '숙제': 'làm bài tập về nhà',
+    '여행': 'đi du lịch'
+  };
   // "I drink coffee" / "私はコーヒーを飲みます" / "tôi uống cà phê" — one clause, optional subject, no final punctuation
   function clauseGloss(lang, n, withS) {
-    const p = clausePicks(n), ctx = clauseCtx(n), S = st.picks.S && st.tense !== 'please' ? st.picks.S : null;
+    const p = clausePicks(n), ctx = clauseCtx(n);
+    const slots = st.tpl.slots, cut = slots.indexOf('CP');
+    const isPlease = ctx.tense === 'please' || st.tense === 'please';
+    let S = null;
+    if (!isPlease && st.picks.S) {
+      if (cut < 0) {
+        S = st.picks.S;
+      } else if (n === 1) {
+        S = slots.indexOf('S') < cut ? st.picks.S : null;
+      } else {
+        const sInClause2 = slots.indexOf('S') > cut;
+        if (sInClause2) S = st.picks.S;
+        else if (st.picks.S.h !== '비' && !slots.includes('VF:please')) S = st.picks.S;
+      }
+    }
     const sp = st.picks.SP, op = st.picks.OP, aux = x => x === '도' || x === '만';
     if (aux(sp) || aux(op)) { // 도/만 frame: mark also/only on the subject or the object
       if (lang === 'ja') { const Sj = withS && S ? M_JA(S) + (sp === '도' ? 'も' : sp === '만' ? 'だけ' : 'は') : ''; const Oj = p.O ? M_JA(p.O) + (op === '도' ? 'も' : op === '만' ? 'だけ' : (p.V && p.V.ja_p ? p.V.ja_p : 'を')) : ''; return Sj + Oj + (predJa('V', p.V, false, ctx) || ''); }
       if (lang === 'vi') return [withS && S ? M_VI(S) : '', sp === '도' ? 'cũng' : sp === '만' || op === '만' ? 'chỉ' : '', predVi('V', p.V, ctx), op === '도' ? 'cả' : '', p.O ? M_VI(p.O) : ''].filter(Boolean).join(' ');
       const Se = S ? M_EN(S) : ''; const V = predEn('V', p.V, Se || 'you', false, ctx);
       return [withS ? Se : '', sp === '도' ? 'too' : '', sp === '만' ? 'alone' : '', V, op === '만' ? 'only' : '', p.O ? M_EN(p.O) : '', op === '도' ? 'too' : ''].filter(Boolean).join(' ').replace(/^(\S+) too /, '$1, too, ');
+    }
+    // C2: or + 하다 connects both activities idiomatically
+    if (st.tpl.id === 'or' && p.V && p.V.h === '하다' && p.O && p.O2) {
+      if (lang === 'ja') {
+        const Sj = withS && S ? M_JA(S) + (st.judges.SP && st.judges.SP.choice && /^(이|가|께서)$/.test(st.judges.SP.choice) ? 'が' : 'は') : '';
+        const d1 = (p.O.ja_do || (M_JA(p.O) + 'をする')).replace(/します$/, 'をする').replace(/ぎます$/, 'ぐ').replace(/ります$/, 'る');
+        const isPast = ctx.tense === 'past' || ctx.tense === 'formal_past';
+        const v2 = (p.O2.ja_do || (M_JA(p.O2) + 'をします')).replace(/します$/, isPast ? 'しました' : 'します').replace(/ぎます$/, isPast ? 'ぎました' : 'ぎます').replace(/ります$/, isPast ? 'りました' : 'ります');
+        return Sj + d1 + 'か' + v2;
+      }
+      if (lang === 'vi') {
+        const Sv = withS && S ? M_VI(S) : '';
+        const isPast = ctx.tense === 'past' || ctx.tense === 'formal_past';
+        const v1 = (isPast ? 'đã ' : '') + (VI_DO[p.O.h] || M_VI(p.O));
+        const v2 = VI_DO[p.O2.h] || M_VI(p.O2);
+        return [Sv, v1, 'hoặc', v2].filter(Boolean).join(' ');
+      }
+      const Se = S ? M_EN(S) : '';
+      const isPast = ctx.tense === 'past' || ctx.tense === 'formal_past';
+      const first = Se === 'I' || Se === 'we', plural = PLURAL.test(Se) || Se === 'we' || Se === 'you';
+      const s3 = !first && !plural && Boolean(Se);
+      const f1 = enForms(p.V, p.O), f2 = enForms(p.V, p.O2);
+      const v1 = isPast ? f1.past : (s3 ? f1.s3 : f1.base);
+      const v2 = isPast ? f2.past : (s3 ? f2.s3 : f2.base);
+      return [withS ? Se : '', v1, 'or', v2].filter(Boolean).join(' ');
     }
     if (lang === 'ja') {
       const V = p.A ? predJa('A', p.A, false, ctx) : (p.V ? predJa('V', p.V, false, ctx) : '');

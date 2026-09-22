@@ -792,10 +792,39 @@
         }
       } else if (isElderSubj && plainHonVerbs.includes(verb.h)) {
         const sStem = subj ? subj.stem : '';
+        const honVerbHead = honVerbMap[verb.h];
+        const honVerbObj = words.verbs.find(v => v.h === honVerbHead);
+        const tense = verbTense || 'pres';
+        const fixedVerb = honVerbObj ? (honVerbObj[tense] || honVerbObj.pres) : verb.h;
+        const fixedSubj = (subj && (subj.particle === '은' || subj.particle === '는' || subj.particle === '께서는')) ? `${sStem}께서는` : `${sStem}께서`;
+
+        const midChunks = [];
+        for (const c of cl.nouns) {
+          if (c === subj || c === gkeso) continue;
+          let stem = c.stem || c.text;
+          let p = c.particle || '';
+          if (honNounMap[stem]) {
+            const newStem = honNounMap[stem];
+            if (p && PAIRS[p]) {
+              const needP = hasBatchim(newStem) ? (wantsBatchim(p) ? p : PAIRS[p]) : (wantsBatchim(p) ? PAIRS[p] : p);
+              p = needP;
+            }
+            stem = newStem;
+          }
+          midChunks.push(stem + p);
+        }
+
+        const fixParts = [];
+        if (fixedSubj) fixParts.push(fixedSubj);
+        if (midChunks.length) fixParts.push(...midChunks);
+        if (fixedVerb) fixParts.push(fixedVerb);
+        const fixSentence = fixParts.join(' ') + '.';
+
         notes.push({
           grade: 'info',
           key: 'chk_honorific',
-          vars: { s: sStem, v: verb.h }
+          vars: { s: sStem, v: verb.h },
+          fix: fixSentence
         });
       }
 

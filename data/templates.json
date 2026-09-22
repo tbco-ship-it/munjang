@@ -25,7 +25,8 @@
     "can",
     "must",
     "please",
-    "formal"
+    "formal",
+    "formal_past"
    ],
    "level": 1,
    "vi": "Ai đó làm gì",
@@ -56,7 +57,8 @@
     "can",
     "must",
     "please",
-    "formal"
+    "formal",
+    "formal_past"
    ],
    "level": 1,
    "vi": "Đi đâu đó",
@@ -78,7 +80,8 @@
    "tenses": [
     "pres",
     "past",
-    "formal"
+    "formal",
+    "formal_past"
    ],
    "level": 1,
    "vi": "Miêu tả cái gì đó",
@@ -104,7 +107,8 @@
    "tenses": [
     "pres",
     "past",
-    "formal"
+    "formal",
+    "formal_past"
    ],
    "level": 1,
    "vi": "Cái gì đó ở đâu",
@@ -258,7 +262,8 @@
     "can",
     "must",
     "please",
-    "formal"
+    "formal",
+    "formal_past"
    ],
    "level": 2,
    "vi": "Làm gì ở một nơi",
@@ -288,7 +293,8 @@
     "can",
     "must",
     "please",
-    "formal"
+    "formal",
+    "formal_past"
    ],
    "level": 2,
    "vi": "Sống / làm việc ở đâu",
@@ -314,7 +320,8 @@
    "tenses": [
     "pres",
     "past",
-    "formal"
+    "formal",
+    "formal_past"
    ],
    "level": 2,
    "vi": "Không làm gì (안)",
@@ -343,7 +350,8 @@
     "pres",
     "past",
     "fut",
-    "formal"
+    "formal",
+    "formal_past"
    ],
    "p": {
     "TP": {
@@ -376,7 +384,8 @@
    "tenses": [
     "pres",
     "past",
-    "formal"
+    "formal",
+    "formal_past"
    ],
    "p": {
     "HP": {
@@ -418,7 +427,8 @@
    "tenses": [
     "pres",
     "past",
-    "formal"
+    "formal",
+    "formal_past"
    ]
   },
   {
@@ -497,7 +507,8 @@
    "tenses": [
     "pres",
     "past",
-    "formal"
+    "formal",
+    "formal_past"
    ]
   },
   {
@@ -534,7 +545,8 @@
    "tenses": [
     "pres",
     "past",
-    "formal"
+    "formal",
+    "formal_past"
    ]
   },
   {
@@ -572,7 +584,8 @@
    "tenses": [
     "pres",
     "past",
-    "formal"
+    "formal",
+    "formal_past"
    ]
   },
   {
@@ -598,7 +611,8 @@
    "tenses": [
     "pres",
     "past",
-    "formal"
+    "formal",
+    "formal_past"
    ]
   },
   {
@@ -644,7 +658,8 @@
    "tenses": [
     "pres",
     "past",
-    "formal"
+    "formal",
+    "formal_past"
    ]
   },
   {
@@ -673,7 +688,8 @@
     "can",
     "must",
     "please",
-    "formal"
+    "formal",
+    "formal_past"
    ],
    "p": {
     "WP": {
@@ -715,7 +731,8 @@
     "can",
     "must",
     "please",
-    "formal"
+    "formal",
+    "formal_past"
    ],
    "p": {
     "RP": {
