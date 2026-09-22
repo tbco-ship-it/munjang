@@ -42,6 +42,36 @@
     });
     syncLangMenu();
   }
+  const navScroll = document.getElementById('nav-scroll');
+  if (navScroll) {
+    const nav = navScroll.querySelector('nav');
+    const previous = document.getElementById('nav-scroll-prev');
+    const next = document.getElementById('nav-scroll-next');
+    const reduced = matchMedia('(prefers-reduced-motion: reduce)');
+    const syncNavScroll = () => {
+      const max = Math.max(0, nav.scrollWidth - nav.clientWidth);
+      const left = nav.scrollLeft;
+      const scrollable = max > 2;
+      const atStart = !scrollable || left <= 2;
+      const atEnd = !scrollable || max - left <= 2;
+      navScroll.dataset.scrollable = scrollable ? 'true' : 'false';
+      navScroll.dataset.atStart = atStart ? 'true' : 'false';
+      navScroll.dataset.atEnd = atEnd ? 'true' : 'false';
+      previous.hidden = !scrollable || !atEnd;
+      next.hidden = !scrollable || atEnd;
+    };
+    const move = direction => {
+      const amount = direction * 200;
+      if (typeof nav.scrollBy === 'function') nav.scrollBy({ left: amount, behavior: reduced.matches ? 'auto' : 'smooth' });
+      else nav.scrollLeft += amount;
+    };
+    previous.addEventListener('click', () => move(-1));
+    next.addEventListener('click', () => move(1));
+    nav.addEventListener('scroll', syncNavScroll, { passive: true });
+    window.addEventListener('resize', syncNavScroll);
+    if ('ResizeObserver' in window) new ResizeObserver(syncNavScroll).observe(nav);
+    requestAnimationFrame(syncNavScroll);
+  }
   document.addEventListener('click', e => {
     document.querySelectorAll('details.menu[open], details.lang-menu[open]').forEach(d => { if (!d.contains(e.target)) d.removeAttribute('open'); });
   });

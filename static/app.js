@@ -158,7 +158,7 @@
     const sc = slots.includes('S') ? M.candidates(tpl, 'S', D.words, p.V1 || p.V) : []; if (slots.includes('S') && !sc.includes(p.S) && !p.S.free) p.S = sc[0] || p.S;
     if (!slots.includes('S')) delete p.S;
     st.picks = p; if (!tpl.tenses.includes(st.tense)) st.tense = tpl.tenses[0];
-    $('#frames').hidden = true; renderBuilder();
+    $('#frames').hidden = true; $('#frame-btn').setAttribute('aria-expanded', 'false'); renderBuilder();
   }
   function optionsFor(k) {
     if (k === 'S') return M.candidates(st.tpl, 'S', D.words, st.picks.V1 || st.picks.V);
@@ -796,7 +796,7 @@
   // ---------- boot ----------
   renderJamo();
   $('#batchim').onchange = e => { st.batchim = e.target.checked; renderWords(); };
-  $('#frame-btn').onclick = () => { $('#frames').hidden = !$('#frames').hidden; };
+  $('#frame-btn').onclick = () => { const y = window.scrollY; const open = $('#frames').hidden; $('#frames').hidden = !open; $('#frame-btn').setAttribute('aria-expanded', String(open)); requestAnimationFrame(() => window.scrollTo({ top: y, behavior: 'auto' })); };
   $('#roman').onchange = e => { document.documentElement.classList.toggle('roman', e.target.checked); try { localStorage.setItem('munjang.roman', e.target.checked ? '1' : ''); } catch (x) {} };
   try { if (localStorage.getItem('munjang.roman')) { $('#roman').checked = true; document.documentElement.classList.add('roman'); } } catch (x) {}
   initTray(); initFree(); renderBuilder();
