@@ -79,6 +79,76 @@
   const g = document.getElementById('guide'); g.onchange = () => sheet.classList.toggle('guide', g.checked);
   const tr = document.getElementById('trace'); tr.onchange = () => sheet.classList.toggle('notrace', !tr.checked);
   document.getElementById('answers').onchange = render;
-  document.getElementById('do-print').onclick = () => window.print();
+  const printBtn = document.getElementById('do-print');
+  const printHint = document.getElementById('print-hint');
+  const pdfSheet = document.getElementById('pdf-sheet');
+  const pdfBg = document.getElementById('pdf-bg');
+  const pdfX = document.getElementById('pdf-sheet-x');
+  const pdfClose = document.getElementById('pdf-sheet-close');
+  const pdfGo = document.getElementById('pdf-sheet-go');
+
+  function isIOSDevice() {
+    const ua = navigator.userAgent || '';
+    const isIPad = /iPad/.test(ua) || (/Macintosh|Mac OS X|MacIntel/.test(ua) && navigator.maxTouchPoints > 1);
+    const isIPhone = /iPhone|iPod/.test(ua);
+    const isQa = new URLSearchParams(location.search).get('ios') === '1'; // QA hook
+    return isIPad || isIPhone || isQa;
+  }
+  const isIOS = isIOSDevice();
+
+  if (printBtn) {
+    printBtn.disabled = !tray.length;
+  }
+  if (printHint) {
+    printHint.hidden = isIOS;
+  }
+
+  function openPdfSheet() {
+    if (!tray.length || !pdfSheet) return;
+    document.documentElement.classList.add('pdf-open');
+    pdfSheet.setAttribute('aria-hidden', 'false');
+    if (pdfBg) pdfBg.setAttribute('aria-hidden', 'false');
+    if (pdfGo) pdfGo.focus();
+  }
+
+  function closePdfSheet() {
+    if (!document.documentElement.classList.contains('pdf-open')) return;
+    document.documentElement.classList.remove('pdf-open');
+    if (pdfSheet) pdfSheet.setAttribute('aria-hidden', 'true');
+    if (pdfBg) pdfBg.setAttribute('aria-hidden', 'true');
+    if (printBtn) printBtn.focus();
+  }
+
+  if (pdfBg) pdfBg.onclick = closePdfSheet;
+  if (pdfX) pdfX.onclick = closePdfSheet;
+  if (pdfClose) pdfClose.onclick = closePdfSheet;
+  if (pdfGo) {
+    pdfGo.onclick = () => {
+      closePdfSheet();
+      window.print();
+    };
+  }
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && document.documentElement.classList.contains('pdf-open')) {
+      e.preventDefault();
+      closePdfSheet();
+    }
+  });
+
+  window.openPdfSheet = openPdfSheet;
+  window.closePdfSheet = closePdfSheet;
+
+  if (printBtn) {
+    printBtn.onclick = () => {
+      if (!tray.length) return;
+      if (isIOS) {
+        openPdfSheet();
+      } else {
+        window.print();
+      }
+    };
+  }
+
   if (location.hash === '#ws') document.querySelector('[data-mode="ws"]').click(); else render();
 })();

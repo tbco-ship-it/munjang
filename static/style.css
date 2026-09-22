@@ -238,6 +238,8 @@ html.roman .w-r{display:block}
 /* 원고지 print page */
 .print-head{max-width:66ch;margin:0 auto;padding-top:28px}
 .print-ctl{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin:8px 0 20px}
+.print-act{display:inline-flex;flex-direction:column;gap:5px;align-items:flex-start}
+.print-hint{font-size:.78rem;color:var(--muted);line-height:1.2;margin:0}
 .seg{display:inline-flex;border:1px solid var(--line);border-radius:10px;overflow:hidden}
 .seg button{padding:8px 14px;border:0;background:var(--surface);cursor:pointer;font-weight:600;color:var(--muted)}.seg button.on{background:var(--text);color:var(--canvas)}
 .print-ctl .toggle{margin:0}
@@ -253,9 +255,33 @@ html.roman .w-r{display:block}
 .sheet.guide .cell::before,.sheet.guide .cell::after{content:"";position:absolute;pointer-events:none}
 .sheet.guide .cell::before{left:50%;top:0;bottom:0;border-left:1px dashed #e5e8eb}
 .sheet.guide .cell::after{top:50%;left:0;right:0;border-top:1px dashed #e5e8eb}
+.pdf-bg{position:fixed;inset:0;z-index:70;background:rgba(0,0,0,.45);opacity:0;pointer-events:none;transition:opacity .3s}
+.pdf-sheet{position:fixed;left:0;right:0;bottom:0;margin:0 auto;max-width:520px;z-index:71;padding:22px 20px calc(20px + env(safe-area-inset-bottom));border-radius:24px 24px 0 0;background:var(--surface);color:var(--text);border:1px solid var(--line);border-bottom:0;transform:translateY(100%);transition:transform .4s cubic-bezier(.16,1,.3,1);max-height:88vh;overflow-y:auto;box-shadow:0 -8px 40px rgba(0,0,0,.25)}
+.pdf-open .pdf-bg{opacity:1;pointer-events:auto}
+.pdf-open .pdf-sheet{transform:translateY(0)}
+.pdf-sheet-hd{display:flex;align-items:center;gap:12px;margin-bottom:6px}
+.pdf-sheet-icon{width:42px;height:42px;border-radius:12px;background:var(--accent-soft);color:var(--accent);display:grid;place-items:center;flex:none}
+.pdf-sheet-icon svg{width:22px;height:22px}
+.pdf-sheet-title-wrap{display:flex;flex-direction:column;flex:1;min-width:0}
+.pdf-sheet-title-wrap b{font-size:1.12rem;font-weight:750;letter-spacing:-.01em;line-height:1.25}
+.pdf-sheet-title-wrap span{font-size:.84rem;color:var(--muted);margin-top:2px;line-height:1.3}
+.pdf-sheet-x{width:32px;height:32px;border-radius:50%;background:transparent;border:0;color:var(--muted);font-size:1.15rem;cursor:pointer;display:grid;place-items:center;line-height:1;flex:none;transition:color .15s}
+.pdf-sheet-x:hover{color:var(--text)}
+.pdf-sheet-steps{list-style:none;margin:14px 0 0;padding:0}
+.pdf-sheet-steps li{display:flex;gap:12px;align-items:center;padding:12px 0;border-top:1px solid var(--line);font-size:.95rem;line-height:1.4}
+.pdf-sheet-steps li i{flex:none;width:26px;height:26px;border-radius:50%;background:var(--accent-soft);color:var(--accent);font:700 .85rem/26px var(--font);text-align:center;font-style:normal}
+.pdf-sheet-steps .step-content{display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%}
+.pdf-sheet-steps .step-content b{font-weight:600;font-size:.92rem}
+.pdf-sheet-steps .step-content svg{width:20px;height:20px;flex:none;color:var(--accent)}
+.pdf-sheet-go{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;margin-top:18px;padding:14px;border:0;border-radius:14px;background:var(--accent);color:var(--on-accent);font:700 1rem var(--font);cursor:pointer;transition:background var(--motion)}
+.pdf-sheet-go:hover{background:var(--accent-hover)}
+.pdf-sheet-go svg{width:20px;height:20px}
+.pdf-sheet-close{display:block;width:100%;margin-top:8px;padding:10px;border:0;background:none;color:var(--muted);font:inherit;font-size:.9rem;cursor:pointer;text-align:center}
+.pdf-sheet-close:hover{color:var(--text)}
+@media (prefers-reduced-motion:reduce){.pdf-sheet,.pdf-bg{transition:none}}
 @media print{
   @page{size:A4;margin:14mm}
-  header.top,footer,.print-head,.a2hs,.a2hs-sheet,.a2hs-bg{display:none!important}
+  header.top,footer,.print-head,.a2hs,.a2hs-sheet,.a2hs-bg,.pdf-sheet,.pdf-bg{display:none!important}
   html{background:#fff}main{padding:0;max-width:none}
   .sheet{--cell:8.6mm;border:0;padding:0;max-width:none;border-radius:0}
   .sheet.letter{--cell:8.4mm}
