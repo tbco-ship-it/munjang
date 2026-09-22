@@ -24,7 +24,8 @@
     "fut",
     "can",
     "must",
-    "please"
+    "please",
+    "formal"
    ],
    "level": 1,
    "vi": "Ai đó làm gì",
@@ -54,7 +55,8 @@
     "fut",
     "can",
     "must",
-    "please"
+    "please",
+    "formal"
    ],
    "level": 1,
    "vi": "Đi đâu đó",
@@ -75,7 +77,8 @@
    "ex_ja": "キムチはおいしいです。",
    "tenses": [
     "pres",
-    "past"
+    "past",
+    "formal"
    ],
    "level": 1,
    "vi": "Miêu tả cái gì đó",
@@ -100,11 +103,37 @@
    "ex_ja": "猫が家にいます。",
    "tenses": [
     "pres",
-    "past"
+    "past",
+    "formal"
    ],
    "level": 1,
    "vi": "Cái gì đó ở đâu",
    "ex_vi": "Con mèo ở nhà."
+  },
+  {
+   "id": "formal",
+   "level": 1,
+   "slots": [
+    "S",
+    "SP",
+    "O",
+    "OP",
+    "V"
+   ],
+   "sp": "topic",
+   "op": "obj",
+   "verbs": "transitive",
+   "en": "Formal style (-ㅂ니다/습니다)",
+   "ja": "丁寧体（-ㅂ니다/습니다）",
+   "vi": "Thể trang trọng (-ㅂ니다/습니다)",
+   "ex": "저는 커피를 마십니다",
+   "ex_en": "I drink coffee. (formal)",
+   "ex_ja": "私はコーヒーを飲みます。",
+   "ex_vi": "Tôi uống cà phê.",
+   "tenses": [
+    "pres",
+    "past"
+   ]
   },
   {
    "id": "q_where",
@@ -137,7 +166,8 @@
    "ex_vi": "Bạn đi đâu?",
    "tenses": [
     "pres",
-    "past"
+    "past",
+    "formal"
    ],
    "no_first": true
   },
@@ -172,7 +202,8 @@
    "ex_vi": "Bạn ăn gì?",
    "tenses": [
     "pres",
-    "past"
+    "past",
+    "formal"
    ],
    "no_first": true
   },
@@ -226,7 +257,8 @@
     "fut",
     "can",
     "must",
-    "please"
+    "please",
+    "formal"
    ],
    "level": 2,
    "vi": "Làm gì ở một nơi",
@@ -255,7 +287,8 @@
     "fut",
     "can",
     "must",
-    "please"
+    "please",
+    "formal"
    ],
    "level": 2,
    "vi": "Sống / làm việc ở đâu",
@@ -415,6 +448,48 @@
    "ex_en": "I eat and then drink coffee.",
    "ex_ja": "私はご飯を食べてコーヒーを飲みます。",
    "ex_vi": "Tôi ăn cơm rồi uống cà phê.",
+   "tenses": [
+    "pres",
+    "past"
+   ]
+  },
+  {
+   "id": "or",
+   "level": 2,
+   "slots": [
+    "S",
+    "SP",
+    "O",
+    "OP",
+    "O2",
+    "OP2",
+    "V"
+   ],
+   "sp": "topic",
+   "verbs": "transitive",
+   "p": {
+    "OP": {
+     "expect": "or",
+     "options": [
+      "이나",
+      "나"
+     ]
+    },
+    "OP2": {
+     "expect": "obj",
+     "options": [
+      "을",
+      "를"
+     ]
+    }
+   },
+   "en": "Choosing between things ((이)나)",
+   "ja": "選択（(이)나）",
+   "vi": "Lựa chọn ((이)나)",
+   "ex": "저는 커피나 차를 마셔요",
+   "ex_en": "I drink coffee or tea.",
+   "ex_ja": "私はコーヒーかお茶を飲みます。",
+   "ex_vi": "Tôi uống cà phê hoặc trà.",
    "tenses": [
     "pres",
     "past"
@@ -778,6 +853,39 @@
    ]
   },
   {
+   "id": "because_n",
+   "level": 3,
+   "slots": [
+    "S",
+    "SP",
+    "V1",
+    "CP",
+    "O",
+    "OP",
+    "VF:please"
+   ],
+   "sp": "subject",
+   "op": "obj",
+   "verbs1": "move",
+   "verbs": "transitive",
+   "conn": "nika",
+   "conns": [
+    "nika",
+    "eoseo",
+    "jiman"
+   ],
+   "en": "Because / since … , please … (-(으)니까)",
+   "ja": "〜から／〜ので…してください（-(으)니까）",
+   "vi": "Vì … nên hãy … (-(으)니까)",
+   "ex": "비가 오니까 우산을 가져가세요",
+   "ex_en": "Because it’s raining, please take an umbrella.",
+   "ex_ja": "雨が降るから傘を持って行ってください。",
+   "ex_vi": "Vì trời mưa nên hãy mang ô theo.",
+   "tenses": [
+    "pres"
+   ]
+  },
+  {
    "id": "if",
    "level": 3,
    "slots": [
@@ -874,6 +982,39 @@
    "ex_en": "I’m busy, but I exercise.",
    "ex_ja": "私は忙しいですが運動します。",
    "ex_vi": "Tôi bận nhưng vẫn tập thể dục.",
+   "tenses": [
+    "pres",
+    "past"
+   ]
+  },
+  {
+   "id": "neunde",
+   "level": 4,
+   "slots": [
+    "S",
+    "SP",
+    "A1",
+    "CP",
+    "O",
+    "OP",
+    "V2"
+   ],
+   "sp": "topic",
+   "op": "obj",
+   "verbs": "transitive",
+   "conn": "neunde",
+   "conns": [
+    "neunde",
+    "jiman",
+    "go"
+   ],
+   "en": "Background / contrast (-는데 / -(으)ㄴ데)",
+   "ja": "背景・前置き（-는데 / -(으)ㄴ데）",
+   "vi": "Bối cảnh / tương phản (-는데 / -(으)ㄴ데)",
+   "ex": "저는 바쁜데 친구를 만나요",
+   "ex_en": "I’m busy, but I meet a friend.",
+   "ex_ja": "私は忙しいですが友だちに会います。",
+   "ex_vi": "Tôi bận nhưng gặp bạn.",
    "tenses": [
     "pres",
     "past"
@@ -1105,6 +1246,41 @@
    "ex_en": "My grandmother is at home.",
    "ex_ja": "祖母が家にいらっしゃいます。",
    "ex_vi": "Bà ở nhà.",
+   "tenses": [
+    "pres",
+    "past"
+   ]
+  },
+  {
+   "id": "hon_verb",
+   "level": 4,
+   "slots": [
+    "S",
+    "SP",
+    "O",
+    "OP",
+    "V"
+   ],
+   "sp": "subject",
+   "op": "obj",
+   "verbs": "hon_verb",
+   "p": {
+    "SP": {
+     "expect": "subject",
+     "options": [
+      "이",
+      "가",
+      "께서"
+     ]
+    }
+   },
+   "en": "An elder does something (께서 · honorific verb)",
+   "ja": "目上の人の動作（께서・敬語動詞）",
+   "vi": "Hành động của người lớn tuổi (께서 · động từ kính ngữ)",
+   "ex": "할머니께서 진지를 드세요",
+   "ex_en": "My grandmother has a meal.",
+   "ex_ja": "祖母がご飯を召し上がります。",
+   "ex_vi": "Bà dùng bữa.",
    "tenses": [
     "pres",
     "past"
@@ -1409,7 +1585,14 @@
    "chk_double_obj": "When using a counter phrase, use 을/를 only once: “개를 두 마리 키워요 — 를 is used once”.",
    "chk_counter_particle": "Attach the particle after the counter: “{fix}”.",
    "chk_typo": "Did you mean “{fix}”? Possible spelling typo in “{orig}”.",
-   "chk_mostly_outside": "Most words are outside our word list — only particle forms were checked."
+   "chk_mostly_outside": "Most words are outside our word list — only particle forms were checked.",
+   "formal_why": "-ㅂ니다/습니다 is the formal polite style used in public speaking, news, business, and exams like TOPIK, while -아요/어요 is the everyday polite conversational style.",
+   "or_ok": "“{p}” means “or” after a noun. Use 이나 after a consonant, 나 after a vowel.",
+   "conn_nika_vs_eoseo": "-(으)니까 is required before suggestions, requests, or imperatives (-세요, -ㄹ까요). -아/어서 cannot be followed by an imperative or suggestive ending.",
+   "conn_eoseo_vs_nika": "-아/어서 expresses natural causes and feelings, but cannot take past tense (-았/었-) or be followed by requests (-세요); use -(으)니까 for suggestions and commands.",
+   "neunde_why": "-는데 attaches to verbs, -(으)ㄴ데 attaches to adjectives (with 있다/없다 taking -는데), and -(이)ㄴ데 attaches to nouns.",
+   "hon_verb_ok": "께서 is paired with honorific verb forms (드세요, 주무세요, -세요). Plain polite endings like 가요 do not match 께서.",
+   "hon_verb_wrong_v": "The subject takes 께서, so the predicate must use an honorific form (드세요, 주무세요, -세요), not a non-honorific form like {v}."
   },
   "ja": {
    "batchim_yes": "「{w}」はパッチム（{f}）で終わる → {p}",
@@ -1494,7 +1677,14 @@
    "chk_double_obj": "助数詞を使う時は、을/를 は1回だけにします：「개를 두 마리 키워요 — 를 は1回だけ」。",
    "chk_counter_particle": "助数詞の後に助詞を付けます：「{fix}」。",
    "chk_typo": "「{fix}」ですか？「{orig}」のスペルミスの可能性があります。",
-   "chk_mostly_outside": "大部分が単語リスト外です — 助詞の形のみ判定しました。"
+   "chk_mostly_outside": "大部分が単語リスト外です — 助詞の形のみ判定しました。",
+   "formal_why": "-ㅂ니다/습니다 は公の場やビジネス、ニュース、TOPIKで使う格式高い丁寧体で、日常会話の丁寧体（-아요/어요）と場面で使い分けます。",
+   "or_ok": "名詞の後の「{p}」は「〜か／または」という意味です。パッチムがあれば 이나、なければ 나 を使います。",
+   "conn_nika_vs_eoseo": "-(으)니까 は後ろに勧誘や命令（-세요, -ㄹ까요）が来るときに使います。-아/어서 の後ろには命令・勧誘の語尾は使えません。",
+   "conn_eoseo_vs_nika": "-아/어서 は自然な原因や感情を表しますが、過去形（-았/었-）が付けられず、後ろに命令・依頼（-세요）を置けません。提案や命令には -(으)니까 を使います。",
+   "neunde_why": "動詞には -는데、形容詞には -(으)ㄴ데（있다/없다 は -는데）、名詞には -(이)ㄴ데 が付きます。",
+   "hon_verb_ok": "主語が 께서 のときは、述語も必ず敬語動詞（드세요、주무세요、-세요）と組み合わせます。가요 などの普通の丁寧体は合いません。",
+   "hon_verb_wrong_v": "主語に 께서 が使われているため、述語は普通の形（{v}）ではなく敬語の形（드세요、주무세요、-세요）にする必要があります。"
   },
   "vi": {
    "batchim_yes": "“{w}” kết thúc bằng phụ âm (받침 {f}) → {p}",
@@ -1579,7 +1769,14 @@
    "chk_double_obj": "Khi dùng cụm từ số lượng, chỉ dùng 을/를 một lần: “개를 두 마리 키워요 — 를 chỉ dùng một lần”.",
    "chk_counter_particle": "Gắn tiểu từ sau lượng từ: “{fix}”.",
    "chk_typo": "Có phải bạn muốn viết “{fix}”? Có thể là lỗi chính tả trong “{orig}”.",
-   "chk_mostly_outside": "Hầu hết các từ nằm ngoài danh sách từ — chỉ kiểm tra dạng tiểu từ."
+   "chk_mostly_outside": "Hầu hết các từ nằm ngoài danh sách từ — chỉ kiểm tra dạng tiểu từ.",
+   "formal_why": "-ㅂ니다/습니다 là văn phong trang trọng dùng trong tin tức, công sở, phát biểu và thi TOPIK, còn -아요/어요 là văn phong lịch sự dùng trong hội thoại hằng ngày.",
+   "or_ok": "“{p}” nghĩa là “hoặc / hay là” sau danh từ. Có 받침 dùng 이나, không có 받침 dùng 나.",
+   "conn_nika_vs_eoseo": "-(으)니까 bắt buộc dùng khi vế sau là câu đề nghị, yêu cầu hoặc mệnh lệnh (-세요, -ㄹ까요). -아/어서 không thể đi với đuôi mệnh lệnh hay đề nghị.",
+   "conn_eoseo_vs_nika": "-아/어서 diễn đạt nguyên nhân tự nhiên hoặc cảm xúc, nhưng không gắn thì quá khứ (-았/었-) và không đi cùng câu mệnh lệnh (-세요); hãy dùng -(으)니까 cho đề nghị và mệnh lệnh.",
+   "neunde_why": "Động từ đi với -는데, tính từ đi với -(으)ㄴ데 (riêng 있다/없다 đi với -는데), còn danh từ đi với -(이)ㄴ데.",
+   "hon_verb_ok": "께서 đi đôi với các dạng động từ kính ngữ (드세요, 주무세요, -세요). Đuôi thông thường như 가요 không phù hợp với 께서.",
+   "hon_verb_wrong_v": "Chủ ngữ dùng 께서 thì vị ngữ phải dùng dạng kính ngữ (드세요, 주무세요, -세요), không dùng dạng thông thường như {v}."
   }
  },
  "levels": {
@@ -1616,7 +1813,8 @@
   "fut": 2,
   "can": 3,
   "must": 3,
-  "please": 3
+  "please": 3,
+  "formal": 1
  },
  "conn": {
   "go": {
@@ -1672,6 +1870,18 @@
    "ja": "〜ので／〜ため：理由を明示する",
    "vi": "vì / do: nêu rõ nguyên nhân",
    "lab": "-기 때문에"
+  },
+  "nika": {
+   "en": "because / since: gives a reason, often leading to a suggestion or request",
+   "ja": "〜から／〜ので：理由を表し、提案や依頼につながる",
+   "vi": "vì / do: nêu lý do, thường dẫn đến đề nghị hoặc mệnh lệnh",
+   "lab": "-(으)니까"
+  },
+  "neunde": {
+   "en": "background / contrast: sets the context or contrasts with what follows",
+   "ja": "〜けれど／〜ので：前置きや軽い対比を表す",
+   "vi": "nhưng / mà / vì: làm nền hoặc đối lập nhẹ với vế sau",
+   "lab": "-는데/-(으)ㄴ데"
   }
  }
 }

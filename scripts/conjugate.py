@@ -50,7 +50,7 @@ def b_irr(stem):  # 춥 → 추우
 IRR = {'듣다': 'd', '살다': 'l', '춥다': 'b', '덥다': 'b', '가깝다': 'b', '귀엽다': 'b', '어렵다': 'b', '쉽다': 'b', '멀다': 'l'}
 
 
-def forms(h, pres, adj=False):
+def forms(h, pres, past='', adj=False):
     st = stem_of(h)
     irr = IRR.get(h)
     bat = batchim(st)
@@ -82,6 +82,50 @@ def forms(h, pres, adj=False):
             return st_eu + '은' + tail
         c, j, g = dec(st[-1])
         return st[:-1] + comp(c, j, 'ㄴ') + tail
+
+    # formal (-ㅂ니다/습니다, -습니까?)
+    if irr == 'l':
+        c, j, g = dec(st_l[-1])
+        formal = st_l[:-1] + comp(c, j, 'ㅂ') + '니다'
+        formal_q = st_l[:-1] + comp(c, j, 'ㅂ') + '니까?'
+    elif bat:
+        formal = st + '습니다'
+        formal_q = st + '습니까?'
+    else:
+        c, j, g = dec(st[-1])
+        formal = st[:-1] + comp(c, j, 'ㅂ') + '니다'
+        formal_q = st[:-1] + comp(c, j, 'ㅂ') + '니까?'
+    formal_past = (past[:-2] + '습니다') if past else ''
+
+    # nika (-(으)니까)
+    if irr == 'l':
+        nika = st_l + '니까'
+    elif irr == 'b':
+        nika = b_irr(st) + '니까'
+    elif irr == 'd':
+        nika = d_irr(st) + '으니까'
+    elif bat:
+        nika = st + '으니까'
+    else:
+        nika = st + '니까'
+
+    # neunde (-는데 / -(으)ㄴ데)
+    if not adj:
+        neunde = (st_l if irr == 'l' else st) + '는데'
+    else:
+        if h.endswith('있다') or h.endswith('없다'):
+            neunde = st + '는데'
+        elif irr == 'l':
+            c, j, g = dec(st_l[-1])
+            neunde = st_l[:-1] + comp(c, j, 'ㄴ') + '데'
+        elif irr == 'b':
+            b = b_irr(st); c, j, g = dec(b[-1]); neunde = b[:-1] + comp(c, j, 'ㄴ') + '데'
+        elif bat:
+            neunde = st + '은데'
+        else:
+            c, j, g = dec(st[-1])
+            neunde = st[:-1] + comp(c, j, 'ㄴ') + '데'
+
     out = {
         'go': st + '고',
         'eoseo': eo + '서',
@@ -97,6 +141,11 @@ def forms(h, pres, adj=False):
         'yagesseoyo': eo + '야겠어요',
         'janayo': st + '잖아요',
         'geodeunyo': st + '거든요',
+        'formal': formal,
+        'formal_past': formal_past,
+        'formal_q': formal_q,
+        'nika': nika,
+        'neunde': neunde,
     }
     if not adj:
         out.update({
@@ -135,6 +184,8 @@ OVERRIDES = {
     '멀다': {'plain': '멀다', 'geotgatayo': '먼 것 같아요', 'neyo': '머네요', 'lttae': '멀 때', 'myeon': '멀면', 'myeonseo': '멀면서'},
     '춥다': {'geotgatayo': '추운 것 같아요'}, '덥다': {'geotgatayo': '더운 것 같아요'}, '가깝다': {'geotgatayo': '가까운 것 같아요'}, '귀엽다': {'geotgatayo': '귀여운 것 같아요'}, '어렵다': {'geotgatayo': '어려운 것 같아요'}, '쉽다': {'geotgatayo': '쉬운 것 같아요'},
     '배고프다': {'eoseo': '배고파서'},
+    '드시다': {'eoseo': '드셔서'},
+    '주무시다': {'eoseo': '주무셔서'},
     '바쁘다': {'eoseo': '바빠서'}, '예쁘다': {'eoseo': '예뻐서'}, '크다': {'eoseo': '커서'}, '싸다': {'eoseo': '싸서'}, '비싸다': {'eoseo': '비싸서'},
     '좋다': {'geotgatayo': '좋은 것 같아요'}, '많다': {'geotgatayo': '많은 것 같아요'}, '작다': {'geotgatayo': '작은 것 같아요'}, '맛있다': {'geotgatayo': '맛있는 것 같아요', 'plain': '맛있다'}, '재미있다': {'geotgatayo': '재미있는 것 같아요', 'plain': '재미있다'},
     '친절하다': {'geotgatayo': '친절한 것 같아요'}, '조용하다': {'geotgatayo': '조용한 것 같아요'},
@@ -144,9 +195,9 @@ OVERRIDES = {
 def main():
     w = json.loads((ROOT / 'data/words.json').read_text())
     for v in w['verbs']:
-        f = forms(v['h'], v['pres']); f.update(OVERRIDES.get(v['h'], {})); v.update(f)
+        f = forms(v['h'], v['pres'], v.get('past', '')); f.update(OVERRIDES.get(v['h'], {})); v.update(f)
     for a in w['adjectives']:
-        f = forms(a['h'], a['pres'], adj=True); f.update(OVERRIDES.get(a['h'], {})); a.update(f)
+        f = forms(a['h'], a['pres'], a.get('past', ''), adj=True); f.update(OVERRIDES.get(a['h'], {})); a.update(f)
     (ROOT / 'data/words.json').write_text(json.dumps(w, ensure_ascii=False, indent=1))
     for v in w['verbs']:
         print(v['h'], v['go'], v['eoseo'], v['myeon'], v['lttae'], v['reo'], v['kkayo'], v['jeok'], v['geotgatayo'], v['plain'], v['ryeogo'], sep=' | ')

@@ -275,7 +275,7 @@ eq(chk('저는 밥을 먹고 커피를 마셔요').chunks.find(c => c.text === '
 eq(chk('나는 커피를 마신다').verdict, 'ok', 'checker: plain style ok');
 eq(chk('커피를 마시지 마세요').verdict, 'ok', 'checker: -지 마세요 ok');
 // every verb has every connective form or an explicit null, and every template slot kind is known
-for (const v of W.verbs) for (const k of ['go', 'eoseo', 'jiman', 'myeon', 'lttae', 'ttaemun', 'gi_jeone', 'myeonseo']) eq(k in v, true, `${v.h} has ${k}`);
+for (const v of W.verbs) for (const k of ['go', 'eoseo', 'jiman', 'myeon', 'lttae', 'ttaemun', 'gi_jeone', 'myeonseo', 'nika', 'neunde']) eq(k in v, true, `${v.h} has ${k}`);
 for (const tp of T.templates) for (const k of tp.slots) eq(/^(S|SP|O|OP|OP2|D|L|T|TP|H|HP|W|WP|R|RP|V|VW|NV|HV|A|MV|V1|A1|CP|V2|NV2|O2|REF|POS|QD|QO|QP|VF:\w+|AF:\w+|AUX:\S+|FIX:\S+)$/.test(k), true, `${tp.id} slot ${k}`);
 for (const tp of T.templates) if (tp.conn) eq((tp.conns || []).includes(tp.conn) && Object.keys(T.conn).includes(tp.conn), true, `${tp.id} conn listed`);
 for (const tp of T.templates) for (const k of tp.slots) if (k.startsWith('VF:')) eq(M.verbsFor(tp, W).length > 0, true, `${tp.id} has verbs with ${k}`);
@@ -315,6 +315,39 @@ eq(asm('janh', { S: noun('친구'), O: noun('커피'), V: verb('좋아하다'), 
 eq(asm('geodeun', { S: noun('저'), A: adj('바쁘다'), tense: 'pres' }), '저는 바쁘거든요.', '-거든요');
 eq(chk('할머니께서 집에 계세요').verdict, 'ok', 'checker: 께서 계세요');
 eq(chk('저는 바쁘거든요').verdict, 'ok', 'checker: -거든요');
+
+// 5 new frames: formal, or, because_n, neunde, hon_verb
+// 1. formal
+eq(asm('formal', { S: noun('저'), SP: '는', O: noun('커피'), OP: '를', V: verb('마시다'), tense: 'formal' }), '저는 커피를 마십니다.', 'formal');
+eq(asm('formal', { S: noun('저'), SP: '는', O: noun('커피'), OP: '를', V: verb('마시다'), tense: 'formal_past' }), '저는 커피를 마셨습니다.', 'formal_past');
+eq(asm('act', { S: noun('저'), SP: '는', O: noun('커피'), OP: '를', V: verb('마시다'), tense: 'formal' }), '저는 커피를 마십니다.', 'act formal ending');
+eq(chk('저는 커피를 마십니다.').verdict, 'ok', 'checker: formal ok');
+eq(chk('저는 커피를 마셨습니다.').verdict, 'ok', 'checker: formal_past ok');
+
+// 2. or
+eq(asm('or', { S: noun('저'), SP: '는', O: noun('커피'), OP: '나', O2: noun('차'), OP2: '를', V: verb('마시다'), tense: 'pres' }), '저는 커피나 차를 마셔요.', 'or 커피나 차를');
+eq(asm('or', { S: noun('저'), SP: '는', O: noun('밥'), OP: '이나', O2: noun('빵'), OP2: '을', V: verb('먹다'), tense: 'pres' }), '저는 밥이나 빵을 먹어요.', 'or 밥이나 빵을');
+eq(M.judgeP(tpl('or'), 'OP', noun('커피'), null, '나', WHY).grade, 'ok', '커피나 ok');
+eq(M.judgeP(tpl('or'), 'OP', noun('커피'), null, '이나', WHY).grade, 'no', '커피이나 form error');
+eq(M.judgeP(tpl('or'), 'OP', noun('밥'), null, '이나', WHY).grade, 'ok', '밥이나 ok');
+eq(chk('저는 커피나 차를 마셔요.').verdict, 'ok', 'checker: or frame ok');
+
+// 3. because_n
+eq(asm('because_n', { S: noun('비'), SP: '가', V1: verb('오다'), CP: 'nika', O: noun('우산'), OP: '을', V: verb('가져가다'), tense: 'pres' }), '비가 오니까 우산을 가져가세요.', 'because_n 비가 오니까');
+eq(M.judgeP(tpl('because_n'), 'CP', verb('오다'), null, 'nika', WHY).grade, 'ok', 'nika ok in because_n');
+eq(M.judgeP(tpl('because_n'), 'CP', verb('오다'), null, 'eoseo', WHY).grade, 'no', 'eoseo rejected before please');
+eq(chk('비가 오니까 우산을 가져가세요.').verdict, 'ok', 'checker: because_n ok');
+
+// 4. neunde
+eq(asm('neunde', { S: noun('저'), SP: '는', A1: adj('바쁘다'), CP: 'neunde', O: noun('친구'), OP: '를', V2: verb('만나다'), tense: 'pres' }), '저는 바쁜데 친구를 만나요.', 'neunde 바쁜데');
+eq(chk('저는 바쁜데 친구를 만나요.').verdict, 'ok', 'checker: neunde ok');
+
+// 5. hon_verb
+eq(asm('hon_verb', { S: noun('할머니'), SP: '께서', O: noun('진지'), OP: '를', V: verb('드시다'), tense: 'pres' }), '할머니께서 진지를 드세요.', 'hon_verb 드세요');
+eq(asm('hon_verb', { S: noun('할머니'), SP: '께서', O: noun('진지'), OP: '를', V: verb('드시다'), tense: 'past' }), '할머니께서 진지를 드셨어요.', 'hon_verb 드셨어요');
+eq(M.judgeP(tpl('hon_verb'), 'SP', noun('할머니'), null, '께서', WHY).grade, 'ok', 'hon_verb 께서 ok');
+eq(M.judgeP(tpl('hon_verb'), 'SP', noun('할머니'), null, '가', WHY).grade, 'soft', 'hon_verb 가 soft');
+eq(chk('할머니께서 진지를 드세요.').verdict, 'ok', 'checker: hon_verb ok');
 
 // ---- GPT-5.6 Sol round 3 (2026-09-22): checker round-trip, incomplete sentences, ?, clause domains ----
 for (const tp of T.templates) { // every frame's own example sentence must pass the free checker with no ✗ and no bogus warnings

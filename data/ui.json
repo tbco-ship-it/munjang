@@ -226,7 +226,9 @@
   "particle_like_h": "{w} + ? — with 좋아해요",
   "particle_pref_h": "{w} + ? — with 좋아요",
   "slot_MV": "verb",
-  "chk_mostly_outside": "Most words are outside our word list — only particle forms were checked."
+  "chk_mostly_outside": "Most words are outside our word list — only particle forms were checked.",
+  "tense_formal": "Formal (-습니다/ㅂ니다)",
+  "tense_formal_past": "Formal past (-았습니다/었습니다)"
  },
  "ja": {
   "lang": "ja",
@@ -455,7 +457,9 @@
   "particle_like_h": "{w} + ? — 좋아해요 と",
   "particle_pref_h": "{w} + ? — 좋아요 と",
   "slot_MV": "動詞",
-  "chk_mostly_outside": "大部分が単語リスト外です — 助詞の形のみ判定しました。"
+  "chk_mostly_outside": "大部分が単語リスト外です — 助詞の形のみ判定しました。",
+  "tense_formal": "丁寧体（-ㅂ니다/습니다）",
+  "tense_formal_past": "丁寧体過去（-았습니다/었습니다）"
  },
  "vi": {
   "lang": "vi",
@@ -683,6 +687,8 @@
   "particle_like_h": "{w} + ? — với 좋아해요",
   "particle_pref_h": "{w} + ? — với 좋아요",
   "slot_MV": "động từ",
-  "chk_mostly_outside": "Hầu hết các từ nằm ngoài danh sách từ — chỉ kiểm tra dạng tiểu từ."
+  "chk_mostly_outside": "Hầu hết các từ nằm ngoài danh sách từ — chỉ kiểm tra dạng tiểu từ.",
+  "tense_formal": "Trang trọng (-습니다/ㅂ니다)",
+  "tense_formal_past": "Trang trọng quá khứ (-았습니다/었습니다)"
  }
 }
