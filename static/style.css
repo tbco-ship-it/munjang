@@ -37,6 +37,8 @@ h1,h2,h3{margin:0;letter-spacing:-.01em}
 p{margin:.5em 0}
 .muted{color:var(--muted)}.small{font-size:.875rem}.hint{color:var(--text-2);font-size:.875rem;margin:0 0 14px}
 [lang="ko"],.ko{font-family:var(--hangul)}
+.skip-link{position:fixed;left:16px;top:8px;z-index:100;padding:10px 14px;transform:translateY(-150%);background:var(--accent);color:var(--on-accent);border-radius:var(--r-md);font-weight:650;transition:transform var(--motion)}
+.skip-link:focus{transform:translateY(0);color:var(--on-accent)}
 
 /* header */
 header.top{position:sticky;top:0;z-index:40;display:flex;align-items:center;gap:28px;height:60px;padding:0 24px;background:color-mix(in srgb,var(--canvas) 88%,transparent);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
@@ -53,12 +55,24 @@ header nav>a[aria-current]::after,header nav summary[aria-current]::after{conten
 .menu-list a{display:flex;flex-direction:column;padding:9px 12px;border-radius:10px;color:var(--text);font-weight:550;font-size:.9rem}
 .menu-list a small{color:var(--muted);font-weight:450;font-family:var(--hangul)}
 .menu-list a:hover{background:var(--surface-soft)}
-.hdr-right{margin-left:auto;display:flex;align-items:center;gap:14px}
-.lang{display:flex;align-items:center;gap:8px;font-size:.85rem;font-weight:550;color:var(--muted)}
-.lang a{color:var(--muted)}.lang a[aria-current]{color:var(--text)}
+.hdr-right{margin-left:auto;display:flex;align-items:center;gap:8px;flex:none}
+.lang-menu{position:relative}
+.lang-trigger{display:flex;align-items:center;gap:7px;min-height:34px;padding:0 9px;border:1px solid transparent;border-radius:10px;color:var(--text-2);font-size:.85rem;font-weight:600;cursor:pointer;list-style:none;white-space:nowrap;transition:background var(--motion),border-color var(--motion),color var(--motion)}
+.lang-trigger::-webkit-details-marker{display:none}
+.lang-trigger:hover,.lang-menu[open] .lang-trigger{background:var(--surface-soft);border-color:var(--line);color:var(--text)}
+.lang-trigger svg{flex:none}
+.lang-current{line-height:1}
+.lang-chevron{font-size:.9rem;line-height:1;transform:translateY(-1px);transition:transform var(--motion)}
+.lang-menu[open] .lang-chevron{transform:rotate(180deg) translateY(1px)}
+.lang-list{position:absolute;top:calc(100% + 10px);right:0;z-index:60;display:flex;flex-direction:column;gap:3px;min-width:164px;padding:6px;background:var(--surface);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow-raised)}
+.lang-option{display:flex;align-items:center;gap:10px;min-height:38px;padding:7px 10px;border-radius:9px;color:var(--text);font-size:.86rem;font-weight:550;white-space:nowrap}
+.lang-option:hover,.lang-option:focus-visible{background:var(--surface-soft);color:var(--text)}
+.lang-option[aria-current]{background:var(--accent-soft);color:var(--accent-text)}
+.lang-check{margin-left:auto;color:var(--accent-text);font-weight:700}
+.lang-option:not([aria-current]) .lang-check{visibility:hidden}
 .theme{width:34px;height:34px;border:0;border-radius:10px;background:transparent;color:var(--text-2);display:grid;place-items:center;cursor:pointer}
 .theme:hover{background:var(--surface-soft)}
-@media(max-width:760px){header.top{gap:14px;height:auto;flex-wrap:wrap;padding:10px 16px}header nav{order:3;width:100%;gap:18px;height:40px;overflow-x:auto;scrollbar-width:none}header nav>a,header nav summary{height:40px}header nav>a[aria-current]::after,header nav summary[aria-current]::after{bottom:0}.brand .ko{display:none}.brand{font-size:1.15rem}.brand .mark{width:30px;height:30px;font-size:1.15rem}}
+@media(max-width:900px){header.top{gap:14px;height:auto;flex-wrap:wrap;padding:10px 16px}header nav{order:3;width:100%;gap:18px;height:40px;overflow-x:auto;scrollbar-width:none}header nav>a,header nav summary{height:40px}header nav>a[aria-current]::after,header nav summary[aria-current]::after{bottom:0}.brand .ko{display:none}.brand{font-size:1.15rem}.brand .mark{width:30px;height:30px;font-size:1.15rem}.lang-trigger{padding:0 8px}.lang-list{right:-4px}}
 footer{max-width:1180px;margin:0 auto;padding:28px 24px 44px;color:var(--muted);font-size:.85rem;border-top:1px solid var(--line)}
 footer b{color:var(--text)}footer a{color:var(--text-2)}
 
