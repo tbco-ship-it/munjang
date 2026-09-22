@@ -26,7 +26,9 @@
     notes.hidden = !r.notes.length;
     const v = document.getElementById('chk-verdict');
     v.className = 'why ' + (r.verdict === 'ok' ? 'ok' : r.verdict === 'no' ? 'no' : 'soft') + ' verdict';
-    v.innerHTML = `<p>${esc(r.verdict === 'ok' ? WHY.chk_ok : r.verdict === 'no' ? WHY.chk_no : fill('chk_partial', { n: r.unknown }))}</p>`;
+    const msg = r.verdict === 'ok' ? WHY.chk_ok : r.verdict === 'no' ? WHY.chk_no : fill('chk_partial', { n: r.unknown });
+    const headline = r.mostlyUnknown && (UI.chk_mostly_outside || WHY.chk_mostly_outside) ? `${esc(UI.chk_mostly_outside || WHY.chk_mostly_outside)}<br>` : '';
+    v.innerHTML = `<p>${headline}${esc(msg)}</p>`;
     out.hidden = false;
   }
   form.onsubmit = e => { e.preventDefault(); run(inp.value); };

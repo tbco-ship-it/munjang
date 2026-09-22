@@ -225,7 +225,8 @@
   "topik_sources": "Sources",
   "particle_like_h": "{w} + ? — with 좋아해요",
   "particle_pref_h": "{w} + ? — with 좋아요",
-  "slot_MV": "verb"
+  "slot_MV": "verb",
+  "chk_mostly_outside": "Most words are outside our word list — only particle forms were checked."
  },
  "ja": {
   "lang": "ja",
@@ -453,7 +454,8 @@
   "topik_sources": "出典",
   "particle_like_h": "{w} + ? — 좋아해요 と",
   "particle_pref_h": "{w} + ? — 좋아요 と",
-  "slot_MV": "動詞"
+  "slot_MV": "動詞",
+  "chk_mostly_outside": "大部分が単語リスト外です — 助詞の形のみ判定しました。"
  },
  "vi": {
   "lang": "vi",
@@ -680,6 +682,7 @@
   "topik_sources": "Nguồn",
   "particle_like_h": "{w} + ? — với 좋아해요",
   "particle_pref_h": "{w} + ? — với 좋아요",
-  "slot_MV": "động từ"
+  "slot_MV": "động từ",
+  "chk_mostly_outside": "Hầu hết các từ nằm ngoài danh sách từ — chỉ kiểm tra dạng tiểu từ."
  }
 }
