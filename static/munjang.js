@@ -375,13 +375,34 @@
   // Splits the learner's sentence into 어절, recognises noun+particle / verb chunks from the word list, and applies only the
   // rules it can be sure of: particle FORM after 받침, particle FAMILY vs a recognised verb (에/에서/을·를), spacing of particles,
   // -고 싶어요 and 안, verb-last order, polite ending. Everything else is reported as "can't judge" — never guessed.
-  const PARTICLES = ['께서', '에서', '에게', '한테', '으로', '부터', '까지', '은', '는', '이', '가', '을', '를', '에', '도', '의', '와', '과', '로', '하고', '만', '께'];
+  const PARTICLES = ['께서는', '께서', '에서', '에게', '한테', '으로', '부터', '까지', '은', '는', '이', '가', '을', '를', '에도', '에', '도', '의', '와', '과', '로', '하고', '만', '께'];
   const PAIRS = { '은': '는', '는': '은', '이': '가', '가': '이', '을': '를', '를': '을', '와': '과', '과': '와', '으로': '로', '로': '으로' };
   const ADVERBS = ['같이', '함께', '지금', '아주', '정말', '너무', '잘', '많이', '조금', '빨리', '자주', '아직', '벌써', '다시', '꼭', '오늘', '내일', '어제', '매일', '항상', '가끔', '먼저', '천천히', '열심히'];
-  const COUNTERS = ['마리', '개', '권', '명', '잔', '병'];
-  const NUMERALS = ['한', '두', '세', '네', '다섯', '여섯', '일곱', '여덟', '아홉', '열', '스무', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10'];
+  const COUNTERS = ['명', '개', '마리', '권', '잔', '병', '시', '분'];
+  const NUMERALS = ['한', '두', '세', '네', '다섯', '여섯', '일곱', '여덟', '아홉', '열', '열한', '열두', '열세', '열네', '열다섯', '열여섯', '열일곱', '열여덟', '열아홉', '스무', '스물', '서른', '마흔', '쉰', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'];
   const POS_NOUNS = ['위', '아래', '앞', '뒤', '옆', '안', '밖', '밑'];
   const MODIFIERS = ['않는', '않은', '있는', '있은', '없는', '없은'];
+
+  function parseCount(str, counters) {
+    const activeCounters = counters || COUNTERS;
+    const numRegex = new RegExp("^(" + [...NUMERALS].sort((a, b) => b.length - a.length).join('|') + "|\\d+)\\s*(.*)$");
+    const m = str.match(numRegex);
+    if (!m) return null;
+    const num = m[1];
+    const rest = m[2];
+    if (!rest) return null;
+    for (const cnt of activeCounters) {
+      if (rest === cnt) {
+        return { num, counter: cnt, particle: null, stem: num + ' ' + cnt };
+      }
+      for (const p of PARTICLES) {
+        if (rest === cnt + p) {
+          return { num, counter: cnt, particle: p, stem: num + ' ' + cnt };
+        }
+      }
+    }
+    return null;
+  }
 
   function toJamo(str) {
     let res = '';
@@ -449,11 +470,52 @@
       if (hit) { merged.push(hit.cand); i += hit.len - 1; } else merged.push(tokens[i]);
     }
     tokens = merged;
+    // Merge numeral + counter (두 권 · 두 명 · 세 마리 · 2 개) into one token
+    const mergedCounts = [];
+    for (let i = 0; i < tokens.length; i++) {
+      if (i + 1 < tokens.length && (NUMERALS.includes(tokens[i]) || /^\d+$/.test(tokens[i]))) {
+        const next = tokens[i + 1];
+        const activeCounters = words.counters || COUNTERS;
+        if (activeCounters.some(cnt => next === cnt || next.startsWith(cnt))) {
+          mergedCounts.push(tokens[i] + ' ' + next);
+          i++;
+          continue;
+        }
+      }
+      mergedCounts.push(tokens[i]);
+    }
+    tokens = mergedCounts;
     const nounByH = h => words.nouns.find(n => n.h === h);
     let verbAt = -1, verb = null, verbTense = null;
     tokens.forEach((tok, i) => {
       const c = { text: tok, kind: 'unknown', status: 'unknown' };
       if (!syllables(tok).length) { c.kind = 'other'; c.status = 'skip'; chunks.push(c); return; }
+      const cntInfo = parseCount(tok, words.counters);
+      if (cntInfo) {
+        c.kind = 'count';
+        c.status = 'ok';
+        c.num = cntInfo.num;
+        c.counter = cntInfo.counter;
+        c.particle = cntInfo.particle;
+        c.stem = cntInfo.stem;
+        chunks.push(c);
+        return;
+      }
+      if (tok.endsWith('입니다') && tok.length > 3) {
+        const stem = tok.slice(0, -3);
+        const n = nounByH(stem);
+        if (n) {
+          c.kind = 'noun';
+          c.status = 'ok';
+          c.particle = '입니다';
+          c.stem = stem;
+          c.word = n;
+          c.known = true;
+          verbAt = i;
+          chunks.push(c);
+          return;
+        }
+      }
       if (PARTICLES.includes(tok)) { c.kind = 'particle'; c.status = 'no'; notes.push({ grade: 'no', key: 'chk_space_particle', vars: { p: tok, prev: tokens[i - 1] || '' } }); chunks.push(c); return; }
       if (tok.length > 1 && tok.startsWith('안') && verbForms.has(tok.slice(1))) { c.kind = 'verb'; c.status = 'no'; notes.push({ grade: 'no', key: 'chk_an_space', vars: { v: tok.slice(1) } }); chunks.push(c); return; }
       if (verbForms.has(tok)) { const f = verbForms.get(tok); c.kind = 'verb'; c.status = 'ok'; c.word = f.v; c.tense = f.tense; verbAt = i; verb = f.v; verbTense = f.tense; chunks.push(c); return; }
@@ -461,7 +523,20 @@
       if (tok.endsWith('고싶어요') && verbForms.has(tok.replace('고싶어요', '고 싶어요'))) { c.kind = 'verb'; c.status = 'no'; notes.push({ grade: 'no', key: 'chk_want_space', vars: { v: tok.replace('고싶어요', '고 싶어요') } }); verbAt = i; verb = verbForms.get(tok.replace('고싶어요', '고 싶어요')).v; chunks.push(c); return; }
       if (tok === '안' || tok === '못' || ADVERBS.includes(tok)) { c.kind = 'adv'; c.status = 'ok'; chunks.push(c); return; }
       // R1: 못 + verb
-      if (tok.length > 1 && tok.startsWith('못') && (verbForms.has(tok.slice(1)) || tok.slice(1) === '해요')) {
+      if (tok === '못해요' || tok === '못했어요') {
+        const prevChunk = chunks[chunks.length - 1];
+        const hasObj = prevChunk && prevChunk.kind === 'noun' && (prevChunk.particle === '을' || prevChunk.particle === '를');
+        if (hasObj) {
+          c.kind = 'verb'; c.status = 'ok';
+          verbAt = i; verb = words.verbs.find(v => v.h === '하다'); verbTense = tok === '못했어요' ? 'past' : 'pres';
+          chunks.push(c); return;
+        } else {
+          c.kind = 'verb'; c.status = 'maybe';
+          notes.push({ grade: 'soft', key: 'chk_mot_space', vars: { v: tok.slice(1) }, fix: '못 ' + tok.slice(1) });
+          verbAt = i; verb = words.verbs.find(v => v.h === '하다');
+          chunks.push(c); return;
+        }
+      } else if (tok.length > 1 && tok.startsWith('못') && (verbForms.has(tok.slice(1)) || tok.slice(1) === '해요')) {
         c.kind = 'verb'; c.status = 'maybe';
         notes.push({ grade: 'soft', key: 'chk_mot_space', vars: { v: tok.slice(1) }, fix: '못 ' + tok.slice(1) });
         verbAt = i; verb = verbForms.get(tok.slice(1)) ? verbForms.get(tok.slice(1)).v : null;
@@ -553,44 +628,22 @@
     const lastChunk = chunks[chunks.length - 1];
     if (chunks.some(c => c.kind === 'conn') && (!verb || (lastChunk && lastChunk.kind !== 'verb'))) notes.push({ grade: 'no', key: 'chk_incomplete', vars: { v: (chunks.filter(c => c.kind === 'conn').pop() || {}).text || '' } });
 
-    // R4: N를 + (수사) + 단위명사를 & N이/가 + (수사) + 단위명사
-    const activeCounters = words.counters || COUNTERS;
+    // R4: N를 + count를
     for (let i = 0; i < chunks.length - 1; i++) {
       const c1 = chunks[i];
       if (c1.kind === 'noun' && (c1.particle === '을' || c1.particle === '를')) {
-        let numChunk = null, cntChunk = null;
-        if (i + 2 < chunks.length && NUMERALS.includes(chunks[i + 1].text)) {
-          numChunk = chunks[i + 1];
-          cntChunk = chunks[i + 2];
-        } else if (i + 1 < chunks.length) {
+        let cntChunk = null;
+        if (i + 1 < chunks.length && chunks[i + 1].kind === 'count') {
           cntChunk = chunks[i + 1];
+        } else if (i + 2 < chunks.length && chunks[i + 2].kind === 'count') {
+          cntChunk = chunks[i + 2];
         }
-        if (cntChunk && activeCounters.some(cnt => cntChunk.text.startsWith(cnt) && (cntChunk.text.endsWith('을') || cntChunk.text.endsWith('를') || cntChunk.particle === '을' || cntChunk.particle === '를'))) {
+        if (cntChunk && (cntChunk.particle === '을' || cntChunk.particle === '를' || cntChunk.text.endsWith('을') || cntChunk.text.endsWith('를'))) {
           notes.push({
             grade: 'soft',
             key: 'chk_double_obj',
-            vars: { n: c1.stem || c1.text, c: (numChunk ? numChunk.text + ' ' : '') + cntChunk.text.replace(/[을를]$/, '') },
-            fix: `${c1.text} ${(numChunk ? numChunk.text + ' ' : '') + cntChunk.text.replace(/[을를]$/, '')}`
-          });
-        }
-      }
-      if (c1.kind === 'noun' && (c1.particle === '이' || c1.particle === '가')) {
-        let numChunk = null, cntChunk = null;
-        if (i + 2 < chunks.length && NUMERALS.includes(chunks[i + 1].text)) {
-          numChunk = chunks[i + 1];
-          cntChunk = chunks[i + 2];
-        } else if (i + 1 < chunks.length) {
-          cntChunk = chunks[i + 1];
-        }
-        if (cntChunk && activeCounters.some(cnt => cntChunk.text === cnt || cntChunk.stem === cnt)) {
-          const numTxt = numChunk ? numChunk.text + ' ' : '';
-          const cntTxt = cntChunk.text;
-          const needP = hasBatchim(cntTxt) ? '이' : '가';
-          notes.push({
-            grade: 'soft',
-            key: 'chk_counter_particle',
-            vars: { n: c1.stem, c: numTxt + cntTxt, p: needP },
-            fix: `${c1.stem} ${numTxt}${cntTxt}${needP}`
+            vars: { n: c1.stem || c1.text, c: (cntChunk.stem || cntChunk.text).replace(/[을를]$/, '') },
+            fix: `${c1.text} ${(cntChunk.stem || cntChunk.text).replace(/[을를]$/, '')}`
           });
         }
       }
@@ -599,26 +652,54 @@
     for (const cl of clauses) {
       const verb = cl.verb; if (!verb) continue;
       // R2: Honorific subject agreement
-      const subj = cl.nouns.find(c => c.word && (c.particle === '이' || c.particle === '가' || c.particle === '은' || c.particle === '는' || c.particle === '께서'));
-      const plainHonVerbs = ['있다', '먹다', '자다', '말하다', '주다'];
-      if (subj && (subj.word.elder || subj.stem === '부모님' || subj.stem === '할아버지' || subj.stem === '할머니' || subj.stem === '선생님')) {
-        if (plainHonVerbs.includes(verb.h)) {
-          notes.push({
-            grade: 'soft',
-            key: 'chk_honorific',
-            vars: { s: subj.stem, v: verb.h },
-            fix: `${subj.stem}께서 진지를 드셨어요 · 댁에 계세요`
-          });
+      const honPairs = words.honorificPairs || {
+        nouns: { '집': '댁', '밥': '진지' },
+        verbs: { '있다': '계시다', '먹다': '드시다', '자다': '주무시다', '주다': '드리다' }
+      };
+      const honVerbMap = honPairs.verbs || {};
+      const honNounMap = honPairs.nouns || {};
+      const plainHonVerbs = Object.keys(honVerbMap);
+
+      const subj = cl.nouns.find(c => c.word && (c.particle === '이' || c.particle === '가' || c.particle === '은' || c.particle === '는' || c.particle === '께서' || c.particle === '께서는'));
+      const isElderSubj = subj && (subj.word.elder || subj.stem === '부모님' || subj.stem === '할아버지' || subj.stem === '할머니' || subj.stem === '선생님');
+      const gkeso = cl.nouns.find(c => c.particle === '께서' || c.particle === '께서는');
+
+      if ((isElderSubj || gkeso) && plainHonVerbs.includes(verb.h)) {
+        const honVerbHead = honVerbMap[verb.h];
+        const honVerbObj = words.verbs.find(v => v.h === honVerbHead);
+        const tense = verbTense || 'pres';
+        const fixedVerb = honVerbObj ? (honVerbObj[tense] || honVerbObj.pres) : verb.h;
+        const sStem = subj ? subj.stem : (gkeso ? gkeso.stem : '');
+        const fixedSubj = sStem ? `${sStem}께서` : '';
+
+        const midChunks = [];
+        for (const c of cl.nouns) {
+          if (c === subj || c === gkeso) continue;
+          let stem = c.stem || c.text;
+          let p = c.particle || '';
+          if (honNounMap[stem]) {
+            const newStem = honNounMap[stem];
+            if (p && PAIRS[p]) {
+              const needP = hasBatchim(newStem) ? (wantsBatchim(p) ? p : PAIRS[p]) : (wantsBatchim(p) ? PAIRS[p] : p);
+              p = needP;
+            }
+            stem = newStem;
+          }
+          midChunks.push(stem + p);
         }
-      } else {
-        const gkeso = cl.nouns.find(c => c.particle === '께서');
-        if (gkeso && plainHonVerbs.includes(verb.h)) {
-          notes.push({
-            grade: 'soft',
-            key: 'chk_honorific',
-            vars: { s: gkeso.stem, v: verb.h }
-          });
-        }
+
+        const fixParts = [];
+        if (fixedSubj) fixParts.push(fixedSubj);
+        if (midChunks.length) fixParts.push(...midChunks);
+        if (fixedVerb) fixParts.push(fixedVerb);
+        const fixSentence = fixParts.join(' ') + '.';
+
+        notes.push({
+          grade: 'soft',
+          key: 'chk_honorific',
+          vars: { s: sStem, v: verb.h },
+          fix: fixSentence
+        });
       }
 
       // R3: 에+도 with movement verb

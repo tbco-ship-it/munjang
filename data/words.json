@@ -706,6 +706,7 @@
    "feat": [
     "content"
    ],
+   "do": true,
    "vi": "bài hát"
   },
   {
@@ -3756,6 +3757,79 @@
    ],
    "vi": "bố mẹ",
    "elder": true
+  },
+  {
+   "h": "댁",
+   "r": "daek",
+   "en": "home, house (honorific)",
+   "ja": "お宅",
+   "roles": [
+    "subj",
+    "dest",
+    "loc"
+   ],
+   "kind": "place",
+   "level": 3,
+   "en_g": "home",
+   "alias_en": [
+    "home",
+    "house",
+    "residence"
+   ],
+   "alias_ja": [
+    "お宅",
+    "宅"
+   ],
+   "feat": [
+    "place"
+   ],
+   "vi": "nhà (kính ngữ)",
+   "container": true,
+   "hon": true
+  },
+  {
+   "h": "진지",
+   "r": "jinji",
+   "en": "meal (honorific)",
+   "ja": "お食事",
+   "roles": [
+    "subj",
+    "obj"
+   ],
+   "kind": "food",
+   "level": 3,
+   "alias_en": [
+    "meal",
+    "food"
+   ],
+   "alias_ja": [
+    "お食事",
+    "食事"
+   ],
+   "feat": [
+    "taste"
+   ],
+   "vi": "bữa ăn (kính ngữ)",
+   "hon": true
+  },
+  {
+   "h": "미국 사람",
+   "r": "miguk saram",
+   "en": "an American (person)",
+   "ja": "アメリカ人",
+   "roles": [
+    "subj",
+    "obj",
+    "to"
+   ],
+   "kind": "person",
+   "level": 1,
+   "en_g": "an American person",
+   "feat": [
+    "person",
+    "appearance"
+   ],
+   "vi": "người Mỹ"
   }
  ],
  "verbs": [
@@ -5313,6 +5387,82 @@
    "geotgatayo": null,
    "plain": null,
    "ryeogo": null
+  },
+  {
+   "h": "드시다",
+   "r": "deusida",
+   "en": "to eat / drink (honorific)",
+   "ja": "召し上がる",
+   "pres": "드세요",
+   "past": "드셨어요",
+   "want": "드시고 싶어요",
+   "fut": "드실 거예요",
+   "can": "드실 수 있어요",
+   "must": "드셔야 해요",
+   "please": "드세요",
+   "takes": [
+    "food",
+    "drink"
+   ],
+   "hon": true,
+   "level": 3,
+   "vi": "dùng bữa (kính ngữ)",
+   "go": "드시고",
+   "eoseo": "드셔서",
+   "jiman": "드시지만",
+   "myeon": "드시면",
+   "lttae": "드실 때",
+   "ttaemun": "드시기 때문에",
+   "gi_jeone": "드시기 전에",
+   "neyo": "드시네요",
+   "myeonseo": "드시면서",
+   "janayo": "드시잖아요",
+   "geodeunyo": "드시거든요",
+   "kkayo": "드실까요?",
+   "juseyo": "드셔 주세요",
+   "jimaseyo": "드시지 마세요",
+   "bwasseoyo": "드셔 봤어요",
+   "jeok": "드신 적이 있어요",
+   "n_hue": "드신 후에",
+   "geotgatayo": "드시는 것 같아요",
+   "plain": "드신다",
+   "ryeogo": "드시려고 해요"
+  },
+  {
+   "h": "주무시다",
+   "r": "jumusida",
+   "en": "to sleep (honorific)",
+   "ja": "お休みになる",
+   "pres": "주무세요",
+   "past": "주무셨어요",
+   "want": "주무시고 싶어요",
+   "fut": "주무실 거예요",
+   "can": "주무실 수 있어요",
+   "must": "주무셔야 해요",
+   "please": "주무세요",
+   "hon": true,
+   "level": 3,
+   "vi": "ngủ (kính ngữ)",
+   "go": "주무시고",
+   "eoseo": "주무셔서",
+   "jiman": "주무시지만",
+   "myeon": "주무시면",
+   "lttae": "주무실 때",
+   "ttaemun": "주무시기 때문에",
+   "gi_jeone": "주무시기 전에",
+   "neyo": "주무시네요",
+   "myeonseo": "주무시면서",
+   "janayo": "주무시잖아요",
+   "geodeunyo": "주무시거든요",
+   "kkayo": "주무실까요?",
+   "juseyo": "주무셔 주세요",
+   "jimaseyo": "주무시지 마세요",
+   "bwasseoyo": "주무셔 봤어요",
+   "jeok": "주무신 적이 있어요",
+   "n_hue": "주무신 후에",
+   "geotgatayo": "주무시는 것 같아요",
+   "plain": "주무신다",
+   "ryeogo": "주무시려고 해요"
   }
  ],
  "adjectives": [
@@ -6032,12 +6182,26 @@
    "geodeunyo": "배고프거든요"
   }
  ],
- "counters": [
-  "마리",
-  "개",
-  "권",
-  "명",
-  "잔",
-  "병"
- ]
+  "counters": [
+   "명",
+   "개",
+   "마리",
+   "권",
+   "잔",
+   "병",
+   "시",
+   "분"
+  ],
+  "honorificPairs": {
+   "nouns": {
+    "집": "댁",
+    "밥": "진지"
+   },
+   "verbs": {
+    "있다": "계시다",
+    "먹다": "드시다",
+    "자다": "주무시다",
+    "주다": "드리다"
+   }
+  }
 }

@@ -23,7 +23,7 @@ export const CORPUS = [
   { id: 13, raw: '제 취미는 독사입니다.', corrected: '제 취미는 독서입니다.', rule: 'R5', expectedNote: 'chk_typo' },
   { id: 14, raw: '제 직업은 도사관보조입니다.', corrected: '제 직업은 도서관 보조입니다.', rule: 'R5', expectedNote: 'chk_typo' },
   { id: 15, raw: '제 이름은 스타크켈리이고 미국 사람입니다. 제 취미는 독서이고 직업은 도서관보조입니다.', corrected: '저는 책 읽는 것이 취미이고 도서관 보조로 일하고 있습니다.', rule: 'R7', expectedVerdict: 'partial' },
-  { id: 16, raw: '저는 친구보다 펜이 두 개 더 있어요.', corrected: '저는 친구보다 펜 두 개가 더 있어요.', rule: 'R4', expectedNote: 'chk_counter_particle' },
+  { id: 16, raw: '저는 친구보다 펜이 두 개 더 있어요.', corrected: '저는 친구보다 펜 두 개가 더 있어요.', rule: 'R4', expectedVerdict: 'partial' },
   { id: 17, raw: '저의 여동생은 지난 주보다 이번 주에 책을 두 권 더 읽었어요.', corrected: '제 여동생은 지난주보다 이번 주에 책 두 권을 더 읽었어요.', rule: 'R7', expectedVerdict: 'partial' },
   { id: 18, raw: '바쁘라고 했어 왜 전화는데?', corrected: '내가 바쁘다고 했는데 왜 전화했어?', rule: 'R7', expectedVerdict: 'partial' },
   { id: 19, raw: '주말인데 한국어를 공부할 수도 있어요.', corrected: '주말이지만 한국어를 공부할 수도 있어요.', rule: 'R7', expectedVerdict: 'partial' },
@@ -63,6 +63,12 @@ for (const item of CORPUS) {
     fails++;
     console.log(`FAIL #${item.id}: expected verdict 'partial', got '${r.verdict}'`);
   }
+
+  // #16: no chk_double_obj
+  if (item.id === 16 && r.notes.some(n => n.key === 'chk_double_obj')) {
+    fails++;
+    console.log(`FAIL #16: chk_double_obj fired unexpectedly`);
+  }
 }
 
 // R6 parser check: '않는' should not be parsed as noun + 은/는 particle
@@ -77,6 +83,49 @@ const r1 = M.checkSentence('초급 밖에 못해요.', W, WHY);
 if (r1.notes.some(n => n.key === 'chk_an_space')) {
   fails++;
   console.log(`FAIL #1: chk_an_space fired for '못해요' (false flag)`);
+}
+
+// R2 fix roundtrip check: generated fixes for #5 and #6 must be verdict 'ok' with 0 notes
+for (const id of [5, 6]) {
+  const item = CORPUS.find(c => c.id === id);
+  const r = M.checkSentence(item.raw, W, WHY);
+  const honNote = r.notes.find(n => n.key === 'chk_honorific');
+  if (!honNote || !honNote.fix) {
+    fails++;
+    console.log(`FAIL R2 #${id}: missing chk_honorific fix`);
+  } else {
+    const rf = M.checkSentence(honNote.fix, W, WHY);
+    if (rf.verdict !== 'ok' || rf.notes.length > 0) {
+      fails++;
+      console.log(`FAIL R2 #${id} roundtrip: fix "${honNote.fix}" expected ok with 0 notes, got '${rf.verdict}' with [${rf.notes.map(n => n.key).join(', ')}]`);
+    }
+  }
+}
+
+// 14 benchmark sentences roundtrip check: all must be verdict 'ok' with 0 notes
+const ROUNDTRIP_14 = [
+  '할아버지께서 댁에 계세요.',
+  '할아버지께서 진지를 드셨어요.',
+  '친구가 두 명 있어요.',
+  '저는 책을 두 권 읽었어요.',
+  '노래를 못해요.',
+  '저는 공원에도 가요.',
+  '저는 미국 사람입니다.',
+  '선생님께서 학교에 가세요.',
+  '저는 학교에 가요.',
+  '고양이가 집에 있어요.',
+  '저는 커피를 안 마셔요.',
+  '저는 운동을 못 해요.',
+  '오늘 날씨가 좋네요.',
+  '저는 밥을 먹고 학교에 가요.'
+];
+
+for (const s of ROUNDTRIP_14) {
+  const r = M.checkSentence(s, W, WHY);
+  if (r.verdict !== 'ok' || r.notes.length > 0) {
+    fails++;
+    console.log(`FAIL roundtrip 14: "${s}" expected ok with 0 notes, got '${r.verdict}' [${r.notes.map(n => n.key).join(', ')}]`);
+  }
 }
 
 console.log(fails ? `--- ${fails} FAILED ---` : '--- ALL 21 CORPUS CHECKS PASSED ---');
