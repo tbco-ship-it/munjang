@@ -3846,7 +3846,10 @@
    "feat": [
     "weather"
    ],
-   "vi": "mưa"
+   "vi": "mưa",
+   "preds": [
+    "오다"
+   ]
   },
   {
    "h": "아버지",
@@ -3933,7 +3936,14 @@
    "formal_past": "먹었습니다",
    "formal_q": "먹습니까?",
    "nika": "먹으니까",
-   "neunde": "먹는데"
+   "neunde": "먹는데",
+   "formal_past_q": "먹었습니까?",
+   "hon_pres": null,
+   "hon_past": null,
+   "mod_pres": "먹는",
+   "mod_past": "먹은",
+   "mod_fut": "먹을",
+   "mod": null
   },
   {
    "h": "마시다",
@@ -3998,7 +4008,14 @@
    "formal_past": "마셨습니다",
    "formal_q": "마십니까?",
    "nika": "마시니까",
-   "neunde": "마시는데"
+   "neunde": "마시는데",
+   "formal_past_q": "마셨습니까?",
+   "hon_pres": "마시세요",
+   "hon_past": "마시셨어요",
+   "mod_pres": "마시는",
+   "mod_past": "마신",
+   "mod_fut": "마실",
+   "mod": null
   },
   {
    "h": "사다",
@@ -4064,7 +4081,14 @@
    "formal_past": "샀습니다",
    "formal_q": "삽니까?",
    "nika": "사니까",
-   "neunde": "사는데"
+   "neunde": "사는데",
+   "formal_past_q": "샀습니까?",
+   "hon_pres": "사세요",
+   "hon_past": "사셨어요",
+   "mod_pres": "사는",
+   "mod_past": "산",
+   "mod_fut": "살",
+   "mod": null
   },
   {
    "h": "보다",
@@ -4131,7 +4155,14 @@
    "formal_past": "봤습니다",
    "formal_q": "봅니까?",
    "nika": "보니까",
-   "neunde": "보는데"
+   "neunde": "보는데",
+   "formal_past_q": "봤습니까?",
+   "hon_pres": "보세요",
+   "hon_past": "보셨어요",
+   "mod_pres": "보는",
+   "mod_past": "본",
+   "mod_fut": "볼",
+   "mod": null
   },
   {
    "h": "읽다",
@@ -4195,7 +4226,14 @@
    "formal_past": "읽었습니다",
    "formal_q": "읽습니까?",
    "nika": "읽으니까",
-   "neunde": "읽는데"
+   "neunde": "읽는데",
+   "formal_past_q": "읽었습니까?",
+   "hon_pres": "읽으세요",
+   "hon_past": "읽으셨어요",
+   "mod_pres": "읽는",
+   "mod_past": "읽은",
+   "mod_fut": "읽을",
+   "mod": null
   },
   {
    "h": "듣다",
@@ -4259,7 +4297,14 @@
    "formal_past": "들었습니다",
    "formal_q": "듣습니까?",
    "nika": "들으니까",
-   "neunde": "듣는데"
+   "neunde": "듣는데",
+   "formal_past_q": "들었습니까?",
+   "hon_pres": "들으세요",
+   "hon_past": "들으셨어요",
+   "mod_pres": "듣는",
+   "mod_past": "들은",
+   "mod_fut": "들을",
+   "mod": null
   },
   {
    "h": "쓰다",
@@ -4323,7 +4368,14 @@
    "formal_past": "썼습니다",
    "formal_q": "씁니까?",
    "nika": "쓰니까",
-   "neunde": "쓰는데"
+   "neunde": "쓰는데",
+   "formal_past_q": "썼습니까?",
+   "hon_pres": "쓰세요",
+   "hon_past": "쓰셨어요",
+   "mod_pres": "쓰는",
+   "mod_past": "쓴",
+   "mod_fut": "쓸",
+   "mod": null
   },
   {
    "h": "배우다",
@@ -4388,7 +4440,14 @@
    "formal_past": "배웠습니다",
    "formal_q": "배웁니까?",
    "nika": "배우니까",
-   "neunde": "배우는데"
+   "neunde": "배우는데",
+   "formal_past_q": "배웠습니까?",
+   "hon_pres": "배우세요",
+   "hon_past": "배우셨어요",
+   "mod_pres": "배우는",
+   "mod_past": "배운",
+   "mod_fut": "배울",
+   "mod": null
   },
   {
    "h": "공부하다",
@@ -4452,7 +4511,14 @@
    "formal_past": "공부했습니다",
    "formal_q": "공부합니까?",
    "nika": "공부하니까",
-   "neunde": "공부하는데"
+   "neunde": "공부하는데",
+   "formal_past_q": "공부했습니까?",
+   "hon_pres": "공부하세요",
+   "hon_past": "공부하셨어요",
+   "mod_pres": "공부하는",
+   "mod_past": "공부한",
+   "mod_fut": "공부할",
+   "mod": null
   },
   {
    "h": "만나다",
@@ -4516,7 +4582,14 @@
    "formal_past": "만났습니다",
    "formal_q": "만납니까?",
    "nika": "만나니까",
-   "neunde": "만나는데"
+   "neunde": "만나는데",
+   "formal_past_q": "만났습니까?",
+   "hon_pres": "만나세요",
+   "hon_past": "만나셨어요",
+   "mod_pres": "만나는",
+   "mod_past": "만난",
+   "mod_fut": "만날",
+   "mod": null
   },
   {
    "h": "좋아하다",
@@ -4589,7 +4662,14 @@
    "formal_past": "좋아했습니다",
    "formal_q": "좋아합니까?",
    "nika": "좋아하니까",
-   "neunde": "좋아하는데"
+   "neunde": "좋아하는데",
+   "formal_past_q": "좋아했습니까?",
+   "hon_pres": "좋아하세요",
+   "hon_past": "좋아하셨어요",
+   "mod_pres": "좋아하는",
+   "mod_past": "좋아한",
+   "mod_fut": "좋아할",
+   "mod": null
   },
   {
    "h": "가다",
@@ -4652,7 +4732,14 @@
    "formal_past": "갔습니다",
    "formal_q": "갑니까?",
    "nika": "가니까",
-   "neunde": "가는데"
+   "neunde": "가는데",
+   "formal_past_q": "갔습니까?",
+   "hon_pres": "가세요",
+   "hon_past": "가셨어요",
+   "mod_pres": "가는",
+   "mod_past": "간",
+   "mod_fut": "갈",
+   "mod": null
   },
   {
    "h": "오다",
@@ -4715,7 +4802,14 @@
    "formal_past": "왔습니다",
    "formal_q": "옵니까?",
    "nika": "오니까",
-   "neunde": "오는데"
+   "neunde": "오는데",
+   "formal_past_q": "왔습니까?",
+   "hon_pres": "오세요",
+   "hon_past": "오셨어요",
+   "mod_pres": "오는",
+   "mod_past": "온",
+   "mod_fut": "올",
+   "mod": null
   },
   {
    "h": "있다",
@@ -4784,7 +4878,14 @@
    "formal_past": "있었습니다",
    "formal_q": "있습니까?",
    "nika": "있으니까",
-   "neunde": "있는데"
+   "neunde": "있는데",
+   "formal_past_q": "있었습니까?",
+   "hon_pres": null,
+   "hon_past": null,
+   "mod_pres": "있는",
+   "mod_past": null,
+   "mod_fut": "있을",
+   "mod": null
   },
   {
    "h": "살다",
@@ -4848,7 +4949,14 @@
    "formal_past": "살았습니다",
    "formal_q": "삽니까?",
    "nika": "사니까",
-   "neunde": "사는데"
+   "neunde": "사는데",
+   "formal_past_q": "살았습니까?",
+   "hon_pres": "사세요",
+   "hon_past": "사셨어요",
+   "mod_pres": "사는",
+   "mod_past": "산",
+   "mod_fut": "살",
+   "mod": null
   },
   {
    "h": "일하다",
@@ -4910,7 +5018,14 @@
    "formal_past": "일했습니다",
    "formal_q": "일합니까?",
    "nika": "일하니까",
-   "neunde": "일하는데"
+   "neunde": "일하는데",
+   "formal_past_q": "일했습니까?",
+   "hon_pres": "일하세요",
+   "hon_past": "일하셨어요",
+   "mod_pres": "일하는",
+   "mod_past": "일한",
+   "mod_fut": "일할",
+   "mod": null
   },
   {
    "h": "없다",
@@ -4979,7 +5094,14 @@
    "formal_past": "없었습니다",
    "formal_q": "없습니까?",
    "nika": "없으니까",
-   "neunde": "없는데"
+   "neunde": "없는데",
+   "formal_past_q": "없었습니까?",
+   "hon_pres": null,
+   "hon_past": null,
+   "mod_pres": "없는",
+   "mod_past": null,
+   "mod_fut": "없을",
+   "mod": null
   },
   {
    "h": "주다",
@@ -5046,7 +5168,14 @@
    "formal_past": "줬습니다",
    "formal_q": "줍니까?",
    "nika": "주니까",
-   "neunde": "주는데"
+   "neunde": "주는데",
+   "formal_past_q": "줬습니까?",
+   "hon_pres": "주세요",
+   "hon_past": "주셨어요",
+   "mod_pres": "주는",
+   "mod_past": "준",
+   "mod_fut": "줄",
+   "mod": null
   },
   {
    "h": "보내다",
@@ -5111,7 +5240,14 @@
    "formal_past": "보냈습니다",
    "formal_q": "보냅니까?",
    "nika": "보내니까",
-   "neunde": "보내는데"
+   "neunde": "보내는데",
+   "formal_past_q": "보냈습니까?",
+   "hon_pres": "보내세요",
+   "hon_past": "보내셨어요",
+   "mod_pres": "보내는",
+   "mod_past": "보낸",
+   "mod_fut": "보낼",
+   "mod": null
   },
   {
    "h": "전화하다",
@@ -5174,7 +5310,14 @@
    "formal_past": "전화했습니다",
    "formal_q": "전화합니까?",
    "nika": "전화하니까",
-   "neunde": "전화하는데"
+   "neunde": "전화하는데",
+   "formal_past_q": "전화했습니까?",
+   "hon_pres": "전화하세요",
+   "hon_past": "전화하셨어요",
+   "mod_pres": "전화하는",
+   "mod_past": "전화한",
+   "mod_fut": "전화할",
+   "mod": null
   },
   {
    "h": "타다",
@@ -5238,7 +5381,14 @@
    "formal_past": "탔습니다",
    "formal_q": "탑니까?",
    "nika": "타니까",
-   "neunde": "타는데"
+   "neunde": "타는데",
+   "formal_past_q": "탔습니까?",
+   "hon_pres": "타세요",
+   "hon_past": "타셨어요",
+   "mod_pres": "타는",
+   "mod_past": "탄",
+   "mod_fut": "탈",
+   "mod": null
   },
   {
    "h": "하다",
@@ -5302,7 +5452,14 @@
    "formal_past": "했습니다",
    "formal_q": "합니까?",
    "nika": "하니까",
-   "neunde": "하는데"
+   "neunde": "하는데",
+   "formal_past_q": "했습니까?",
+   "hon_pres": "하세요",
+   "hon_past": "하셨어요",
+   "mod_pres": "하는",
+   "mod_past": "한",
+   "mod_fut": "할",
+   "mod": null
   },
   {
    "h": "치다",
@@ -5366,7 +5523,14 @@
    "formal_past": "쳤습니다",
    "formal_q": "칩니까?",
    "nika": "치니까",
-   "neunde": "치는데"
+   "neunde": "치는데",
+   "formal_past_q": "쳤습니까?",
+   "hon_pres": "치세요",
+   "hon_past": "치셨어요",
+   "mod_pres": "치는",
+   "mod_past": "친",
+   "mod_fut": "칠",
+   "mod": null
   },
   {
    "h": "찍다",
@@ -5430,7 +5594,14 @@
    "formal_past": "찍었습니다",
    "formal_q": "찍습니까?",
    "nika": "찍으니까",
-   "neunde": "찍는데"
+   "neunde": "찍는데",
+   "formal_past_q": "찍었습니까?",
+   "hon_pres": "찍으세요",
+   "hon_past": "찍으셨어요",
+   "mod_pres": "찍는",
+   "mod_past": "찍은",
+   "mod_fut": "찍을",
+   "mod": null
   },
   {
    "h": "드리다",
@@ -5498,7 +5669,14 @@
    "formal_past": "드렸습니다",
    "formal_q": "드립니까?",
    "nika": "드리니까",
-   "neunde": "드리는데"
+   "neunde": "드리는데",
+   "formal_past_q": "드렸습니까?",
+   "hon_pres": null,
+   "hon_past": null,
+   "mod_pres": "드리는",
+   "mod_past": "드린",
+   "mod_fut": "드릴",
+   "mod": null
   },
   {
    "h": "계시다",
@@ -5553,7 +5731,15 @@
    "formal_past": "계셨습니다",
    "formal_q": "계십니까?",
    "nika": "계시니까",
-   "neunde": "계시는데"
+   "neunde": "계시는데",
+   "honlex": true,
+   "formal_past_q": "계셨습니까?",
+   "hon_pres": "계세요",
+   "hon_past": "계셨어요",
+   "mod_pres": "계시는",
+   "mod_past": "계신",
+   "mod_fut": "계실",
+   "mod": null
   },
   {
    "h": "드시다",
@@ -5608,7 +5794,15 @@
    "ja_dict": "召し上がる",
    "en_base": "have",
    "en_3s": "has",
-   "en_past": "had"
+   "en_past": "had",
+   "honlex": true,
+   "formal_past_q": "드셨습니까?",
+   "hon_pres": "드세요",
+   "hon_past": "드셨어요",
+   "mod_pres": "드시는",
+   "mod_past": "드신",
+   "mod_fut": "드실",
+   "mod": null
   },
   {
    "h": "주무시다",
@@ -5659,7 +5853,15 @@
    "ja_dict": "お休みになる",
    "en_base": "sleep",
    "en_3s": "sleeps",
-   "en_past": "slept"
+   "en_past": "slept",
+   "honlex": true,
+   "formal_past_q": "주무셨습니까?",
+   "hon_pres": "주무세요",
+   "hon_past": "주무셨어요",
+   "mod_pres": "주무시는",
+   "mod_past": "주무신",
+   "mod_fut": "주무실",
+   "mod": null
   },
   {
    "h": "가져가다",
@@ -5719,7 +5921,72 @@
    "n_hue": "가져간 후에",
    "geotgatayo": "가져가는 것 같아요",
    "plain": "가져간다",
-   "ryeogo": "가져가려고 해요"
+   "ryeogo": "가져가려고 해요",
+   "formal_past_q": "가져갔습니까?",
+   "hon_pres": "가져가세요",
+   "hon_past": "가져가셨어요",
+   "mod_pres": "가져가는",
+   "mod_past": "가져간",
+   "mod_fut": "가져갈",
+   "mod": null
+  },
+  {
+   "h": "자다",
+   "r": "jada",
+   "en": "to sleep",
+   "ja": "寝る",
+   "vi": "ngủ",
+   "pres": "자요",
+   "past": "잤어요",
+   "want": "자고 싶어요",
+   "fut": "잘 거예요",
+   "can": "잘 수 있어요",
+   "must": "자야 해요",
+   "level": 1,
+   "en_base": "sleep",
+   "en_3s": "sleeps",
+   "en_past": "slept",
+   "ja_pres": "寝ます",
+   "ja_past": "寝ました",
+   "ja_want": "寝たいです",
+   "ja_dict": "寝る",
+   "ja_p": "で",
+   "go": "자고",
+   "eoseo": "자서",
+   "jiman": "자지만",
+   "myeon": "자면",
+   "lttae": "잘 때",
+   "ttaemun": "자기 때문에",
+   "gi_jeone": "자기 전에",
+   "neyo": "자네요",
+   "myeonseo": "자면서",
+   "giro": "자기로 했어요",
+   "gedoeda": "자게 됐어요",
+   "yagesseoyo": "자야겠어요",
+   "janayo": "자잖아요",
+   "geodeunyo": "자거든요",
+   "formal": "잡니다",
+   "formal_past": "잤습니다",
+   "formal_past_q": "잤습니까?",
+   "formal_q": "잡니까?",
+   "nika": "자니까",
+   "neunde": "자는데",
+   "hon_pres": null,
+   "hon_past": null,
+   "mod_pres": "자는",
+   "mod_past": "잔",
+   "mod_fut": "잘",
+   "mod": null,
+   "reo": "자러",
+   "kkayo": "잘까요?",
+   "juseyo": "자 주세요",
+   "jimaseyo": "자지 마세요",
+   "bwasseoyo": "자 봤어요",
+   "jeok": "잔 적이 있어요",
+   "n_hue": "잔 후에",
+   "geotgatayo": "자는 것 같아요",
+   "plain": "잔다",
+   "ryeogo": "자려고 해요"
   }
  ],
  "adjectives": [
@@ -5762,7 +6029,14 @@
    "formal_past": "컸습니다",
    "formal_q": "큽니까?",
    "nika": "크니까",
-   "neunde": "큰데"
+   "neunde": "큰데",
+   "formal_past_q": "컸습니까?",
+   "hon_pres": null,
+   "hon_past": null,
+   "mod_pres": null,
+   "mod_past": null,
+   "mod_fut": "클",
+   "mod": "큰"
   },
   {
    "h": "작다",
@@ -5803,7 +6077,14 @@
    "formal_past": "작았습니다",
    "formal_q": "작습니까?",
    "nika": "작으니까",
-   "neunde": "작은데"
+   "neunde": "작은데",
+   "formal_past_q": "작았습니까?",
+   "hon_pres": null,
+   "hon_past": null,
+   "mod_pres": null,
+   "mod_past": null,
+   "mod_fut": "작을",
+   "mod": "작은"
   },
   {
    "h": "맛있다",
@@ -5842,7 +6123,14 @@
    "formal_past": "맛있었습니다",
    "formal_q": "맛있습니까?",
    "nika": "맛있으니까",
-   "neunde": "맛있는데"
+   "neunde": "맛있는데",
+   "formal_past_q": "맛있었습니까?",
+   "hon_pres": null,
+   "hon_past": null,
+   "mod_pres": null,
+   "mod_past": null,
+   "mod_fut": "맛있을",
+   "mod": "맛있는"
   },
   {
    "h": "예쁘다",
@@ -5881,7 +6169,14 @@
    "formal_past": "예뻤습니다",
    "formal_q": "예쁩니까?",
    "nika": "예쁘니까",
-   "neunde": "예쁜데"
+   "neunde": "예쁜데",
+   "formal_past_q": "예뻤습니까?",
+   "hon_pres": null,
+   "hon_past": null,
+   "mod_pres": null,
+   "mod_past": null,
+   "mod_fut": "예쁠",
+   "mod": "예쁜"
   },
   {
    "h": "좋다",
@@ -5929,7 +6224,14 @@
    "formal_past": "좋았습니다",
    "formal_q": "좋습니까?",
    "nika": "좋으니까",
-   "neunde": "좋은데"
+   "neunde": "좋은데",
+   "formal_past_q": "좋았습니까?",
+   "hon_pres": null,
+   "hon_past": null,
+   "mod_pres": null,
+   "mod_past": null,
+   "mod_fut": "좋을",
+   "mod": "좋은"
   },
   {
    "h": "비싸다",
@@ -5968,7 +6270,14 @@
    "formal_past": "비쌌습니다",
    "formal_q": "비쌉니까?",
    "nika": "비싸니까",
-   "neunde": "비싼데"
+   "neunde": "비싼데",
+   "formal_past_q": "비쌌습니까?",
+   "hon_pres": null,
+   "hon_past": null,
+   "mod_pres": null,
+   "mod_past": null,
+   "mod_fut": "비쌀",
+   "mod": "비싼"
   },
   {
    "h": "싸다",
@@ -6007,7 +6316,14 @@
    "formal_past": "쌌습니다",
    "formal_q": "쌉니까?",
    "nika": "싸니까",
-   "neunde": "싼데"
+   "neunde": "싼데",
+   "formal_past_q": "쌌습니까?",
+   "hon_pres": null,
+   "hon_past": null,
+   "mod_pres": null,
+   "mod_past": null,
+   "mod_fut": "쌀",
+   "mod": "싼"
   },
   {
    "h": "재미있다",
@@ -6050,7 +6366,14 @@
    "formal_past": "재미있었습니다",
    "formal_q": "재미있습니까?",
    "nika": "재미있으니까",
-   "neunde": "재미있는데"
+   "neunde": "재미있는데",
+   "formal_past_q": "재미있었습니까?",
+   "hon_pres": null,
+   "hon_past": null,
+   "mod_pres": null,
+   "mod_past": null,
+   "mod_fut": "재미있을",
+   "mod": "재미있는"
   },
   {
    "h": "어렵다",
@@ -6091,7 +6414,14 @@
    "formal_past": "어려웠습니다",
    "formal_q": "어렵습니까?",
    "nika": "어려우니까",
-   "neunde": "어려운데"
+   "neunde": "어려운데",
+   "formal_past_q": "어려웠습니까?",
+   "hon_pres": null,
+   "hon_past": null,
+   "mod_pres": null,
+   "mod_past": null,
+   "mod_fut": "어려울",
+   "mod": "어려운"
   },
   {
    "h": "쉽다",
@@ -6132,7 +6462,14 @@
    "formal_past": "쉬웠습니다",
    "formal_q": "쉽습니까?",
    "nika": "쉬우니까",
-   "neunde": "쉬운데"
+   "neunde": "쉬운데",
+   "formal_past_q": "쉬웠습니까?",
+   "hon_pres": null,
+   "hon_past": null,
+   "mod_pres": null,
+   "mod_past": null,
+   "mod_fut": "쉬울",
+   "mod": "쉬운"
   },
   {
    "h": "춥다",
@@ -6173,7 +6510,14 @@
    "formal_past": "추웠습니다",
    "formal_q": "춥습니까?",
    "nika": "추우니까",
-   "neunde": "추운데"
+   "neunde": "추운데",
+   "formal_past_q": "추웠습니까?",
+   "hon_pres": null,
+   "hon_past": null,
+   "mod_pres": null,
+   "mod_past": null,
+   "mod_fut": "추울",
+   "mod": "추운"
   },
   {
    "h": "덥다",
@@ -6214,7 +6558,14 @@
    "formal_past": "더웠습니다",
    "formal_q": "덥습니까?",
    "nika": "더우니까",
-   "neunde": "더운데"
+   "neunde": "더운데",
+   "formal_past_q": "더웠습니까?",
+   "hon_pres": null,
+   "hon_past": null,
+   "mod_pres": null,
+   "mod_past": null,
+   "mod_fut": "더울",
+   "mod": "더운"
   },
   {
    "h": "바쁘다",
@@ -6254,7 +6605,14 @@
    "formal_past": "바빴습니다",
    "formal_q": "바쁩니까?",
    "nika": "바쁘니까",
-   "neunde": "바쁜데"
+   "neunde": "바쁜데",
+   "formal_past_q": "바빴습니까?",
+   "hon_pres": null,
+   "hon_past": null,
+   "mod_pres": null,
+   "mod_past": null,
+   "mod_fut": "바쁠",
+   "mod": "바쁜"
   },
   {
    "h": "멀다",
@@ -6294,7 +6652,14 @@
    "formal_past": "멀었습니다",
    "formal_q": "멉니까?",
    "nika": "머니까",
-   "neunde": "먼데"
+   "neunde": "먼데",
+   "formal_past_q": "멀었습니까?",
+   "hon_pres": null,
+   "hon_past": null,
+   "mod_pres": null,
+   "mod_past": null,
+   "mod_fut": "멀",
+   "mod": "먼"
   },
   {
    "h": "가깝다",
@@ -6333,7 +6698,14 @@
    "formal_past": "가까웠습니다",
    "formal_q": "가깝습니까?",
    "nika": "가까우니까",
-   "neunde": "가까운데"
+   "neunde": "가까운데",
+   "formal_past_q": "가까웠습니까?",
+   "hon_pres": null,
+   "hon_past": null,
+   "mod_pres": null,
+   "mod_past": null,
+   "mod_fut": "가까울",
+   "mod": "가까운"
   },
   {
    "h": "많다",
@@ -6376,7 +6748,14 @@
    "formal_past": "많았습니다",
    "formal_q": "많습니까?",
    "nika": "많으니까",
-   "neunde": "많은데"
+   "neunde": "많은데",
+   "formal_past_q": "많았습니까?",
+   "hon_pres": null,
+   "hon_past": null,
+   "mod_pres": null,
+   "mod_past": null,
+   "mod_fut": "많을",
+   "mod": "많은"
   },
   {
    "h": "친절하다",
@@ -6415,7 +6794,14 @@
    "formal_past": "친절했습니다",
    "formal_q": "친절합니까?",
    "nika": "친절하니까",
-   "neunde": "친절한데"
+   "neunde": "친절한데",
+   "formal_past_q": "친절했습니까?",
+   "hon_pres": null,
+   "hon_past": null,
+   "mod_pres": null,
+   "mod_past": null,
+   "mod_fut": "친절할",
+   "mod": "친절한"
   },
   {
    "h": "귀엽다",
@@ -6456,7 +6842,14 @@
    "formal_past": "귀여웠습니다",
    "formal_q": "귀엽습니까?",
    "nika": "귀여우니까",
-   "neunde": "귀여운데"
+   "neunde": "귀여운데",
+   "formal_past_q": "귀여웠습니까?",
+   "hon_pres": null,
+   "hon_past": null,
+   "mod_pres": null,
+   "mod_past": null,
+   "mod_fut": "귀여울",
+   "mod": "귀여운"
   },
   {
    "h": "조용하다",
@@ -6496,7 +6889,14 @@
    "formal_past": "조용했습니다",
    "formal_q": "조용합니까?",
    "nika": "조용하니까",
-   "neunde": "조용한데"
+   "neunde": "조용한데",
+   "formal_past_q": "조용했습니까?",
+   "hon_pres": null,
+   "hon_past": null,
+   "mod_pres": null,
+   "mod_past": null,
+   "mod_fut": "조용할",
+   "mod": "조용한"
   },
   {
    "h": "배고프다",
@@ -6536,7 +6936,14 @@
    "formal_past": "배고팠습니다",
    "formal_q": "배고픕니까?",
    "nika": "배고프니까",
-   "neunde": "배고픈데"
+   "neunde": "배고픈데",
+   "formal_past_q": "배고팠습니까?",
+   "hon_pres": null,
+   "hon_past": null,
+   "mod_pres": null,
+   "mod_past": null,
+   "mod_fut": "배고플",
+   "mod": "배고픈"
   }
  ],
  "counters": [
@@ -6554,11 +6961,20 @@
    "집": "댁",
    "밥": "진지"
   },
+  "subject": {
+   "있다": "계시다",
+   "먹다": "드시다",
+   "자다": "주무시다",
+   "주다": "주시다"
+  },
+  "object": {
+   "주다": "드리다"
+  },
   "verbs": {
    "있다": "계시다",
    "먹다": "드시다",
    "자다": "주무시다",
-   "주다": "드리다"
+   "주다": "주시다"
   }
  }
 }

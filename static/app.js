@@ -169,8 +169,8 @@
     if (k === 'D') return M.candidates(st.tpl, 'D', D.words);
     if (k === 'L') return M.candidates(st.tpl, 'L', D.words);
     if (['T', 'H', 'W', 'R', 'REF', 'POS', 'QD', 'QO', 'A1'].includes(k)) return M.candidates(st.tpl, k, D.words, verbFor(k), st.picks);
-    if (k === 'V' || k === 'VW' || k === 'NV' || k === 'HV' || k.startsWith('VF:')) return M.verbsFor(st.tpl, D.words, k === 'VW' ? 'want' : st.tense);
-    if (k === 'V1') return M.verbsFor(st.tpl, D.words, st.tense, 'V1').filter(v => !v.to);
+    if (k === 'V' || k === 'VW' || k === 'NV' || k === 'HV' || k.startsWith('VF:')) return M.verbsFor(st.tpl, D.words, k === 'VW' ? 'want' : st.tense, undefined, st.picks.S);
+    if (k === 'V1') return M.verbsFor(st.tpl, D.words, st.tense, 'V1', st.picks.S).filter(v => !v.to);
     if (k === 'V2' || k === 'NV2') return M.verbsFor(st.tpl, D.words, st.tense).filter(v => !v.to);
     if (k === 'A' || k.startsWith('AF:')) return M.adjectivesFor(st.picks.S, D.words, st.tpl);
     return [];
@@ -183,7 +183,21 @@
     st.picks[key] = item;
     if (key === 'O') { clearP('OP'); if (!st.tpl.slots.includes('O2')) clearP('OP2'); }
     if (key === 'O2') clearP('OP2');
-    if (key === 'S') { clearP('SP'); if (st.tpl.slots.includes('A') || st.tpl.slots.some(k => k.startsWith('AF:'))) { const as = M.adjectivesFor(item, D.words, st.tpl); if (!as.includes(st.picks.A)) st.picks.A = as[0] || st.picks.A; } if (st.tpl.slots.includes('A1')) { const as = M.candidates(st.tpl, 'A1', D.words, null, st.picks); if (!as.includes(st.picks.A1)) st.picks.A1 = as[0] || st.picks.A1; } }
+    if (key === 'S') {
+      clearP('SP');
+      if (item && item.preds) {
+        if (st.picks.V1 && !item.preds.includes(st.picks.V1.h)) {
+          const v1s = M.verbsFor(st.tpl, D.words, st.tense, 'V1', item).filter(v => !v.to);
+          if (v1s.length) st.picks.V1 = v1s[0];
+        }
+        if (st.picks.V && !item.preds.includes(st.picks.V.h)) {
+          const vs = M.verbsFor(st.tpl, D.words, st.tense, undefined, item);
+          if (vs.length) st.picks.V = vs[0];
+        }
+      }
+      if (st.tpl.slots.includes('A') || st.tpl.slots.some(k => k.startsWith('AF:'))) { const as = M.adjectivesFor(item, D.words, st.tpl); if (!as.includes(st.picks.A)) st.picks.A = as[0] || st.picks.A; }
+      if (st.tpl.slots.includes('A1')) { const as = M.candidates(st.tpl, 'A1', D.words, null, st.picks); if (!as.includes(st.picks.A1)) st.picks.A1 = as[0] || st.picks.A1; }
+    }
     if (['D', 'L', 'T', 'H', 'W', 'R', 'POS', 'QD', 'QO'].includes(key)) clearP(st.tpl.slots[st.tpl.slots.indexOf(key) + 1]);
     if (key === 'REF') { const ps = M.candidates(st.tpl, 'POS', D.words, null, st.picks); if (!ps.includes(st.picks.POS)) { st.picks.POS = ps[0]; clearP('OP'); } }
     st.incompat = !!badPair(); // the learner's word stays; the pair is explained, not silently replaced

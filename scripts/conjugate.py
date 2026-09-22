@@ -96,6 +96,37 @@ def forms(h, pres, past='', adj=False):
         formal = st[:-1] + comp(c, j, 'ㅂ') + '니다'
         formal_q = st[:-1] + comp(c, j, 'ㅂ') + '니까?'
     formal_past = (past[:-2] + '습니다') if past else ''
+    formal_past_q = (past[:-2] + '습니까?') if past else ''
+
+    # hon_pres / hon_past (-(으)세요, -(으)셨어요)
+    if not adj:
+        if irr == 'l':
+            hon_pres = st_l + '세요'
+            hon_past = st_l + '셨어요'
+        elif irr == 'd':
+            hon_pres = d_irr(st) + '으세요'
+            hon_past = d_irr(st) + '으셨어요'
+        elif bat:
+            hon_pres = st + '으세요'
+            hon_past = st + '으셨어요'
+        else:
+            hon_pres = st + '세요'
+            hon_past = st + '셨어요'
+    else:
+        hon_pres = None
+        hon_past = None
+
+    # modifiers (관형사형)
+    if not adj:
+        mod_pres = (st_l if irr == 'l' else st) + '는'
+        mod_past = n_ending('')
+        mod_fut = l_ending('')
+        mod = None
+    else:
+        mod_pres = None
+        mod_past = None
+        mod = (st + '는') if (h.endswith('있다') or h.endswith('없다')) else n_ending('')
+        mod_fut = l_ending('')
 
     # nika (-(으)니까)
     if irr == 'l':
@@ -143,9 +174,16 @@ def forms(h, pres, past='', adj=False):
         'geodeunyo': st + '거든요',
         'formal': formal,
         'formal_past': formal_past,
+        'formal_past_q': formal_past_q,
         'formal_q': formal_q,
         'nika': nika,
         'neunde': neunde,
+        'hon_pres': hon_pres,
+        'hon_past': hon_past,
+        'mod_pres': mod_pres,
+        'mod_past': mod_past,
+        'mod_fut': mod_fut,
+        'mod': mod,
     }
     if not adj:
         out.update({
@@ -171,12 +209,15 @@ def forms(h, pres, past='', adj=False):
 # None = the form is unnatural or not offered in any frame; verbForm() fails closed on null.
 NONE = lambda *ks: {k: None for k in ks}
 OVERRIDES = {
-    '있다': {'plain': '있다', 'kkayo': '있을까요?', 'geotgatayo': '있는 것 같아요', **NONE('reo', 'bwasseoyo', 'jeok', 'ryeogo', 'giro', 'yagesseoyo', 'gedoeda', 'juseyo', 'jimaseyo', 'n_hue')},  # 있은 후에 is not taught
-    '없다': {'plain': '없다', 'geotgatayo': '없는 것 같아요', 'kkayo': '없을까요?', **NONE('reo', 'bwasseoyo', 'jeok', 'ryeogo', 'giro', 'yagesseoyo', 'gedoeda', 'juseyo', 'jimaseyo', 'n_hue')},  # 없은 후에 is wrong
+    '먹다': {'hon_pres': None, 'hon_past': None},
+    '자다': {'hon_pres': None, 'hon_past': None},
+    '있다': {'plain': '있다', 'kkayo': '있을까요?', 'geotgatayo': '있는 것 같아요', 'mod_past': None, 'hon_pres': None, 'hon_past': None, **NONE('reo', 'bwasseoyo', 'jeok', 'ryeogo', 'giro', 'yagesseoyo', 'gedoeda', 'juseyo', 'jimaseyo', 'n_hue')},  # 있은 후에 is not taught
+    '없다': {'plain': '없다', 'geotgatayo': '없는 것 같아요', 'kkayo': '없을까요?', 'mod_past': None, 'hon_pres': None, 'hon_past': None, **NONE('reo', 'bwasseoyo', 'jeok', 'ryeogo', 'giro', 'yagesseoyo', 'gedoeda', 'juseyo', 'jimaseyo', 'n_hue')},  # 없은 후에 is wrong
     '좋아하다': NONE('kkayo', 'reo', 'bwasseoyo', 'ryeogo', 'giro', 'yagesseoyo', 'juseyo', 'jimaseyo'),  # 좋아한 적이 있어요 · 좋아하게 됐어요 stay (valid Korean); 좋아하지 마세요 is odd as a request frame
     '전화하다': {'bwasseoyo': '전화해 봤어요'},
-    '계시다': {'eoseo': '계셔서', 'myeon': '계시면', 'lttae': '계실 때', 'myeonseo': '계시면서', 'neyo': '계시네요', 'n_hue': '계신 후에', **NONE('reo', 'kkayo', 'juseyo', 'jimaseyo', 'bwasseoyo', 'jeok', 'ryeogo', 'giro', 'yagesseoyo', 'gedoeda', 'plain', 'geotgatayo')},
+    '계시다': {'eoseo': '계셔서', 'myeon': '계시면', 'lttae': '계실 때', 'myeonseo': '계시면서', 'neyo': '계시네요', 'n_hue': '계신 후에', 'hon_pres': '계세요', 'hon_past': '계셨어요', **NONE('reo', 'kkayo', 'juseyo', 'jimaseyo', 'bwasseoyo', 'jeok', 'ryeogo', 'giro', 'yagesseoyo', 'gedoeda', 'plain', 'geotgatayo')},
     '주다': {'juseyo': '주세요'},
+    '드리다': {'hon_pres': None, 'hon_past': None},
     '오다': {'jeok': '온 적이 있어요', 'n_hue': '온 후에'},
     '쓰다': {'eoseo': '써서', 'bwasseoyo': '써 봤어요', 'juseyo': '써 주세요', 'yagesseoyo': '써야겠어요'},
     '듣다': {'jeok': '들은 적이 있어요', 'n_hue': '들은 후에', 'plain': '듣는다', 'geotgatayo': '듣는 것 같아요', 'ttaemun': '듣기 때문에', 'gi_jeone': '듣기 전에', 'jimaseyo': '듣지 마세요', 'neyo': '듣네요', 'go': '듣고', 'jiman': '듣지만', 'giro': '듣기로 했어요', 'gedoeda': '듣게 됐어요'},
@@ -184,8 +225,8 @@ OVERRIDES = {
     '멀다': {'plain': '멀다', 'geotgatayo': '먼 것 같아요', 'neyo': '머네요', 'lttae': '멀 때', 'myeon': '멀면', 'myeonseo': '멀면서'},
     '춥다': {'geotgatayo': '추운 것 같아요'}, '덥다': {'geotgatayo': '더운 것 같아요'}, '가깝다': {'geotgatayo': '가까운 것 같아요'}, '귀엽다': {'geotgatayo': '귀여운 것 같아요'}, '어렵다': {'geotgatayo': '어려운 것 같아요'}, '쉽다': {'geotgatayo': '쉬운 것 같아요'},
     '배고프다': {'eoseo': '배고파서'},
-    '드시다': {'eoseo': '드셔서'},
-    '주무시다': {'eoseo': '주무셔서'},
+    '드시다': {'eoseo': '드셔서', 'hon_pres': '드세요', 'hon_past': '드셨어요'},
+    '주무시다': {'eoseo': '주무셔서', 'hon_pres': '주무세요', 'hon_past': '주무셨어요'},
     '바쁘다': {'eoseo': '바빠서'}, '예쁘다': {'eoseo': '예뻐서'}, '크다': {'eoseo': '커서'}, '싸다': {'eoseo': '싸서'}, '비싸다': {'eoseo': '비싸서'},
     '좋다': {'geotgatayo': '좋은 것 같아요'}, '많다': {'geotgatayo': '많은 것 같아요'}, '작다': {'geotgatayo': '작은 것 같아요'}, '맛있다': {'geotgatayo': '맛있는 것 같아요', 'plain': '맛있다'}, '재미있다': {'geotgatayo': '재미있는 것 같아요', 'plain': '재미있다'},
     '친절하다': {'geotgatayo': '친절한 것 같아요'}, '조용하다': {'geotgatayo': '조용한 것 같아요'},
