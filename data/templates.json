@@ -1402,7 +1402,14 @@
    "hon_subj_soft": "Grammatical, but for an elder the honorific set is expected: {w}께서 … 계세요.",
    "hon_subj_wrong": "께서 is only for people you honour (grandmother, teacher). For “{w}” use 이/가.",
    "qplace_both": "With {v} both work: 어디에 살아요? and 어디에서 살아요? are equally natural.",
-   "chk_incomplete": "The sentence stops after “{v}” — a connective needs a second part with its own predicate at the end."
+   "chk_incomplete": "The sentence stops after “{v}” — a connective needs a second part with its own predicate at the end.",
+   "chk_mot_space": "“못” stands apart from the verb: “이해를 못 해요 / 이해 못 해요”. “못하다” as one word means poor at something, while “못 하다” means unable to do it.",
+   "chk_honorific": "When speaking about an elder, use honorific particles and verbs: “{s}께서 진지를 드셨어요 · 댁에 계세요”.",
+   "chk_edo": "When adding “also” (도) to a destination with a movement verb, use “에도”: “{w}에도 가고 싶어요”.",
+   "chk_double_obj": "When using a counter phrase, use 을/를 only once: “개를 두 마리 키워요 — 를 is used once”.",
+   "chk_counter_particle": "Attach the particle after the counter: “{fix}”.",
+   "chk_typo": "Did you mean “{fix}”? Possible spelling typo in “{orig}”.",
+   "chk_mostly_outside": "Most words are outside our word list — only particle forms were checked."
   },
   "ja": {
    "batchim_yes": "「{w}」はパッチム（{f}）で終わる → {p}",
@@ -1480,7 +1487,14 @@
    "hon_subj_soft": "文法的には正しいですが、目上の人には尊敬のセット {w}께서 … 계세요 が期待されます。",
    "hon_subj_wrong": "께서 は敬う相手（祖母・先生）にだけ。「{w}」には 이/가。",
    "qplace_both": "{v} はどちらも自然です：어디에 살아요？ も 어디에서 살아요？ も使えます。",
-   "chk_incomplete": "「{v}」で文が止まっています。接続語尾の後には述語で終わる後半が必要です。"
+   "chk_incomplete": "「{v}」で文が止まっています。接続語尾の後には述語で終わる後半が必要です。",
+   "chk_mot_space": "「못」は動詞と離して書きます：「이해를 못 해요 / 이해 못 해요」。「못하다」（1語）は「苦手だ・下手だ」を表し、「못 하다」（2語）は「することができない」を表します。",
+   "chk_honorific": "目上の方について話す時は、敬語の助詞や動詞を使います：「{s}께서 진지를 드셨어요 · 댁에 계세요」。",
+   "chk_edo": "移動動詞で行き先に「〜も（도）」を付ける時は「에도」を使います：「{w}에도 가고 싶어요」。",
+   "chk_double_obj": "助数詞を使う時は、을/를 は1回だけにします：「개를 두 마리 키워요 — 를 は1回だけ」。",
+   "chk_counter_particle": "助数詞の後に助詞を付けます：「{fix}」。",
+   "chk_typo": "「{fix}」ですか？「{orig}」のスペルミスの可能性があります。",
+   "chk_mostly_outside": "大部分が単語リスト外です — 助詞の形のみ判定しました。"
   },
   "vi": {
    "batchim_yes": "“{w}” kết thúc bằng phụ âm (받침 {f}) → {p}",
@@ -1558,7 +1572,14 @@
    "hon_subj_soft": "Đúng ngữ pháp, nhưng với người lớn tuổi nên dùng bộ kính ngữ: {w}께서 … 계세요.",
    "hon_subj_wrong": "께서 chỉ dùng với người được kính trọng (bà, thầy cô). Với “{w}” dùng 이/가.",
    "qplace_both": "Với {v} cả hai đều được: 어디에 살아요? và 어디에서 살아요? đều tự nhiên.",
-   "chk_incomplete": "Câu dừng ở “{v}” — sau đuôi nối cần vế thứ hai kết thúc bằng vị ngữ."
+   "chk_incomplete": "Câu dừng ở “{v}” — sau đuôi nối cần vế thứ hai kết thúc bằng vị ngữ.",
+   "chk_mot_space": "“못” viết tách khỏi động từ: “이해를 못 해요 / 이해 못 해요”. “못하다” (viết liền) nghĩa là kém/dở, còn “못 하다” (viết rời) nghĩa là không thể làm.",
+   "chk_honorific": "Khi nói về người lớn tuổi, hãy dùng tiểu từ và động từ tôn kính: “{s}께서 진지를 드셨어요 · 댁에 계세요”.",
+   "chk_edo": "Khi thêm “cũng (도)” vào điểm đến với động từ di chuyển, hãy dùng “에도”: “{w}에도 가고 싶어요”.",
+   "chk_double_obj": "Khi dùng cụm từ số lượng, chỉ dùng 을/를 một lần: “개를 두 마리 키워요 — 를 chỉ dùng một lần”.",
+   "chk_counter_particle": "Gắn tiểu từ sau lượng từ: “{fix}”.",
+   "chk_typo": "Có phải bạn muốn viết “{fix}”? Có thể là lỗi chính tả trong “{orig}”.",
+   "chk_mostly_outside": "Hầu hết các từ nằm ngoài danh sách từ — chỉ kiểm tra dạng tiểu từ."
   }
  },
  "levels": {

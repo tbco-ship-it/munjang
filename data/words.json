@@ -3698,6 +3698,64 @@
     "酒",
     "お酒"
    ]
+  },
+  {
+   "h": "이해",
+   "r": "ihae",
+   "en": "understanding",
+   "ja": "理解",
+   "roles": [
+    "obj"
+   ],
+   "kind": "abstract",
+   "level": 1,
+   "en_g": "understanding",
+   "vi": "sự hiểu"
+  },
+  {
+   "h": "독서",
+   "r": "dokseo",
+   "en": "reading",
+   "ja": "読書",
+   "roles": [
+    "obj"
+   ],
+   "kind": "activity",
+   "level": 1,
+   "en_g": "reading",
+   "vi": "đọc sách"
+  },
+  {
+   "h": "집중",
+   "r": "jipjung",
+   "en": "concentration",
+   "ja": "集中",
+   "roles": [
+    "obj"
+   ],
+   "kind": "abstract",
+   "level": 1,
+   "en_g": "concentration",
+   "vi": "tập trung"
+  },
+  {
+   "h": "부모님",
+   "r": "bumonim",
+   "en": "parents",
+   "ja": "ご両親",
+   "roles": [
+    "subj",
+    "obj",
+    "to"
+   ],
+   "kind": "person",
+   "level": 1,
+   "en_g": "parents",
+   "feat": [
+    "person"
+   ],
+   "vi": "bố mẹ",
+   "elder": true
   }
  ],
  "verbs": [
@@ -5973,5 +6031,13 @@
    "janayo": "배고프잖아요",
    "geodeunyo": "배고프거든요"
   }
+ ],
+ "counters": [
+  "마리",
+  "개",
+  "권",
+  "명",
+  "잔",
+  "병"
  ]
 }

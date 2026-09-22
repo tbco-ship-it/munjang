@@ -293,7 +293,7 @@ eq(M.adjectivesFor(noun('저'), W, tpl('pref')).map(a => a.h), ['좋다'], 'pref
 eq(M.candidates(tpl('pref'), 'H', W).some(n => n.h === '시간'), false, 'pref H = likeable things');
 eq(asm('cant', { S: noun('저'), O: noun('술'), V: verb('마시다'), tense: 'pres' }), '저는 술을 못 마셔요.', 'cant frame');
 eq(chk('저는 술을 못 마셔요').verdict, 'ok', 'checker: 못 ok');
-eq(chk('저는 술을 못마셔요').notes.some(n => n.key === 'chk_an_space'), true, 'checker: 못마셔요 spacing');
+eq(chk('저는 술을 못마셔요').notes.some(n => n.key === 'chk_mot_space'), true, 'checker: 못마셔요 spacing');
 
 // 도/만 and -네요 (Popo top-100: 조사 도/만, 어미 -네요)
 eq(asm('also', { S: noun('저'), SP: '도', O: noun('커피'), OP: '를', V: verb('마시다'), tense: 'pres' }), '저도 커피를 마셔요.', '저도');
