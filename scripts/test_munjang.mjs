@@ -262,9 +262,14 @@ eq(asm('hongive', { S: noun('저'), R: noun('할머니'), RP: '께', O: noun('�
 eq(M.judgeP(tpl('hongive'), 'RP', noun('할머니'), verb('드리다'), '께', WHY).grade, 'ok', '께 ok');
 eq(M.judgeP(tpl('hongive'), 'RP', noun('할머니'), verb('드리다'), '에게', WHY).grade, 'soft', '에게 soft for an elder');
 eq(M.judgeP(tpl('hongive'), 'RP', noun('할머니'), verb('드리다'), '에', WHY).grade, 'no', '에 no');
-eq(M.candidates(tpl('hongive'), 'R', W).every(n => n.elder), true, 'hongive recipients are elders');
 eq(M.verbsFor(tpl('hongive'), W).map(v => v.h), ['드리다'], 'hongive verb');
-// verbKeyFor pairing
+eq(M.verbsFor(tpl('formal'), W).some(v => v.h === '드리다'), false, '드리다 excluded from formal by honlex');
+eq(M.verbsFor(tpl('act'), W).some(v => v.h === '드리다'), false, '드리다 excluded from act by honlex');
+eq(M.verbsFor(tpl('or'), W).some(v => v.h === '드리다'), false, '드리다 excluded from or by honlex');
+eq(M.verbsFor(tpl('neunde'), W).some(v => v.h === '드리다'), false, '드리다 excluded from neunde by honlex');
+eq(M.verbsFor(tpl('hon_verb'), W).length, 16, 'hon_verb pool has 16 verbs after excluding 마시다 and 주다');
+eq(M.verbsFor(tpl('hon_verb'), W).some(v => v.h === '마시다' || v.h === '주다'), false, '마시다 and 주다 excluded from hon_verb by hon_skip');
+eq(M.verbsFor(tpl('hon_verb'), W).some(v => v.h === '드시다'), true, '드시다 remains in hon_verb');
 eq(M.verbKeyFor(tpl('and'), 'O'), 'V1', 'O → V1 in and'); eq(M.verbKeyFor(tpl('and'), 'O2'), 'V2', 'O2 → V2');
 eq(M.verbKeyFor(tpl('because'), 'O'), 'V2', 'O → V2 in because'); eq(M.verbKeyFor(tpl('purpose'), 'D'), 'AUX:가다', 'D → 가다 in purpose'); eq(M.verbKeyFor(tpl('purpose'), 'O'), 'VF:reo', 'O → VF verb');
 // checker recognises the new forms

@@ -26,7 +26,7 @@
     notes.hidden = !r.notes.length;
     const v = document.getElementById('chk-verdict');
     v.className = 'why ' + (r.verdict === 'ok' ? 'ok' : r.verdict === 'no' ? 'no' : 'soft') + ' verdict';
-    const msg = r.verdict === 'ok' ? WHY.chk_ok : r.verdict === 'no' ? WHY.chk_no : fill('chk_partial', { n: r.unknown });
+    const msg = r.verdict === 'no' ? WHY.chk_no : (r.unknown > 0 ? fill('chk_partial', { n: r.unknown }) : WHY.chk_ok);
     const headline = r.mostlyUnknown && (UI.chk_mostly_outside || WHY.chk_mostly_outside) ? `${esc(UI.chk_mostly_outside || WHY.chk_mostly_outside)}<br>` : '';
     v.innerHTML = `<p>${headline}${esc(msg)}</p>`;
     out.hidden = false;

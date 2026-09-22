@@ -3957,6 +3957,7 @@
     "drink"
    ],
    "level": 1,
+   "hon_skip": true,
    "fut": "마실 거예요",
    "ja_pres": "飲みます",
    "ja_past": "飲みました",
@@ -5119,6 +5120,7 @@
    ],
    "to": true,
    "level": 1,
+   "hon_skip": true,
    "ja_pres": "あげます",
    "ja_past": "あげました",
    "ja_want": "あげたいです",
@@ -5624,6 +5626,7 @@
    ],
    "to": true,
    "hon": true,
+   "honlex": true,
    "level": 4,
    "en_base": "give",
    "en_3s": "gives",

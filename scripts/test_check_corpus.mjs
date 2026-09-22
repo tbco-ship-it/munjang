@@ -29,7 +29,8 @@ export const MUST_REJECT = [
   { id: 'neg1', raw: '선생님께서 학교에 가요.', rule: 'hon_verb', expectedNote: 'chk_honorific' },
   { id: 'neg2', raw: '친구가 두 명을 있어요.', rule: 'exist_subject', expectedNote: 'exist_subject_ok' },
   { id: 'neg3', raw: '책 두 권를 읽었어요.', rule: 'counter_particle', expectedNote: 'batchim_yes' },
-  { id: 'neg4', raw: '저는 밥을 멱어요.', rule: 'typo', expectedNote: 'chk_typo' }
+  { id: 'neg4', raw: '저는 밥을 멱어요.', rule: 'typo', expectedNote: 'chk_typo' },
+  { id: 'neg5', raw: '의사께서 밥을 먹어요.', rule: 'hon_verb', expectedNote: 'chk_honorific' }
 ];
 
 // 2. Group: acceptable_variant (natural or acceptable colloquial variants)
@@ -57,10 +58,13 @@ export const MUST_OK = [
   { id: 'pos12', raw: '할머니께서 진지를 드세요.' }
 ];
 
-// Honorific soft checks (#5, #6: info note with fix)
+// Honorific soft checks (#5, #6, mom, doctor: info note with fix)
 export const SOFT_HONORIFICS = [
-  { id: 5, raw: '할아버지는 댁에 있어요.', expectedNote: 'chk_honorific' },
-  { id: 6, raw: '할아버지가 밥을 먹었어요.', expectedNote: 'chk_honorific' }
+  { id: 5, raw: '할아버지는 댁에 있어요.', expectedNote: 'chk_honorific_opt', expectedFix: '할아버지께서는 댁에 계세요.' },
+  { id: 6, raw: '할아버지가 밥을 먹었어요.', expectedNote: 'chk_honorific_opt', expectedFix: '할아버지께서 진지를 드셨어요.' },
+  { id: 'mom', raw: '엄마는 밥을 먹어요.', expectedNote: 'chk_honorific_opt', expectedFix: '엄마께서는 진지를 드세요.' },
+  { id: 'doc1', raw: '의사는 밥을 먹어요.', expectedNote: 'chk_honorific_opt', expectedFix: '의사께서는 밥을 드세요.' },
+  { id: 'doc2', raw: '의사가 밥을 먹어요.', expectedNote: 'chk_honorific_opt', expectedFix: '의사께서 밥을 드세요.' }
 ];
 
 let fails = 0;
@@ -125,6 +129,10 @@ for (const item of SOFT_HONORIFICS) {
     fails++;
     console.log(`FAIL soft honorific #${item.id}: missing fix on ${item.expectedNote}`);
   } else {
+    if (item.expectedFix && honNote.fix !== item.expectedFix) {
+      fails++;
+      console.log(`FAIL soft honorific #${item.id}: fix mismatch: expected "${item.expectedFix}", got "${honNote.fix}"`);
+    }
     const rf = M.checkSentence(honNote.fix, W, WHY);
     if (rf.verdict !== 'ok' || rf.notes.length > 0) {
       fails++;

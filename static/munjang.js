@@ -296,7 +296,7 @@
     else if (kind === 'have') list = words.verbs.filter(v => v.have);
     else if (kind === 'like') list = words.verbs.filter(v => v.h === '좋아하다');
     else if (kind === 'honexist') list = words.verbs.filter(v => v.honexist);
-    else if (kind === 'hon_verb') list = words.verbs.filter(v => v.hon_pres && v.takes && has(v));
+    else if (kind === 'hon_verb') list = words.verbs.filter(v => v.hon_pres && v.takes && !v.hon_skip && has(v));
     else if (kind === 'any_place') list = words.verbs.filter(v => (v.move || v.at || v.takes) && !v.to && !v.hon && has(v));
     else list = [];
     if (kind !== 'hon_verb' && kind !== 'honexist' && kind !== 'hongive' && (!tpl || tpl.id !== 'hon_exist')) {
@@ -739,6 +739,8 @@
       const isElderSubj = subj && (subj.word.elder || subj.stem === '부모님' || subj.stem === '할아버지' || subj.stem === '할머니' || subj.stem === '선생님');
       const gkeso = cl.nouns.find(c => c.particle === '께서' || c.particle === '께서는');
 
+      const FAMILY_ELDERS = ['할머니', '할아버지', '부모님', '엄마', '아빠', '아버지', '선생님'];
+
       if (gkeso) {
         const sStem = gkeso.stem;
         if (plainHonVerbs.includes(verb.h)) {
@@ -755,11 +757,13 @@
             let p = c.particle || '';
             if (honNounMap[stem]) {
               const newStem = honNounMap[stem];
-              if (p && PAIRS[p]) {
-                const needP = hasBatchim(newStem) ? (wantsBatchim(p) ? p : PAIRS[p]) : (wantsBatchim(p) ? PAIRS[p] : p);
-                p = needP;
+              if (newStem !== '진지' || FAMILY_ELDERS.includes(sStem)) {
+                if (p && PAIRS[p]) {
+                  const needP = hasBatchim(newStem) ? (wantsBatchim(p) ? p : PAIRS[p]) : (wantsBatchim(p) ? PAIRS[p] : p);
+                  p = needP;
+                }
+                stem = newStem;
               }
-              stem = newStem;
             }
             midChunks.push(stem + p);
           }
@@ -805,11 +809,13 @@
           let p = c.particle || '';
           if (honNounMap[stem]) {
             const newStem = honNounMap[stem];
-            if (p && PAIRS[p]) {
-              const needP = hasBatchim(newStem) ? (wantsBatchim(p) ? p : PAIRS[p]) : (wantsBatchim(p) ? PAIRS[p] : p);
-              p = needP;
+            if (newStem !== '진지' || FAMILY_ELDERS.includes(sStem)) {
+              if (p && PAIRS[p]) {
+                const needP = hasBatchim(newStem) ? (wantsBatchim(p) ? p : PAIRS[p]) : (wantsBatchim(p) ? PAIRS[p] : p);
+                p = needP;
+              }
+              stem = newStem;
             }
-            stem = newStem;
           }
           midChunks.push(stem + p);
         }
@@ -819,11 +825,12 @@
         if (midChunks.length) fixParts.push(...midChunks);
         if (fixedVerb) fixParts.push(fixedVerb);
         const fixSentence = fixParts.join(' ') + '.';
+        const fixNoDot = fixSentence.replace(/\.$/, '');
 
         notes.push({
           grade: 'info',
-          key: 'chk_honorific',
-          vars: { s: sStem, v: verb.h },
+          key: 'chk_honorific_opt',
+          vars: { s: sStem, v: verb.h, fix: fixNoDot },
           fix: fixSentence
         });
       }

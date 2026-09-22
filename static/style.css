@@ -424,6 +424,7 @@ html.roman .w-r{display:block}
   .connective-card-meaning{font-size:.88rem;color:var(--text-2);margin-bottom:10px;line-height:1.4}
   .connective-card-props{display:flex;flex-direction:column;gap:6px;font-size:.85rem;margin-bottom:10px}
   .connective-card-prop{display:flex;justify-content:space-between;align-items:center;gap:8px}
-  .connective-card-prop-label{color:var(--text-2);font-size:.82rem}
+  .connective-card-prop-label{color:var(--text-2);font-size:.82rem;min-width:0}
+  .connective-card .tag{white-space:nowrap;flex-shrink:0}
   .connective-card-ex{font-family:var(--hangul);font-size:.95rem;background:var(--surface-soft);padding:8px 10px;border-radius:8px;color:var(--text)}
 }
