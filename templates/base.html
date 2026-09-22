@@ -25,7 +25,7 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="{{ origin }}{{ base }}{{ path }}">
 {% if adsense_pub %}<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-{{ adsense_pub }}" crossorigin="anonymous"></script>{% endif %}
-{% if origin == "https://hangulsteps.com" %}<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "b020fd84fa45497b803250d3ba683808"}'></script>{% endif %}
+{% if origin == "https://hangulsteps.com" %}<script>/* Cloudflare Web Analytics — skipped for automated browsers so our own QA runs don't land in the visitor counts */if(!navigator.webdriver){var b=document.createElement('script');b.defer=true;b.src='https://static.cloudflareinsights.com/beacon.min.js';b.setAttribute('data-cf-beacon','{"token": "b020fd84fa45497b803250d3ba683808"}');document.head.appendChild(b);}</script>{% endif %}
 {% block head %}{% endblock %}
 </head>
 <body>
