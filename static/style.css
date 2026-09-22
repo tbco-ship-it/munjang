@@ -411,3 +411,18 @@ html.roman .w-r{display:block}
 #facts h3{font-size:.95rem;margin:18px 0 6px}
 #facts p{font-size:.9rem;color:var(--text-2);line-height:1.55}
 .tk-table{table-layout:fixed}.tk-table td,.tk-table th{overflow-wrap:anywhere}.tk-table td.n,.tk-table th.n{width:3.6em;text-align:right}
+/* guide connectives mobile comparison cards */
+.connectives-table-wrap{display:block;overflow-x:auto;margin:12px 0 20px}
+.connectives-cards{display:none}
+@media(max-width:640px){
+  .connectives-table-wrap{display:none}
+  .connectives-cards{display:flex;flex-direction:column;gap:12px;margin:12px 0 24px}
+  .connective-card{padding:14px;border:1px solid var(--line);border-radius:12px;background:var(--surface)}
+  .connective-card-header{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px;padding-bottom:6px;border-bottom:1px solid var(--line)}
+  .connective-card-title{font-size:1.15rem;font-weight:700;color:var(--text)}
+  .connective-card-meaning{font-size:.88rem;color:var(--text-2);margin-bottom:10px;line-height:1.4}
+  .connective-card-props{display:flex;flex-direction:column;gap:6px;font-size:.85rem;margin-bottom:10px}
+  .connective-card-prop{display:flex;justify-content:space-between;align-items:center;gap:8px}
+  .connective-card-prop-label{color:var(--text-2);font-size:.82rem}
+  .connective-card-ex{font-family:var(--hangul);font-size:.95rem;background:var(--surface-soft);padding:8px 10px;border-radius:8px;color:var(--text)}
+}

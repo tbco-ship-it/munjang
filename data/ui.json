@@ -460,8 +460,8 @@
   "particle_pref_h": "{w} + ? — 좋아요 と",
   "slot_MV": "動詞",
   "chk_mostly_outside": "大部分が単語リスト外です — 助詞の形のみ判定しました。",
-  "tense_formal": "丁寧体（-ㅂ니다/습니다）",
-  "tense_formal_past": "丁寧体過去（-았습니다/었습니다）"
+  "tense_formal": "ハムニダ体",
+  "tense_formal_past": "ハムニダ体・過去"
  },
  "vi": {
   "lang": "vi",

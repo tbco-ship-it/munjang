@@ -1,14 +1,14 @@
 {% extends "base.html" %}
-{% block title %}{% if lang == 'vi' %}-아서 vs -(으)니까 vs -는데 vs -지만 — so sánh đuôi liên kết tiếng Hàn có bài tập | HangulSteps{% elif lang == 'ja' %}-아서 と -(으)니까 と -는데 と -지만 の違い — 接続語尾の使い分けガイド | HangulSteps{% else %}-아서 vs -(으)니까 vs -는데 vs -지만 — Korean connectives comparison guide with quiz | HangulSteps{% endif %}{% endblock %}
+{% block title %}{% if lang == 'vi' %}-아서 · -(으)니까 · -는데 · -지만 — chọn đuôi nào? | HangulSteps{% elif lang == 'ja' %}-아서 · -(으)니까 · -는데 · -지만 — どれを使う？ | HangulSteps{% else %}-아서 · -(으)니까 · -는데 · -지만 — which one? | HangulSteps{% endif %}{% endblock %}
 {% block description %}{% if lang == 'vi' %}So sánh 4 đuôi liên kết cơ bản nhất: -아서/어서 (nguyên nhân tự nhiên), -(으)니까 (lý do/mệnh lệnh), -는데 (bối cảnh/tương phản nhẹ), -지만 (tương phản đối lập). Kèm bảng đối chiếu và 6 câu bài tập.{% elif lang == 'ja' %}初級で誰もが迷う4大接続語尾 -아서/어서（原因・理由）、-(으)니까（理由・判断・命令）、-는데（前置き・背景・対比）、-지만（逆接）を徹底比較。命令文の可否・時制制約・6問のクイズ付き。{% else %}The complete 4-way guide to Korean connectives: -아서/어서 (natural cause), -(으)니까 (justification/commands), -는데 (background/contrast), and -지만 (direct contrast). Clear comparison table and interactive 6-question quiz.{% endif %}{% endblock %}
 {% block content %}
 <article class="prose">
 {% if lang == 'ja' %}
-<h1>-아서 vs -(으)니까 vs -는데 vs -지만 — 接続語尾の使い分け</h1>
-<p class="lead">韓国語の複文（2つの節をつなぐ文）で最もよく使われ、最も学習者が混乱するのがこの4つの接続語尾です。どれも文をつなぎますが、<b>後ろに命令文を置けるか</b>、<b>過去形（-았/었-）が付けられるか</b>、<b>どのようなニュアンスを持つか</b>という文法規則が明確に異なります。</p>
+<h1>-아서 · -(으)니까 · -는데 · -지만 — どれを使う？</h1>
+<p class="lead"><b>接続語尾の使い分けガイド：</b>韓国語の複文（2つの節をつなぐ文）で最もよく使われ、最も学習者が混乱するのがこの4つの接続語尾です。どれも文をつなぎますが、<b>後ろに命令文を置けるか</b>、<b>過去形（-았/었-）が付けられるか</b>、<b>どのようなニュアンスを持つか</b>という文法規則が明確に異なります。</p>
 
 <h2>1. 4大接続語尾の比較一覧表</h2>
-<div style="overflow-x:auto">
+<div class="connectives-table-wrap">
 <table>
 <tr>
   <th>語尾</th>
@@ -20,32 +20,106 @@
 <tr>
   <td><b>-아서 / -어서</b></td>
   <td>自然な原因・理由、先行動作</td>
-  <td><b>不可（✗）</b></td>
-  <td><b>不可（✗）</b></td>
+  <td><span class="tag no">✗ 不可</span></td>
+  <td><span class="tag no">✗ 不可</span></td>
   <td><span lang="ko">배가 고파서 밥을 먹어요.</span></td>
 </tr>
 <tr>
   <td><b>-(으)니까</b></td>
   <td>話し手の理由・判断の根拠</td>
-  <td><b>可能（✓ 自然）</b></td>
-  <td><b>可能（✓）</b></td>
+  <td><span class="tag ok">✓ 可能</span></td>
+  <td><span class="tag ok">✓ 可能</span></td>
   <td><span lang="ko">비가 오니까 우산을 가져가세요.</span></td>
 </tr>
 <tr>
   <td><b>-는데 / -(으)ㄴ데</b></td>
   <td>前置き・背景の提示、軽い対比</td>
-  <td><b>可能（✓）</b></td>
-  <td><b>可能（✓）</b></td>
+  <td><span class="tag ok">✓ 可能</span></td>
+  <td><span class="tag ok">✓ 可能</span></td>
   <td><span lang="ko">저는 바쁜데 친구를 만나요.</span></td>
 </tr>
 <tr>
   <td><b>-지만</b></td>
   <td>事実と事実の明確な対比・逆接</td>
-  <td><b>可能（✓）</b></td>
-  <td><b>可能（✓）</b></td>
+  <td><span class="tag ok">✓ 可能</span></td>
+  <td><span class="tag ok">✓ 可能</span></td>
   <td><span lang="ko">한국어가 어렵지만 재미있어요.</span></td>
 </tr>
 </table>
+</div>
+
+<div class="connectives-cards">
+  <div class="connective-card">
+    <div class="connective-card-header">
+      <span class="connective-card-title">-아서 / -어서</span>
+    </div>
+    <div class="connective-card-meaning">自然な原因・理由、先行動作</div>
+    <div class="connective-card-props">
+      <div class="connective-card-prop">
+        <span class="connective-card-prop-label">命令・勧誘（-세요 / -ㅂ시다）</span>
+        <span class="tag no">✗ 不可</span>
+      </div>
+      <div class="connective-card-prop">
+        <span class="connective-card-prop-label">過去形（-았/었-）の結合</span>
+        <span class="tag no">✗ 不可</span>
+      </div>
+    </div>
+    <div class="connective-card-ex"><span lang="ko">배가 고파서 밥을 먹어요.</span></div>
+  </div>
+
+  <div class="connective-card">
+    <div class="connective-card-header">
+      <span class="connective-card-title">-(으)니까</span>
+    </div>
+    <div class="connective-card-meaning">話し手の理由・判断の根拠（命令・提案に最適）</div>
+    <div class="connective-card-props">
+      <div class="connective-card-prop">
+        <span class="connective-card-prop-label">命令・勧誘（-세요 / -ㅂ시다）</span>
+        <span class="tag ok">✓ 可能</span>
+      </div>
+      <div class="connective-card-prop">
+        <span class="connective-card-prop-label">過去形（-았/었-）の結合</span>
+        <span class="tag ok">✓ 可能</span>
+      </div>
+    </div>
+    <div class="connective-card-ex"><span lang="ko">비가 오니까 우산을 가져가세요.</span></div>
+  </div>
+
+  <div class="connective-card">
+    <div class="connective-card-header">
+      <span class="connective-card-title">-는데 / -(으)ㄴ데</span>
+    </div>
+    <div class="connective-card-meaning">前置き・背景の提示、軽い対比</div>
+    <div class="connective-card-props">
+      <div class="connective-card-prop">
+        <span class="connective-card-prop-label">命令・勧誘（-세요 / -ㅂ시다）</span>
+        <span class="tag ok">✓ 可能</span>
+      </div>
+      <div class="connective-card-prop">
+        <span class="connective-card-prop-label">過去形（-았/었-）の結合</span>
+        <span class="tag ok">✓ 可能</span>
+      </div>
+    </div>
+    <div class="connective-card-ex"><span lang="ko">저는 바쁜데 친구를 만나요.</span></div>
+  </div>
+
+  <div class="connective-card">
+    <div class="connective-card-header">
+      <span class="connective-card-title">-지만</span>
+    </div>
+    <div class="connective-card-meaning">事実と事実の明確な対比・逆接</div>
+    <div class="connective-card-props">
+      <div class="connective-card-prop">
+        <span class="connective-card-prop-label">命令・勧誘（-세요 / -ㅂ시다）</span>
+        <span class="tag ok">✓ 可能</span>
+      </div>
+      <div class="connective-card-prop">
+        <span class="connective-card-prop-label">過去形（-았/었-）の結合</span>
+        <span class="tag ok">✓ 可能</span>
+      </div>
+    </div>
+    <div class="connective-card-ex"><span lang="ko">한국어가 어렵지만 재미있어요.</span></div>
+  </div>
 </div>
 
 <h2>2. 語尾ごとの詳しい特徴と注意点</h2>
@@ -94,48 +168,122 @@
 </ol>
 
 {% elif lang == 'vi' %}
-<h1>-아서 vs -(으)니까 vs -는데 vs -지만 — phân biệt đuôi liên kết</h1>
-<p class="lead">Trong ngữ pháp tiếng Hàn, 4 đuôi liên kết này xuất hiện với tần suất cao nhất và cũng là nguyên nhân gây nhầm lẫn lớn nhất. Mặc dù đều dùng để nối hai mệnh đề, nhưng chúng có <b>quy tắc ngữ pháp khác nhau hoàn toàn</b> về câu mệnh lệnh, sự kết hợp thì quá khứ và sắc thái biểu đạt.</p>
+<h1>-아서 · -(으)니까 · -는데 · -지만 — chọn đuôi nào?</h1>
+<p class="lead"><b>Phân biệt 4 đuôi liên kết tiếng Hàn:</b> Trong ngữ pháp tiếng Hàn, 4 đuôi liên kết này xuất hiện với tần suất cao nhất và cũng là nguyên nhân gây nhầm lẫn lớn nhất. Mặc dù đều dùng để nối hai mệnh đề, nhưng chúng có <b>quy tắc ngữ pháp khác nhau hoàn toàn</b> về câu mệnh lệnh, sự kết hợp thì quá khứ và sắc thái biểu đạt.</p>
 
 <h2>1. Bảng so sánh tổng hợp 4 đuôi liên kết</h2>
-<div style="overflow-x:auto">
+<div class="connectives-table-wrap">
 <table>
 <tr>
   <th>Đuôi liên kết</th>
   <th>Ý nghĩa cốt lõi</th>
-  <th>Đi cùng câu mệnh lệnh / rủ rê (-세요 / -ㅂ시다)</th>
+  <th>Mệnh lệnh / rủ rê (-세요 / -ㅂ시다)</th>
   <th>Kết hợp thì quá khứ (-았/었-)</th>
   <th>Câu ví dụ tiêu biểu</th>
 </tr>
 <tr>
   <td><b>-아서 / -어서</b></td>
   <td>Nguyên nhân - kết quả tự nhiên; trình tự</td>
-  <td><b>KHÔNG ĐƯỢC (✗)</b></td>
-  <td><b>KHÔNG ĐƯỢC (✗)</b></td>
+  <td><span class="tag no">✗ không</span></td>
+  <td><span class="tag no">✗ không</span></td>
   <td><span lang="ko">배가 고파서 밥을 먹어요.</span></td>
 </tr>
 <tr>
   <td><b>-(으)니까</b></td>
   <td>Lý do chủ quan; căn cứ đề nghị, mệnh lệnh</td>
-  <td><b>ĐƯỢC (✓ Rất tự nhiên)</b></td>
-  <td><b>ĐƯỢC (✓)</b></td>
+  <td><span class="tag ok">✓ được</span></td>
+  <td><span class="tag ok">✓ được</span></td>
   <td><span lang="ko">비가 오니까 우산을 가져가세요.</span></td>
 </tr>
 <tr>
   <td><b>-는데 / -(으)ㄴ데</b></td>
   <td>Mở đầu bối cảnh, tiền đề; tương phản nhẹ</td>
-  <td><b>ĐƯỢC (✓)</b></td>
-  <td><b>ĐƯỢC (✓)</b></td>
+  <td><span class="tag ok">✓ được</span></td>
+  <td><span class="tag ok">✓ được</span></td>
   <td><span lang="ko">저는 바쁜데 친구를 만나요.</span></td>
 </tr>
 <tr>
   <td><b>-지만</b></td>
   <td>Tương phản trực tiếp giữa hai vế đối lập</td>
-  <td><b>ĐƯỢC (✓)</b></td>
-  <td><b>ĐƯỢC (✓)</b></td>
+  <td><span class="tag ok">✓ được</span></td>
+  <td><span class="tag ok">✓ được</span></td>
   <td><span lang="ko">한국어가 어렵지만 재미있어요.</span></td>
 </tr>
 </table>
+</div>
+
+<div class="connectives-cards">
+  <div class="connective-card">
+    <div class="connective-card-header">
+      <span class="connective-card-title">-아서 / -어서</span>
+    </div>
+    <div class="connective-card-meaning">Nguyên nhân - kết quả tự nhiên; trình tự</div>
+    <div class="connective-card-props">
+      <div class="connective-card-prop">
+        <span class="connective-card-prop-label">Mệnh lệnh / rủ rê (-세요)</span>
+        <span class="tag no">✗ không</span>
+      </div>
+      <div class="connective-card-prop">
+        <span class="connective-card-prop-label">Thì quá khứ (-았/었-)</span>
+        <span class="tag no">✗ không</span>
+      </div>
+    </div>
+    <div class="connective-card-ex"><span lang="ko">배가 고파서 밥을 먹어요.</span></div>
+  </div>
+
+  <div class="connective-card">
+    <div class="connective-card-header">
+      <span class="connective-card-title">-(으)니까</span>
+    </div>
+    <div class="connective-card-meaning">Lý do chủ quan; căn cứ đề nghị, mệnh lệnh</div>
+    <div class="connective-card-props">
+      <div class="connective-card-prop">
+        <span class="connective-card-prop-label">Mệnh lệnh / rủ rê (-세요)</span>
+        <span class="tag ok">✓ được</span>
+      </div>
+      <div class="connective-card-prop">
+        <span class="connective-card-prop-label">Thì quá khứ (-았/었-)</span>
+        <span class="tag ok">✓ được</span>
+      </div>
+    </div>
+    <div class="connective-card-ex"><span lang="ko">비가 오니까 우산을 가져가세요.</span></div>
+  </div>
+
+  <div class="connective-card">
+    <div class="connective-card-header">
+      <span class="connective-card-title">-는데 / -(으)ㄴ데</span>
+    </div>
+    <div class="connective-card-meaning">Mở đầu bối cảnh, tiền đề; tương phản nhẹ</div>
+    <div class="connective-card-props">
+      <div class="connective-card-prop">
+        <span class="connective-card-prop-label">Mệnh lệnh / rủ rê (-세요)</span>
+        <span class="tag ok">✓ được</span>
+      </div>
+      <div class="connective-card-prop">
+        <span class="connective-card-prop-label">Thì quá khứ (-았/었-)</span>
+        <span class="tag ok">✓ được</span>
+      </div>
+    </div>
+    <div class="connective-card-ex"><span lang="ko">저는 바쁜데 친구를 만나요.</span></div>
+  </div>
+
+  <div class="connective-card">
+    <div class="connective-card-header">
+      <span class="connective-card-title">-지만</span>
+    </div>
+    <div class="connective-card-meaning">Tương phản trực tiếp giữa hai vế đối lập</div>
+    <div class="connective-card-props">
+      <div class="connective-card-prop">
+        <span class="connective-card-prop-label">Mệnh lệnh / rủ rê (-세요)</span>
+        <span class="tag ok">✓ được</span>
+      </div>
+      <div class="connective-card-prop">
+        <span class="connective-card-prop-label">Thì quá khứ (-았/었-)</span>
+        <span class="tag ok">✓ được</span>
+      </div>
+    </div>
+    <div class="connective-card-ex"><span lang="ko">한국어가 어렵지만 재미있어요.</span></div>
+  </div>
 </div>
 
 <h2>2. Chi tiết từng đuôi liên kết & lỗi thường gặp</h2>
@@ -184,48 +332,122 @@
 </ol>
 
 {% else %}
-<h1>-아서 vs -(으)니까 vs -는데 vs -지만 — Korean Connectives Compared</h1>
-<p class="lead">Connecting two clauses is where Korean sentences come to life. Beginners frequently struggle because English uses “because” or “but” for everything, while Korean has <b>four distinct connectives</b> with strict grammar rules regarding sentence endings, tense markers, and conversational etiquette.</p>
+<h1>-아서 · -(으)니까 · -는데 · -지만 — which one?</h1>
+<p class="lead"><b>Korean connectives compared:</b> Connecting two clauses is where Korean sentences come to life. Beginners frequently struggle because English uses “because” or “but” for everything, while Korean has <b>four distinct connectives</b> with strict grammar rules regarding sentence endings, tense markers, and conversational etiquette.</p>
 
 <h2>1. 4-Way Comparison Table</h2>
-<div style="overflow-x:auto">
+<div class="connectives-table-wrap">
 <table>
 <tr>
   <th>Connective</th>
-  <th>Core Meaning & Nuance</th>
-  <th>Can Follow with Commands / Suggestions (-세요 / -ㅂ시다)</th>
+  <th>Core Meaning &amp; Nuance</th>
+  <th>Commands / Suggestions (-세요 / -ㅂ시다)</th>
   <th>Tense Marker (-았/었-) Allowed Before</th>
   <th>Example Sentence</th>
 </tr>
 <tr>
   <td><b>-아서 / -어서</b></td>
-  <td>Natural cause & effect; sequential action</td>
-  <td><b>FORBIDDEN (✗)</b></td>
-  <td><b>FORBIDDEN (✗)</b></td>
+  <td>Natural cause &amp; effect; sequential action</td>
+  <td><span class="tag no">✗ can’t</span></td>
+  <td><span class="tag no">✗ can’t</span></td>
   <td><span lang="ko">배가 고파서 밥을 먹어요.</span></td>
 </tr>
 <tr>
   <td><b>-(으)니까</b></td>
   <td>Speaker’s reasoning, justification, grounds</td>
-  <td><b>NATURAL (✓ Yes)</b></td>
-  <td><b>ALLOWED (✓)</b></td>
+  <td><span class="tag ok">✓ ok</span></td>
+  <td><span class="tag ok">✓ ok</span></td>
   <td><span lang="ko">비가 오니까 우산을 가져가세요.</span></td>
 </tr>
 <tr>
   <td><b>-는데 / -(으)ㄴ데</b></td>
   <td>Background context, conversational premise, mild contrast</td>
-  <td><b>ALLOWED (✓)</b></td>
-  <td><b>ALLOWED (✓)</b></td>
+  <td><span class="tag ok">✓ ok</span></td>
+  <td><span class="tag ok">✓ ok</span></td>
   <td><span lang="ko">저는 바쁜데 친구를 만나요.</span></td>
 </tr>
 <tr>
   <td><b>-지만</b></td>
   <td>Direct factual contrast (“A, but B”)</td>
-  <td><b>ALLOWED (✓)</b></td>
-  <td><b>ALLOWED (✓)</b></td>
+  <td><span class="tag ok">✓ ok</span></td>
+  <td><span class="tag ok">✓ ok</span></td>
   <td><span lang="ko">한국어가 어렵지만 재미있어요.</span></td>
 </tr>
 </table>
+</div>
+
+<div class="connectives-cards">
+  <div class="connective-card">
+    <div class="connective-card-header">
+      <span class="connective-card-title">-아서 / -어서</span>
+    </div>
+    <div class="connective-card-meaning">Natural cause &amp; effect; sequential action</div>
+    <div class="connective-card-props">
+      <div class="connective-card-prop">
+        <span class="connective-card-prop-label">Commands / Suggestions (-세요)</span>
+        <span class="tag no">✗ can’t</span>
+      </div>
+      <div class="connective-card-prop">
+        <span class="connective-card-prop-label">Tense marker before (-았/었-)</span>
+        <span class="tag no">✗ can’t</span>
+      </div>
+    </div>
+    <div class="connective-card-ex"><span lang="ko">배가 고파서 밥을 먹어요.</span></div>
+  </div>
+
+  <div class="connective-card">
+    <div class="connective-card-header">
+      <span class="connective-card-title">-(으)니까</span>
+    </div>
+    <div class="connective-card-meaning">Speaker’s reasoning, justification, grounds</div>
+    <div class="connective-card-props">
+      <div class="connective-card-prop">
+        <span class="connective-card-prop-label">Commands / Suggestions (-세요)</span>
+        <span class="tag ok">✓ ok</span>
+      </div>
+      <div class="connective-card-prop">
+        <span class="connective-card-prop-label">Tense marker before (-았/었-)</span>
+        <span class="tag ok">✓ ok</span>
+      </div>
+    </div>
+    <div class="connective-card-ex"><span lang="ko">비가 오니까 우산을 가져가세요.</span></div>
+  </div>
+
+  <div class="connective-card">
+    <div class="connective-card-header">
+      <span class="connective-card-title">-는데 / -(으)ㄴ데</span>
+    </div>
+    <div class="connective-card-meaning">Background context, conversational premise, mild contrast</div>
+    <div class="connective-card-props">
+      <div class="connective-card-prop">
+        <span class="connective-card-prop-label">Commands / Suggestions (-세요)</span>
+        <span class="tag ok">✓ ok</span>
+      </div>
+      <div class="connective-card-prop">
+        <span class="connective-card-prop-label">Tense marker before (-았/었-)</span>
+        <span class="tag ok">✓ ok</span>
+      </div>
+    </div>
+    <div class="connective-card-ex"><span lang="ko">저는 바쁜데 친구를 만나요.</span></div>
+  </div>
+
+  <div class="connective-card">
+    <div class="connective-card-header">
+      <span class="connective-card-title">-지만</span>
+    </div>
+    <div class="connective-card-meaning">Direct factual contrast (“A, but B”)</div>
+    <div class="connective-card-props">
+      <div class="connective-card-prop">
+        <span class="connective-card-prop-label">Commands / Suggestions (-세요)</span>
+        <span class="tag ok">✓ ok</span>
+      </div>
+      <div class="connective-card-prop">
+        <span class="connective-card-prop-label">Tense marker before (-았/었-)</span>
+        <span class="tag ok">✓ ok</span>
+      </div>
+    </div>
+    <div class="connective-card-ex"><span lang="ko">한국어가 어렵지만 재미있어요.</span></div>
+  </div>
 </div>
 
 <h2>2. Deep Dive & Common Traps</h2>

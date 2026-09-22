@@ -355,6 +355,22 @@ for (const tp of T.templates) { // every frame's own example sentence must pass 
   eq(r.verdict !== 'no', true, `round-trip ${tp.id}: ${tp.ex} → ${r.verdict} ${JSON.stringify(r.notes.filter(n => n.grade === 'no').map(n => n.key))}`);
   eq(r.notes.some(n => n.key === 'chk_dup_obj' || n.key === 'chk_pair'), false, `round-trip ${tp.id}: no bogus warnings ${JSON.stringify(r.notes.map(n => n.key))}`);
 }
+
+// formal round-trip: every frame with 'formal' tense must pass checkSentence ok (chk_formal info only)
+for (const tp of T.templates) {
+  if (!tp.tenses || !tp.tenses.includes('formal')) continue;
+  const s = tp.ex + (tp.q ? '?' : '.');
+  const parsed = M.checkSentence(s, W, WHY);
+  if (!parsed.verb) continue;
+  const formalWord = tp.q ? (parsed.verb.formal_q || parsed.verb.formal) : parsed.verb.formal;
+  const tokens = tp.ex.replace(/[.?]$/, '').split(' ');
+  tokens[tokens.length - 1] = formalWord.replace(/\?$/, '');
+  const formalSentence = tokens.join(' ') + (tp.q ? '?' : '.');
+  const r = chk(formalSentence);
+  eq(r.verdict, 'ok', `formal round-trip ${tp.id}: ${formalSentence} ok`);
+  const nonInfoNotes = r.notes.filter(n => n.grade !== 'info');
+  eq(nonInfoNotes.length, 0, `formal round-trip ${tp.id}: no error/warning notes ${JSON.stringify(r.notes.map(n => n.key))}`);
+}
 eq(chk('저는 밥을 먹고').verdict, 'no', 'incomplete after -고 is not ok');
 eq(chk('저는 밥을 먹고 커피를').verdict, 'no', 'incomplete after -고 + noun is not ok');
 eq(chk('저는 밥을 먹고').notes.some(n => n.key === 'chk_incomplete'), true, 'incomplete note');
