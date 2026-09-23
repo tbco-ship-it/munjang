@@ -76,7 +76,7 @@ def main():
     (DIST / "404.html").write_text(env.get_template("404.html").render(lang="en", ui=ui["en"], base=base, origin=a.origin, path="404", v=v, alt={}, adsense_pub="", counts=counts))
     sm = ['<?xml version="1.0" encoding="UTF-8"?>', '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">']
     for loc, alt in urls:
-        sm.append(f"  <url><loc>{escape(loc)}</loc><lastmod>{today}</lastmod>" + "".join(f'<xhtml:link rel="alternate" hreflang="{l}" href="{escape(h)}"/>' for l, h in alt.items()) + "</url>")
+        sm.append(f"  <url><loc>{escape(loc)}</loc>" + "".join(f'<xhtml:link rel="alternate" hreflang="{l}" href="{escape(h)}"/>' for l, h in alt.items()) + "</url>")
     sm.append("</urlset>")
     (DIST / "sitemap.xml").write_text("\n".join(sm))
     (DIST / "robots.txt").write_text(f"User-agent: *\nAllow: /\nSitemap: {a.origin}{base}sitemap.xml\n")
