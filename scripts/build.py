@@ -24,6 +24,7 @@ PAGES = [  # (template, path, slug for title lookup)
     ("topik.html", "topik/", "topik"),
     ("about.html", "about/", "about"),
     ("privacy.html", "privacy/", "privacy"),
+    ("terms.html", "terms/", "terms"),
     ("contact.html", "contact/", "contact"),
 ]
 

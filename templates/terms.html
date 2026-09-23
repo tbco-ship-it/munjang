@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block title %}{% if lang == 'ja' %}利用規約{% elif lang == 'vi' %}Điều khoản sử dụng{% else %}Terms of use{% endif %} | HangulSteps{% endblock %}
+{% block content %}
+<article class="prose">
+{% if lang == 'ja' %}
+<h1>利用規約</h1>
+<p>HangulSteps は、韓国語の文作りを練習するための無料の学習ツールです。アカウント作成やログインは必要ありません。</p>
+<p>サイト上で提供される文法解説、助詞の判定、フィードバックは学習の参考用です。試験の採点や公的な添削・検定結果を保証するものではありません。</p>
+<p>単語・語彙データは、<a href="https://creativecommons.org/licenses/by-sa/2.0/kr/deed.ja" target="_blank" rel="noopener">CC BY-SA 2.0 KR</a> ライセンスのもとで提供されている<a href="https://krdict.korean.go.kr" target="_blank" rel="noopener">国立国語院 韓国語基礎辞典</a>の公開データを利用しています。</p>
+<p>本サービスは現状有姿（as is）で提供され、その正確性や完全性についていかなる保証も行いません。法令上認められる最大限の範囲において、本サイトの利用や判定結果に基づいて生じた損害等について責任を負いません。</p>
+<p>本サイトは Google AdSense による広告を掲載しています。また、先生紹介などのアフィリエイトリンクを含む場合があり、該当するリンクはその場所に明記します。</p>
+<p>ご質問や誤りのご報告は、<a href="{{ base }}{{ ui.dir }}contact/">お問い合わせ</a>ページをご確認ください。</p>
+{% elif lang == 'vi' %}
+<h1>Điều khoản sử dụng</h1>
+<p>HangulSteps là công cụ học tập miễn phí giúp bạn thực hành ghép câu tiếng Hàn. Bạn không cần đăng ký tài khoản hay đăng nhập để sử dụng.</p>
+<p>Các giải thích ngữ pháp, nhận xét tiểu từ và phản hồi câu chỉ mang tính chất tham khảo cho việc tự học. Trang web không bảo đảm cho việc chấm thi, sửa bài chính thức hay các kỳ thi như TOPIK.</p>
+<p>Dữ liệu từ vựng được xây dựng dựa trên <a href="https://krdict.korean.go.kr" target="_blank" rel="noopener">Từ điển tiếng Hàn cơ bản của Viện Ngôn ngữ Quốc gia Hàn Quốc</a> theo giấy phép <a href="https://creativecommons.org/licenses/by-sa/2.0/kr/" target="_blank" rel="noopener">CC BY-SA 2.0 KR</a>.</p>
+<p>Trang web được cung cấp theo nguyên trạng (“as is”) mà không có bất kỳ sự bảo đảm nào. Trong phạm vi pháp luật cho phép, chúng tôi không chịu trách nhiệm đối với bất kỳ sai sót nào hay thiệt hại phát sinh từ việc sử dụng dịch vụ.</p>
+<p>Trang web hiển thị quảng cáo thông qua Google AdSense và có thể chứa các liên kết tiếp thị liên kết (như giới thiệu gia sư). Mọi liên kết như vậy đều sẽ được ghi chú rõ ràng tại vị trí hiển thị.</p>
+<p>Nếu bạn có thắc mắc, phản hồi hoặc phát hiện lỗi, vui lòng xem tại trang <a href="{{ base }}{{ ui.dir }}contact/">liên hệ</a>.</p>
+{% else %}
+<h1>Terms of use</h1>
+<p>HangulSteps is a free learning tool to practice Korean sentence building. There are no accounts, logins, or sign-ups required.</p>
+<p>All grammar explanations, particle verdicts, and sentence feedback are provided for self-study reference only. They are not intended as formal writing correction, academic grading, or official TOPIK scoring, and should not be relied upon as such.</p>
+<p>Vocabulary and lexical data are based on the <a href="https://krdict.korean.go.kr" target="_blank" rel="noopener">National Institute of Korean Language’s Korean Basic Dictionary</a>, licensed under <a href="https://creativecommons.org/licenses/by-sa/2.0/kr/" target="_blank" rel="noopener">CC BY-SA 2.0 KR</a>.</p>
+<p>The site and its contents are provided “as is” without warranty of any kind, either express or implied. To the extent permitted by applicable law, we accept no liability for any errors, omissions, or outcomes resulting from the use of this service.</p>
+<p>The site displays advertisements via Google AdSense and may include affiliate or referral links (such as tutor recommendations). Any sponsored or affiliate link will be clearly identified where it appears.</p>
+<p>For questions, bug reports, or feedback, please visit our <a href="{{ base }}{{ ui.dir }}contact/">contact page</a>.</p>
+{% endif %}
+</article>
+{% endblock %}
