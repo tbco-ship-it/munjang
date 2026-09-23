@@ -452,10 +452,10 @@ VOL_EXCEPTIONS = {
     '수고하다', '실례하다', '울다', '웃다', '주무시다'
 }
 NONVOL_ADDITIONAL = {
-    '태어나다', '가까워지다', '빠지다', '바뀌다', '걸리다', '다치다'
+    '태어나다', '가까워지다', '빠지다', '바뀌다', '걸리다', '다치다', '모르다', '못하다'
 }
 
-def build_entry(sheet_row, wip_entry, senses_dump, is_adj, en_adj_overrides=None):
+def build_entry(sheet_row, wip_entry, senses_dump, is_adj, en_adj_overrides=None, ja_overrides=None):
     """Build full dictionary entry for data/words.json."""
     h = sheet_row['h']
     kid = str(sheet_row['id'])
@@ -518,6 +518,13 @@ def build_entry(sheet_row, wip_entry, senses_dump, is_adj, en_adj_overrides=None
         # Japanese
         ja_fields = generate_ja_adj(raw_ja)
         entry.update(ja_fields)
+        if ja_overrides and h in ja_overrides:
+            ov = ja_overrides[h]
+            if ov.get('pos', '형용사') == '형용사':
+                for k, val in ov.items():
+                    if k != 'pos':
+                        entry[k] = val
+                entry['gloss_auto'] = False
 
         # Vietnamese
         entry['vi'] = raw_vi
@@ -560,6 +567,13 @@ def build_entry(sheet_row, wip_entry, senses_dump, is_adj, en_adj_overrides=None
         # Japanese
         ja_fields = generate_ja_verb(raw_ja, kinds_list)
         entry.update(ja_fields)
+        if ja_overrides and h in ja_overrides:
+            ov = ja_overrides[h]
+            if ov.get('pos', '동사') == '동사':
+                for k, val in ov.items():
+                    if k != 'pos':
+                        entry[k] = val
+                entry['gloss_auto'] = False
 
         # Vietnamese
         entry['vi'] = raw_vi
@@ -664,6 +678,7 @@ def main():
     parser.add_argument('--skipped', default=str(ROOT / 'data/wip/verbs_skipped.json'))
     parser.add_argument('--templates', default=str(ROOT / 'data/templates.json'))
     parser.add_argument('--en-adj-overrides', default=str(ROOT / 'data/en_adj_overrides.json'))
+    parser.add_argument('--ja-overrides', default=str(ROOT / 'data/ja_overrides.json'))
     parser.add_argument('--dry-run', action='store_true', default=False)
     parser.add_argument('--execute', action='store_true', default=False)
     args = parser.parse_args()
@@ -704,6 +719,13 @@ def main():
         with open(args.en_adj_overrides, 'r', encoding='utf-8') as f:
             en_adj_overrides = json.load(f)
         print(f"Loaded {len(en_adj_overrides)} English adjective overrides.")
+
+    ja_overrides = None
+    if os.path.exists(args.ja_overrides):
+        print(f"Loading Japanese overrides from {args.ja_overrides}...")
+        with open(args.ja_overrides, 'r', encoding='utf-8') as f:
+            ja_overrides = json.load(f)
+        print(f"Loaded {len(ja_overrides)} Japanese overrides.")
 
     skipped_records = []
     candidates_valid = []
@@ -754,7 +776,7 @@ def main():
 
     for s_row, w_entry in candidates_valid:
         is_adj = (s_row['pos'] == '형용사')
-        entry = build_entry(s_row, w_entry, senses_dump, is_adj, en_adj_overrides)
+        entry = build_entry(s_row, w_entry, senses_dump, is_adj, en_adj_overrides, ja_overrides)
         if is_adj:
             new_adjs.append(entry)
         else:
@@ -778,23 +800,28 @@ def main():
     print(f"\n[ 일본어 활용 및 예외 검증 ]")
     valid_dict_tails = set('るうくぐすつぬぶむいだ')
     for v in new_verbs:
-        if v.get('ja_pres') is not None:
-            assert v['ja_pres'].endswith('ます'), f"Verb {v['h']} ja_pres does not end in ます: {v['ja_pres']}"
+        assert v.get('ja_pres') is not None, f"Verb {v['h']} ja_pres is None"
+        assert v['ja_pres'].endswith(('ます', 'です', 'ません')), f"Verb {v['h']} ja_pres does not end in ます/です/ません: {v['ja_pres']}"
         if v.get('ja_dict') is not None:
             assert v['ja_dict'][-1] in valid_dict_tails, f"Verb {v['h']} ja_dict does not end in valid tail: {v['ja_dict']}"
 
     for a in new_adjs:
+        assert a.get('ja_pres') is not None, f"Adj {a['h']} ja_pres is None"
+        assert a['ja_pres'].endswith(('です', 'ます')), f"Adj {a['h']} ja_pres does not end in です/ます: {a['ja_pres']}"
         if a.get('ja_dict') is not None:
             assert a['ja_dict'][-1] in valid_dict_tails, f"Adj {a['h']} ja_dict does not end in valid tail: {a['ja_dict']}"
-        if a.get('ja_pres') is not None:
-            assert a['ja_pres'].endswith('です'), f"Adj {a['h']} ja_pres does not end in です: {a['ja_pres']}"
 
-    print(f"  - 전수 ja_pres 'ます/です' 종결 및 ja_dict 유효 어미 검증 100% 통과.")
+    null_ja_verbs = [v['h'] for v in new_verbs if v.get('ja_pres') is None]
+    null_ja_adjs = [a['h'] for a in new_adjs if a.get('ja_pres') is None]
+    assert len(null_ja_verbs) == 0, f"New verbs with ja_pres null: {null_ja_verbs}"
+    assert len(null_ja_adjs) == 0, f"New adjs with ja_pres null: {null_ja_adjs}"
+
+    print(f"  - 전수 ja_pres null 0 달성, ます/です/ません 종결 및 ja_dict 유효 어미 검증 100% 통과.")
     print(f"  - 五段 예외표(GODAN_EXCEPTIONS) 적용 건수: {GODAN_EX_APPLIED_COUNT}회.")
 
     # Verification 3: Non-volitional verbs
     print(f"\n[ 비의지 동사 검증 ]")
-    nonvol_samples = ['화나다', '태어나다', '가까워지다', '빠지다', '바뀌다', '걸리다', '다치다']
+    nonvol_samples = ['화나다', '태어나다', '가까워지다', '빠지다', '바뀌다', '걸리다', '다치다', '모르다', '못하다']
     for s_h in nonvol_samples:
         matched_v = next((v for v in new_verbs if v['h'] == s_h), None)
         if matched_v:
@@ -802,7 +829,8 @@ def main():
             assert matched_v.get('want') is None, f"{s_h} expected want:None"
             assert matched_v.get('please') is None, f"{s_h} expected please:None"
             assert matched_v.get('juseyo') is None, f"{s_h} expected juseyo:None"
-    print(f"  - 비의지 동사 sample({', '.join(nonvol_samples)}) vol:False 및 의지형 null 검증 통과.")
+    total_nonvol = sum(1 for v in new_verbs if v.get('vol') is False)
+    print(f"  - 비의지 동사 총 {total_nonvol}건 (sample: {', '.join(nonvol_samples)}) vol:False 및 의지형 null 검증 통과.")
 
     # Verification 4: English adjective overrides
     print(f"\n[ 영어 형용사 오버라이드 검증 ]")

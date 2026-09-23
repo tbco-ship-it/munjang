@@ -765,6 +765,13 @@
     let curLevel = Math.max(st.tpl.level || 1, minL);
 
     function alignPicker() {
+      if (window.innerWidth <= 480) {
+        sh.style.left = '';
+        sh.style.right = '';
+        sh.style.top = '';
+        sh.style.bottom = '';
+        return;
+      }
       sh.style.left = '0';
       sh.style.right = 'auto';
       const rect = sh.getBoundingClientRect();

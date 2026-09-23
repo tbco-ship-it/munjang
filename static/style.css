@@ -191,7 +191,6 @@ html.roman .w-r{display:block}
 .slot-p.active .slot-v{box-shadow:0 0 0 3px var(--accent-soft)}
 .slot-p.ok .slot-v{border-style:solid;border-color:var(--ok)}.slot-p.soft .slot-v{border-style:solid;border-color:var(--warn)}.slot-p.no .slot-v{border-style:solid;border-color:var(--no)}
 .picker{position:absolute;left:0;top:calc(100% + 6px);z-index:30;display:flex;flex-direction:column;min-width:240px;max-width:min(320px,calc(100vw - 24px));max-height:340px;overflow:hidden;padding:6px;background:var(--surface);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow-raised);box-sizing:border-box}
-@media (max-width:480px){.picker{max-width:calc(100vw - 24px);min-width:0}}
 .picker-search{padding:2px 2px 6px;border-bottom:1px solid var(--line);margin-bottom:4px;flex-shrink:0}
 .picker-search-input{width:100%;padding:7px 10px;font-size:.85rem;border:1px solid var(--line);border-radius:8px;background:var(--canvas);color:var(--text);box-sizing:border-box;outline:none;font-family:inherit}
 .picker-search-input:focus{border-color:var(--accent);box-shadow:0 0 0 2px var(--accent-soft)}
@@ -204,6 +203,7 @@ html.roman .w-r{display:block}
 .picker-empty{padding:14px 10px;font-size:.85rem;color:var(--muted);text-align:center}
 .badge-auto{font-size:.68rem;font-weight:600;padding:1px 5px;border-radius:4px;background:var(--surface-soft);color:var(--text-2);border:1px solid var(--line);vertical-align:middle;margin-left:5px;display:inline-block;white-space:nowrap}
 @media (max-width:640px){.picker-search-input{font-size:16px}}
+@media (max-width:480px){.picker{position:fixed;left:0;right:0;top:auto;bottom:0;z-index:100;width:100%;min-width:0;max-width:none;max-height:60vh;padding:10px 12px calc(12px + env(safe-area-inset-bottom,0px));border-width:1px 0 0;border-radius:16px 16px 0 0;box-shadow:0 -6px 24px rgba(0,0,0,.22)}.pk{min-width:0}.pk small{flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}}
 .ppanel{padding:14px 16px;border:1px solid var(--line);border-radius:14px;background:var(--surface-soft);margin:0 0 12px}
 .ppanel .ph{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:4px 8px;margin-bottom:10px;font-size:.88rem;font-weight:650}
 .ppanel .ph small{font-weight:500;color:var(--text-2)}
