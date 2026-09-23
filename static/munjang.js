@@ -570,18 +570,6 @@
       }
       if (PARTICLES.includes(tok)) { c.kind = 'particle'; c.status = 'no'; notes.push({ grade: 'no', key: 'chk_space_particle', vars: { p: tok, prev: tokens[i - 1] || '' } }); chunks.push(c); return; }
       if (tok.length > 1 && tok.startsWith('안') && verbForms.has(tok.slice(1))) { c.kind = 'verb'; c.status = 'no'; notes.push({ grade: 'no', key: 'chk_an_space', vars: { v: tok.slice(1) } }); chunks.push(c); return; }
-      if (verbForms.has(tok)) { const f = verbForms.get(tok); c.kind = 'verb'; c.status = 'ok'; c.word = f.v; c.tense = f.tense; verbAt = i; verb = f.v; verbTense = f.tense; chunks.push(c); return; }
-      if (connForms.has(tok)) { const f = connForms.get(tok); c.kind = 'conn'; c.status = 'ok'; c.word = f.v; c.conn = f.conn; chunks.push(c); return; }
-      if (tok.endsWith('고싶어요') && verbForms.has(tok.replace('고싶어요', '고 싶어요'))) { c.kind = 'verb'; c.status = 'no'; notes.push({ grade: 'no', key: 'chk_want_space', vars: { v: tok.replace('고싶어요', '고 싶어요') } }); verbAt = i; verb = verbForms.get(tok.replace('고싶어요', '고 싶어요')).v; c.word = verb; chunks.push(c); return; }
-      if (tok === '안' || tok === '못' || ADVERBS.includes(tok)) { c.kind = 'adv'; c.status = 'ok'; chunks.push(c); return; }
-      if (MODIFIERS.includes(tok) || modForms.has(tok)) {
-        const f = modForms.get(tok);
-        c.kind = 'mod';
-        c.status = 'ok';
-        if (f) c.word = f.v;
-        chunks.push(c);
-        return;
-      }
       // R1: 못 + verb
       if (tok === '못해요' || tok === '못했어요') {
         const prevChunk = chunks[chunks.length - 1];
@@ -601,6 +589,18 @@
         notes.push({ grade: 'soft', key: 'chk_mot_space', vars: { v: tok.slice(1) }, fix: '못 ' + tok.slice(1) });
         verbAt = i; verb = verbForms.get(tok.slice(1)) ? verbForms.get(tok.slice(1)).v : null;
         chunks.push(c); return;
+      }
+      if (verbForms.has(tok)) { const f = verbForms.get(tok); c.kind = 'verb'; c.status = 'ok'; c.word = f.v; c.tense = f.tense; verbAt = i; verb = f.v; verbTense = f.tense; chunks.push(c); return; }
+      if (connForms.has(tok)) { const f = connForms.get(tok); c.kind = 'conn'; c.status = 'ok'; c.word = f.v; c.conn = f.conn; chunks.push(c); return; }
+      if (tok.endsWith('고싶어요') && verbForms.has(tok.replace('고싶어요', '고 싶어요'))) { c.kind = 'verb'; c.status = 'no'; notes.push({ grade: 'no', key: 'chk_want_space', vars: { v: tok.replace('고싶어요', '고 싶어요') } }); verbAt = i; verb = verbForms.get(tok.replace('고싶어요', '고 싶어요')).v; c.word = verb; chunks.push(c); return; }
+      if (tok === '안' || tok === '못' || ADVERBS.includes(tok)) { c.kind = 'adv'; c.status = 'ok'; chunks.push(c); return; }
+      if (MODIFIERS.includes(tok) || modForms.has(tok)) {
+        const f = modForms.get(tok);
+        c.kind = 'mod';
+        c.status = 'ok';
+        if (f) c.word = f.v;
+        chunks.push(c);
+        return;
       }
       // R1: X못해요
       if (tok.endsWith('못해요') && tok.length > 3) {
@@ -858,6 +858,16 @@
               fix: c.stem + needP
             });
             c.status = 'no';
+          }
+        }
+      }
+
+      // Floating counter phrase before adjective without particle (e.g. 개가 두 마리 똑똑해요) -> unsupported pattern (R7 partial)
+      if (words.adjectives.some(a => a.h === verb.h)) {
+        for (const c of cl.nouns) {
+          if (c.kind === 'count' && !c.particle) {
+            c.status = 'maybe';
+            c.known = false;
           }
         }
       }

@@ -229,7 +229,12 @@
   "slot_MV": "verb",
   "chk_mostly_outside": "Most words are outside our word list — only particle forms were checked.",
   "tense_formal": "Formal (-습니다/ㅂ니다)",
-  "tense_formal_past": "Formal past (-았습니다/었습니다)"
+  "tense_formal_past": "Formal past (-았습니다/었습니다)",
+  "footer_krdict": "Vocabulary data: <a href=\"https://krdict.korean.go.kr\" target=\"_blank\" rel=\"noopener\">National Institute of Korean Language Korean Basic Dictionary</a> (CC BY-SA 2.0 KR)",
+  "gloss_auto_badge": "Auto-translated",
+  "picker_search_ph": "Search...",
+  "picker_more": "Show more",
+  "picker_auto_notice": "Definitions are auto-translated · Unreviewed"
  },
  "ja": {
   "lang": "ja",
@@ -461,7 +466,12 @@
   "slot_MV": "動詞",
   "chk_mostly_outside": "大部分が単語リスト外です — 助詞の形のみ判定しました。",
   "tense_formal": "ハムニダ体",
-  "tense_formal_past": "ハムニダ体・過去"
+  "tense_formal_past": "ハムニダ体・過去",
+  "footer_krdict": "語彙データ：<a href=\"https://krdict.korean.go.kr\" target=\"_blank\" rel=\"noopener\">国立国語院 韓国語基礎辞典</a> (CC BY-SA 2.0 KR)",
+  "gloss_auto_badge": "自動翻訳",
+  "picker_search_ph": "検索...",
+  "picker_more": "もっと見る",
+  "picker_auto_notice": "訳語は自動翻訳です · 未校閲"
  },
  "vi": {
   "lang": "vi",
@@ -692,6 +702,11 @@
   "slot_MV": "động từ",
   "chk_mostly_outside": "Hầu hết các từ nằm ngoài danh sách từ — chỉ kiểm tra dạng tiểu từ.",
   "tense_formal": "Trang trọng (-습니다/ㅂ니다)",
-  "tense_formal_past": "Trang trọng quá khứ (-았습니다/었습니다)"
+  "tense_formal_past": "Trang trọng quá khứ (-았습니다/었습니다)",
+  "footer_krdict": "Dữ liệu từ vựng: <a href=\"https://krdict.korean.go.kr\" target=\"_blank\" rel=\"noopener\">Từ điển tiếng Hàn cơ bản của Viện Ngôn ngữ Quốc gia</a> (CC BY-SA 2.0 KR)",
+  "gloss_auto_badge": "Bản dịch tự động",
+  "picker_search_ph": "Tìm kiếm...",
+  "picker_more": "Xem thêm",
+  "picker_auto_notice": "Nghĩa từ được dịch tự động · Chưa kiểm duyệt"
  }
 }

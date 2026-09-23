@@ -72,6 +72,7 @@
   <p><b>HangulSteps</b> <span class="muted">{{ ui.tagline }}</span></p>
   <p><a href="{{ base }}{{ ui.dir }}about/">{{ ui.nav_about }}</a> · <a href="{{ base }}{{ ui.dir }}privacy/">{% if lang == 'ja' %}プライバシー{% elif lang == 'vi' %}Quyền riêng tư{% else %}Privacy{% endif %}</a> · <a href="{{ base }}{{ ui.dir }}terms/">{% if lang == 'ja' %}利用規約{% elif lang == 'vi' %}Điều khoản{% else %}Terms{% endif %}</a> · <a href="{{ base }}{{ ui.dir }}contact/">{% if lang == 'ja' %}お問い合わせ{% elif lang == 'vi' %}Liên hệ{% else %}Contact{% endif %}</a></p>
   <p class="muted">{{ ui.footer_note }}</p>
+  <p class="muted">{{ ui.footer_krdict | safe }}</p>
 </footer>
 <script src="{{ base }}static/ui.js?v={{ v }}" defer></script>
 <script src="{{ base }}static/a2hs.js?v={{ v }}" defer></script>

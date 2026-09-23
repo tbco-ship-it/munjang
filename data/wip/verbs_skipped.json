@@ -1,0 +1,1058 @@
+[
+  {
+    "id": "91894",
+    "hom": "0",
+    "h": "청소되다",
+    "pos": "동사",
+    "reason": "피동사 (-되다)",
+    "category": "filter_or_skip"
+  },
+  {
+    "id": "80505",
+    "hom": "0",
+    "h": "초대되다",
+    "pos": "동사",
+    "reason": "피동사 (-되다)",
+    "category": "filter_or_skip"
+  },
+  {
+    "id": "79135",
+    "hom": "0",
+    "h": "출발되다",
+    "pos": "동사",
+    "reason": "피동사 (-되다)",
+    "category": "filter_or_skip"
+  },
+  {
+    "id": "72146",
+    "hom": "0",
+    "h": "춥다",
+    "pos": "형용사",
+    "reason": "Already exists in words.json baseline 50 words (춥다)",
+    "category": "existing_baseline"
+  },
+  {
+    "id": "78909",
+    "hom": "0",
+    "h": "취소되다",
+    "pos": "동사",
+    "reason": "피동사 (-되다)",
+    "category": "filter_or_skip"
+  },
+  {
+    "id": "78998",
+    "hom": "0",
+    "h": "취직되다",
+    "pos": "동사",
+    "reason": "피동사 (-되다)",
+    "category": "filter_or_skip"
+  },
+  {
+    "id": "57323",
+    "hom": "2",
+    "h": "치다",
+    "pos": "동사",
+    "reason": "Already exists in words.json baseline 50 words (치다)",
+    "category": "existing_baseline"
+  },
+  {
+    "id": "79341",
+    "hom": "0",
+    "h": "치료되다",
+    "pos": "동사",
+    "reason": "피동사 (-되다)",
+    "category": "filter_or_skip"
+  },
+  {
+    "id": "72157",
+    "hom": "0",
+    "h": "친절하다",
+    "pos": "형용사",
+    "reason": "Already exists in words.json baseline 50 words (친절하다)",
+    "category": "existing_baseline"
+  },
+  {
+    "id": "83239",
+    "hom": "2",
+    "h": "켜다",
+    "pos": "동사",
+    "reason": "자연스러운 목적어 없음",
+    "category": "filter_or_skip"
+  },
+  {
+    "id": "66584",
+    "hom": "1",
+    "h": "크다",
+    "pos": "동사",
+    "reason": "Already exists in words.json baseline 50 words (크다)",
+    "category": "existing_baseline"
+  },
+  {
+    "id": "66586",
+    "hom": "2",
+    "h": "크다",
+    "pos": "형용사",
+    "reason": "Already exists in words.json baseline 50 words (크다)",
+    "category": "existing_baseline"
+  },
+  {
+    "id": "91122",
+    "hom": "1",
+    "h": "타다",
+    "pos": "동사",
+    "reason": "Already exists in words.json baseline 50 words (타다)",
+    "category": "existing_baseline"
+  },
+  {
+    "id": "17160",
+    "hom": "2",
+    "h": "타다",
+    "pos": "동사",
+    "reason": "Already exists in words.json baseline 50 words (타다)",
+    "category": "existing_baseline"
+  },
+  {
+    "id": "91123",
+    "hom": "3",
+    "h": "타다",
+    "pos": "동사",
+    "reason": "Already exists in words.json baseline 50 words (타다)",
+    "category": "existing_baseline"
+  },
+  {
+    "id": "82049",
+    "hom": "0",
+    "h": "통화되다",
+    "pos": "동사",
+    "reason": "피동사 (-되다)",
+    "category": "filter_or_skip"
+  },
+  {
+    "id": "71483",
+    "hom": "0",
+    "h": "팔리다",
+    "pos": "동사",
+    "reason": "피동사 (-리다)",
+    "category": "filter_or_skip"
+  },
+  {
+    "id": "84603",
+    "hom": "1",
+    "h": "포장되다",
+    "pos": "동사",
+    "reason": "피동사 (-되다)",
+    "category": "filter_or_skip"
+  },
+  {
+    "id": "73277",
+    "hom": "1",
+    "h": "하다",
+    "pos": "동사",
+    "reason": "Already exists in words.json baseline 50 words (하다)",
+    "category": "existing_baseline"
+  },
+  {
+    "id": "84574",
+    "hom": "0",
+    "h": "할인되다",
+    "pos": "동사",
+    "reason": "피동사 (-되다)",
+    "category": "filter_or_skip"
+  },
+  {
+    "id": "65200",
+    "hom": "0",
+    "h": "가깝다",
+    "pos": "형용사",
+    "reason": "Already exists in words.json baseline 50 words (가깝다)",
+    "category": "existing_baseline"
+  },
+  {
+    "id": "27500",
+    "hom": "1",
+    "h": "가다",
+    "pos": "동사",
+    "reason": "Already exists in words.json baseline 50 words (가다)",
+    "category": "existing_baseline"
+  },
+  {
+    "id": "53811",
+    "hom": "0",
+    "h": "가져가다",
+    "pos": "동사",
+    "reason": "Already exists in words.json baseline 50 words (가져가다)",
+    "category": "existing_baseline"
+  },
+  {
+    "id": "45747",
+    "hom": "1",
+    "h": "감다",
+    "pos": "동사",
+    "reason": "자연스러운 목적어 없음",
+    "category": "filter_or_skip"
+  },
+  {
+    "id": "17220",
+    "hom": "2",
+    "h": "감다",
+    "pos": "동사",
+    "reason": "자연스러운 목적어 없음",
+    "category": "filter_or_skip"
+  },
+  {
+    "id": "20475",
+    "hom": "0",
+    "h": "거절되다",
+    "pos": "동사",
+    "reason": "피동사 (-되다)",
+    "category": "filter_or_skip"
+  },
+  {
+    "id": "15866",
+    "hom": "0",
+    "h": "걱정되다",
+    "pos": "동사",
+    "reason": "피동사 (-되다)",
+    "category": "filter_or_skip"
+  },
+  {
+    "id": "61093",
+    "hom": "0",
+    "h": "결정되다",
+    "pos": "동사",
+    "reason": "피동사 (-되다)",
+    "category": "filter_or_skip"
+  },
+  {
+    "id": "26089",
+    "hom": "0",
+    "h": "경험되다",
+    "pos": "동사",
+    "reason": "피동사 (-되다)",
+    "category": "filter_or_skip"
+  },
+  {
+    "id": "26232",
+    "hom": "0",
+    "h": "계산되다",
+    "pos": "동사",
+    "reason": "피동사 (-되다)",
+    "category": "filter_or_skip"
+  },
+  {
+    "id": "17698",
+    "hom": "0",
+    "h": "계속되다",
+    "pos": "동사",
+    "reason": "피동사 (-되다)",
+    "category": "filter_or_skip"
+  },
+  {
+    "id": "17749",
+    "hom": "1",
+    "h": "계시다",
+    "pos": "동사",
+    "reason": "Already exists in words.json baseline 50 words (계시다)",
+    "category": "existing_baseline"
+  },
+  {
+    "id": "23331",
+    "hom": "0",
+    "h": "계획되다",
+    "pos": "동사",
+    "reason": "피동사 (-되다)",
+    "category": "filter_or_skip"
+  },
+  {
+    "id": "19227",
+    "hom": "0",
+    "h": "고민되다",
+    "pos": "동사",
+    "reason": "피동사 (-되다)",
+    "category": "filter_or_skip"
+  },
+  {
+    "id": "23394",
+    "hom": "0",
+    "h": "공부하다",
+    "pos": "동사",
+    "reason": "Already exists in words.json baseline 50 words (공부하다)",
+    "category": "existing_baseline"
+  },
+  {
+    "id": "23968",
+    "hom": "0",
+    "h": "관계되다",
+    "pos": "동사",
+    "reason": "피동사 (-되다)",
+    "category": "filter_or_skip"
+  },
+  {
+    "id": "32476",
+    "hom": "0",
+    "h": "교육되다",
+    "pos": "동사",
+    "reason": "피동사 (-되다)",
+    "category": "filter_or_skip"
+  },
+  {
+    "id": "43494",
+    "hom": "0",
+    "h": "교환되다",
+    "pos": "동사",
+    "reason": "피동사 (-되다)",
+    "category": "filter_or_skip"
+  },
+  {
+    "id": "38323",
+    "hom": "0",
+    "h": "귀엽다",
+    "pos": "형용사",
+    "reason": "Already exists in words.json baseline 50 words (귀엽다)",
+    "category": "existing_baseline"
+  },
+  {
+    "id": "37208",
+    "hom": "0",
+    "h": "금지되다",
+    "pos": "동사",
+    "reason": "피동사 (-되다)",
+    "category": "filter_or_skip"
+  },
+  {
+    "id": "32513",
+    "hom": "0",
+    "h": "기억되다",
+    "pos": "동사",
+    "reason": "피동사 (-되다)",
+    "category": "filter_or_skip"
+  },
+  {
+    "id": "32539",
+    "hom": "0",
+    "h": "긴장되다",
+    "pos": "동사",
+    "reason": "피동사 (-되다)",
+    "category": "filter_or_skip"
+  },
+  {
+    "id": "62352",
+    "hom": "1",
+    "h": "꾸다",
+    "pos": "동사",
+    "reason": "자연스러운 목적어 없음",
+    "category": "filter_or_skip"
+  },
+  {
+    "id": "62210",
+    "hom": "1",
+    "h": "나다",
+    "pos": "동사",
+    "reason": "자연스러운 주어 없음",
+    "category": "filter_or_skip"
+  },
+  {
+    "id": "44484",
+    "hom": "0",
+    "h": "덥다",
+    "pos": "형용사",
+    "reason": "Already exists in words.json baseline 50 words (덥다)",
+    "category": "existing_baseline"
+  },
+  {
+    "id": "47606",
+    "hom": "0",
+    "h": "도시하다",
+    "pos": "동사",
+    "reason": "자연스러운 목적어 없음",
+    "category": "filter_or_skip"
+  },
+  {
+    "id": "89858",
+    "hom": "1",
+    "h": "되다",
+    "pos": "동사",
+    "reason": "보어 문형(N이 되다) 미지원",
+    "category": "filter_or_skip"
+  },
+  {
+    "id": "61168",
+    "hom": "1",
+    "h": "드리다",
+    "pos": "동사",
+    "reason": "Already exists in words.json baseline 50 words (드리다)",
+    "category": "existing_baseline"
+  },
+  {
+    "id": "74104",
+    "hom": "1",
+    "h": "듣다",
+    "pos": "동사",
+    "reason": "Already exists in words.json baseline 50 words (듣다)",
+    "category": "existing_baseline"
+  },
+  {
+    "id": "50557",
+    "hom": "2",
+    "h": "듣다",
+    "pos": "동사",
+    "reason": "자연스러운 주어 없음",
+    "category": "filter_or_skip"
+  },
+  {
+    "id": "49856",
+    "hom": "2",
+    "h": "들다",
+    "pos": "동사",
+    "reason": "자연스러운 목적어 없음",
+    "category": "filter_or_skip"
+  },
+  {
+    "id": "70783",
+    "hom": "2",
+    "h": "들리다",
+    "pos": "동사",
+    "reason": "kinds is empty",
+    "category": "filter_or_skip"
+  },
+  {
+    "id": "62313",
+    "hom": "5",
+    "h": "뜨다",
+    "pos": "동사",
+    "reason": "자연스러운 목적어 없음",
+    "category": "filter_or_skip"
+  },
+  {
+    "id": "64682",
+    "hom": "0",
+    "h": "마시다",
+    "pos": "동사",
+    "reason": "Already exists in words.json baseline 50 words (마시다)",
+    "category": "existing_baseline"
+  },
+  {
+    "id": "29777",
+    "hom": "0",
+    "h": "막히다",
+    "pos": "동사",
+    "reason": "피동사 (-히다)",
+    "category": "filter_or_skip"
+  },
+  {
+    "id": "66591",
+    "hom": "0",
+    "h": "만나다",
+    "pos": "동사",
+    "reason": "Already exists in words.json baseline 50 words (만나다)",
+    "category": "existing_baseline"
+  },
+  {
+    "id": "69295",
+    "hom": "0",
+    "h": "많다",
+    "pos": "형용사",
+    "reason": "Already exists in words.json baseline 50 words (많다)",
+    "category": "existing_baseline"
+  },
+  {
+    "id": "70811",
+    "hom": "0",
+    "h": "맛있다",
+    "pos": "형용사",
+    "reason": "Already exists in words.json baseline 50 words (맛있다)",
+    "category": "existing_baseline"
+  },
+  {
+    "id": "58272",
+    "hom": "2",
+    "h": "먹다",
+    "pos": "동사",
+    "reason": "Already exists in words.json baseline 50 words (먹다)",
+    "category": "existing_baseline"
+  },
+  {
+    "id": "26833",
+    "hom": "2",
+    "h": "멀다",
+    "pos": "형용사",
+    "reason": "Already exists in words.json baseline 50 words (멀다)",
+    "category": "existing_baseline"
+  },
+  {
+    "id": "62652",
+    "hom": "1",
+    "h": "바르다",
+    "pos": "동사",
+    "reason": "자연스러운 목적어 없음",
+    "category": "filter_or_skip"
+  },
+  {
+    "id": "66248",
+    "hom": "0",
+    "h": "바쁘다",
+    "pos": "형용사",
+    "reason": "Already exists in words.json baseline 50 words (바쁘다)",
+    "category": "existing_baseline"
+  },
+  {
+    "id": "90169",
+    "hom": "0",
+    "h": "반대되다",
+    "pos": "동사",
+    "reason": "피동사 (-되다)",
+    "category": "filter_or_skip"
+  },
+  {
+    "id": "58798",
+    "hom": "0",
+    "h": "배달되다",
+    "pos": "동사",
+    "reason": "피동사 (-되다)",
+    "category": "filter_or_skip"
+  },
+  {
+    "id": "62088",
+    "hom": "0",
+    "h": "배우다",
+    "pos": "동사",
+    "reason": "Already exists in words.json baseline 50 words (배우다)",
+    "category": "existing_baseline"
+  },
+  {
+    "id": "66375",
+    "hom": "0",
+    "h": "보내다",
+    "pos": "동사",
+    "reason": "Already exists in words.json baseline 50 words (보내다)",
+    "category": "existing_baseline"
+  },
+  {
+    "id": "61190",
+    "hom": "1",
+    "h": "보다",
+    "pos": "동사",
+    "reason": "Already exists in words.json baseline 50 words (보다)",
+    "category": "existing_baseline"
+  },
+  {
+    "id": "26311",
+    "hom": "2",
+    "h": "부르다",
+    "pos": "형용사",
+    "reason": "자연스러운 주어 없음",
+    "category": "filter_or_skip"
+  },
+  {
+    "id": "74179",
+    "hom": "0",
+    "h": "불다",
+    "pos": "동사",
+    "reason": "자연스러운 주어 없음",
+    "category": "filter_or_skip"
+  },
+  {
+    "id": "60915",
+    "hom": "0",
+    "h": "비교되다",
+    "pos": "동사",
+    "reason": "피동사 (-되다)",
+    "category": "filter_or_skip"
+  },
+  {
+    "id": "66318",
+    "hom": "0",
+    "h": "비싸다",
+    "pos": "형용사",
+    "reason": "Already exists in words.json baseline 50 words (비싸다)",
+    "category": "existing_baseline"
+  },
+  {
+    "id": "49419",
+    "hom": "0",
+    "h": "사다",
+    "pos": "동사",
+    "reason": "Already exists in words.json baseline 50 words (사다)",
+    "category": "existing_baseline"
+  },
+  {
+    "id": "66652",
+    "hom": "0",
+    "h": "사용되다",
+    "pos": "동사",
+    "reason": "피동사 (-되다)",
+    "category": "filter_or_skip"
+  },
+  {
+    "id": "69579",
+    "hom": "0",
+    "h": "살다",
+    "pos": "동사",
+    "reason": "Already exists in words.json baseline 50 words (살다)",
+    "category": "existing_baseline"
+  },
+  {
+    "id": "71100",
+    "hom": "0",
+    "h": "생각되다",
+    "pos": "동사",
+    "reason": "피동사 (-되다)",
+    "category": "filter_or_skip"
+  },
+  {
+    "id": "63166",
+    "hom": "0",
+    "h": "선택되다",
+    "pos": "동사",
+    "reason": "피동사 (-되다)",
+    "category": "filter_or_skip"
+  },
+  {
+    "id": "45002",
+    "hom": "0",
+    "h": "설명되다",
+    "pos": "동사",
+    "reason": "피동사 (-되다)",
+    "category": "filter_or_skip"
+  },
+  {
+    "id": "71142",
+    "hom": "0",
+    "h": "소개되다",
+    "pos": "동사",
+    "reason": "피동사 (-되다)",
+    "category": "filter_or_skip"
+  },
+  {
+    "id": "62819",
+    "hom": "4",
+    "h": "쉬다",
+    "pos": "동사",
+    "reason": "자연스러운 목적어 없음",
+    "category": "filter_or_skip"
+  },
+  {
+    "id": "66314",
+    "hom": "0",
+    "h": "쉽다",
+    "pos": "형용사",
+    "reason": "Already exists in words.json baseline 50 words (쉽다)",
+    "category": "existing_baseline"
+  },
+  {
+    "id": "66566",
+    "hom": "0",
+    "h": "시작되다",
+    "pos": "동사",
+    "reason": "피동사 (-되다)",
+    "category": "filter_or_skip"
+  },
+  {
+    "id": "29769",
+    "hom": "0",
+    "h": "시키다",
+    "pos": "동사",
+    "reason": "사동사 (-시키다)",
+    "category": "filter_or_skip"
+  },
+  {
+    "id": "91277",
+    "hom": "0",
+    "h": "신청되다",
+    "pos": "동사",
+    "reason": "피동사 (-되다)",
+    "category": "filter_or_skip"
+  },
+  {
+    "id": "78458",
+    "hom": "0",
+    "h": "실례되다",
+    "pos": "동사",
+    "reason": "피동사 (-되다)",
+    "category": "filter_or_skip"
+  },
+  {
+    "id": "65049",
+    "hom": "1",
+    "h": "싸다",
+    "pos": "동사",
+    "reason": "Already exists in words.json baseline 50 words (싸다)",
+    "category": "existing_baseline"
+  },
+  {
+    "id": "29718",
+    "hom": "3",
+    "h": "싸다",
+    "pos": "형용사",
+    "reason": "Already exists in words.json baseline 50 words (싸다)",
+    "category": "existing_baseline"
+  },
+  {
+    "id": "65172",
+    "hom": "1",
+    "h": "쓰다",
+    "pos": "동사",
+    "reason": "Already exists in words.json baseline 50 words (쓰다)",
+    "category": "existing_baseline"
+  },
+  {
+    "id": "65173",
+    "hom": "2",
+    "h": "쓰다",
+    "pos": "동사",
+    "reason": "Already exists in words.json baseline 50 words (쓰다)",
+    "category": "existing_baseline"
+  },
+  {
+    "id": "71285",
+    "hom": "3",
+    "h": "쓰다",
+    "pos": "동사",
+    "reason": "Already exists in words.json baseline 50 words (쓰다)",
+    "category": "existing_baseline"
+  },
+  {
+    "id": "16488",
+    "hom": "4",
+    "h": "쓰다",
+    "pos": "형용사",
+    "reason": "Already exists in words.json baseline 50 words (쓰다)",
+    "category": "existing_baseline"
+  },
+  {
+    "id": "26878",
+    "hom": "0",
+    "h": "아니다",
+    "pos": "형용사",
+    "reason": "보어 문형(N이 아니다) 미지원",
+    "category": "filter_or_skip"
+  },
+  {
+    "id": "66384",
+    "hom": "0",
+    "h": "안내되다",
+    "pos": "동사",
+    "reason": "피동사 (-되다)",
+    "category": "filter_or_skip"
+  },
+  {
+    "id": "73915",
+    "hom": "1",
+    "h": "안되다",
+    "pos": "동사",
+    "reason": "피동사 (-되다)",
+    "category": "filter_or_skip"
+  },
+  {
+    "id": "91970",
+    "hom": "0",
+    "h": "약속되다",
+    "pos": "동사",
+    "reason": "피동사 (-되다)",
+    "category": "filter_or_skip"
+  },
+  {
+    "id": "67259",
+    "hom": "0",
+    "h": "얘기되다",
+    "pos": "동사",
+    "reason": "피동사 (-되다)",
+    "category": "filter_or_skip"
+  },
+  {
+    "id": "62232",
+    "hom": "0",
+    "h": "어렵다",
+    "pos": "형용사",
+    "reason": "Already exists in words.json baseline 50 words (어렵다)",
+    "category": "existing_baseline"
+  },
+  {
+    "id": "89917",
+    "hom": "0",
+    "h": "없다",
+    "pos": "형용사",
+    "reason": "Already exists in words.json baseline 50 words (없다)",
+    "category": "existing_baseline"
+  },
+  {
+    "id": "62329",
+    "hom": "0",
+    "h": "연결되다",
+    "pos": "동사",
+    "reason": "피동사 (-되다)",
+    "category": "filter_or_skip"
+  },
+  {
+    "id": "91847",
+    "hom": "0",
+    "h": "연습되다",
+    "pos": "동사",
+    "reason": "피동사 (-되다)",
+    "category": "filter_or_skip"
+  },
+  {
+    "id": "74352",
+    "hom": "2",
+    "h": "열리다",
+    "pos": "동사",
+    "reason": "피동사 (-리다)",
+    "category": "filter_or_skip"
+  },
+  {
+    "id": "91706",
+    "hom": "0",
+    "h": "예매되다",
+    "pos": "동사",
+    "reason": "피동사 (-되다)",
+    "category": "filter_or_skip"
+  },
+  {
+    "id": "89697",
+    "hom": "0",
+    "h": "예쁘다",
+    "pos": "형용사",
+    "reason": "Already exists in words.json baseline 50 words (예쁘다)",
+    "category": "existing_baseline"
+  },
+  {
+    "id": "70603",
+    "hom": "0",
+    "h": "예약되다",
+    "pos": "동사",
+    "reason": "피동사 (-되다)",
+    "category": "filter_or_skip"
+  },
+  {
+    "id": "69514",
+    "hom": "1",
+    "h": "오다",
+    "pos": "동사",
+    "reason": "Already exists in words.json baseline 50 words (오다)",
+    "category": "existing_baseline"
+  },
+  {
+    "id": "68808",
+    "hom": "0",
+    "h": "요리되다",
+    "pos": "동사",
+    "reason": "피동사 (-되다)",
+    "category": "filter_or_skip"
+  },
+  {
+    "id": "71018",
+    "hom": "0",
+    "h": "유행되다",
+    "pos": "동사",
+    "reason": "피동사 (-되다)",
+    "category": "filter_or_skip"
+  },
+  {
+    "id": "89757",
+    "hom": "0",
+    "h": "이리되다",
+    "pos": "동사",
+    "reason": "피동사 (-되다)",
+    "category": "filter_or_skip"
+  },
+  {
+    "id": "74011",
+    "hom": "0",
+    "h": "이야기되다",
+    "pos": "동사",
+    "reason": "피동사 (-되다)",
+    "category": "filter_or_skip"
+  },
+  {
+    "id": "66581",
+    "hom": "0",
+    "h": "이용되다",
+    "pos": "동사",
+    "reason": "피동사 (-되다)",
+    "category": "filter_or_skip"
+  },
+  {
+    "id": "24963",
+    "hom": "0",
+    "h": "이해되다",
+    "pos": "동사",
+    "reason": "피동사 (-되다)",
+    "category": "filter_or_skip"
+  },
+  {
+    "id": "57309",
+    "hom": "0",
+    "h": "일하다",
+    "pos": "동사",
+    "reason": "Already exists in words.json baseline 50 words (일하다)",
+    "category": "existing_baseline"
+  },
+  {
+    "id": "68752",
+    "hom": "0",
+    "h": "읽다",
+    "pos": "동사",
+    "reason": "Already exists in words.json baseline 50 words (읽다)",
+    "category": "existing_baseline"
+  },
+  {
+    "id": "68796",
+    "hom": "1",
+    "h": "있다",
+    "pos": "동사",
+    "reason": "Already exists in words.json baseline 50 words (있다)",
+    "category": "existing_baseline"
+  },
+  {
+    "id": "68797",
+    "hom": "2",
+    "h": "있다",
+    "pos": "형용사",
+    "reason": "Already exists in words.json baseline 50 words (있다)",
+    "category": "existing_baseline"
+  },
+  {
+    "id": "69511",
+    "hom": "0",
+    "h": "자다",
+    "pos": "동사",
+    "reason": "Already exists in words.json baseline 50 words (자다)",
+    "category": "existing_baseline"
+  },
+  {
+    "id": "69513",
+    "hom": "0",
+    "h": "작다",
+    "pos": "형용사",
+    "reason": "Already exists in words.json baseline 50 words (작다)",
+    "category": "existing_baseline"
+  },
+  {
+    "id": "62302",
+    "hom": "0",
+    "h": "잘되다",
+    "pos": "동사",
+    "reason": "피동사 (-되다)",
+    "category": "filter_or_skip"
+  },
+  {
+    "id": "91481",
+    "hom": "0",
+    "h": "잘못되다",
+    "pos": "동사",
+    "reason": "피동사 (-되다)",
+    "category": "filter_or_skip"
+  },
+  {
+    "id": "71212",
+    "hom": "0",
+    "h": "재미있다",
+    "pos": "형용사",
+    "reason": "Already exists in words.json baseline 50 words (재미있다)",
+    "category": "existing_baseline"
+  },
+  {
+    "id": "70847",
+    "hom": "0",
+    "h": "전화하다",
+    "pos": "동사",
+    "reason": "Already exists in words.json baseline 50 words (전화하다)",
+    "category": "existing_baseline"
+  },
+  {
+    "id": "31745",
+    "hom": "0",
+    "h": "정리되다",
+    "pos": "동사",
+    "reason": "피동사 (-되다)",
+    "category": "filter_or_skip"
+  },
+  {
+    "id": "76943",
+    "hom": "2",
+    "h": "정하다",
+    "pos": "형용사",
+    "reason": "자연스러운 주어 없음",
+    "category": "filter_or_skip"
+  },
+  {
+    "id": "58167",
+    "hom": "0",
+    "h": "조용하다",
+    "pos": "형용사",
+    "reason": "Already exists in words.json baseline 50 words (조용하다)",
+    "category": "existing_baseline"
+  },
+  {
+    "id": "79033",
+    "hom": "0",
+    "h": "좋다",
+    "pos": "형용사",
+    "reason": "Already exists in words.json baseline 50 words (좋다)",
+    "category": "existing_baseline"
+  },
+  {
+    "id": "27929",
+    "hom": "0",
+    "h": "좋아하다",
+    "pos": "동사",
+    "reason": "Already exists in words.json baseline 50 words (좋아하다)",
+    "category": "existing_baseline"
+  },
+  {
+    "id": "82136",
+    "hom": "1",
+    "h": "주다",
+    "pos": "동사",
+    "reason": "Already exists in words.json baseline 50 words (주다)",
+    "category": "existing_baseline"
+  },
+  {
+    "id": "62597",
+    "hom": "0",
+    "h": "주무시다",
+    "pos": "동사",
+    "reason": "Already exists in words.json baseline 50 words (주무시다)",
+    "category": "existing_baseline"
+  },
+  {
+    "id": "86436",
+    "hom": "0",
+    "h": "준비되다",
+    "pos": "동사",
+    "reason": "피동사 (-되다)",
+    "category": "filter_or_skip"
+  },
+  {
+    "id": "76647",
+    "hom": "0",
+    "h": "중심되다",
+    "pos": "동사",
+    "reason": "피동사 (-되다)",
+    "category": "filter_or_skip"
+  },
+  {
+    "id": "62312",
+    "hom": "3",
+    "h": "지르다",
+    "pos": "동사",
+    "reason": "자연스러운 목적어 없음",
+    "category": "filter_or_skip"
+  },
+  {
+    "id": "63320",
+    "hom": "2",
+    "h": "찍다",
+    "pos": "동사",
+    "reason": "Already exists in words.json baseline 50 words (찍다)",
+    "category": "existing_baseline"
+  },
+  {
+    "id": "29772",
+    "hom": "0",
+    "h": "참다",
+    "pos": "동사",
+    "reason": "자연스러운 목적어 없음",
+    "category": "filter_or_skip"
+  }
+]

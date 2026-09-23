@@ -242,7 +242,8 @@
     const wh = $('#wordhead'), w = st.word;
     if (w) {
       const syl = M.syllables(w.h).map(s => `<i>${s.ch} = ${s.cho}+${s.jung}${s.jong ? '+' + s.jong : ''}</i>`).join('');
-      wh.innerHTML = `<div class="syl" aria-hidden="true">${esc(w.h[0])}</div><div><div class="wh" lang="ko">${esc(w.h)}</div><div class="wm">${esc(mean(w))} <span class="wr">· ${esc(w.r)}</span></div><div class="ws">${syl}</div></div><button type="button" class="say" data-say="${esc(w.h)}" aria-label="${t('listen')}" title="${t('listen_hint')}">${SPEAKER}</button>`;
+      const autoBadge = w.gloss_auto ? ` <span class="badge-auto">${esc(t('gloss_auto_badge'))}</span>` : '';
+      wh.innerHTML = `<div class="syl" aria-hidden="true">${esc(w.h[0])}</div><div><div class="wh" lang="ko">${esc(w.h)}</div><div class="wm">${esc(mean(w))}${autoBadge} <span class="wr">· ${esc(w.r)}</span></div><div class="ws">${syl}</div></div><button type="button" class="say" data-say="${esc(w.h)}" aria-label="${t('listen')}" title="${t('listen_hint')}">${SPEAKER}</button>`;
       wh.hidden = false;
     } else wh.hidden = true;
     // slots (word slot + its particle slot stay together)
@@ -334,6 +335,8 @@
     const a = M.assemble(st.tpl, Object.assign({}, st.picks, { tense: st.tense }));
     const done = complete() && !a.incomplete;
     const unrev = Object.values(st.picks).some(x => x && x.free);
+    const hasAuto = Object.values(st.picks).some(x => x && x.gloss_auto);
+    const autoBadge = hasAuto ? ` <span class="badge-auto">${esc(t('gloss_auto_badge'))}</span>` : '';
     // Unchosen particles render as a blank so the sentence takes shape while the learner works.
     const html = a.chunks.map((c, i) => {
       const pkey = c.kind === 'S' ? 'SP' : NOUN_KEYS.includes(c.kind) ? st.tpl.slots[st.tpl.slots.indexOf(c.kind) + 1] : null;
@@ -343,7 +346,7 @@
     }).join('') + (a.end ? `<span class="ck"><span>${a.end}</span><small>&nbsp;</small></span>` : '');
     pv.className = 'preview' + (done ? ' done' : '');
     pv.innerHTML = `<p class="cap">✦ ${done ? (unrev ? t('unreviewed') : t('done_line')) : t('taking_shape')}</p><p class="big">${html}</p>` +
-      (done ? `<p class="gloss">${esc(gloss(a))}</p><div class="acts"><button type="button" class="btn ghost" id="say">${SPEAKER} ${t('say')}</button><button type="button" class="btn" id="add">${t('add')}</button></div>` : `<p class="gloss">${t('two_particles')}</p>`);
+      (done ? `<p class="gloss">${esc(gloss(a))}${autoBadge}</p><div class="acts"><button type="button" class="btn ghost" id="say">${SPEAKER} ${t('say')}</button><button type="button" class="btn" id="add">${t('add')}</button></div>` : `<p class="gloss">${t('two_particles')}</p>`);
     if (done) { $('#say').onclick = () => speak(a.text); $('#add').onclick = () => addToTray(a); if (st.tray.some(x => x.text === a.text)) { $('#add').textContent = t('added'); $('#add').disabled = true; } }
     renderReorder(done ? a : null);
   }
@@ -740,8 +743,110 @@
     const sh = el('div', 'picker'); sh.id = 'picker';
     const isV = isVerbSlot(k) || k === 'A' || k === 'A1' || k.startsWith('AF:');
     const shown = o => !isV ? o.h : (k === 'V1' || k === 'A1') ? (st.picks.CP ? (o[st.picks.CP] || o.pres) : o.pres) : k.startsWith('VF:') || k.startsWith('AF:') ? (M.verbForm(o, k.slice(3)) || o.pres) : (k === 'NV' || k === 'NV2' ? '안 ' : k === 'MV' ? '못 ' : '') + (M.verbForm(o, k === 'VW' ? 'want' : st.tense) || o.pres);
-    opts.forEach(o => { const b = el('button', 'pk', `<b lang="ko">${esc(shown(o))}</b><small>${esc(mean(o))}</small>`); b.type = 'button'; b.onclick = () => { setPick(k, o); closePicker(); }; sh.appendChild(b); });
+
+    const searchWrap = el('div', 'picker-search');
+    const searchInp = el('input', 'picker-search-input');
+    searchInp.type = 'search';
+    searchInp.placeholder = t('picker_search_ph');
+    searchInp.setAttribute('aria-label', t('picker_search_ph'));
+    searchInp.autocomplete = 'off';
+    searchWrap.appendChild(searchInp);
+    sh.appendChild(searchWrap);
+
+    if (opts.some(o => o.gloss_auto)) {
+      const notice = el('div', 'picker-notice', esc(t('picker_auto_notice')));
+      sh.appendChild(notice);
+    }
+
+    const list = el('div', 'picker-list');
+    sh.appendChild(list);
+
+    const minL = Math.min(...opts.map(o => o.level || 1));
+    let curLevel = Math.max(st.tpl.level || 1, minL);
+
+    function alignPicker() {
+      if (window.innerWidth <= 480) {
+        sh.style.left = '';
+        sh.style.right = '';
+        sh.style.top = '';
+        sh.style.bottom = '';
+        return;
+      }
+      sh.style.left = '0';
+      sh.style.right = 'auto';
+      const rect = sh.getBoundingClientRect();
+      if (rect.right > window.innerWidth - 12) {
+        sh.style.left = 'auto';
+        sh.style.right = '0';
+        const r2 = sh.getBoundingClientRect();
+        if (r2.left < 12) {
+          const anchorRect = anchor.getBoundingClientRect();
+          sh.style.right = 'auto';
+          sh.style.left = `${Math.max(12 - anchorRect.left, 0)}px`;
+        }
+      }
+    }
+
+    function renderList() {
+      list.innerHTML = '';
+      const q = searchInp.value.trim().toLowerCase();
+      let matched;
+      if (q) {
+        matched = opts.filter(o => {
+          if (o.h && o.h.toLowerCase().includes(q)) return true;
+          if (o.r && o.r.toLowerCase().includes(q)) return true;
+          if (o.en && o.en.toLowerCase().includes(q)) return true;
+          if (o.ja && o.ja.includes(q)) return true;
+          if (o.vi && o.vi.toLowerCase().includes(q)) return true;
+          if (o.alias_en && o.alias_en.some(a => a.toLowerCase().includes(q))) return true;
+          if (o.alias_ja && o.alias_ja.some(a => a.includes(q))) return true;
+          const m = mean(o);
+          if (m && m.toLowerCase().includes(q)) return true;
+          const shw = shown(o);
+          if (shw && shw.toLowerCase().includes(q)) return true;
+          return false;
+        });
+      } else {
+        matched = opts.filter(o => (o.level || 1) <= curLevel);
+      }
+
+      if (!matched.length) {
+        const emp = el('div', 'picker-empty', esc(t('error_unknown')));
+        list.appendChild(emp);
+      } else {
+        matched.forEach(o => {
+          const b = el('button', 'pk', `<b lang="ko">${esc(shown(o))}</b><small>${esc(mean(o))}</small>`);
+          b.type = 'button';
+          b.onclick = () => { setPick(k, o); closePicker(); };
+          list.appendChild(b);
+        });
+      }
+
+      if (!q) {
+        const higherLevels = opts.map(o => o.level || 1).filter(l => l > curLevel);
+        if (higherLevels.length) {
+          const moreBtn = el('button', 'picker-more', esc(t('picker_more')));
+          moreBtn.type = 'button';
+          moreBtn.onclick = e => {
+            e.stopPropagation();
+            curLevel = Math.min(...higherLevels);
+            renderList();
+          };
+          list.appendChild(moreBtn);
+        }
+      }
+      alignPicker();
+    }
+
+    searchInp.oninput = () => renderList();
+    searchInp.onkeydown = e => { if (e.key === 'Enter') e.preventDefault(); };
+
+    renderList();
     anchor.appendChild(sh);
+    alignPicker();
+    if (window.matchMedia && window.matchMedia('(pointer: fine)').matches) {
+      setTimeout(() => searchInp.focus(), 0);
+    }
     setTimeout(() => document.addEventListener('click', outside, { once: true }), 0);
     function outside(e) { if (!sh.contains(e.target)) closePicker(); else document.addEventListener('click', outside, { once: true }); }
   }

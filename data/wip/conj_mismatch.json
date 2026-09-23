@@ -1,0 +1,1383 @@
+{
+  "mismatches": [],
+  "unverified": [
+    {
+      "id": "16353",
+      "homonym_number": "0",
+      "h": "가위질하다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "53811",
+      "homonym_number": "0",
+      "h": "가져가다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "71728",
+      "homonym_number": "1",
+      "h": "감사하다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "20475",
+      "homonym_number": "0",
+      "h": "거절되다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "15847",
+      "homonym_number": "0",
+      "h": "거절하다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "20537",
+      "homonym_number": "0",
+      "h": "거짓말하다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "15866",
+      "homonym_number": "0",
+      "h": "걱정되다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "60091",
+      "homonym_number": "0",
+      "h": "걱정하다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "25239",
+      "homonym_number": "0",
+      "h": "검사하다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "62358",
+      "homonym_number": "0",
+      "h": "결심하다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "23968",
+      "homonym_number": "0",
+      "h": "관계되다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "22394",
+      "homonym_number": "0",
+      "h": "관광하다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "31490",
+      "homonym_number": "0",
+      "h": "광고하다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "32476",
+      "homonym_number": "0",
+      "h": "교육되다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "35126",
+      "homonym_number": "0",
+      "h": "교육하다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "43494",
+      "homonym_number": "0",
+      "h": "교환되다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "24078",
+      "homonym_number": "0",
+      "h": "교환하다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "62355",
+      "homonym_number": "0",
+      "h": "구경하다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "37208",
+      "homonym_number": "0",
+      "h": "금지되다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "61089",
+      "homonym_number": "0",
+      "h": "금지하다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "32513",
+      "homonym_number": "0",
+      "h": "기억되다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "62319",
+      "homonym_number": "0",
+      "h": "기억하다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "38466",
+      "homonym_number": "0",
+      "h": "기침하다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "32539",
+      "homonym_number": "0",
+      "h": "긴장되다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "62359",
+      "homonym_number": "0",
+      "h": "긴장하다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "56998",
+      "homonym_number": "0",
+      "h": "낚시하다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "61526",
+      "homonym_number": "0",
+      "h": "다하다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "90398",
+      "homonym_number": "0",
+      "h": "달리기하다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "49453",
+      "homonym_number": "0",
+      "h": "답장하다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "64538",
+      "homonym_number": "0",
+      "h": "답하다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "85938",
+      "homonym_number": "0",
+      "h": "대답하다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "62376",
+      "homonym_number": "0",
+      "h": "대화하다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "90688",
+      "homonym_number": "0",
+      "h": "데이트하다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "47606",
+      "homonym_number": "0",
+      "h": "도시하다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "70745",
+      "homonym_number": "0",
+      "h": "도착하다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "48902",
+      "homonym_number": "0",
+      "h": "독서하다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "48802",
+      "homonym_number": "0",
+      "h": "등산하다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "54449",
+      "homonym_number": "0",
+      "h": "디자인하다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "56086",
+      "homonym_number": "0",
+      "h": "마중하다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "17200",
+      "homonym_number": "0",
+      "h": "말씀하다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "54968",
+      "homonym_number": "0",
+      "h": "멀리하다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "55808",
+      "homonym_number": "0",
+      "h": "메모하다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "55465",
+      "homonym_number": "2",
+      "h": "명하다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "55878",
+      "homonym_number": "0",
+      "h": "목욕하다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "91165",
+      "homonym_number": "0",
+      "h": "목적하다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "91168",
+      "homonym_number": "1",
+      "h": "못하다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "57328",
+      "homonym_number": "0",
+      "h": "박수하다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "90169",
+      "homonym_number": "0",
+      "h": "반대되다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "64745",
+      "homonym_number": "0",
+      "h": "반대하다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "61516",
+      "homonym_number": "0",
+      "h": "방문하다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "57898",
+      "homonym_number": "0",
+      "h": "방학하다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "58798",
+      "homonym_number": "0",
+      "h": "배달되다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "58801",
+      "homonym_number": "0",
+      "h": "배달하다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "58881",
+      "homonym_number": "0",
+      "h": "변하다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "14547",
+      "homonym_number": "0",
+      "h": "복습하다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "62815",
+      "homonym_number": "0",
+      "h": "뵙다",
+      "pos": "동사",
+      "risk_note": "불규칙 위험 어간 (OVERRIDES null 후보)"
+    },
+    {
+      "id": "61517",
+      "homonym_number": "0",
+      "h": "부탁하다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "60915",
+      "homonym_number": "0",
+      "h": "비교되다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "63522",
+      "homonym_number": "0",
+      "h": "비교하다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "61003",
+      "homonym_number": "0",
+      "h": "빨래하다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "61507",
+      "homonym_number": "0",
+      "h": "사업하다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "66652",
+      "homonym_number": "0",
+      "h": "사용되다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "61643",
+      "homonym_number": "0",
+      "h": "사용하다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "61811",
+      "homonym_number": "0",
+      "h": "산책하다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "71100",
+      "homonym_number": "0",
+      "h": "생각되다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "66376",
+      "homonym_number": "0",
+      "h": "생각하다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "62338",
+      "homonym_number": "0",
+      "h": "생활하다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "62299",
+      "homonym_number": "0",
+      "h": "샤워하다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "62422",
+      "homonym_number": "0",
+      "h": "샴푸하다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "63029",
+      "homonym_number": "0",
+      "h": "서비스하다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "63131",
+      "homonym_number": "0",
+      "h": "선물하다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "65115",
+      "homonym_number": "0",
+      "h": "선택하다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "62247",
+      "homonym_number": "0",
+      "h": "설거지하다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "45002",
+      "homonym_number": "0",
+      "h": "설명되다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "65117",
+      "homonym_number": "0",
+      "h": "설명하다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "71126",
+      "homonym_number": "0",
+      "h": "성공하다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "70185",
+      "homonym_number": "0",
+      "h": "세배하다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "63549",
+      "homonym_number": "0",
+      "h": "세수하다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "90336",
+      "homonym_number": "0",
+      "h": "세탁하다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "71142",
+      "homonym_number": "0",
+      "h": "소개되다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "64153",
+      "homonym_number": "0",
+      "h": "쇼핑하다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "64031",
+      "homonym_number": "0",
+      "h": "수고하다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "65026",
+      "homonym_number": "0",
+      "h": "수술하다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "64601",
+      "homonym_number": "2",
+      "h": "수업하다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "64613",
+      "homonym_number": "0",
+      "h": "수영하다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "65235",
+      "homonym_number": "0",
+      "h": "숙제하다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "66566",
+      "homonym_number": "0",
+      "h": "시작되다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "66567",
+      "homonym_number": "0",
+      "h": "시작하다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "17855",
+      "homonym_number": "0",
+      "h": "식사하다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "91277",
+      "homonym_number": "0",
+      "h": "신청되다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "14075",
+      "homonym_number": "0",
+      "h": "신청하다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "65653",
+      "homonym_number": "0",
+      "h": "신호하다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "78458",
+      "homonym_number": "0",
+      "h": "실례되다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "66284",
+      "homonym_number": "0",
+      "h": "실례하다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "14092",
+      "homonym_number": "0",
+      "h": "실수하다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "71283",
+      "homonym_number": "0",
+      "h": "실패하다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "66815",
+      "homonym_number": "0",
+      "h": "아르바이트하다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "66384",
+      "homonym_number": "0",
+      "h": "안내되다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "72522",
+      "homonym_number": "0",
+      "h": "안내하다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "91970",
+      "homonym_number": "0",
+      "h": "약속되다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "71584",
+      "homonym_number": "0",
+      "h": "약속하다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "67259",
+      "homonym_number": "0",
+      "h": "얘기되다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "74202",
+      "homonym_number": "0",
+      "h": "얘기하다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "30209",
+      "homonym_number": "0",
+      "h": "여행하다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "62329",
+      "homonym_number": "0",
+      "h": "연결되다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "67633",
+      "homonym_number": "0",
+      "h": "연결하다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "62362",
+      "homonym_number": "0",
+      "h": "연락하다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "91847",
+      "homonym_number": "0",
+      "h": "연습되다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "67535",
+      "homonym_number": "1",
+      "h": "연습하다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "91849",
+      "homonym_number": "2",
+      "h": "연습하다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "91706",
+      "homonym_number": "0",
+      "h": "예매되다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "14135",
+      "homonym_number": "0",
+      "h": "예매하다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "14152",
+      "homonym_number": "0",
+      "h": "예습하다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "70603",
+      "homonym_number": "0",
+      "h": "예약되다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "14154",
+      "homonym_number": "0",
+      "h": "예약하다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "22162",
+      "homonym_number": "0",
+      "h": "외출하다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "68808",
+      "homonym_number": "0",
+      "h": "요리되다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "9471",
+      "homonym_number": "2",
+      "h": "요리하다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "69522",
+      "homonym_number": "0",
+      "h": "운동하다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "69313",
+      "homonym_number": "0",
+      "h": "운전하다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "58166",
+      "homonym_number": "0",
+      "h": "움직이다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "69570",
+      "homonym_number": "0",
+      "h": "원하다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "69948",
+      "homonym_number": "0",
+      "h": "위치하다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "70248",
+      "homonym_number": "0",
+      "h": "유학하다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "71018",
+      "homonym_number": "0",
+      "h": "유행되다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "62366",
+      "homonym_number": "0",
+      "h": "유행하다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "71119",
+      "homonym_number": "0",
+      "h": "의미하다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "89757",
+      "homonym_number": "0",
+      "h": "이리되다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "71139",
+      "homonym_number": "0",
+      "h": "이사하다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "74011",
+      "homonym_number": "0",
+      "h": "이야기되다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "17179",
+      "homonym_number": "0",
+      "h": "이야기하다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "66581",
+      "homonym_number": "0",
+      "h": "이용되다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "70751",
+      "homonym_number": "0",
+      "h": "이용하다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "24963",
+      "homonym_number": "0",
+      "h": "이해되다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "69534",
+      "homonym_number": "0",
+      "h": "이해하다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "17178",
+      "homonym_number": "0",
+      "h": "인사하다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "57309",
+      "homonym_number": "0",
+      "h": "일하다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "62373",
+      "homonym_number": "0",
+      "h": "입원하다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "68785",
+      "homonym_number": "0",
+      "h": "입학하다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "62348",
+      "homonym_number": "0",
+      "h": "자랑하다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "73515",
+      "homonym_number": "0",
+      "h": "자리하다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "62302",
+      "homonym_number": "0",
+      "h": "잘되다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "91481",
+      "homonym_number": "0",
+      "h": "잘못되다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "69936",
+      "homonym_number": "0",
+      "h": "잘못하다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "70073",
+      "homonym_number": "0",
+      "h": "잘하다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "74073",
+      "homonym_number": "0",
+      "h": "저금하다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "25111",
+      "homonym_number": "0",
+      "h": "전공하다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "75767",
+      "homonym_number": "0",
+      "h": "전하다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "70847",
+      "homonym_number": "0",
+      "h": "전화하다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "31745",
+      "homonym_number": "0",
+      "h": "정리되다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "75784",
+      "homonym_number": "0",
+      "h": "정리하다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "29767",
+      "homonym_number": "1",
+      "h": "정하다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "62342",
+      "homonym_number": "0",
+      "h": "조심하다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "91755",
+      "homonym_number": "0",
+      "h": "졸업하다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "91768",
+      "homonym_number": "0",
+      "h": "주문하다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "76949",
+      "homonym_number": "0",
+      "h": "주사하다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "25990",
+      "homonym_number": "0",
+      "h": "주차하다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "86436",
+      "homonym_number": "0",
+      "h": "준비되다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "86437",
+      "homonym_number": "0",
+      "h": "준비하다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "76647",
+      "homonym_number": "0",
+      "h": "중심되다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "76655",
+      "homonym_number": "0",
+      "h": "중심하다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "71550",
+      "homonym_number": "0",
+      "h": "질문하다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "24812",
+      "homonym_number": "0",
+      "h": "찬성하다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "91894",
+      "homonym_number": "0",
+      "h": "청소되다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "32790",
+      "homonym_number": "0",
+      "h": "청소하다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "80505",
+      "homonym_number": "0",
+      "h": "초대되다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "17163",
+      "homonym_number": "0",
+      "h": "초대하다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "63664",
+      "homonym_number": "0",
+      "h": "축하하다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "62368",
+      "homonym_number": "0",
+      "h": "출근하다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "79135",
+      "homonym_number": "0",
+      "h": "출발되다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "72141",
+      "homonym_number": "0",
+      "h": "출발하다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "27818",
+      "homonym_number": "0",
+      "h": "출석하다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "79856",
+      "homonym_number": "0",
+      "h": "출입하다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "79867",
+      "homonym_number": "0",
+      "h": "출장하다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "84328",
+      "homonym_number": "0",
+      "h": "출퇴근하다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "78909",
+      "homonym_number": "0",
+      "h": "취소되다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "72151",
+      "homonym_number": "0",
+      "h": "취소하다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "78998",
+      "homonym_number": "0",
+      "h": "취직되다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "78999",
+      "homonym_number": "0",
+      "h": "취직하다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "79341",
+      "homonym_number": "0",
+      "h": "치료되다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "72154",
+      "homonym_number": "0",
+      "h": "치료하다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "28143",
+      "homonym_number": "0",
+      "h": "칭찬하다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "82049",
+      "homonym_number": "0",
+      "h": "통화되다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "82053",
+      "homonym_number": "0",
+      "h": "통화하다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "82103",
+      "homonym_number": "0",
+      "h": "퇴근하다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "82874",
+      "homonym_number": "0",
+      "h": "퇴원하다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "82084",
+      "homonym_number": "0",
+      "h": "편지하다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "84603",
+      "homonym_number": "1",
+      "h": "포장되다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "62372",
+      "homonym_number": "0",
+      "h": "한잔하다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "84574",
+      "homonym_number": "0",
+      "h": "할인되다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "84248",
+      "homonym_number": "0",
+      "h": "할인하다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "72479",
+      "homonym_number": "0",
+      "h": "행동하다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "89144",
+      "homonym_number": "0",
+      "h": "환영하다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "87067",
+      "homonym_number": "0",
+      "h": "환전하다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "90097",
+      "homonym_number": "1",
+      "h": "회의하다",
+      "pos": "동사",
+      "risk_note": null
+    },
+    {
+      "id": "88509",
+      "homonym_number": "0",
+      "h": "희망하다",
+      "pos": "동사",
+      "risk_note": null
+    }
+  ],
+  "stats": {
+    "total": 695,
+    "verified": 499,
+    "mismatches": 0,
+    "unverified": 196
+  }
+}
